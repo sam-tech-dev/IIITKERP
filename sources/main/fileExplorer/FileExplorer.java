@@ -23,7 +23,7 @@ public class FileExplorer {
 	 * 
 	 * 			SubDirectories also deleted
 	 */
-	
+
 	public static void deleteDirectory(String dirName)
 	{
 
@@ -42,18 +42,18 @@ public class FileExplorer {
 				else{
 					//list all the directory contents
 					String files[] = directory.list();
-				for (String temp : files) {
-					File fileDelete = new File(directory, temp);
-					if(fileDelete.isFile())
-						fileDelete.delete();
-					else
-						if(fileDelete.isDirectory())
-							deleteDirectory(dirName+"\\"+temp);
-				}
-				if(directory.list().length==0){
-					directory.delete();
-					if(Execution.debugMode)    	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
-				}
+					for (String temp : files) {
+						File fileDelete = new File(directory, temp);
+						if(fileDelete.isFile())
+							fileDelete.delete();
+						else
+							if(fileDelete.isDirectory())
+								deleteDirectory(dirName+"\\"+temp);
+					}
+					if(directory.list().length==0){
+						directory.delete();
+						if(Execution.debugMode)    	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
+					}
 				}
 
 			}else{
@@ -76,12 +76,12 @@ public class FileExplorer {
 		for (int i = 0; i < fileNames.length; i++) {
 			File fileDelete=new File(fileNames[i]);
 			if (fileDelete.exists()) {
-			try{
-				fileFlag=fileDelete.delete();
-			}
-			catch (Exception e){
-				if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+"could not be deleted.");
-			}
+				try{
+					fileFlag=fileDelete.delete();
+				}
+				catch (Exception e){
+					if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+"could not be deleted.");
+				}
 				if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+" deleted.");
 			}
 			else{
@@ -100,22 +100,22 @@ public class FileExplorer {
 	public static boolean deleteFile(String fileName)
 	{
 		boolean fileFlag=false;
-		
-			File fileDelete=new File(fileName);
-			if (fileDelete.exists()) {
-				fileFlag=fileDelete.delete();
-				if(Execution.debugMode)	System.out.println("File deleted.");
-			}
-			else{
-				if(Execution.debugMode) System.out.println("File does not exist");
-			}
-		
+
+		File fileDelete=new File(fileName);
+		if (fileDelete.exists()) {
+			fileFlag=fileDelete.delete();
+			if(Execution.debugMode)	System.out.println("File deleted.");
+		}
+		else{
+			if(Execution.debugMode) System.out.println("File does not exist");
+		}
+
 		return fileFlag;
 	}
 	public static ArrayList<FileSystemObject> getDirectoryContents(String dirPath){    
 		File dirParent = new File(dirPath);
 		ArrayList<FileSystemObject> list=new ArrayList<FileSystemObject>();
-		
+
 		String[] dirFiles = dirParent.list();
 		if (dirFiles.length == 0) {
 			if(Execution.debugMode) System.out.println("The directory is empty");
@@ -123,7 +123,7 @@ public class FileExplorer {
 		else {
 			for (String dFile : dirFiles) {
 				list.add(getBasicFileAttr(dirPath+"\\"+dFile));
-				
+
 
 			}
 		}
@@ -131,9 +131,9 @@ public class FileExplorer {
 	}
 	public static FileSystemObject getBasicFileAttr(String fileAttr){
 		FileSystemObject object=new FileSystemObject();
-		
+
 		File dirFile= new File(fileAttr);
-		
+
 		Path file = Paths.get(fileAttr);
 		object.setFile_path(dirFile.getAbsolutePath());
 		BasicFileAttributes attr=null;
@@ -154,14 +154,14 @@ public class FileExplorer {
 		}
 		object.setFile_name(dirFile.getName());
 		if(Execution.debugMode){
-		System.out.print(object.getFile_path());
-		System.out.print(object.getFile_type());
-		System.out.print(object.getFile_name());
-		System.out.print(object.getCreated());
-		System.out.print(object.getModified());
-		System.out.println(object.getSize());
+			System.out.print(object.getFile_path());
+			System.out.print(object.getFile_type());
+			System.out.print(object.getFile_name());
+			System.out.print(object.getCreated());
+			System.out.print(object.getModified());
+			System.out.println(object.getSize());
 		}
-			return object;
+		return object;
 	}
 	public static boolean createDirectory(String dirName)
 	{
@@ -197,8 +197,8 @@ public class FileExplorer {
 	}
 
 	public static void main(String[] args) {
-		
-		
+
+
 	}
 }  
 
