@@ -16,7 +16,7 @@ import settings.Execution;
  *  @version 1.0
  */
 public class FileExplorer {
-
+static boolean debug_mode=false;
 
 	/**
 	 * @param dirName Directory To Be Deleted
@@ -39,7 +39,7 @@ public class FileExplorer {
 					directory.delete();
 					if(Execution.debugMode)	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
 				}
-				else{
+				else {
 					//list all the directory contents
 					String files[] = directory.list();
 					for (String temp : files) {
