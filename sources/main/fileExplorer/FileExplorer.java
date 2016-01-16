@@ -7,8 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
 
-import Settings.Execution;
+import settings.Execution;
 
 /**
  * @author Anshula  
@@ -22,9 +23,7 @@ public class FileExplorer {
 	 * 
 	 * 			SubDirectories also deleted
 	 */
-	/**
-	 * @param dirName
-	 */
+	
 	public static void deleteDirectory(String dirName)
 	{
 
@@ -67,41 +66,76 @@ public class FileExplorer {
 
 
 
-	public static boolean deleteFile(String [] fileName)
+	/**
+	 * @param fileNames Array to be deleted
+	 * @return 
+	 */
+	public static boolean deleteFiles(String [] fileNames)
 	{
 		boolean fileFlag=false;
-		for (int i = 0; i < fileName.length; i++) {
-			File fileDelete=new File(fileName[i]);
+		for (int i = 0; i < fileNames.length; i++) {
+			File fileDelete=new File(fileNames[i]);
 			if (fileDelete.exists()) {
+			try{
 				fileFlag=fileDelete.delete();
-				System.out.println("File deleted.");
+			}
+			catch (Exception e){
+				if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+"could not be deleted.");
+			}
+				if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+" deleted.");
 			}
 			else{
-				System.out.println("File does not exist");
+				if(Execution.debugMode) {
+					System.out.println("File "+fileDelete.getName()+" does not exist");
+					break;
+				}
 			}
 		}
 		return fileFlag;
 	}
-
-	public static void dirContents(String dirPath){    
+	/**
+	 * @param fileName to be deleted
+	 * @return 
+	 */
+	public static boolean deleteFile(String fileName)
+	{
+		boolean fileFlag=false;
+		
+			File fileDelete=new File(fileName);
+			if (fileDelete.exists()) {
+				fileFlag=fileDelete.delete();
+				if(Execution.debugMode)	System.out.println("File deleted.");
+			}
+			else{
+				if(Execution.debugMode) System.out.println("File does not exist");
+			}
+		
+		return fileFlag;
+	}
+	public static ArrayList<FileSystemObject> getDirectoryContents(String dirPath){    
 		File dirParent = new File(dirPath);
+		ArrayList<FileSystemObject> list=new ArrayList<FileSystemObject>();
+		
 		String[] dirFiles = dirParent.list();
 		if (dirFiles.length == 0) {
-			System.out.println("The directory is empty");
+			if(Execution.debugMode) System.out.println("The directory is empty");
 		} 
 		else {
 			for (String dFile : dirFiles) {
-				getBasicFileAttr(dirPath+"\\"+dFile);
+				list.add(getBasicFileAttr(dirPath+"\\"+dFile));
+				
 
 			}
 		}
-
+		return list;
 	}
-	public static void getBasicFileAttr(String fileAttr){
+	public static FileSystemObject getBasicFileAttr(String fileAttr){
+		FileSystemObject object=new FileSystemObject();
+		
 		File dirFile= new File(fileAttr);
-		String fileType="";
-		String fileName="";
+		
 		Path file = Paths.get(fileAttr);
+		object.setFile_path(dirFile.getAbsolutePath());
 		BasicFileAttributes attr=null;
 		try {
 			attr = Files.readAttributes(file, BasicFileAttributes.class);
@@ -109,22 +143,25 @@ public class FileExplorer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FileTime  creationTime=attr.creationTime();
-		FileTime lastModified=attr.lastModifiedTime();
-		long fileSize=attr.size();
+		object.setCreated(attr.creationTime());
+		object.setModified(attr.lastModifiedTime());
+		object.setSize(attr.size());
 		try {
-			fileType=Files.probeContentType(dirFile.toPath());
+			object.setFile_type(Files.probeContentType(dirFile.toPath()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		fileName=dirFile.getName();
-		System.out.println(fileType);
-		System.out.println(fileName);
-		System.out.println(creationTime);
-		System.out.println(lastModified);
-		System.out.println(fileSize);
-
+		object.setFile_name(dirFile.getName());
+		if(Execution.debugMode){
+		System.out.print(object.getFile_path());
+		System.out.print(object.getFile_type());
+		System.out.print(object.getFile_name());
+		System.out.print(object.getCreated());
+		System.out.print(object.getModified());
+		System.out.println(object.getSize());
+		}
+			return object;
 	}
 	public static boolean createDirectory(String dirName)
 	{
@@ -135,11 +172,14 @@ public class FileExplorer {
 			try {
 				dirNew.mkdir();
 				dirFlag = true;
-				System.out.println("Directory created.");
+				if(Execution.debugMode) System.out.println("Directory created.");
 			} 
 			catch(SecurityException se){
-				System.out.println(se);
+				se.printStackTrace();
 			}        
+		}
+		else {
+			if(Execution.debugMode) System.out.println("Directory Already Exists.");
 		}
 		return dirFlag; 
 	}
@@ -157,8 +197,8 @@ public class FileExplorer {
 	}
 
 	public static void main(String[] args) {
-		deleteDirectory("D:\\testing");
-
+		
+		
 	}
 }  
 
