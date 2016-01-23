@@ -13,11 +13,11 @@ import javax.naming.AuthenticationException;
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.directory.Attributes;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.BasicAttributes;
-import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
@@ -31,17 +31,6 @@ public class SimpleLdapAuthentication
 	public static void main(String[] args) 
 	{
 		try {
-		System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	
-
 	public static String searchAndAuthenticate(String username,String password) throws NamingException{
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -61,7 +50,6 @@ public class SimpleLdapAuthentication
 
 		String fullDN = null;
 		if (answer.hasMore()) {
-
 			fullDN = answer.next().getNameInNamespace();
 
 			ctx.close();
@@ -84,11 +72,13 @@ public class SimpleLdapAuthentication
 			}
 
 			return credentials.toString();
+
 		}
 		// Exception otherwise ...
 		return null;
 
 	}
+}
 	public static void addEntry(String name,String password,String type) {
 
 		Hashtable<String, String> env = 
@@ -160,9 +150,6 @@ public class SimpleLdapAuthentication
  	
      }
 }
-
-
-	
 
 
 
