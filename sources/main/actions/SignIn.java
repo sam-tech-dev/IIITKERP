@@ -40,7 +40,11 @@ public class SignIn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+<<<<<<< HEAD
 		
+=======
+		doPost(request,response);
+>>>>>>> 504f8cc96c6a1d221d461ef84a2040b6c439d7d4
 	}
 
 	/**
