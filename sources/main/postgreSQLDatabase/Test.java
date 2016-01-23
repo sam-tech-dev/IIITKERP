@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 public class Test {
 	
 public static void main(String[] args) {
-	connect("ERP","postgres","joey"); //creating new connection
+	Connection connection = connect("ERP","postgres","joey"); //creating new connection
 }
 
 /**
