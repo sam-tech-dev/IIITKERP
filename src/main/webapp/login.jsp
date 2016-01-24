@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   
-  <script src="dist/js/validateLdapForm.js"></script>
+  <script src="dist/js/loginForm.js"></script>
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Login Account</p>
 
-    <form method="post" onSubmit="return validatingLdapForm()">
+    <form method="post" onSubmit="return authenticate(this.ldap_username.value,this.ldap_password.value)">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" name="ldap_username" onclick="$('#error_username').html('')" id="ldap_username" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
