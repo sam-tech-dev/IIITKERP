@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 public class TimeTableGenerator {
 	public static void main(String[] args) {
+		
 		int working_days=3;
 		int slots=4;
 		int professor_count=2;
