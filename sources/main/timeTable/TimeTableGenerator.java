@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 
 public class TimeTableGenerator {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
 		int working_days=3;

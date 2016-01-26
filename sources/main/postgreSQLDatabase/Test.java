@@ -13,6 +13,7 @@ import java.sql.DriverManager;
  */
 public class Test {
 	
+@SuppressWarnings("unused")
 public static void main(String[] args) {
 	Connection connection = connect("ERP","postgres","joey"); //creating new connection
 }
