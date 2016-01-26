@@ -5,6 +5,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/sources/main"/>
         <property name="java-output-path" value="/ERP/target/classes"/>
+<<<<<<< HEAD
         <property name="context-root" value="erp"/>
+=======
+        <property name="context-root" value="ERP"/>
+>>>>>>> dcd44dfab07b554cad0c004a187b74beaed9d40a
     </wb-module>
 </project-modules>
