@@ -4,10 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-<<<<<<< HEAD
  
-=======
->>>>>>> dcd44dfab07b554cad0c004a187b74beaed9d40a
   <servlet>
     <servlet-name>SignIn</servlet-name>
     <servlet-class>actions.SignIn</servlet-class>
@@ -16,11 +13,8 @@
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
     
   </welcome-file-list>  
-=======
->>>>>>> dcd44dfab07b554cad0c004a187b74beaed9d40a
 </web-app>
