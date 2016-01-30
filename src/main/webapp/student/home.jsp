@@ -53,7 +53,7 @@
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
- 
+ </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
