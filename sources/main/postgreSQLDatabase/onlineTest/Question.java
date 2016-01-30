@@ -1,4 +1,4 @@
-package postgreSQLDatabase;
+package postgreSQLDatabase.onlineTest;
 
 import java.util.ArrayList;
 

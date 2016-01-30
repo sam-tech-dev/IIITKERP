@@ -1,4 +1,4 @@
-package postgreSQLDatabase;
+package postgreSQLDatabase.onlineTest;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -35,32 +35,33 @@ public class Query {
 			question.setType("MCQ");
 			question.setMarks(45);
 			//addQuestions(question,1);
-
+			//getQuestion(1035);
 			Answer answer=new Answer();
 			answer.setAnswer("[\"Sheila\",\"Maggie\"]");
 
 			//answer.setQuestion_id(1);
 			//addAnswer(answer,1);
-          //  getAnswer(3);
+			//  getAnswer(3);
 			TestPaper paper=new TestPaper();
 			paper.setQuestions("[1,2]");
 			//paper.setDuration(null);
-		//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			paper.setCreation_date(new Date(new java.util.Date().getTime()));
 			paper.setSubject("Maths");
 			paper.setAuthor("abewkjegc");
 			paper.setStatus("created");
 			//addNewTestPaper(paper);
-			
+
 			AnswerSheet sheet=new AnswerSheet();
 			sheet.setAuthor("Megha");
 			sheet.setStatus("Process");
 			sheet.setSubmission_time(new Date(new java.util.Date().getTime()));
 			sheet.setAnswer("[1,2]");
 			sheet.setTest_paper_id(3);
-			addNewAnswerSheet(sheet);
-			
+			//addNewAnswerSheet(sheet);
 
+
+			getTestPaper();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,9 +99,11 @@ public class Query {
 		try {
 			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getQuestions\"(?);");
 
+
 			questions=new ArrayList<Question>();
-			proc.setInt(1,1);
+			proc.setInt(1,test_paper_id);
 			ResultSet rs=proc.executeQuery();
+			System.out.println(proc);
 			rs.next();
 
 			JSONArray jArray=new JSONArray(rs.getString(1));
@@ -121,7 +124,7 @@ public class Query {
 			Iterator<Question> iterator = questions.iterator();	
 			while(iterator.hasNext()){
 				Question current=iterator.next();
-				System.out.println(current.getId()+" "+current.getMarks());
+				System.out.println(current.getId()+" "+current.getQuestion());
 			}
 
 			rs.close();
@@ -146,6 +149,7 @@ public class Query {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addQuestion\"(?,?,?,?,?,?);");
 		proc.setString(1,question.getQuestion().toString());
 		proc.setString(2,question.getType().toString());
+		System.out.println(question.getAnswer());
 		proc.setArray(3, getConnection().createArrayOf("text", question.getAnswer().toArray()));
 		proc.setArray(4, getConnection().createArrayOf("text", question.getOptions().toArray()));
 		proc.setInt(5,test_paper_id);
@@ -213,9 +217,10 @@ public class Query {
 	/** 
 	 * adds a new TestPaper in the database
 	 * @param paper an object of type testPaper
+	 * @return 
 	 * @throws SQLException
 	 */
-	public static void addNewTestPaper(TestPaper paper) throws SQLException{
+	public static int addNewTestPaper(TestPaper paper) throws SQLException{
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?);");
 		proc.setArray(1, getConnection().createArrayOf("integer",paper.getQuestions().toArray()));
 		proc.setString(2,paper.getSubject().toString());
@@ -223,11 +228,13 @@ public class Query {
 		proc.setDate(4,paper.getCreation_date());
 		proc.setString(5, paper.getStatus().toString());
 		System.out.println(proc.toString());
-		
-		proc.executeQuery();
+
+		ResultSet rs = proc.executeQuery();
+		rs.next();
+		return rs.getInt("newTestPaper");
 	}
 
-	
+
 	/**
 	 * adds a new AnswerSheet to the database
 	 * @param sheet an object of type AnswerSheet
@@ -243,7 +250,52 @@ public class Query {
 
 		proc.executeQuery();
 	}
-	
+
+
+	public static ArrayList<TestPaper> getTestPaper() throws SQLException{
+		ArrayList<TestPaper> papers=null;
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getTestPaper\"();");
+			papers=new ArrayList<TestPaper>();
+			//proc.setInt(1,test_paper_id);
+			ResultSet rs=proc.executeQuery();
+			//System.out.println(proc);
+			rs.next();
+
+			JSONArray jArray=new JSONArray(rs.getString(1));
+            // System.out.println(rs.getString(1));
+			for(int i=0;i<jArray.length();i++)
+			{
+				JSONObject current_object=jArray.getJSONObject(i);
+				TestPaper current=new TestPaper();
+				current.setId(current_object.getInt("id"));
+				current.setSubject(current_object.getString("subject"));
+				current.setAuthor(current_object.getString("author"));
+				current.setStatus(current_object.getString("status"));
+			//	current.setDate(current_object.getString("creation_date").toString());
+				current.setQuestions(current_object.get("questions").toString());
+
+				papers.add(current);
+			}
+			Iterator<TestPaper> iterator = papers.iterator();	
+			while(iterator.hasNext()){
+				TestPaper current=iterator.next();
+				System.out.println(current.getId()+" "+current.getAuthor()+" "+current.getStatus()+" "+current.getSubject()+" "
+						+current.getCreation_date()+" "+current.getQuestions());
+			}
+
+			rs.close();
+			proc.close();
+		}  catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return papers;
+	}
+
+
+
 
 
 }
