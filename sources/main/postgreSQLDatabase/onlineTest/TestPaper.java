@@ -1,4 +1,4 @@
-package postgreSQLDatabase;
+package postgreSQLDatabase.onlineTest;
 import java.sql.Date;
 import java.time.Duration;
 import java.util.ArrayList;
