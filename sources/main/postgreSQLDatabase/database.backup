@@ -1,0 +1,186 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.0
+-- Dumped by pg_dump version 9.5.0
+
+-- Started on 2016-01-30 10:34:10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 2155 (class 0 OID 24680)
+-- Dependencies: 188
+-- Data for Name: registration_student_list; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-27', 'computer engineering', NULL, false, 'male', 'indian', 3, 34);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-27', 'computer engineering', NULL, false, 'male', 'indian', 4, 23);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-27', 'computer engineering', NULL, false, 'male', 'indian', 5, 345);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-27', 'computer engineering', NULL, false, 'male', 'indian', 6, 123);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-27', 'computer engineering', NULL, false, 'male', 'indian', 7, 56);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'address', '1234567890', 'email', '2016-01-28', 'computer engineering', NULL, false, 'male', 'indian', 8, NULL);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'sa17 sn gzb', '1234567890', 'email', '2016-01-28', 'computer engineering', NULL, false, 'male', 'indian', 9, NULL);
+INSERT INTO registration_student_list VALUES ('mukesh', NULL, NULL, NULL, 'st', 'uttar pradesh', 'sa17 sn gzb', '1234567890', 'email', '2016-10-18', 'computer engineering', NULL, false, 'male', 'indian', 10, NULL);
+
+
+--
+-- TOC entry 2170 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: registration_student_list_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('registration_student_list_id_seq', 10, true);
+
+
+--
+-- TOC entry 2149 (class 0 OID 24605)
+-- Dependencies: 182
+-- Data for Name: test_answer; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO test_answer VALUES ('{idk}', 1, 1);
+INSERT INTO test_answer VALUES ('{"taj mahal"}', 2, 2);
+INSERT INTO test_answer VALUES ('{Sheila,Maggie}', 1, 3);
+INSERT INTO test_answer VALUES ('{Amritsar}', 3, 4);
+
+
+--
+-- TOC entry 2150 (class 0 OID 24611)
+-- Dependencies: 183
+-- Data for Name: test_answerSheet; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "test_answerSheet" VALUES ('shubh', 'progress', '{2}', 2, 2, NULL);
+INSERT INTO "test_answerSheet" VALUES ('megha', 'created', '{1,2,3}', 1, 3, NULL);
+INSERT INTO "test_answerSheet" VALUES ('shubhi', 'created', '{1,3}', 1, 1, '01:01:01');
+INSERT INTO "test_answerSheet" VALUES ('joey', 'status', '{1,2}', 1, 4, '10:00:00');
+INSERT INTO "test_answerSheet" VALUES ('text', 'text', '{1}', 1, 5, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{}', 3, 6, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 7, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 8, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 9, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 10, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 11, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 12, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 13, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 14, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 15, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 16, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 17, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 18, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 19, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 20, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 21, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 22, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 23, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 24, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 25, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 26, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 27, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 28, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 29, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 30, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 31, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 32, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 33, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 34, '00:00:00');
+INSERT INTO "test_answerSheet" VALUES ('Megha', 'Process', '{1,2}', 3, 35, '00:00:00');
+
+
+--
+-- TOC entry 2171 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: test_answerSheet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"test_answerSheet_id_seq"', 35, true);
+
+
+--
+-- TOC entry 2172 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: test_answer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('test_answer_id_seq', 4, true);
+
+
+--
+-- TOC entry 2147 (class 0 OID 24576)
+-- Dependencies: 180
+-- Data for Name: test_question; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO test_question VALUES (3, 4, 'what is your name', 'text', '{e,f}', '{}');
+INSERT INTO test_question VALUES (4, 5, 'who is Nikky?', 'MCQ', '{g,h}', '{}');
+INSERT INTO test_question VALUES (1, 5, 'What is your name?', 'text', '{a,b}', '{answer1}');
+INSERT INTO test_question VALUES (2, 5, 'What is your class?', 'text', '{c,d}', '{ans2,ans3}');
+INSERT INTO test_question VALUES (5, 3, 'wasup?', 'text', '{shelia}', '{Joey}');
+INSERT INTO test_question VALUES (6, 6, 'atndh', 'afbsf', '{afb,arngsb}', '{afb,arngsb}');
+INSERT INTO test_question VALUES (7, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila}');
+INSERT INTO test_question VALUES (8, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila}');
+INSERT INTO test_question VALUES (9, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila}');
+INSERT INTO test_question VALUES (10, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (11, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (12, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (13, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (14, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (15, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+INSERT INTO test_question VALUES (16, 45, 'What''s my name?', 'MCQ', '{Sheila}', '{Sheila,Maggie}');
+
+
+--
+-- TOC entry 2173 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: test_question_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('test_question_id_seq', 16, true);
+
+
+--
+-- TOC entry 2151 (class 0 OID 24621)
+-- Dependencies: 184
+-- Data for Name: test_testPaper; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "test_testPaper" VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "test_testPaper" VALUES (2, '{2,5,6,7,8,9,10}', 'megha', 'eco', '2016-01-01 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (4, '{}', 'subject', 'author', '2016-01-10 00:00:00', 'status', NULL);
+INSERT INTO "test_testPaper" VALUES (5, '{}', 'subject', 'author', '2016-01-10 00:00:00', 'status', NULL);
+INSERT INTO "test_testPaper" VALUES (6, '{}', 'subject', 'author', '2016-01-10 00:00:00', 'status', NULL);
+INSERT INTO "test_testPaper" VALUES (1014, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1015, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1016, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1017, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1018, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1019, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1020, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+INSERT INTO "test_testPaper" VALUES (1021, '{}', 'Economics', 'megha', '2016-01-30 00:00:00', 'created', NULL);
+
+
+--
+-- TOC entry 2174 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: test_testPaper_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"test_testPaper_id_seq"', 1021, true);
+
+
+-- Completed on 2016-01-30 10:34:12
+
+--
+-- PostgreSQL database dump complete
+--
+
