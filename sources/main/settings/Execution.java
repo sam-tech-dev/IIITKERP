@@ -8,5 +8,5 @@ package settings;
  *
  */
 public class Execution {
-public static boolean debugMode=true;
+public static boolean debug_mode=false;
 }

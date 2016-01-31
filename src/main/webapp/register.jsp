@@ -22,6 +22,7 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  
   <![endif]-->
 </head>
 <body class="hold-transition login-page" style="background:url('image/image.jpg');background-size:cover;">
@@ -36,11 +37,11 @@
     <form action="../../index2.html" method="post">
       
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
 	  <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype Password">
+        <input type="password" class="form-control retype_password" placeholder="Retype Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -59,7 +60,7 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
+<script type="text/javascript" src="validate.js"></script>
 <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->

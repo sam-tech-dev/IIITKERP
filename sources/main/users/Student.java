@@ -1,9 +1,8 @@
 /**
- * 
+ *  @author Anshula 
  */
 package users;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,14 +21,14 @@ public class Student {
     private static int name_max_length=50;
     private static int mobile_max_length=13;
     
-	private int student_id;
+	private String student_id;
 	private String name;
 	private String category;
 	private String gender;
-	private Date date_of_birth;
+	private java.sql.Date date_of_birth;
 	private String state_eligibility;
 	private String program_allocated;
-	//private String allocated_category;
+	private String allocated_category;
 	private String mobile;
 	private String email;
 	private String address;
@@ -46,16 +45,16 @@ public class Student {
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
      test.setAddress("aiebg jfgbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuj");
-   //  test.setAllocated_category("open");
+     test.setAllocated_category("open");
      test.setCategory("sc");
-   //  test.setDate_of_birth("12-10-1993");
+     test.setDate_of_birth("12-10-1993");
      test.setEmail("");
      test.setGender("male");
      test.setMobile("1234567890");
      test.setName("joey8 9into");
      test.setProgram_allocated("computer engineering");
      test.setState_eligibility("Uttar Pradesh");
-   //  test.setStudent_id("");   
+     test.setStudent_id("");
 	}
 	
 	 public Student(){
@@ -71,13 +70,13 @@ public class Student {
 	/**
 	 * @return the student_id
 	 */
-	public int getStudent_id() {
+	public String getStudent_id() {
 		return student_id;
 	}
 	/**
 	 * @param student_id the student_id to set
 	 */
-	public void setStudent_id(int student_id) {
+	public void setStudent_id(String student_id) {
 		this.student_id = student_id;
 	}
 	/**
@@ -90,17 +89,16 @@ public class Student {
 	 * @param name the name to set
 	 */
 	public void setName(String name)throws IncorrectFormatException {
-//		String regex = Pattern.quote("[a-z A-Z]*");
-//		Pattern pattern=Pattern.compile(regex);
-//		Matcher matcher=pattern.matcher(name);
-//		if(matcher.find()  && name.length()<=name_max_length){
-		//Change to title case
+		String regex = Pattern.quote("[a-z A-Z]*");
+		Pattern pattern=Pattern.compile(regex);
+		Matcher matcher=pattern.matcher(name);
+		if(matcher.find()  && name.length()<=name_max_length){
 		this.name = name;
 		}
-//		else{
-//			throw new IncorrectFormatException("name");
-//		}
-	//}
+		else{
+			throw new IncorrectFormatException("name");
+		}
+	}
 	/**
 	 * @return the category
 	 */
@@ -137,23 +135,19 @@ public class Student {
 	/**
 	 * @return the date_of_birth
 	 */
-	public Date getDate_of_birth() {
+	public java.sql.Date getDate_of_birth() {
 		return date_of_birth;
 	}
-//	public void setDate_of_birth(Date date_of_birth) {
-//		this.date_of_birth = date_of_birth;
-//	}
-
 	/**
-	 * @param date2 the date_of_birth to set
+	 * @param date_of_birth the date_of_birth to set
 	 */
-	public void setDate_of_birth(String date2)throws IncorrectFormatException {
+	public void setDate_of_birth(String date_of_birth)throws IncorrectFormatException {
 		
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		java.util.Date date;
 		try {
-			date = sdf.parse(date2);
+			date = sdf.parse(date_of_birth);
 			this.date_of_birth = new java.sql.Date(date.getTime());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -162,8 +156,8 @@ public class Student {
 		  
 		
 		
-	} 
-	/*
+	}
+	/**
 	 * @return the state_eligibility
 	 */
 	public String getState_eligibility() {
@@ -199,19 +193,19 @@ public class Student {
 	/**
 	 * @return the allocated_category
 	 */
-/*	public String getAllocated_category() {
+	public String getAllocated_category() {
 		return allocated_category;
-	}*/
+	}
 	/**
 	 * @param allocated_category the allocated_category to set
 	 */
-	/*public void setAllocated_category(String allocated_category)throws IncorrectFormatException {
+	public void setAllocated_category(String allocated_category)throws IncorrectFormatException {
 		if(allocated_category_list.contains(allocated_category.toLowerCase()))
 			this.allocated_category = allocated_category;
 		else
 			throw new IncorrectFormatException("allocated category");
 	
-}*/
+}
 		
 	/**
 	 * @return the mobile
@@ -223,15 +217,15 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-//		String regex = Pattern.quote("\\+?[0-9]*)");
-//		Pattern pattern=Pattern.compile(regex);
-//		Matcher matcher=pattern.matcher(mobile);
-//		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
+		String regex = Pattern.quote("\\+?[0-9]*)");
+		Pattern pattern=Pattern.compile(regex);
+		Matcher matcher=pattern.matcher(mobile);
+		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
-//		}
-//		else{
-//			throw new IncorrectFormatException("mobile");
-//		}
+		}
+		else{
+			throw new IncorrectFormatException("mobile");
+		}
 		
 	}
 	/**
