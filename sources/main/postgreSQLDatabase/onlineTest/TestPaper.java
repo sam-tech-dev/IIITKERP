@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class TestPaper {
-private String subject,author,status;
+private String subject,author,status,question_file;
 private ArrayList<Integer> questions;
 private int id;
 private Date creation_date;
@@ -67,6 +67,18 @@ public Date getCreation_date() {
 }
 public void setCreation_date(Date creation_date) {
 	this.creation_date = creation_date;
+}
+/**
+ * @return the question_file
+ */
+public String getQuestion_file() {
+	return question_file;
+}
+/**
+ * @param question_file the question_file to set
+ */
+public void setQuestion_file(String question_file) {
+	this.question_file = question_file;
 }
 
 }
