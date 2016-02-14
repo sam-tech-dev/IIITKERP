@@ -52,7 +52,7 @@ public class SignIn extends HttpServlet {
 			
 				JSONObject data = new JSONObject();
 
-				data.put("redirect", credentials.get("type")+"-home.jsp");
+				data.put("redirect", credentials.get("type")+"/home.jsp");
 				PrintWriter writer = response.getWriter();
 				writer.write(data.toString());
 

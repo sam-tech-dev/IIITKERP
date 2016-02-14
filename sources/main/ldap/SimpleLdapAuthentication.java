@@ -29,8 +29,8 @@ public class SimpleLdapAuthentication
 	public static void main(String[] args) 
 	{
 		try {
-		System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			
+		//System.out.println(searchAndAuthenticate("admin", "iiitk"));
+		addEntry("joeyp","pintojoey","students");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class SimpleLdapAuthentication
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-		env.put(Context.PROVIDER_URL, "ldap://192.168.50.128:389");
+		env.put(Context.PROVIDER_URL, "ldap://172.16.1.231:389");
 		env.put(Context.SECURITY_AUTHENTICATION, "none");
 
 		SearchControls searchCtrls = new SearchControls();
@@ -55,7 +55,7 @@ public class SimpleLdapAuthentication
 
 		DirContext ctx = null;
 		ctx = new InitialDirContext(env);
-		NamingEnumeration<SearchResult> answer = ctx.search(  "dc=iiitk,dc=com", filter, searchCtrls);
+		NamingEnumeration<SearchResult> answer = ctx.search(  "dc=iiitk,dc=ac,dc=in", filter, searchCtrls);
 
 		String fullDN = null;
 		if (answer.hasMore()) {
@@ -93,7 +93,7 @@ public class SimpleLdapAuthentication
 				new Hashtable<String, String>();
 
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-		env.put(Context.PROVIDER_URL, "ldap://192.168.50.128:389");
+		env.put(Context.PROVIDER_URL, "ldap://172.16.1.231:389");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
 		env.put(Context.SECURITY_PRINCIPAL, "cn=admin,dc=iiitk,dc=com");
 		env.put(Context.SECURITY_CREDENTIALS, "iiitk");
