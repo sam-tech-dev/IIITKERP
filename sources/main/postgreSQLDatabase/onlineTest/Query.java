@@ -76,8 +76,8 @@ public class Query {
 				e.printStackTrace();
 			}
 			conn = DriverManager
-					.getConnection("jdbc:postgresql://localhost:5432/test",
-							"postgres", "root");
+					.getConnection("jdbc:postgresql://172.16.1.231:5432/iiitk",
+							"developer", "developer");
 		}
 		return conn;
 	}
