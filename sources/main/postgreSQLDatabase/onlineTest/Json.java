@@ -38,7 +38,7 @@ for(int i=0;i<jArray.length();i++){
 	Query.addQuestions(current_question,test_paper_id);
 }
 //System.out.println(test_paper_id);
-Query.getQuestion(test_paper_id);
+Query.getQuestions(test_paper_id);
 
 
 		}

@@ -23,40 +23,46 @@ public class Query {
 
 
 		try {
-			Question question=new Question();
-			question.setQuestion("What's my name?");
-			question.setAnswer("[\"Sheila\"]");
-			question.setOptions("[\"Sheila\",\"Maggie\"]");
-			question.setType("MCQ");
-			question.setMarks(45);
-			//addQuestions(question,1);
-			//getQuestion(1035);
-			Answer answer=new Answer();
-			answer.setAnswer("[\"Sheila\",\"Maggie\"]");
+//			Question question=new Question();
+//			question.setQuestion("What's my name?");
+//			question.setAnswer("[\"Sheila\"]");
+//			question.setOptions("[\"Sheila\",\"Maggie\"]");
+//			question.setType("MCQ");
+//			question.setMarks(45);
+//			//addQuestions(question,1);
+//			//getQuestion(1035);
+//			Answer answer=new Answer();
+//			answer.setAnswer("[\"Sheila\",\"Maggie\"]");
+//
+//			//answer.setQuestion_id(1);
+//			//addAnswer(answer,1);
+//			//  getAnswer(3);
+//			TestPaper paper=new TestPaper();
+//			paper.setQuestions("[1,2]");
+//			//paper.setDuration(null);
+//			//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//			paper.setCreation_date(new Date(new java.util.Date().getTime()));
+//			paper.setSubject("Maths");
+//			paper.setAuthor("abewkjegc");
+//			paper.setStatus("created");
+//			//addNewTestPaper(paper);
+//
+//			AnswerSheet sheet=new AnswerSheet();
+//			sheet.setAuthor("Megha");
+//			sheet.setStatus("Process");
+//			sheet.setSubmission_time(new Date(new java.util.Date().getTime()));
+//			sheet.setAnswer("[1,2]");
+//			sheet.setTest_paper_id(3);
+//			//addNewAnswerSheet(sheet);
 
-			//answer.setQuestion_id(1);
-			//addAnswer(answer,1);
-			//  getAnswer(3);
-			TestPaper paper=new TestPaper();
-			paper.setQuestions("[1,2]");
-			//paper.setDuration(null);
-			//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-			paper.setCreation_date(new Date(new java.util.Date().getTime()));
-			paper.setSubject("Maths");
-			paper.setAuthor("abewkjegc");
-			paper.setStatus("created");
-			//addNewTestPaper(paper);
 
-			AnswerSheet sheet=new AnswerSheet();
-			sheet.setAuthor("Megha");
-			sheet.setStatus("Process");
-			sheet.setSubmission_time(new Date(new java.util.Date().getTime()));
-			sheet.setAnswer("[1,2]");
-			sheet.setTest_paper_id(3);
-			//addNewAnswerSheet(sheet);
-
-
-			getTestPaper();
+			ArrayList<Question> list = getQuestions(1);
+			Iterator<Question> abc = list.iterator();
+			while(abc.hasNext()){
+				Question current=abc.next();
+				System.out.println(current.getQuestion());
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +95,7 @@ public class Query {
 	 * @return an arrayList of questions in the specified testPaper
 	 * @throws SQLException 
 	 */
-	public static ArrayList<Question> getQuestion(int test_paper_id) throws SQLException{
+	public static ArrayList<Question> getQuestions(int test_paper_id) throws SQLException{
 		ArrayList<Question> questions=null;
 		try {
 			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getQuestions\"(?);");
