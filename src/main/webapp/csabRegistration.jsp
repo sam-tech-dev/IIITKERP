@@ -42,7 +42,9 @@
         </div>
 
 		<!-- /.register-box -->
-
+	<div class="content">
+	  <div class="row">
+	   <div class="col-md-12">
         <div class="register-box">
             <div class="register-logo">
                 <a href="#"><b>ERP</b></a>
@@ -53,11 +55,11 @@
 
 				<form action="" method="post">
 					<div class="form-group has-feedback">
-						<input type="text" name="std_id" class="form-control" placeholder="Sudent ID">
+						<input type="text" name="std_id" class="form-control" placeholder="Sudent ID" />
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="name" class="form-control" placeholder="Sudent Name">
+						<input type="text" name="name" class="form-control" placeholder="Sudent Name" />
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -71,11 +73,11 @@
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="date" name="dob" class="form-control" placeholder="Date of Birth">
+						<input type="date" name="dob" class="form-control" placeholder="Date of Birth" />
 					</div>
       
 					<div class="form-group has-feedback">
-						<input type="text" name="state" class="form-control" placeholder="State">
+						<input type="text" name="state" class="form-control" placeholder="State" />
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -95,32 +97,32 @@
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="mobile" class="form-control" placeholder="Mobile">
+						<input type="text" name="mobile" class="form-control" placeholder="Mobile" />
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="email" name="email" class="form-control" placeholder="Email">
+						<input type="email" name="email" class="form-control" placeholder="Email" />
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="state" class="form-control" placeholder="State">
+						<input type="text" name="state" class="form-control" placeholder="State" />
 					</div>
 					
 					<div class="form-group has-feedback">
-						<textarea name="address" placeholder="Address..." class="form-control"/></textarea>
+						<textarea name="address" placeholder="Address..." class="form-control"></textarea>
 					</div>
 					
 					<div class="row">
 						<div class="col-xs-4 pull-right">
 							<input type="submit" name="login" value="SignIn" class="btn btn-primary btn-block btn-flat"/>
 						</div>
-						<!-- /.col -->
 					</div>
 				</form>
 			</div>
-			<!-- /.form-box -->
-        </div>
-			
+		</div>
+	   </div>
+	  </div>
+	</div>		
 		<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 		<script>
