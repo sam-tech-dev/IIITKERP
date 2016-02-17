@@ -21,6 +21,12 @@
   	<description></description>
   	<servlet-class>actions.Quartz</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetQuestion</servlet-name>
+  	<display-name>GetQuestion</display-name>
+  	<description></description>
+  	<servlet-class>actions.testPaper.GetQuestion</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -32,6 +38,10 @@
   <servlet-mapping>
   	<servlet-name>Quartz</servlet-name>
   	<url-pattern>/Quartz</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetQuestion</servlet-name>
+  	<url-pattern>/GetQuestion</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  

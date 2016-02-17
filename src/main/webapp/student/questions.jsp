@@ -7,18 +7,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,6 +26,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <script src="../dist/js/testAnswer.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -64,7 +65,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -77,7 +78,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -89,7 +90,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -101,7 +102,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -113,7 +114,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -247,13 +248,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -357,7 +358,32 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-
+    <span id="check_answer" style="display:none">
+    <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      <div class="checkbox_text" value="option">Hello</div>
+                    </label>
+                  </div>
+    </span>
+    <span id="radio_answer" style="display:none">
+     <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadio" class="optionsRadio" value="option">
+                     <span class="options_label">Option 2</span> 
+                    </label>
+                  </div>
+    </span>
+    <span id="short_answer" style="display:none">
+    <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+    </span>
+    <span id="long_answer" style="display:none">
+    <div class="form-group">
+                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                </div>
+    </span>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -367,68 +393,16 @@
 			
                 <h3>Question: 1</h3><br>
 				
-				<h4>Retrieve Question</h5><br>
+				<h4 id="question_stmt">Retrieve Question</h4><br>
 					
-					<div class="form-group">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 1
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 2
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 3
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 4
-                    </label>
-                  </div>
-                </div>
+					
 				
-				<div class="form-group">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                      Option 1
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 2
-                    </label>
-                  </div>
-				  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 3
-                    </label>
-                  </div>
-				  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 4
-                    </label>
-                  </div>
+				<div class="form-group" id="answer">
+                  
 				</div>
-				<div class="form-group">
-                  <input type="text" class="form-control" placeholder="Enter ...">
-                </div>
-						<div class="form-group">
-                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                </div>
-						<div class="form-group">
+				
+						
+						<div class="form-group" style="display:none">
                   <label for="exampleInputFile">File input</label>
                   <input type="file" id="exampleInputFile">
                 </div>
@@ -643,21 +617,23 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.min.js"></script>
+<script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- page script -->
-
+<script>
+getQuestion(2,1);
+</script>
 </body>
 </html>
