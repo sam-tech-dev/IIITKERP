@@ -25,9 +25,9 @@ public class Actions {
 				//System.out.println(current.getJSONArray("answer").toString());
 				current_question.setType(current.getString("type"));
 				current_question.setAnswer(current.getJSONArray("answer").toString());
-				if(!current.has("option")) current_question.setOptions("[]");
+				if(!current.has("options")) current_question.setOptions("[]");
 				else
-					current_question.setOptions(current.getJSONArray("option").toString());
+					current_question.setOptions(current.getJSONArray("options").toString());
 				current_question.setMarks(5);
 				current_question.setQuestion(current.getString("statement"));
 

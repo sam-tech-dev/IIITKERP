@@ -150,9 +150,9 @@ public class Query {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addQuestion\"(?,?,?,?,?,?);");
 		proc.setString(1,question.getQuestion().toString());
 		proc.setString(2,question.getType().toString());
-		System.out.println(question.getAnswer());
-		proc.setArray(3, getConnection().createArrayOf("text", question.getAnswer().toArray()));
-		proc.setArray(4, getConnection().createArrayOf("text", question.getOptions().toArray()));
+		System.out.println(question.getQuestion());
+		proc.setArray(3, getConnection().createArrayOf("text", question.getOptions().toArray()));
+		proc.setArray(4, getConnection().createArrayOf("text", question.getAnswer().toArray()));
 		proc.setInt(5,test_paper_id);
 		proc.setInt(6,question.getMarks());
 		proc.executeQuery();
@@ -229,7 +229,6 @@ public class Query {
 		proc.setDate(4,paper.getCreation_date());
 		proc.setString(5, paper.getStatus().toString());
 		System.out.println(proc.toString());
-
 		ResultSet rs = proc.executeQuery();
 		rs.next();
 		return rs.getInt("newTestPaper");
