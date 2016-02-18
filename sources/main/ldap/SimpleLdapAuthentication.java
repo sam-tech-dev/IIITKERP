@@ -31,7 +31,8 @@ public class SimpleLdapAuthentication
 	{
 		try {
 		//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-		addEntry("joeyp","pintojoey","students");
+	//	addEntry("joeyp","pintojoey","students");
+		changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +57,7 @@ public class SimpleLdapAuthentication
 
 		DirContext ctx = null;
 		ctx = new InitialDirContext(env);
-		NamingEnumeration<SearchResult> answer = ctx.search(  "dc=iiitk,dc=ac,dc=in", filter, searchCtrls);
+		NamingEnumeration<SearchResult> answer = ctx.search("dc=iiitk,dc=ac,dc=in", filter, searchCtrls);
 
 		String fullDN = null;
 		if (answer.hasMore()) {
