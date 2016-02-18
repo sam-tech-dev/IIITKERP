@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Generate Challan</title>
+  <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -12,19 +12,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <style>
-  @media all{
-     #page{display:none;}
-  }
-  @media print{
-     #page{display:block;page-break-before:always;}
-  }
-  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +26,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <script src="../dist/js/testAnswer.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -160,6 +155,7 @@
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
                   </li>
+
                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
@@ -303,474 +299,130 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+		<br>
+		<div class="col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Time Remaining</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+		<div class="col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Question Answered</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+		<div class="col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Question Pending</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="label label-primary pull-right">4</span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <small class="label pull-right bg-green">new</small>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="calendar.html">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <small class="label pull-right bg-red">3</small>
-          </a>
-        </li>
-        <li>
-          <a href="mailbox/mailbox.html">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <small class="label pull-right bg-yellow">12</small>
-          </a>
-        </li>
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>Examples</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-      </ul>
-    </section>
+	</section>
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Invoice
-        <small>#007612</small>
+        Quiz
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Invoice</li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data tables</li>
       </ol>
     </section>
-	
-    <section class="content invoice">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="col-md-4">
+    <span id="check_answer" style="display:none">
+    <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      <div class="checkbox_text" value="option">Hello</div>
+                    </label>
+                  </div>
+    </span>
+    <span id="radio_answer" style="display:none">
+     <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadio" class="optionsRadio" value="option">
+                     <span class="options_label">Option 2</span> 
+                    </label>
+                  </div>
+    </span>
+    <span id="short_answer" style="display:none">
+    <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+    </span>
+    <span id="long_answer" style="display:none">
+    <div class="form-group">
+                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                </div>
+    </span>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-body">
+			
+                <h3>Question: 1</h3><br>
 				
-					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
-						<h4 class="text-center"><b>(Bank Copy)</b></h4>
-					</div>
+				<h4 id="question_stmt">Retrieve Question</h4><br>
 					
-					<div class="row invoice-info">
-						<div class="invoice-col">
-							Category: SC<br>
-							Gender(M/F): M
-							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
-								<p class="text-center"><b>Kota(Rajasthan)</b></p>
-                            </address>
-						</div>
-						
-						<div class="invoice-col">
-							<b style="text-decoration: underline;">Institute Fee</b><br>
-							Student ID: 2013KUCP1011<br>
-							<br>
-							<br>
-							<br>
-							Branch Name:<input type="text" name="branchname"/><br><br>
-							Date of Challan: 15/1/2016<br><br>
-							<h6><b>IIIT KOTA Institute Fee Detail for 2015-2016 Even Semester</b></h6>
-						</div>
-					</div>
 					
-					<div class="row">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<tbody>
-									<tr>
-										<td>Account To Credit</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>Institute Code</td>
-										<td>CSE</td>
-									</tr>
-									<tr>
-										<td>Student Name</td>
-										<td>Sumit Kumar Sagar</td>
-									</tr>
-									<tr>
-										<td>Roll No.</td>
-										<td>2013KUCP1011</td>
-									</tr>
-									<tr>
-										<td>Class/Program</td>
-										<td>Computer Science & Engineering</td>
-									</tr>
-									<tr>
-										<td>Section/Semester</td>
-										<td>6th</td>
-									</tr>
-									<tr>
-										<td>Amount</td>
-										<td>8800</td>
-									</tr>
-									<tr>
-										<td>Amount In Words</td>
-										<td>Eight thousand and eight hundred</td>
-									</tr>
-									<tr>
-										<td>DD/Cheque No.</td>
-										<td>965456631321</td>
-									</tr>
-									<tr>
-										<td>Bank</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>DD/Cheque Date</td>
-										<td>26/12/2015</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					
-					<div class="row">
-						<h4 class="text-center">(To be filled by bank)</h4><br><br>
-						Branch SOL ID <span class="pull-right">____________________</span><br>
-						Branch Transaction ID <span class="pull-right">____________________</span><br><br><br>
-						Seal & Stamp of SBI Bank<span class="pull-right">Signature of Depositor</span>
-						<hr>
-						<h6>If Incorrect fee is deposited, student Even Semester registration may be cancelled/terminated. Even Semester Registration is Subject to fulfilling eligibility criteria</h6>
-					</div>
+				
+				<div class="form-group" id="answer">
+                  
 				</div>
 				
-				<div class="col-md-4">
-				
-					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
-						<h4 class="text-center"><b>(Institute Copy)</b></h4>
-					</div>
-					
-					<div class="row invoice-info">
-						<div class="invoice-col">
-							Category: SC<br>
-							Gender(M/F): M
-							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
-								<p class="text-center"><b>Kota(Rajasthan)</b></p>
-                            </address>
-						</div>
 						
-						<div class="invoice-col">
-							<b style="text-decoration: underline;">Institute Fee</b><br>
-							Student ID: 2013KUCP1011<br>
-							<br>
-							<br>
-							<br>
-							Branch Name:<input type="text" name="branchname"/><br><br>
-							Date of Challan: 15/1/2016<br><br>
-							<h6><b>IIIT KOTA Institute Fee Detail for 2015-2016 Even Semester</b></h6>
-						</div>
-					</div>
+						<div class="form-group" style="display:none">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" id="exampleInputFile">
+                </div>
 					
-					<div class="row">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<tbody>
-									<tr>
-										<td>Account To Credit</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>Institute Code</td>
-										<td>CSE</td>
-									</tr>
-									<tr>
-										<td>Student Name</td>
-										<td>Sumit Kumar Sagar</td>
-									</tr>
-									<tr>
-										<td>Roll No.</td>
-										<td>2013KUCP1011</td>
-									</tr>
-									<tr>
-										<td>Class/Program</td>
-										<td>Computer Science & Engineering</td>
-									</tr>
-									<tr>
-										<td>Section/Semester</td>
-										<td>6th</td>
-									</tr>
-									<tr>
-										<td>Amount</td>
-										<td>8800</td>
-									</tr>
-									<tr>
-										<td>Amount In Words</td>
-										<td>Eight thousand and eight hundred</td>
-									</tr>
-									<tr>
-										<td>DD/Cheque No.</td>
-										<td>965456631321</td>
-									</tr>
-									<tr>
-										<td>Bank</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>DD/Cheque Date</td>
-										<td>26/12/2015</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					
-					<div class="row">
-						<h4 class="text-center">(To be filled by bank)</h4><br><br>
-						Branch SOL ID <span class="pull-right">____________________</span><br>
-						Branch Transaction ID <span class="pull-right">____________________</span><br><br><br>
-						Seal & Stamp of SBI Bank<span class="pull-right">Signature of Depositor</span>
-						<hr>
-						<h6>If Incorrect fee is deposited, student Even Semester registration may be cancelled/terminated. Even Semester Registration is Subject to fulfilling eligibility criteria</h6>
-					</div>
+            </div>
+			<div class="box-footer">
+				<div class="btn-group">
+					<button type="button" class="btn btn-block btn-success">Submit</button>
 				</div>
-				
-				<div class="col-md-4">
-				
-					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
-						<h4 class="text-center"><b>(Student Copy)</b></h4>
-					</div>
-					
-					<div class="row invoice-info">
-						<div class="invoice-col">
-							Category: SC<br>
-							Gender(M/F): M
-							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
-								<p class="text-center"><b>Kota(Rajasthan)</b></p>
-                            </address>
-						</div>
-						
-						<div class="invoice-col">
-							<b style="text-decoration: underline;">Institute Fee</b><br>
-							Student ID: 2013KUCP1011<br>
-							<br>
-							<br>
-							<br>
-							Branch Name:<input type="text" name="branchname"/><br><br>
-							Date of Challan: 15/1/2016<br><br>
-							<h6><b>IIIT KOTA Institute Fee Detail for 2015-2016 Even Semester</b></h6>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<tbody>
-									<tr>
-										<td>Account To Credit</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>Institute Code</td>
-										<td>CSE</td>
-									</tr>
-									<tr>
-										<td>Student Name</td>
-										<td>Sumit Kumar Sagar</td>
-									</tr>
-									<tr>
-										<td>Roll No.</td>
-										<td>2013KUCP1011</td>
-									</tr>
-									<tr>
-										<td>Class/Program</td>
-										<td>Computer Science & Engineering</td>
-									</tr>
-									<tr>
-										<td>Section/Semester</td>
-										<td>6th</td>
-									</tr>
-									<tr>
-										<td>Amount</td>
-										<td>8800</td>
-									</tr>
-									<tr>
-										<td>Amount In Words</td>
-										<td>Eight thousand and eight hundred</td>
-									</tr>
-									<tr>
-										<td>DD/Cheque No.</td>
-										<td>965456631321</td>
-									</tr>
-									<tr>
-										<td>Bank</td>
-										<td>32896056885 </td>
-									</tr>
-									<tr>
-										<td>DD/Cheque Date</td>
-										<td>26/12/2015</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					
-					<div class="row">
-						<h4 class="text-center">(To be filled by bank)</h4><br><br>
-						Branch SOL ID <span class="pull-right">____________________</span><br>
-						Branch Transaction ID <span class="pull-right">____________________</span><br><br><br>
-						Seal & Stamp of SBI Bank<span class="pull-right">Signature of Depositor</span>
-						<hr>
-						<h6>If Incorrect fee is deposited, student Even Semester registration may be cancelled/terminated. Even Semester Registration is Subject to fulfilling eligibility criteria</h6>
-					</div>
-				</div>
+				<div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                </div>
 			</div>
-		</div>
-		
-		<div class="row">
-			<a href="pages/examples/invoice-print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
-		</div>
-	</section>
-    
-    <div class="clearfix"></div>
+		  </div>
+        </div>
+      </div>
+    </section>
   </div>
   
-
-  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -959,9 +611,7 @@
       <!-- /.tab-pane -->
     </div>
   </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+  
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -970,11 +620,20 @@
 <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+getQuestion(2,1);
+</script>
 </body>
 </html>

@@ -5,24 +5,215 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Dashboard</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="../plugins/morris/morris.css">
+  <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+  <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../plugins/jQuery/jQuery-2.1.4.min.js">
+  <script>
 
+   var array = new Array();
+   
+    function addRadio(radio,control){
+	control.parentNode.parentNode.parentNode.insertAdjacentHTML('beforeend',document.getElementById(radio).innerHTML);
+		
+	}
+    
+	function add(type){
+						
+			document.getElementById("testPaper").insertAdjacentHTML('beforeend',document.getElementById(type).innerHTML);
+						
+		}
+	function generate(){
+	  var question_array=[];
+			
+			var x=document.getElementById("testPaper").getElementsByClassName("box box-solid bg-teal-gradient");
+			
+			for(var i = 0;i<x.length;i++){
+			
+				if(x[i].style.display!="none")
+				{
+			
+		
+			
+				var question={};
+				switch (x[i].getAttribute("data-type"))
+				{
+				case  "short_answer":
+				question["type"]="short_answer";
+				question["statement"]=x[i].getElementsByClassName("form-control question")[0].value;
+				question["answer"]=x[i].getElementsByClassName("form-control answer")[0].value;
+				break;
+				
+				
+				case  "long_answer":
+				question["type"]="long_answer";
+				question["statement"]=x[i].getElementsByClassName("form-control question")[0].value;
+				question["answer"]=x[i].getElementsByClassName("form-control answer")[0].value;
+				break;
+				
+				
+				case  "radio_answer":
+				question["type"]="radio_answer";
+				question["statement"]=x[i].getElementsByClassName("form-control question")[0].value;
+				alert(x[i].getElementsByClassName("form-control question")[0].value);
+				var options=x[i].getElementsByClassName("option");
+				var option_array=[];
+				for(var j = 0;j<options.length;j++){
+				
+				option_array.push(options[j].value);
+				}
+				question["options"]=option_array;
+				break;
+				
+				
+				case  "checkbox_answer":
+				question["type"]="checkbox_answer";
+				question["statement"]=x[i].getElementsByClassName("form-control question")[0].value;
+                question["answer"]=x[i].getElementsByClassName("form-control answer")[0].value;
+				break;
+				}
+				question_array.push(question);
+				}
+				alert(JSON.stringify(question));
+			}
+			
+	    alert(JSON.stringify(question_array));
+	} 	
+  </script>
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<button onCLick="generate()">Generate</button>
+<div style="display:none;">
+		 <span id="add_radio">
+			<div class="form-group">
+							<div class="radio">
+								<button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+								</button>
+								<label style="color:black;"><input type="radio" name="radio" class="option" value="option1">Option1</label>
+							</div>
+						</div>
+		 </span>
+		 
+		 <span id="short_answer"> 
+		  <div class="box box-solid bg-teal-gradient" data-type="short_answer" >
+            <div class="box-header">
+              <h3 class="box-title col-xs-10">
+			  <textarea type="text" class="form-control question"  cols="130" placeholder="Your Question"></textarea></h3>
+
+              <div class="box-tools pull-right">
+			    <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="box-footer no-border">
+			    <div class="box-body chat" id="chat"> 
+					<div class="form-group">
+						<label style="color:black;">Short Answer</label>
+						<input type="text" class="form-control answer" id="" placeholder="Short Answer...">
+					</div>	
+				</div>
+            </div>
+          </div>
+		 </span>
+		 <span id="radio_answer">	
+		  <div class="box box-solid bg-teal-gradient" data-type="radio_answer" >
+            <div class="box-header">
+              <h3 class="box-title col-xs-10"><textarea type="text" class="form-control question"  cols="130" placeholder="Your Question"></textarea></h3>
+
+              <div class="box-tools pull-right">
+			    <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="box-footer no-border">
+			    <div class="box-body chat" > 
+					<div class="form-group">
+						<label style="color:black;">Short Answer</label>
+						<input type="text" class="form-control"  placeholder="Short Answer...">
+					</div>
+					
+					<div class="btn-group">
+						<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-plus" data-type="sbjscbh" onclick="addRadio('add_radio',this)"></i></button>
+					</div>
+				</div>
+            </div>
+          </div>
+		 </span>
+		 <span id="long_answer">	
+		  <div class="box box-solid bg-teal-gradient" data-type="long_answer" >
+            <div class="box-header">
+              <h3 class="box-title col-xs-10"><textarea type="text" class="form-control question"  cols="130" placeholder="Your Question"></textarea></h3>
+
+              <div class="box-tools pull-right">
+			    <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="box-footer no-border">
+			    <div class="box-body chat" id="chat"> 
+					<div class="form-group">
+						<label style="color:black;">Long Answer</label>
+						<textarea type="text" class="form-control answer" id="" cols="130" placeholder="Long Answer"></textarea>
+					</div>
+				</div>
+            </div>
+          </div>
+		 </span>
+		 <span id="checkbox_answer">	
+		  <div class="box box-solid bg-teal-gradient" data-type="checkbox_answer" >
+            <div class="box-header">
+              <h3 class="box-title col-xs-10"><textarea type="text" class="form-control question"  cols="130" placeholder="Your Question"></textarea></h3>
+
+              <div class="box-tools pull-right">
+			    <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="box-footer no-border">
+			    <div class="form-group">
+						<div class="radio">
+							<label style="color:black;"><input type="checkbox" name="checkbox" id="optionsRadios1" value="option1">Option1</label>
+						</div>
+						<div class="radio">
+							<label style="color:black;"><input type="checkbox" name="checkbox" id="optionsRadios2" value="option2">Option2</label>
+						</div>
+						<div class="radio">
+							<label style="color:black;"><input type="checkbox" name="checkbox" id="optionsRadios3" value="option3">Option3</label>
+						</div>
+						<div class="radio">
+							<label style="color:black;"><input type="checkbox" name="checkbox" id="optionsRadios4" value="option4">Option4</label>
+						</div>
+					</div>
+            </div>
+          </div>
+		 </span>
+		 
+</div>
 <div class="wrapper">
 
   <header class="main-header">
@@ -306,20 +497,15 @@
       <!-- Main row -->
       <div class="row">
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-12 connectedSortable">
-		  <div class="box box-solid bg-teal-gradient">
-            <div class="box-header">
-              <h3 class="box-title col-xs-10"><textarea type="text" class="form-control" id="" cols="130" placeholder="Your Question"></textarea></h3>
-
-              <div class="box-tools pull-right">
-			    <div class="btn-group">
+        <section class="col-lg-12 connectedSortable" id="testPaper"></section>
+		<div class="btn-group pull-right">
                   <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
+                    <i class="fa fa-plus"></i></button>
                   <ul class="dropdown-menu pull-right" role="menu">
-						<li><a href="#">Short answers</a></li>
-							<li><a href="#">Long answers</a></li>
-							<li><a href="#">Multiple choice</a></li>
-							<li><a href="#">Checkboxes</a></li>
+						<li><a href="#" onclick="add('short_answer')">Short answers</a></li>
+							<li><a href="#" onclick="add('long_answer')">Long answers</a></li>
+							<li><a href="#" onclick="add('radio_answer')">Single choice</a></li>
+							<li><a href="#" onclick="add('checkbox_answer')">Checkboxes</a></li>
 							<li><a href="#">Dropdown</a></li>
 							<li><a href="#">Date Picker</a></li>
 							<li><a href="#">Time Picker</a></li>
@@ -328,77 +514,6 @@
 							<li><a href="#">File Input</a></li>
                   </ul>
                 </div>
-                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            
-            <div class="box-footer no-border">
-			    <div class="box-body chat" id="chat"> 
-					<div class="form-group">
-						<label style="color:black;">Short Answer</label>
-						<input type="text" class="form-control" id="" placeholder="Short Answer...">
-					</div>	
-				</div>
-            </div>
-          </div>
-		  
-		  <div class="box box-solid bg-teal-gradient">
-            <div class="box-header">
-              <h3 class="box-title col-xs-10"><textarea type="text" class="form-control" id="" cols="130" placeholder="Your Question"></textarea></h3>
-
-              <div class="box-tools pull-right">
-			    <div class="btn-group">
-                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-						<li><a href="#">Short answers</a></li>
-							<li><a href="#">Long answers</a></li>
-							<li><a href="#">Multiple choice</a></li>
-							<li><a href="#">Checkboxes</a></li>
-							<li><a href="#">Dropdown</a></li>
-							<li><a href="#">Date Picker</a></li>
-							<li><a href="#">Time Picker</a></li>
-							<li><a href="#">Number</a></li>
-							<li><a href="#">Range</a></li>
-							<li><a href="#">File Input</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            
-            <div class="box-footer no-border">
-			    <div class="box-body chat" id="chat"> 
-					<div class="form-group">
-						<label style="color:black;">Short Answer</label>
-						<input type="text" class="form-control" id="" placeholder="Short Answer...">
-					</div>
-					
-					<div class="form-group">
-						<div class="radio">
-							<label style="color:black;"><input type="radio" name="radio" id="optionsRadios1" value="option1">Option1</label>
-						</div>
-						<div class="radio">
-							<label style="color:black;"><input type="radio" name="radio" id="optionsRadios2" value="option2">Option2</label>
-						</div>
-						<div class="radio">
-							<label style="color:black;"><input type="radio" name="radio" id="optionsRadios3" value="option3">Option3</label>
-						</div>
-						<div class="radio">
-							<label style="color:black;"><input type="radio" name="radio" id="optionsRadios4" value="option4">Option4</label>
-						</div>
-					</div>
-						
-				</div>
-            </div>
-          </div>
-		</section>
         <!-- right col -->
       </div>
       <!-- /.row (main row) -->

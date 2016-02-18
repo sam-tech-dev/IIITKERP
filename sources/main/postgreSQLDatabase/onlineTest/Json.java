@@ -1,8 +1,4 @@
 package postgreSQLDatabase.onlineTest;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,7 +38,7 @@ for(int i=0;i<jArray.length();i++){
 	Query.addQuestions(current_question,test_paper_id);
 }
 //System.out.println(test_paper_id);
-Query.getQuestion(test_paper_id);
+Query.getQuestions(test_paper_id);
 
 
 		}
