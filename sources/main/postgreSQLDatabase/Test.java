@@ -35,7 +35,7 @@ public static Connection connect(String database,String username,String password
        e.printStackTrace();
        System.err.println(e.getClass().getName()+": "+e.getMessage());
            }
-    if(settings.Execution.debugMode)System.out.println("Opened database successfully");
+    if(settings.Execution.debug_mode)System.out.println("Opened database successfully");
 	return c;
 }
 }

@@ -15,7 +15,7 @@ import settings.Execution;
  *  @version 1.0
  */
 public class FileExplorer {
-static boolean debug_mode=false;
+
 
 	/**
 	 * @param dirName Directory To Be Deleted
@@ -28,7 +28,7 @@ static boolean debug_mode=false;
 
 		File directory = new File(dirName);
 		if(!directory.exists()){
-			if(Execution.debugMode)   System.out.println("Directory does not exist.");
+			if(Execution.debug_mode)   System.out.println("Directory does not exist.");
 			System.exit(0);
 		}
 		else{
@@ -36,7 +36,7 @@ static boolean debug_mode=false;
 				//directory is empty, then delete it
 				if(directory.list().length==0){
 					directory.delete();
-					if(Execution.debugMode)	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
+					if(Execution.debug_mode)	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
 				}
 				else {
 					//list all the directory contents
@@ -51,14 +51,14 @@ static boolean debug_mode=false;
 					}
 					if(directory.list().length==0){
 						directory.delete();
-						if(Execution.debugMode)    	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
+						if(Execution.debug_mode)    	   System.out.println("Directory is deleted : " + directory.getAbsolutePath());
 					}
 				}
 
 			}else{
 				//if file, then delete it
 				directory.delete();
-				if(Execution.debugMode)	System.out.println("File is deleted : " + directory.getAbsolutePath());
+				if(Execution.debug_mode)	System.out.println("File is deleted : " + directory.getAbsolutePath());
 			}
 		}
 	}
@@ -79,12 +79,12 @@ static boolean debug_mode=false;
 					fileFlag=fileDelete.delete();
 				}
 				catch (Exception e){
-					if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+"could not be deleted.");
+					if(Execution.debug_mode)	System.out.println("File "+fileDelete.getName()+"could not be deleted.");
 				}
-				if(Execution.debugMode)	System.out.println("File "+fileDelete.getName()+" deleted.");
+				if(Execution.debug_mode)	System.out.println("File "+fileDelete.getName()+" deleted.");
 			}
 			else{
-				if(Execution.debugMode) {
+				if(Execution.debug_mode) {
 					System.out.println("File "+fileDelete.getName()+" does not exist");
 					break;
 				}
@@ -103,10 +103,10 @@ static boolean debug_mode=false;
 		File fileDelete=new File(fileName);
 		if (fileDelete.exists()) {
 			fileFlag=fileDelete.delete();
-			if(Execution.debugMode)	System.out.println("File deleted.");
+			if(Execution.debug_mode)	System.out.println("File deleted.");
 		}
 		else{
-			if(Execution.debugMode) System.out.println("File does not exist");
+			if(Execution.debug_mode) System.out.println("File does not exist");
 		}
 
 		return fileFlag;
@@ -117,7 +117,7 @@ static boolean debug_mode=false;
 
 		String[] dirFiles = dirParent.list();
 		if (dirFiles.length == 0) {
-			if(Execution.debugMode) System.out.println("The directory is empty");
+			if(Execution.debug_mode) System.out.println("The directory is empty");
 		} 
 		else {
 			for (String dFile : dirFiles) {
@@ -152,7 +152,7 @@ static boolean debug_mode=false;
 			e.printStackTrace();
 		}
 		object.setFile_name(dirFile.getName());
-		if(Execution.debugMode){
+		if(Execution.debug_mode){
 			System.out.print(object.getFile_path());
 			System.out.print(object.getFile_type());
 			System.out.print(object.getFile_name());
@@ -171,14 +171,14 @@ static boolean debug_mode=false;
 			try {
 				dirNew.mkdir();
 				dirFlag = true;
-				if(Execution.debugMode) System.out.println("Directory created.");
+				if(Execution.debug_mode) System.out.println("Directory created.");
 			} 
 			catch(SecurityException se){
 				se.printStackTrace();
 			}        
 		}
 		else {
-			if(Execution.debugMode) System.out.println("Directory Already Exists.");
+			if(Execution.debug_mode) System.out.println("Directory Already Exists.");
 		}
 		return dirFlag; 
 	}
