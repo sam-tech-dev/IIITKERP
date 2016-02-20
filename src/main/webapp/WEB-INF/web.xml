@@ -27,6 +27,12 @@
   	<description></description>
   	<servlet-class>actions.testPaper.GetQuestion</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GenerateChallan</servlet-name>
+  	<display-name>GenerateChallan</display-name>
+  	<description></description>
+  	<servlet-class>feePayment.GenerateChallan</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -42,6 +48,10 @@
   <servlet-mapping>
   	<servlet-name>GetQuestion</servlet-name>
   	<url-pattern>/GetQuestion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GenerateChallan</servlet-name>
+  	<url-pattern>/GenerateChallan</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  

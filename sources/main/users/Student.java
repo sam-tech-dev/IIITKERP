@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import exceptions.IncorrectFormatException;
 
 /**
- * @author Dell 1
+ * @author Anshula
  *
  */
 public class Student {
@@ -44,14 +44,14 @@ public class Student {
 	
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
-     test.setAddress("aiebg jfgbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuj");
-     test.setAllocated_category("open");
-     test.setCategory("sc");
-     test.setDate_of_birth("12-10-1993");
-     test.setEmail("");
-     test.setGender("male");
-     test.setMobile("1234567890");
-     test.setName("joey8 9into");
+//     test.setAddress("aiebg jfgbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuj");
+//     test.setAllocated_category("open");
+//     test.setCategory("sc");
+//     test.setDate_of_birth("12-10-1993");
+//     test.setEmail("");
+//     test.setGender("male");
+//     test.setMobile("1234567890");
+     test.setName("joey pinto");
      test.setProgram_allocated("computer engineering");
      test.setState_eligibility("Uttar Pradesh");
      test.setStudent_id("");
@@ -89,14 +89,17 @@ public class Student {
 	 * @param name the name to set
 	 */
 	public void setName(String name)throws IncorrectFormatException {
-		String regex = Pattern.quote("[a-z A-Z]*");
-		Pattern pattern=Pattern.compile(regex);
-		Matcher matcher=pattern.matcher(name);
-		if(matcher.find()  && name.length()<=name_max_length){
+	      Pattern pattern= Pattern.compile("[a-zA-Z\\s]+");
+	      Matcher matcher = pattern.matcher(name);
+		//String regex = Pattern.quote("^[a-zA-Z\\s]+$");
+		//Pattern pattern=Pattern.compile(regex);
+		//Matcher matcher=pattern.matcher(name);
+		//System.out.println(name.length()+" "+name_max_length);
+		if(matcher.find()&&name.length()<=name_max_length){
 		this.name = name;
 		}
 		else{
-			throw new IncorrectFormatException("name");
+			throw new IncorrectFormatException("name123");
 		}
 	}
 	/**
@@ -217,9 +220,11 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-		String regex = Pattern.quote("\\+?[0-9]*)");
-		Pattern pattern=Pattern.compile(regex);
-		Matcher matcher=pattern.matcher(mobile);
+		//String regex = Pattern.quote("\\+?[0-9]*)");
+		//Pattern pattern=Pattern.compile(regex);
+		//Matcher matcher=pattern.matcher(mobile);
+		 Pattern pattern= Pattern.compile("[a-zA-Z\\s]+");
+	      Matcher matcher = pattern.matcher(mobile);
 		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
 		}
