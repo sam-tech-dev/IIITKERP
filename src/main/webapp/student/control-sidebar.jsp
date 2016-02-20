@@ -11,14 +11,17 @@
       <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
+        	
           <li>
             <a href="javascript::;">
+            
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">  
+              <div class="menu-info user">
+              
+                <h4 class="control-sidebar-subheading">Joey Pinto</h4>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
+                Online
               </div>
             </a>
           </li>
