@@ -30,25 +30,13 @@
 <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
- 
-   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Student
-        <small>Home</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
-        
-      </ol>
-    </section>
-
-    <!-- Main content -->
-	<div class="row" style="margin-top:230px">
-	   <div style="position:fixed;z-index:10;margin-top:-20px">
-        <div class="col-md-3">
+ <div class="content-wrapper">
+ <div class="content">
+  <!-- Direct Chat -->
+      <div class="row">
+       <div class="col-md-12" style="position:fixed;z-index:10">
+        <div class="col-md-3" >
+		  <div>
           <!-- DIRECT CHAT PRIMARY -->
           <div class="box box-primary direct-chat direct-chat-primary">
             <div class="box-header with-border">
@@ -136,10 +124,12 @@
             <!-- /.box-footer-->
           </div>
           <!--/.direct-chat -->
+		  </div>
         </div>
         <!-- /.col -->
 
         <div class="col-md-3">
+		 <div style="">
           <!-- DIRECT CHAT SUCCESS -->
           <div class="box box-success direct-chat direct-chat-success">
             <div class="box-header with-border">
@@ -227,6 +217,7 @@
             <!-- /.box-footer-->
           </div>
           <!--/.direct-chat -->
+		 </div>
         </div>
         <!-- /.col -->
 
@@ -411,13 +402,13 @@
             <!-- /.box-footer-->
           </div>
           <!--/.direct-chat -->
-		</div>
+		 </div>
         <!-- /.col -->
-	   </div>	
+       </div> 
       </div>
-    <!-- /.content -->
+      <!-- /.row -->
   </div>
-  <!-- /.content-wrapper -->
+  </div>
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
