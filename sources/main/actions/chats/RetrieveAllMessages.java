@@ -53,15 +53,18 @@ public class RetrieveAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		PreparedStatement proc;
+		PrintWriter writer=response.getWriter();
+		PreparedStatement proc = null;
+		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadtMessages\"(?);");
-			proc.setInt(1,66);
+			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
+			proc.setInt(1,67);
+			proc.setInt(2,0);
+			proc.setInt(3,1000);
 			
 
-			ResultSet rs=proc.executeQuery();
+			 rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
           System.out.println(rs.getString(1));
@@ -80,19 +83,13 @@ public class RetrieveAllMessages extends HttpServlet {
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
 				System.out.println(current_object.getString("timestamp"));
-				try {
+				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-			PrintWriter writer=response.getWriter();
+		
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -117,7 +114,25 @@ writer.write(message_array.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			try {
+				if(rs!=null)rs.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				if(proc!=null)	proc.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				writer.write("");
+			}
+			writer.write("");
+			
+		} 
+		
 
 	}
 }

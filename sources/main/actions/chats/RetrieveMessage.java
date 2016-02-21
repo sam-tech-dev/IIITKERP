@@ -53,18 +53,18 @@ public class RetrieveMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		PreparedStatement proc;
+		PrintWriter writer=response.getWriter();
+		System.out.println("reached");
+		PreparedStatement proc = null;
+		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
-			proc.setInt(1,66);
-
-
-			ResultSet rs=proc.executeQuery();
+			proc.setInt(1,67);
+rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
-			System.out.println(rs.getString(1));
+			System.out.println("XX"+rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
 			for(int i=0;i<jArray.length();i++)
@@ -79,20 +79,14 @@ public class RetrieveMessage extends HttpServlet {
 				current.setUsername(current_object.getString("username"));
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
-				System.out.println(current_object.getString("timestamp"));
-				try {
+			
+			
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-			PrintWriter writer=response.getWriter();
+			
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -117,7 +111,23 @@ public class RetrieveMessage extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
+			writer.write("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				if(rs!=null)rs.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				if(proc!=null)proc.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			writer.write("");
+		} 
 	}
 }
