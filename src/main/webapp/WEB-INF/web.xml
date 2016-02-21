@@ -39,6 +39,18 @@
   	<description></description>
   	<servlet-class>actions.chats.RetrieveMessage</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>NewMessage</servlet-name>
+  	<display-name>NewMessage</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.NewMessage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetrieveAllMessages</servlet-name>
+  	<display-name>RetrieveAllMessages</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.RetrieveAllMessages</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -62,6 +74,14 @@
   <servlet-mapping>
   	<servlet-name>RetrieveMessage</servlet-name>
   	<url-pattern>/RetrieveMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewMessage</servlet-name>
+  	<url-pattern>/NewMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetrieveAllMessages</servlet-name>
+  	<url-pattern>/RetrieveAllMessages</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  

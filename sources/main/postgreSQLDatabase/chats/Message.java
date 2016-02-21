@@ -10,6 +10,7 @@ import java.sql.Date;
  *
  */
 public class Message {
+private String username;
 private int id;
 private int author;
 private String text;
@@ -38,5 +39,10 @@ public Date getTime_stamp() {
 public void setTime_stamp(Date time_stamp) {
 	this.time_stamp = time_stamp;
 }
-
+public String getUsername() {
+	return username;
+}
+public void setUsername(String username) {
+	this.username = username;
+}
 }
