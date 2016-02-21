@@ -28,14 +28,14 @@ import postgreSQLDatabase.onlineTest.Question;
 /**
  * Servlet implementation class RetrieveMessage
  */
-@WebServlet(name="RetrieveMessage",urlPatterns={"/RetrieveMessage"})
-public class RetrieveMessage extends HttpServlet {
+@WebServlet(name="RetrieveAllMessages",urlPatterns={"/RetrieveAllMessages"})
+public class RetrieveAllMessages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RetrieveMessage() {
+	public RetrieveAllMessages() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -57,14 +57,14 @@ public class RetrieveMessage extends HttpServlet {
 		PreparedStatement proc;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
+			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadtMessages\"(?);");
 			proc.setInt(1,66);
-
+			
 
 			ResultSet rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
-			System.out.println(rs.getString(1));
+          System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
 			for(int i=0;i<jArray.length();i++)
@@ -108,10 +108,10 @@ public class RetrieveMessage extends HttpServlet {
 				//writer.write(current.getId()+" "+current.getUsername()+" "+current.getText());
 				message_array.put(message_object);
 			}
-
+    
 			rs.close();
 			proc.close();
-			writer.write(message_array.toString());
+writer.write(message_array.toString());
 
 
 		} catch (SQLException e) {
