@@ -2,14 +2,6 @@ var count=0;
 var insChat = new Array(); 
 var listofpeople = new Array();
 
-$(document).ready(function(){
-	$("#person-1").hide();
-	$("#person-2").hide();
-	$("#person-3").hide();
-	$("#listPeople").hide();
-});
-var refresh=0;
-
 function showChat(id){
 	id = id.substring(9);
 	var found = $.inArray(id,insChat);
@@ -48,7 +40,6 @@ function orderChat(id){
 
 
 function retrieveMessages(){
-	
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -64,19 +55,16 @@ function retrieveMessages(){
 				alert("Your browser is unsupported");
 			}
 		}
-	}	
-	
+	}		
 
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			document.getElementById("chat").innerHTML="";
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				data=JSON.parse(xmlhttp.responseText);
-				if(xmlhttp.responseText=="")return;
-			//	alert(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
-					if(data[i].author=="3"){
+					if(data[i].author=="2"){
 						message=document.getElementById("left_message");
 
 						message.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML=data[i].username;
@@ -107,7 +95,6 @@ function retrieveMessages(){
 	return false;
 }
 function unreadMessages(){
-	
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -129,13 +116,10 @@ function unreadMessages(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				if(xmlhttp.responseText==""){return;}
 				data=JSON.parse(xmlhttp.responseText);
-				
-				
 				var	message;
 				for(var i=0;i<data.length;i++){
-					if(data[i].author=="3"){
+					if(data[i].author=="2"){
 						message=document.getElementById("left_message");
 
 						message.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML=data[i].username;
@@ -167,17 +151,7 @@ function unreadMessages(){
 	return false;
 }
 function sendMessage(){
-	
-
 	var message=document.getElementById('chat_message').value;
-	message_div=document.getElementById("left_message");
-
-	message_div.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML="sumitkumar";
-	message_div.getElementsByClassName("direct-chat-timestamp pull-right timestamp")[0].innerHTML="Just Now";
-	message_div.getElementsByClassName("direct-chat-text text")[0].innerHTML=message;
-	document.getElementById("chat").insertAdjacentHTML("beforeend",message_div.innerHTML);
-
-	document.getElementById("chat_box").scrollTop=9999999;
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -200,8 +174,6 @@ function sendMessage(){
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				document.getElementById('chat_message').value="";
-				
-			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
 		}
@@ -212,7 +184,6 @@ function sendMessage(){
 	return false;
 }
 function readMessage(){
-	
 	var message=document.getElementById('chat_message').value;
 	var xmlhttp;
 	try{
@@ -235,8 +206,6 @@ function readMessage(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-
-
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
@@ -250,4 +219,3 @@ function readMessage(){
 window.setInterval(function(){
 	if (refresh==1)	unreadMessages();
 
-},1000);

@@ -43,9 +43,9 @@ public class NewMessage extends HttpServlet {
 			proc.setInt(2,3);
 			proc.setInt(3,67);
 			
-			System.out.println(proc.toString());
-			ResultSet rs = proc.executeQuery();
-			rs.next();
+			//System.out.println(proc.toString());
+			 proc.executeQuery();
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
