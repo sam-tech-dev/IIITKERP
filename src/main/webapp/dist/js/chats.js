@@ -183,6 +183,7 @@ function sendMessage(){
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				document.getElementById('chat_message').value="";
 			}
+			
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
 		}
@@ -194,7 +195,8 @@ function sendMessage(){
 	return false;
 }
 function readMessage(){
-	var message=document.getElementById('chat_message').value;
+	
+var message=document.getElementById('chat_message').value;
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -226,6 +228,8 @@ function readMessage(){
 	}
 	return false;
 }
+
+
 
 
 window.setInterval(function(){if (refresh==1)unreadMessages();},250);
