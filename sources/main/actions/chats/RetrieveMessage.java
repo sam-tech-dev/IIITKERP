@@ -64,7 +64,6 @@ public class RetrieveMessage extends HttpServlet {
 rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
-			System.out.println("XX"+rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
 			for(int i=0;i<jArray.length();i++)
@@ -79,14 +78,12 @@ rs=proc.executeQuery();
 				current.setUsername(current_object.getString("username"));
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
-			
-			
+				System.out.println(current_object.getString("timestamp"));
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
 				
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-			
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -103,12 +100,12 @@ rs=proc.executeQuery();
 				message_array.put(message_object);
 			}
 
-			rs.close();
-			proc.close();
+			
 			writer.write(message_array.toString());
 
 
 		} catch (SQLException e) {
+			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			writer.write("");

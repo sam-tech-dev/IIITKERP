@@ -85,11 +85,9 @@ public class RetrieveAllMessages extends HttpServlet {
 				System.out.println(current_object.getString("timestamp"));
 				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
-				
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-		
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -101,7 +99,8 @@ public class RetrieveAllMessages extends HttpServlet {
 				message_object.put("text",current.getText());
 				message_object.put("timecomp",current.getTime_stamp().getTime());
 				message_object.put("timestamp",new SimpleDateFormat("hh:mm a EEE dd MMM").format(current.getTime_stamp()));
-				System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
+
+				//System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
 				//writer.write(current.getId()+" "+current.getUsername()+" "+current.getText());
 				message_array.put(message_object);
 			}
@@ -112,6 +111,7 @@ writer.write(message_array.toString());
 
 
 		} catch (SQLException e) {
+			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {

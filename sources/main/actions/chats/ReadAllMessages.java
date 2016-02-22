@@ -51,7 +51,6 @@ public class ReadAllMessages extends HttpServlet {
 		
 		
 		
-		//return rs.getInt("newTestPaper");
 		
 		
 	}
