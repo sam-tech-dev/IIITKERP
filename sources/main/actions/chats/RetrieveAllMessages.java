@@ -57,8 +57,10 @@ public class RetrieveAllMessages extends HttpServlet {
 		PreparedStatement proc;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadtMessages\"(?);");
+			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
 			proc.setInt(1,66);
+			proc.setInt(2,1000);
+			proc.setInt(3,1000);
 			
 
 			ResultSet rs=proc.executeQuery();

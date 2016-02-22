@@ -8,7 +8,7 @@
 			$("#person-3").hide();
 			$("#listPeople").hide();
 		});
-  
+  var refresh=0;
 		
 		function showChat(id){
 				id = id.substring(9);
@@ -20,6 +20,8 @@
 								}
 					if(count==1){
 						$("#person-2").show();insChat.push(id);
+						retrieveMessages();
+						refresh=1;
 								}
 					
 					if(count>=2){
@@ -96,6 +98,63 @@ function retrieveMessages(){
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
 		}
+		xmlhttp.open("POST","../RetrieveAllMessages",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send();
+	}
+	return false;
+}
+function unreadMessages(){
+
+	var xmlhttp;
+	try{
+		xmlhttp = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				//Browser doesn't support ajax	
+				alert("Your browser is unsupported");
+			}
+		}
+	}	
+	//var xmlhttp=new XMLHttpRequest();
+
+	if(xmlhttp){	
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				data=JSON.parse(xmlhttp.responseText);
+				//alert(xmlhttp.responseText);
+				var	message;
+				for(var i=0;i<data.length;i++){
+					if(data[i].author=="2"){
+						message=document.getElementById("left_message");
+
+						message.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML=data[i].username;
+						message.getElementsByClassName("direct-chat-timestamp pull-right timestamp")[0].innerHTML=data[i].timestamp;
+						message.getElementsByClassName("direct-chat-text text")[0].innerHTML=data[i].text;
+						document.getElementById("chat").insertAdjacentHTML("beforeend",message.innerHTML);
+
+					}
+					else
+					{
+						message=document.getElementById("right_message");
+						message.getElementsByClassName("direct-chat-name pull-right username")[0].innerHTML=data[i].username;
+						message.getElementsByClassName("direct-chat-timestamp pull-left timestamp")[0].innerHTML=data[i].timestamp;
+						message.getElementsByClassName("direct-chat-text text")[0].innerHTML=data[i].text;
+						document.getElementById("chat").insertAdjacentHTML("beforeend",message.innerHTML);
+					}
+				}
+				document.getElementById("chat_box").scrollTop=9999999;
+				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
+			}
+			if(xmlhttp.status == 404)
+				alert("Could not connect to server");
+		}
 		xmlhttp.open("POST","../RetrieveMessage",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send();
@@ -126,7 +185,7 @@ function sendMessage(){
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				document.getElementById('chat_message').value="";
-
+   retrieveMessages();
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
@@ -137,9 +196,46 @@ function sendMessage(){
 	}
 	return false;
 }
-window.setInterval(function(){retrieveMessages();
+function readMessage(){
+	var message=document.getElementById('chat_message').value;
+	var xmlhttp;
+	try{
+		xmlhttp = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				//Browser doesn't support ajax	
+				alert("Your browser is unsupported");
+			}
+		}
+	}	
+	//var xmlhttp=new XMLHttpRequest();
 
+	if(xmlhttp){	
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				document.getElementById('chat_message').value="";
+   retrieveMessages();
+			}
+			if(xmlhttp.status == 404)
+				alert("Could not connect to server");
+		}
+		xmlhttp.open("POST","../ReadAllMessages",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send();
+	}
+	return false;
+}
+window.setInterval(function(){
+	if (refresh==1)
+	unreadMessages();
 
-},4000);
+},250);
+	
 	
 

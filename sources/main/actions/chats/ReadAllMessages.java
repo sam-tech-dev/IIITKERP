@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NewMessage
+ * Servlet implementation class ReadAllMessages
  */
-public class NewMessage extends HttpServlet {
+public class ReadAllMessages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewMessage() {
+    public ReadAllMessages() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,11 +38,8 @@ public class NewMessage extends HttpServlet {
 		// TODO Auto-generated method stub
 		PreparedStatement proc;
 		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
-			proc.setString(1,request.getParameter("text"));
-			proc.setInt(2,2);
-			proc.setInt(3,66);
-			
+			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
+			proc.setInt(1,66);
 			System.out.println(proc.toString());
 			ResultSet rs = proc.executeQuery();
 			rs.next();
@@ -60,3 +57,5 @@ public class NewMessage extends HttpServlet {
 	}
 
 }
+
+

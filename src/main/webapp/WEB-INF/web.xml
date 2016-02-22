@@ -51,6 +51,12 @@
   	<description></description>
   	<servlet-class>actions.chats.RetrieveAllMessages</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ReadAllMessages</servlet-name>
+  	<display-name>ReadAllMessages</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.ReadAllMessages</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -82,6 +88,10 @@
   <servlet-mapping>
   	<servlet-name>RetrieveAllMessages</servlet-name>
   	<url-pattern>/RetrieveAllMessages</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReadAllMessages</servlet-name>
+  	<url-pattern>/ReadAllMessages</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
