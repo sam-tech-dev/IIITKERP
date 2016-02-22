@@ -53,17 +53,18 @@ public class RetrieveAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		PreparedStatement proc;
+		ResultSet rs = null;
+		PrintWriter writer=response.getWriter();
+		PreparedStatement proc=null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
 			proc.setInt(1,66);
-			proc.setInt(2,1000);
+			proc.setInt(2,0);
 			proc.setInt(3,1000);
 			
 
-			ResultSet rs=proc.executeQuery();
+			 rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
           System.out.println(rs.getString(1));
@@ -82,19 +83,13 @@ public class RetrieveAllMessages extends HttpServlet {
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
 				System.out.println(current_object.getString("timestamp"));
-				try {
+				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				 
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-			PrintWriter writer=response.getWriter();
+			
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -106,7 +101,7 @@ public class RetrieveAllMessages extends HttpServlet {
 				message_object.put("text",current.getText());
 				message_object.put("timecomp",current.getTime_stamp().getTime());
 				message_object.put("timestamp",new SimpleDateFormat("hh:mm a EEE dd MMM").format(current.getTime_stamp()));
-				System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
+				//System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
 				//writer.write(current.getId()+" "+current.getUsername()+" "+current.getText());
 				message_array.put(message_object);
 			}
@@ -117,9 +112,23 @@ writer.write(message_array.toString());
 
 
 		} catch (SQLException e) {
+			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (Exception e) {
+			try {
+				if(rs!=null)rs.close();
+				if(proc!=null)proc.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			writer.write("");
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 
 	}
 }

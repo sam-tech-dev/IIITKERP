@@ -20,7 +20,8 @@
 								}
 					if(count==1){
 						$("#person-2").show();insChat.push(id);
-						retrieveMessages();
+						retrieveMessages(); //retrieve all the messages so far
+						readMessage();
 						refresh=1;
 								}
 					
@@ -47,7 +48,6 @@
 
 
 function retrieveMessages(){
-
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -71,6 +71,7 @@ function retrieveMessages(){
 			document.getElementById("chat").innerHTML="";
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				data=JSON.parse(xmlhttp.responseText);
+				if(xmlhttp.responseText=="") return;
 				//alert(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
@@ -105,7 +106,7 @@ function retrieveMessages(){
 	return false;
 }
 function unreadMessages(){
-
+	//alert("unreadMessages");
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -127,7 +128,9 @@ function unreadMessages(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				if(xmlhttp.responseText=="") return;
 				data=JSON.parse(xmlhttp.responseText);
+				
 				//alert(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
@@ -150,6 +153,7 @@ function unreadMessages(){
 					}
 				}
 				document.getElementById("chat_box").scrollTop=9999999;
+				readMessage();
 				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
 			}
 			if(xmlhttp.status == 404)
@@ -162,7 +166,15 @@ function unreadMessages(){
 	return false;
 }
 function sendMessage(){
+	//alert("sendMessages");
 	var message=document.getElementById('chat_message').value;
+	message_div=document.getElementById("left_message");
+
+	message_div.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML="joeypinto";
+	message_div.getElementsByClassName("direct-chat-timestamp pull-right timestamp")[0].innerHTML="Just Now";
+	message_div.getElementsByClassName("direct-chat-text text")[0].innerHTML=message;
+	document.getElementById("chat").insertAdjacentHTML("beforeend",message_div.innerHTML);
+	document.getElementById("chat_box").scrollTop=9999999;
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -185,7 +197,6 @@ function sendMessage(){
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				document.getElementById('chat_message').value="";
-   retrieveMessages();
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
@@ -197,6 +208,7 @@ function sendMessage(){
 	return false;
 }
 function readMessage(){
+	//alert("readMessages");
 	var message=document.getElementById('chat_message').value;
 	var xmlhttp;
 	try{
@@ -219,8 +231,8 @@ function readMessage(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				document.getElementById('chat_message').value="";
-   retrieveMessages();
+	//			document.getElementById('chat_message').value="";
+   //retrieveMessages();
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
@@ -235,7 +247,7 @@ window.setInterval(function(){
 	if (refresh==1)
 	unreadMessages();
 
-},250);
+},4000);
 	
 	
 

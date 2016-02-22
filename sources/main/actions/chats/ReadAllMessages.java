@@ -40,8 +40,8 @@ public class ReadAllMessages extends HttpServlet {
 		 try {
 			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
 			proc.setInt(1,66);
-			System.out.println(proc.toString());
-			ResultSet rs = proc.executeQuery();
+		//	System.out.println(proc.toString());
+		ResultSet rs=proc.executeQuery();
 			rs.next();
 			
 		} catch (SQLException e) {
