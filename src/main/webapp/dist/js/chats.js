@@ -1,7 +1,7 @@
 var count=0;
 var insChat = new Array(); 
 var listofpeople = new Array();
-
+var refresh=0;
 function showChat(id){
 	id = id.substring(9);
 	var found = $.inArray(id,insChat);
@@ -228,8 +228,4 @@ var message=document.getElementById('chat_message').value;
 	}
 	return false;
 }
-
-
-
-
 window.setInterval(function(){if (refresh==1)unreadMessages();},250);
