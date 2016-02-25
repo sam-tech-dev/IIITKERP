@@ -72,7 +72,4 @@ public class ChallanQuery {
 		//return student_details;
 		return current;
 	}
-	
-	
-	
 }

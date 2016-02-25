@@ -57,6 +57,18 @@
   	<description></description>
   	<servlet-class>actions.chats.ReadAllMessages</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RetriveNotifications</servlet-name>
+  	<display-name>RetriveNotifications</display-name>
+  	<description></description>
+  	<servlet-class>actions.notifications.RetriveNotifications</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>StudentServletTemplate</servlet-name>
+  	<display-name>StudentServletTemplate</display-name>
+  	<description></description>
+  	<servlet-class>actions.registration.StudentServletTemplate</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -78,6 +90,11 @@
   	<url-pattern>/GenerateChallan</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+  	<servlet-name>RetriveNotifications</servlet-name>
+  	<url-pattern>/RetriveNotifications</url-pattern>
+</servlet-mapping>
+
+  <servlet-mapping>
   	<servlet-name>RetrieveMessage</servlet-name>
   	<url-pattern>/RetrieveMessage</url-pattern>
   </servlet-mapping>
@@ -92,6 +109,9 @@
   <servlet-mapping>
   	<servlet-name>ReadAllMessages</servlet-name>
   	<url-pattern>/ReadAllMessages</url-pattern>
+  <servlet-mapping>
+  	<servlet-name>StudentServletTemplate</servlet-name>
+  	<url-pattern>/StudentServletTemplate</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
