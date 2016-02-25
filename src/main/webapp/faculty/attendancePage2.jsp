@@ -7,18 +7,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +32,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -64,7 +64,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -77,7 +77,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -89,7 +89,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -101,7 +101,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -113,7 +113,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -247,13 +247,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -298,58 +298,175 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-		<br>
-		<div class="col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Time Remaining</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
-		<div class="col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Question Answered</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-		<div class="col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Question Pending</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
         </div>
-	</section>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Layout Options</span>
+            <span class="label label-primary pull-right">4</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa fa-th"></i> <span>Widgets</span>
+            <small class="label pull-right bg-green">new</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Charts</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>UI Elements</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="../icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="../buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="../sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="../timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="../modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+          </ul>
+        </li>
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li class="active"><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="../calendar.html">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <small class="label pull-right bg-red">3</small>
+          </a>
+        </li>
+        <li>
+          <a href="../mailbox/mailbox.html">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <small class="label pull-right bg-yellow">12</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Examples</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="../examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <li><a href="../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      </ul>
+    </section>
     <!-- /.sidebar -->
   </aside>
 
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quiz
+        Attendance(Page-2)
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -363,92 +480,217 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-body">
-			
-                <h3>Question: 1</h3><br>
-				
-				<h4>Retrieve Question</h5><br>
-					
-					<div class="form-group">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 1
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 2
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 3
-                    </label>
-                  </div>
-				  <div class="checkbox">
-                    <label>
-                      <input type="checkbox">
-                      Checkbox 4
-                    </label>
-                  </div>
+            <div class="box-header">
+			 <div class="col-md-12"> 
+			  <div class="col-md-3">
+			    <div class="form-group">
+                  <select class="form-control">
+                    <option>Academic Year</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>
                 </div>
-				
+			  </div>
+			  <div class="col-md-3">		
+				<div class="form-group">
+                  <select class="form-control">
+                    <option>Semester</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>
+                </div>
+			  </div>
+			  <div class="col-md-3">
 				<div class="form-group">
                   <div class="radio">
                     <label>
                       <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                      Option 1
+                      Mathwise
                     </label>
                   </div>
                   <div class="radio">
                     <label>
                       <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 2
-                    </label>
+					  Total
+					</label>
                   </div>
-				  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 3
-                    </label>
-                  </div>
-				  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 4
-                    </label>
-                  </div>
-				</div>
-				<div class="form-group">
-                  <input type="text" class="form-control" placeholder="Enter ...">
                 </div>
-						<div class="form-group">
-                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                </div>
-						<div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile">
-                </div>
-					
-            </div>
-			<div class="box-footer">
-				<div class="btn-group">
-					<button type="button" class="btn btn-block btn-success">Submit</button>
-				</div>
+			  </div>
+			  <div class="col-md-3">
 				<div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                </div>
+					<button type="button" class="btn btn-block btn-danger">Submit</button>
+				</div>
+			  </div>
+			 </div>
+			 
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Student Id</th>
+                  <th>Student Name</th>
+                  <th>Present</th>
+                  <th>Absent</th>
+                  <th>Leave</th>
+                  <th>Percentage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Std-1</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-2</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-3</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-4</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-5</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-6</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-7</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-8</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-9</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-10</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-11</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-12</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-13</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-14</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-15</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				<tr>
+                  <td>Std-16</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+				  <td>75</td>
+                </tr>
+				</tbody>
+              </table>
+              
+			  <br><br>
+			  <div class="btn-group pull-left">
+				<h4>Student having less than 75% Attendance</h4>
+			  </div>
+			  <div class="btn-group pull-right">
+				<button type="button" class="btn btn-block btn-default btn-lg">Send Alert</button>
+			  </div>
 			</div>
-		  </div>
-        </div>
+            <!-- /.box-body -->
+          </div>
+		</div>
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
     </section>
+    <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
   
+  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -637,27 +879,41 @@
       <!-- /.tab-pane -->
     </div>
   </aside>
-  
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstr../bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.min.js"></script>
+<script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../di../app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../di../demo.js"></script>
 <!-- page script -->
-
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
 </body>
 </html>
