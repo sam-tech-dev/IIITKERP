@@ -23,9 +23,25 @@ function authenticate(username,password) {
 	if(!validate(username,password))return false;
 
 	
+	// to support all browsers
+	var xmlhttp;
+	try{
+		xmlhttp = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+			//Browser doesn't support ajax	
+				alert("Your browser is unsupported");
+			}
+		}
+	}	
+		//var xmlhttp=new XMLHttpRequest();
 	
-		
-		var xmlhttp=new XMLHttpRequest();
 	if(xmlhttp){	
 	    xmlhttp.onreadystatechange=function() {
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
