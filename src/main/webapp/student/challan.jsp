@@ -7,16 +7,16 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <style>
   @media all{
      #page{display:none;}
@@ -29,8 +29,8 @@
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <script src="../https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="../https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -38,7 +38,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -47,7 +47,7 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <a href="../#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -58,7 +58,7 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="../#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
             </a>
@@ -68,9 +68,9 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li><!-- start message -->
-                    <a href="#">
+                    <a href="../#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -81,9 +81,9 @@
                   </li>
                   <!-- end message -->
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -93,9 +93,9 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -105,9 +105,9 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -117,9 +117,9 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -130,12 +130,12 @@
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
+              <li class="footer"><a href="../#">See All Messages</a></li>
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="../#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
@@ -145,39 +145,39 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
                       page and may cause design problems
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="../#">
                       <i class="fa fa-user text-red"></i> You changed your username
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <li class="footer"><a href="../#">View all</a></li>
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="../#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">9</span>
             </a>
@@ -187,7 +187,7 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li><!-- Task item -->
-                    <a href="#">
+                    <a href="../#">
                       <h3>
                         Design some buttons
                         <small class="pull-right">20%</small>
@@ -201,7 +201,7 @@
                   </li>
                   <!-- end task item -->
                   <li><!-- Task item -->
-                    <a href="#">
+                    <a href="../#">
                       <h3>
                         Create a nice theme
                         <small class="pull-right">40%</small>
@@ -215,7 +215,7 @@
                   </li>
                   <!-- end task item -->
                   <li><!-- Task item -->
-                    <a href="#">
+                    <a href="../#">
                       <h3>
                         Some task I need to do
                         <small class="pull-right">60%</small>
@@ -229,7 +229,7 @@
                   </li>
                   <!-- end task item -->
                   <li><!-- Task item -->
-                    <a href="#">
+                    <a href="../#">
                       <h3>
                         Make beautiful transitions
                         <small class="pull-right">80%</small>
@@ -245,20 +245,20 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="#">View all tasks</a>
+                <a href="../#">View all tasks</a>
               </li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+            <a href="../#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -269,13 +269,13 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="../#">Followers</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="../#">Sales</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="../#">Friends</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -283,17 +283,17 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="../#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="../#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -306,11 +306,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="../#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -328,138 +328,138 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
             <span class="label label-primary pull-right">4</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <li><a href="../../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="../../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="../../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="../../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
         <li>
-          <a href="widgets.html">
+          <a href="../../widgets.html">
             <i class="fa fa-th"></i> <span>Widgets</span>
             <small class="label pull-right bg-green">new</small>
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-pie-chart"></i>
             <span>Charts</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="../../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="../../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="../../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="../../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-laptop"></i>
             <span>UI Elements</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="../../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="../../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="../../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="../../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="../../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="../../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="../../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="../../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="../../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="../../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
         </li>
         <li>
-          <a href="calendar.html">
+          <a href="../../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <small class="label pull-right bg-red">3</small>
           </a>
         </li>
         <li>
-          <a href="mailbox/mailbox.html">
+          <a href="../../mailbox/mailbox.html">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <small class="label pull-right bg-yellow">12</small>
           </a>
         </li>
         <li class="treeview active">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-folder"></i> <span>Examples</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+            <li class="active"><a href="../../invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="../../profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="../../login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="../../register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="../../lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="../404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="../500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="../blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="../pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="../#">
             <i class="fa fa-share"></i> <span>Multilevel</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li><a href="../#"><i class="fa fa-circle-o"></i> Level One</a></li>
             <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="../#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li><a href="../#"><i class="fa fa-circle-o"></i> Level Two</a></li>
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="../#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="../#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="../#"><i class="fa fa-circle-o"></i> Level Three</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li><a href="../#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
         </li>
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li><a href="../#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="../#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="../#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -474,8 +474,8 @@
         <small>#007612</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
+        <li><a href="../#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="../#">Examples</a></li>
         <li class="active">Invoice</li>
       </ol>
     </section>
@@ -495,10 +495,10 @@
 															<tr>
 																<td><br><span style="font-size:10px">Category: SC<br>Gender(M/F): M</span></td>
 																<td><span class="text-center">(Bank Copy)</span></td>
-																<td><img src="image/sbi.jpg" class="image pull-right"></td>
+																<td><img src="../image/sbi.jpg" class="image pull-right"></td>
 															</tr>
 															<tr>
-																<td><img src="image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
+																<td><img src="../image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
 																<td><span style="font-size:12px;font-weight:bold;margin-left:-15px;">Indian Institute  Of Information Technology, Kota</span><br><span style="font-size:10px;margin-left:60px;">Mentored By</span><br><span style="font-size:12px;font-weight:bold;margin-left:-35px;">Indian Institute  Of Information Technology, Kota</span></td>
 																<td></td>
 															</tr>
@@ -531,10 +531,10 @@
 															<tr>
 																<td><br><span style="font-size:10px">Category: SC<br>Gender(M/F): M</span></td>
 																<td><span class="text-center">(Bank Copy)</span></td>
-																<td><img src="image/sbi.jpg" class="image pull-right"></td>
+																<td><img src="../image/sbi.jpg" class="image pull-right"></td>
 															</tr>
 															<tr>
-																<td><img src="image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
+																<td><img src="../image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
 																<td><span style="font-size:12px;font-weight:bold;margin-left:-15px;">Indian Institute  Of Information Technology, Kota</span><br><span style="font-size:10px;margin-left:60px;">Mentored By</span><br><span style="font-size:12px;font-weight:bold;margin-left:-35px;">Indian Institute  Of Information Technology, Kota</span></td>
 																<td></td>
 															</tr>
@@ -567,10 +567,10 @@
 															<tr>
 																<td><br><span style="font-size:10px">Category: SC<br>Gender(M/F): M</span></td>
 																<td><span class="text-center">(Bank Copy)</span></td>
-																<td><img src="image/sbi.jpg" class="image pull-right"></td>
+																<td><img src="../image/sbi.jpg" class="image pull-right"></td>
 															</tr>
 															<tr>
-																<td><img src="image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
+																<td><img src="../image/iiitkota.jpg"><br><span style="font-size:10px;text-decoration:underline;"></span></td>
 																<td><span style="font-size:12px;font-weight:bold;margin-left:-15px;">Indian Institute  Of Information Technology, Kota</span><br><span style="font-size:10px;margin-left:60px;">Mentored By</span><br><span style="font-size:12px;font-weight:bold;margin-left:-35px;">Indian Institute  Of Information Technology, Kota</span></td>
 																<td></td>
 															</tr>
@@ -604,7 +604,7 @@
 					</div>
 				</div>
 		<div class="row">
-			<a href="pages/examples/print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+			<a href="../pages/examples/print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
 		</div>
 	</section>
 								
@@ -616,8 +616,8 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+      <li><a href="../#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="../#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -626,7 +626,7 @@
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
               <div class="menu-info">
@@ -637,7 +637,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <i class="menu-icon fa fa-user bg-yellow"></i>
 
               <div class="menu-info">
@@ -648,7 +648,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
               <div class="menu-info">
@@ -659,7 +659,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <i class="menu-icon fa fa-file-code-o bg-green"></i>
 
               <div class="menu-info">
@@ -675,7 +675,7 @@
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
                 <span class="label label-danger pull-right">70%</span>
@@ -687,7 +687,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <h4 class="control-sidebar-subheading">
                 Update Resume
                 <span class="label label-success pull-right">95%</span>
@@ -699,7 +699,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <h4 class="control-sidebar-subheading">
                 Laravel Integration
                 <span class="label label-warning pull-right">50%</span>
@@ -711,7 +711,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript::;">
+            <a href="../javascript::;">
               <h4 class="control-sidebar-subheading">
                 Back End Framework
                 <span class="label label-primary pull-right">68%</span>
@@ -792,7 +792,7 @@
           <div class="form-group">
             <label class="control-sidebar-subheading">
               Delete chat history
-              <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+              <a href="../javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
             </label>
           </div>
           <!-- /.form-group -->
@@ -809,14 +809,14 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.min.js"></script>
+<script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>

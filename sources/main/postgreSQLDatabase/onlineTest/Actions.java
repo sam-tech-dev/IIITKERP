@@ -40,10 +40,8 @@ public class Actions {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-
-		}
-
 	}
-
-
+	}
 }
+
+

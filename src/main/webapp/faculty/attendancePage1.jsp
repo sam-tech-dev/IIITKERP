@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>IIIT KOTA | Dashboard</title>
+  <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -19,17 +19,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
- 
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,17 +32,20 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>IIIT</b>K</span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>IIITK </b>ERP</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -162,6 +154,7 @@
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
                   </li>
+
                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
@@ -311,7 +304,7 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><% out.print(request.getSession().getAttribute("name")); %></p>
+          <p>Alexander Pierce</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -329,6 +322,140 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Layout Options</span>
+            <span class="label label-primary pull-right">4</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa fa-th"></i> <span>Widgets</span>
+            <small class="label pull-right bg-green">new</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Charts</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>UI Elements</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="../icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="../buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="../sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="../timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="../modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+          </ul>
+        </li>
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li class="active"><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="../calendar.html">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <small class="label pull-right bg-red">3</small>
+          </a>
+        </li>
+        <li>
+          <a href="../mailbox/mailbox.html">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <small class="label pull-right bg-yellow">12</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Examples</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="../examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <li><a href="../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -339,196 +466,228 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Student
-        <small>Home</small>
+        Attendance(Page-1)
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
-        
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data tables</li>
       </ol>
     </section>
-<section class="content">
+
+    <!-- Main content -->
+    <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          
-		  <div class="box">
+          <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Student List</h3>
+			 <div class="col-md-12"> 
+			  <div class="col-md-3">
+			    <div class="form-group">
+                  <select class="form-control">
+                    <option>Academic Year</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>
+                </div>
+			  </div>
+			  <div class="col-md-3">		
+				<div class="form-group">
+                  <select class="form-control">
+                    <option>Semester</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>
+                </div>
+			  </div>
+			  <div class="col-md-3">
+				<div class="form-group">
+                  <select class="form-control">
+                    <option>Subcode</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>
+                </div>
+			  </div>
+			  <div class="col-md-3">
+				<div class="form-group">
+					<input type="date"/>
+				</div>
+			  </div>
+			 </div>
+			 <div class="col-xs-12">
+			  <div class="col-md-4">
+				<div class="form-group">
+					<label>From</label>
+					<input type="time" name="fromTime"/>
+				</div>
+			  </div>
+			  <div class="col-md-4">
+				<div class="form-group">
+					<label>To</label>
+					<input type="time" name="toTime"/>
+				</div>
+			  </div>
+			  <div class="col-md-4">
+				<div class="form-group">
+                  <select class="form-control">
+                    <option>Choose One</option>
+                    <option>Laboratory</option>
+                    <option>Theory</option>
+                  </select>
+                </div>
+			  </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body" style="overflow-x:scroll;">
+            
+            <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Student ID</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Gender</th>
-                  <th>Date Of Birth</th>
-                  <th>State(Eligibility)</th>
-                  <th>Program Allocated</th>
-                  <th>Allocated Categoy</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Address</th>
+                  <th>Student Id</th>
+                  <th>Student Name</th>
+                  <th>Present</th>
+                  <th>Absent</th>
+                  <th>Leave</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr onclick="return rowValue('student-1')">
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+                <tr>
+                  <td>Std-1</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-2')">
-                  <td>2013KUCP1002</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-2</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-3')">
-                  <td>2013KUCP1003</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-3</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-4')">
-                  <td>2013KUCP1004</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-4</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-5')">
-                  <td>2013KUCP1005</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-5</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-6')">
-                  <td>2013KUCP1006</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-6</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-7')">
-                  <td>2013KUCP1007</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-7</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-8')">
-                  <td>2013KUCP1008</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-8</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-9')">
-                  <td>2013KUCP1009</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-9</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				<tr onclick="return rowValue('student-10')">
-                  <td>2013KUCP1010</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+				<tr>
+                  <td>Std-10</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
                 </tr>
-				
-                </tbody>
+				<tr>
+                  <td>Std-11</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				<tr>
+                  <td>Std-12</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				<tr>
+                  <td>Std-13</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				<tr>
+                  <td>Std-14</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				<tr>
+                  <td>Std-15</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				<tr>
+                  <td>Std-16</td>
+                  <td>Student-Name</td>
+                  <td>80</td>
+                  <td>10</td>
+                  <td>10</td>
+                </tr>
+				</tbody>
               </table>
-            </div>
+              
+			  <br><br>
+			  <div class="btn-group pull-right">
+				<button type="button" class="btn btn-block btn-danger">Submit</button>
+			  </div>
+			</div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-        </div>
+		</div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- Main content -->
-	
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 0.0.1
-    </div>
-    <strong>Copyright &copy; 2016 <a href="http://iiitkota.ac.in">IIITK</a>.</strong> All rights
-    reserved.
-  </footer>
-
+  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -727,54 +886,31 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
 <!-- Bootstrap 3.3.5 -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="../plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../bootstr../bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- datepicker -->
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
+<!-- SlimScroll -->
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-
+<script src="../di../app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<script src="../di../demo.js"></script>
+<!-- page script -->
 <script>
   $(function () {
-    $("#example1").DataTable({
-		"paging": true,
-      "lengthChange": true,
-      "searching": true,
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
       "ordering": true,
       "info": true,
-      "autoWidth": true
-	});
+      "autoWidth": false
+    });
   });
 </script>
 </body>
