@@ -109,8 +109,6 @@
   <servlet-mapping>
   	<servlet-name>ReadAllMessages</servlet-name>
   	<url-pattern>/ReadAllMessages</url-pattern>
-  </servlet-mapping>
- 
   <servlet-mapping>
   	<servlet-name>StudentServletTemplate</servlet-name>
   	<url-pattern>/StudentServletTemplate</url-pattern>
