@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>IIIT KOTA | Dashboard</title>
+  <title>AdminLTE 2 | Calendar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -12,24 +12,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+  <!-- fullCalendar 2.2.5-->
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
- 
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,17 +33,20 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>IIIT</b>K</span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>IIITK </b>ERP</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -162,6 +155,7 @@
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
                   </li>
+
                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
@@ -293,10 +287,6 @@
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -311,7 +301,7 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><% out.print(request.getSession().getAttribute("name")); %></p>
+          <p>Alexander Pierce</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -329,6 +319,140 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Layout Options</span>
+            <span class="label label-primary pull-right">4</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="widgets.html">
+            <i class="fa fa-th"></i> <span>Widgets</span>
+            <small class="label pull-right bg-green">new</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Charts</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>UI Elements</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="calendar.html">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <small class="label pull-right bg-red">3</small>
+          </a>
+        </li>
+        <li>
+          <a href="mailbox/mailbox.html">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <small class="label pull-right bg-yellow">12</small>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Examples</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <li><a href="../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -339,193 +463,102 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Student
-        <small>Home</small>
+        Calendar
+        <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
-        
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Calendar</li>
       </ol>
     </section>
-<section class="content">
+
+    <!-- Main content -->
+    <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-          
-		  <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Student List</h3>
+        <div class="col-md-3">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h4 class="box-title">Draggable Events</h4>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body" style="overflow-x:scroll;">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Student ID</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Gender</th>
-                  <th>Date Of Birth</th>
-                  <th>State(Eligibility)</th>
-                  <th>Program Allocated</th>
-                  <th>Allocated Categoy</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Address</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr onclick="return rowValue('student-1')">
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-2')">
-                  <td>2013KUCP1002</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-3')">
-                  <td>2013KUCP1003</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-4')">
-                  <td>2013KUCP1004</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-5')">
-                  <td>2013KUCP1005</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-6')">
-                  <td>2013KUCP1006</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-7')">
-                  <td>2013KUCP1007</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-8')">
-                  <td>2013KUCP1008</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-9')">
-                  <td>2013KUCP1009</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-10')">
-                  <td>2013KUCP1010</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				
-                </tbody>
-              </table>
+            <div class="box-body">
+              <!-- the events -->
+              <div id="external-events">
+                <div class="external-event bg-green">Lunch</div>
+                <div class="external-event bg-yellow">Go home</div>
+                <div class="external-event bg-aqua">Do homework</div>
+                <div class="external-event bg-light-blue">Work on UI design</div>
+                <div class="external-event bg-red">Sleep tight</div>
+                <div class="checkbox">
+                  <label for="drop-remove">
+                    <input type="checkbox" id="drop-remove">
+                    remove after drop
+                  </label>
+                </div>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+          <!-- /. box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Create Event</h3>
+            </div>
+            <div class="box-body">
+              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                <ul class="fc-color-picker" id="color-chooser">
+                  <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                </ul>
+              </div>
+              <!-- /btn-group -->
+              <div class="input-group">
+                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                <div class="input-group-btn">
+                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                </div>
+                <!-- /btn-group -->
+              </div>
+              <!-- /input-group -->
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-body no-padding">
+              <!-- THE CALENDAR -->
+              <div id="calendar"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- Main content -->
-	
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 0.0.1
+      <b>Version</b> 2.3.1
     </div>
-    <strong>Copyright &copy; 2016 <a href="http://iiitkota.ac.in">IIITK</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -727,54 +760,177 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="../plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- datepicker -->
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Slimscroll -->
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- fullCalendar 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="../plugins/fullcalendar/fullcalendar.min.js"></script>
+<!-- Page specific script -->
 <script>
   $(function () {
-    $("#example1").DataTable({
-		"paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true
-	});
+
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function ini_events(ele) {
+      ele.each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        };
+
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject);
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex: 1070,
+          revert: true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        });
+
+      });
+    }
+
+    ini_events($('#external-events div.external-event'));
+
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date();
+    var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear();
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      buttonText: {
+        today: 'today',
+        month: 'month',
+        week: 'week',
+        day: 'day'
+      },
+      //Random default events
+      events: [
+        {
+          title: 'All Day Event',
+          start: new Date(y, m, 1),
+          backgroundColor: "#f56954", //red
+          borderColor: "#f56954" //red
+        },
+        {
+          title: 'Long Event',
+          start: new Date(y, m, d - 5),
+          end: new Date(y, m, d - 2),
+          backgroundColor: "#f39c12", //yellow
+          borderColor: "#f39c12" //yellow
+        },
+        {
+          title: 'Meeting',
+          start: new Date(y, m, d, 10, 30),
+          allDay: false,
+          backgroundColor: "#0073b7", //Blue
+          borderColor: "#0073b7" //Blue
+        },
+        {
+          title: 'Lunch',
+          start: new Date(y, m, d, 12, 0),
+          end: new Date(y, m, d, 14, 0),
+          allDay: false,
+          backgroundColor: "#00c0ef", //Info (aqua)
+          borderColor: "#00c0ef" //Info (aqua)
+        },
+        {
+          title: 'Birthday Party',
+          start: new Date(y, m, d + 1, 19, 0),
+          end: new Date(y, m, d + 1, 22, 30),
+          allDay: false,
+          backgroundColor: "#00a65a", //Success (green)
+          borderColor: "#00a65a" //Success (green)
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/',
+          backgroundColor: "#3c8dbc", //Primary (light-blue)
+          borderColor: "#3c8dbc" //Primary (light-blue)
+        }
+      ],
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar !!!
+      drop: function (date, allDay) { // this function is called when something is dropped
+
+        // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject');
+
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject);
+
+        // assign it the date that was reported
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        copiedEventObject.backgroundColor = $(this).css("background-color");
+        copiedEventObject.borderColor = $(this).css("border-color");
+
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+        // is the "remove after drop" checkbox checked?
+        if ($('#drop-remove').is(':checked')) {
+          // if so, remove the element from the "Draggable Events" list
+          $(this).remove();
+        }
+
+      }
+    });
+
+    /* ADDING EVENTS */
+    var currColor = "#3c8dbc"; //Red by default
+    //Color chooser button
+    var colorChooser = $("#color-chooser-btn");
+    $("#color-chooser > li > a").click(function (e) {
+      e.preventDefault();
+      //Save color
+      currColor = $(this).css("color");
+      //Add color effect to button
+      $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+    });
+    $("#add-new-event").click(function (e) {
+      e.preventDefault();
+      //Get value and make sure it is not null
+      var val = $("#new-event").val();
+      if (val.length == 0) {
+        return;
+      }
+
+      //Create events
+      var event = $("<div />");
+      event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+      event.html(val);
+      $('#external-events').prepend(event);
+
+      //Add draggable funtionality
+      ini_events(event);
+
+      //Remove event from text input
+      $("#new-event").val("");
+    });
   });
 </script>
 </body>

@@ -89,7 +89,7 @@ public class SimpleLdapAuthentication
 		return null;
 
 	}
-	public static void addEntry(String name,String password,String type) {
+	public static void addEntry(String name,String password) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();

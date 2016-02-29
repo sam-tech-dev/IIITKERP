@@ -30,7 +30,7 @@
 <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
- 
+ <%@ page import="postgreSQLDatabase.feePayment.ChallanQuery" %>
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -70,8 +70,8 @@
 																<td></td>
 															</tr>
 															<tr>
-																<td>Student ID:</td>
-																<td>2013KUCP1011</td>
+																<td>Student Name:</td>
+																<td><% out.print(ChallanQuery.getStudentDetails(1).getName()); %></td>
 																<td></td>
 															</tr>
 															<tr>

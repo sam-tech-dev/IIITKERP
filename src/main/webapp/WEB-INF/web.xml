@@ -27,6 +27,48 @@
   	<description></description>
   	<servlet-class>actions.testPaper.GetQuestion</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GenerateChallan</servlet-name>
+  	<display-name>GenerateChallan</display-name>
+  	<description></description>
+  	<servlet-class>feePayment.GenerateChallan</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetrieveMessage</servlet-name>
+  	<display-name>RetrieveMessage</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.RetrieveMessage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NewMessage</servlet-name>
+  	<display-name>NewMessage</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.NewMessage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetrieveAllMessages</servlet-name>
+  	<display-name>RetrieveAllMessages</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.RetrieveAllMessages</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ReadAllMessages</servlet-name>
+  	<display-name>ReadAllMessages</display-name>
+  	<description></description>
+  	<servlet-class>actions.chats.ReadAllMessages</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetriveNotifications</servlet-name>
+  	<display-name>RetriveNotifications</display-name>
+  	<description></description>
+  	<servlet-class>actions.notifications.RetriveNotifications</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>StudentServletTemplate</servlet-name>
+  	<display-name>StudentServletTemplate</display-name>
+  	<description></description>
+  	<servlet-class>actions.registration.StudentServletTemplate</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -42,6 +84,35 @@
   <servlet-mapping>
   	<servlet-name>GetQuestion</servlet-name>
   	<url-pattern>/GetQuestion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GenerateChallan</servlet-name>
+  	<url-pattern>/GenerateChallan</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetriveNotifications</servlet-name>
+  	<url-pattern>/RetriveNotifications</url-pattern>
+</servlet-mapping>
+
+  <servlet-mapping>
+  	<servlet-name>RetrieveMessage</servlet-name>
+  	<url-pattern>/RetrieveMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewMessage</servlet-name>
+  	<url-pattern>/NewMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetrieveAllMessages</servlet-name>
+  	<url-pattern>/RetrieveAllMessages</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReadAllMessages</servlet-name>
+  	<url-pattern>/ReadAllMessages</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>StudentServletTemplate</servlet-name>
+  	<url-pattern>/StudentServletTemplate</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  

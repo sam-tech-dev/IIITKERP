@@ -1,10 +1,10 @@
 /**
  * 
  */
-package Parser;
+package csv;
 
 import java.io.BufferedReader;
-import java.io.File;                      
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,16 +12,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 /**
  * @author Arushi
  *
  */
-public class CSVFunctions {
+public class Parser {
 	ArrayList<ArrayList<String>>	array;
 	int r,c;
-	CSVFunctions(){
+	public Parser(){
 		array = new ArrayList<ArrayList<String>>();
 	}
 
@@ -99,7 +99,7 @@ public class CSVFunctions {
 	}
 	
 	public static void main(String args[]){
-		CSVFunctions obj=new CSVFunctions();
+		Parser obj=new Parser();
 		obj.run();
 	}
 	
@@ -117,11 +117,10 @@ public class CSVFunctions {
 			if(colName.equals(get(2,i))){
 				return "found";
 			}
-			//System.out.println(get(2,i));
+			
 			
 		}
-		//CSVFunctions obj1=new CSVFunctions();
-		//Add(colName,2);
+		
 		updateCSV("c1.csv",colName,2,getNumCols(2));
 		
 			return"col added";

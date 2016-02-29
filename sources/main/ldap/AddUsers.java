@@ -1,19 +1,19 @@
 /**
  * 
  */
-package actions;
+package ldap;
 
 import java.io.IOException;
 
+import csv.Parser;
 import ldap.SimpleLdapAuthentication;
-import Parser.CSVFunctions;
 
 /**
  * @author Arushi
  *
  */
 public class AddUsers {
-	CSVFunctions obj=new CSVFunctions();
+	Parser obj=new csv.Parser();
 	
 	/**
 	 * @param args
@@ -26,12 +26,12 @@ public class AddUsers {
 
 	}
 	public String addUser(String...s) throws IOException{
-		obj.run("c2.csv");
+		obj.run();
 		int k=0;
 		int j[]=new int[s.length];
 		String username,password;
 		for(int i=0;i<s.length;i++){
-			 j[k]=obj.checkAndAddColumn(s[i]);
+		//	 j[k]=obj.checkAndAddColumn(s[i]);
 			 k++;
 			
 		}
