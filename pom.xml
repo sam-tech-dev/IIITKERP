@@ -41,6 +41,11 @@
 			<artifactId>quartz</artifactId>
 			<version>2.2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>erp</finalName>
@@ -49,4 +54,5 @@
 		<url>http://www.iiitkota.ac.in</url>
 		<name>Indian Institute Of Information Technology Kota</name>
 	</organization>
+
 </project>
