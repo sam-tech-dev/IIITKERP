@@ -76,7 +76,10 @@ public class SimpleLdapAuthentication
 
 			JSONObject credentials = new JSONObject();
 			try {
-				credentials.put("type","student");
+				int index=fullDN.indexOf("ou=")+3;
+				String ou=fullDN.substring(index, fullDN.indexOf(",",index));
+				if(ou.equals("students"))credentials.put("type","student");
+				if(ou.equals("faculty"))credentials.put("type","faculty");
 				credentials.put("name",attrs.get("cn").get(0));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
