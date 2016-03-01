@@ -2,7 +2,6 @@ package actions.chats;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ReadAllMessages
+ * mark messages as read
  */
 public class ReadAllMessages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
