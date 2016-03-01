@@ -69,6 +69,12 @@
   	<description></description>
   	<servlet-class>actions.registration.StudentServletTemplate</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>MarkAsRead</servlet-name>
+  	<display-name>MarkAsRead</display-name>
+  	<description></description>
+  	<servlet-class>actions.notifications.MarkAsRead</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -113,6 +119,10 @@
   <servlet-mapping>
   	<servlet-name>StudentServletTemplate</servlet-name>
   	<url-pattern>/StudentServletTemplate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MarkAsRead</servlet-name>
+  	<url-pattern>/MarkAsRead</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
