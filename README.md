@@ -8,7 +8,7 @@ README for IIITK ERP setup
 
 * Java EE dynamic web application
 * Maven Project Integration
-* Version 0.0
+* Version 0.0.0.1
 
 ### How do I get set up? ###
 
