@@ -6,9 +6,11 @@ README for IIITK ERP setup
 
 ### Specifications? ###
 
+* Version 0.0.0.1
 * Java EE dynamic web application
 * Maven Project Integration
-* Version 0.0.0.1
+* PostgreSQL Database 9.4
+* Server Location (Campus MNIT Jaipur) Local IP: 172.16.1.231
 
 ### How do I get set up? ###
 
