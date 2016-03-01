@@ -32,6 +32,7 @@ public class AddUsers {
 		String username,password;
 		for(int i=0;i<s.length;i++){
 		//	 j[k]=obj.checkAndAddColumn(s[i]);
+		//TODO fix Error -Arushi
 			 k++;
 			
 		}
