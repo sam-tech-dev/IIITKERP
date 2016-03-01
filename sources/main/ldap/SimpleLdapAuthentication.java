@@ -31,8 +31,8 @@ public class SimpleLdapAuthentication
 	{
 		try {
 		//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-	//	addEntry("joeyp","pintojoey","students");
-		changePassword("Joey Pinto", "123456789");
+		//addEntry("joeyp","pintojoey");
+		//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,14 +100,16 @@ public class SimpleLdapAuthentication
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL, "ldap://172.16.1.231:389");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		env.put(Context.SECURITY_PRINCIPAL, "cn=admin,dc=iiitk,dc=com");
-		env.put(Context.SECURITY_CREDENTIALS, "iiitk");
+		env.put(Context.SECURITY_PRINCIPAL, "cn=admin,dc=iiitk,dc=ac,dc=in");
+		env.put(Context.SECURITY_CREDENTIALS, "iiitk_2013");
 
 		try {
+			//System.out.println("hello");
 
 			DirContext context = new InitialDirContext(env);
 
 			addUser(context,name,password);
+			System.out.println("entered successfully");
 
 
 			context.close();
@@ -146,14 +148,22 @@ public class SimpleLdapAuthentication
         
  	
          attributes.put(pwd);
+         Attribute sn = new BasicAttribute("sn");
+      	
+         
+      	
+         sn.add("iiitk");
  	
+        
+ 	
+         attributes.put(sn);
   
  	
          try {
  	
              context.createSubcontext(
  	
-                      "cn="+name+",cn=thirdyear,ou=students,dc=iiitk,dc=com",attributes);
+                      "cn="+name+"cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
  	
          } catch (NamingException e) {
  	
