@@ -4,7 +4,7 @@
 package exceptions;
 
 /**
- * @author   Shubhi
+ * @author Megha
  *
  */
 public class ConfigException extends Exception {
