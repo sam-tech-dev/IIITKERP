@@ -6,7 +6,7 @@ package postgreSQLDatabase.chats;
 import java.sql.Date;
 
 /**
- * @author Shubhi
+ * @author Megha
  *
  */
 public class Message {
