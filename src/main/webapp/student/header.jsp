@@ -1,3 +1,10 @@
+<div id="notif_template" style="display:none">
+				<li onClick="markAsRead(this)" class="notif_row" >
+                    <a class="notif_link">
+                      <i class="fa fa-users text-aqua"></i><span class="notif_msg" >5 new members joined today</span> 
+                    </a>
+                  </li>
+</div>
 
   <header class="main-header">
     <!-- Logo -->
@@ -97,37 +104,16 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning" id="notif_count">10</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header" id="notifications">You have 10 notifications</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                <ul class="menu">
+                <ul class="menu" id="notif_list">
                   <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
                     </a>
                   </li>
                 </ul>
@@ -259,4 +245,4 @@
       </div>
     </nav>
   </header>
-  
+  <script src="../dist/js/notifications.js"></script>

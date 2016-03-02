@@ -1,28 +1,24 @@
-package actions.chats;
+package actions.notifications;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import postgreSQLDatabase.notifications.Query;
+
 /**
- * Servlet implementation class NewMessage
- * @author Megha
- * Servlet to add new message to database.
- *  
+ * Servlet implementation class MarkAsRead
  */
-public class NewMessage extends HttpServlet {
+public class MarkAsRead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewMessage() {
+    public MarkAsRead() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,33 +28,18 @@ public class NewMessage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Parameters message-text, author id, conversation id
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO remove hard coding
-		PreparedStatement proc;
-		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
-			proc.setString(1,request.getParameter("text"));
-			proc.setInt(2,3);
-			proc.setInt(3,67);
-			
-			//System.out.println(proc.toString());
-			 proc.executeQuery();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
 		
-		
-		
-		
+		int userid=Integer.parseInt(request.getParameter("userid"));
+		int notif_id=Integer.parseInt(request.getParameter("notif_id"));
+		Query.markAsRead(userid,notif_id);
 		
 		
 	}

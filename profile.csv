@@ -1,29 +1,8 @@
-"Shivani","Garg","2013KUCP1001"
-"Rajat","Jain","2013KUCP1002"
-"Priya ","Sharma","2013KUCP1003"
-"Rahul","Yadav","2013KUCP1004"
-"Rahul ","Choudhary","2013KUCP1005"
-"Ankit ","Kaushik","2013KUCP1006"
-"Rakesh ","Pankaj","2013KUCP1007"
-"Anshula","Bisht","2013KUCP1008"
-"Sattar","Mohammad","2013KUCP1009"
-"Dixit","Chauhan","2013KUCP1010"
-"Sumit","Sagar","2013KUCP1011"
-"Arushi","Gupta","2013KUCP1012"
-"Shyam Sunder","Verma","2013KUCP1013"
-"Dilip","Kashyap","2013KUCP1014"
-"Manish","Nawal","2013KUCP1016"
-"Asha","Meena","2013KUCP1017"
-"Manisha","Ghugharwal","2013KUCP1019"
-"Anita","Gadhwal","2013KUCP1020"
-"Joey","Pinto","2013KUCP1021"
-"Abhishek","Mimani","2013KUCP1022"
-"Himanshu","Goyal","2013KUCP1023"
-"Tulsi",,"2013KUCP1024"
-"Deepanshu","Bhateja","2013KUCP1025"
-"Shantanu","Ramteke","2013KUCP1026"
-"Megha","Gupta","2013KUCP1027"
-"Yash","Sachdeva","2013KUCP1029"
-"Lakshman","Shohu","2014kucp1002"
-"Divyam","Jain","2014kucp1010"
-,NULL,"2015KUEC1000"
+firstname,lastname,id
+Shivani,Garg,1001
+Rajat,Jain,1002
+Priya,Sharma,1003
+Arushi,Gupta,1012
+Joey,Pinto,1021
+Megha,Gupta,1027
+Yash,Sachdeva,1029
