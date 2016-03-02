@@ -75,6 +75,12 @@
   	<description></description>
   	<servlet-class>actions.notifications.MarkAsRead</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ReportStudent</servlet-name>
+  	<display-name>ReportStudent</display-name>
+  	<description></description>
+  	<servlet-class>actions.registration.ReportStudent</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -123,6 +129,10 @@
   <servlet-mapping>
   	<servlet-name>MarkAsRead</servlet-name>
   	<url-pattern>/MarkAsRead</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReportStudent</servlet-name>
+  	<url-pattern>/ReportStudent</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
