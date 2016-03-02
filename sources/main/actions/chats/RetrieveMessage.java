@@ -5,10 +5,8 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -18,12 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.chats.Message;
-import postgreSQLDatabase.onlineTest.Answer;
-import postgreSQLDatabase.onlineTest.Question;
 
 /**
  * Servlet implementation class RetrieveMessage
@@ -54,18 +49,15 @@ public class RetrieveMessage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter writer=response.getWriter();
-		ResultSet rs=null;
-		PreparedStatement proc=null;
+		PreparedStatement proc = null;
+		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
-			proc.setInt(1,66);
-
-
-			 rs=proc.executeQuery();
+			proc.setInt(1,67);
+rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
-			System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
 			for(int i=0;i<jArray.length();i++)
@@ -81,13 +73,12 @@ public class RetrieveMessage extends HttpServlet {
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
 				System.out.println(current_object.getString("timestamp"));
-				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
 				
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-						JSONArray message_array=new JSONArray();
+			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
 				message_object = new JSONObject();
@@ -111,19 +102,23 @@ public class RetrieveMessage extends HttpServlet {
 			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			writer.write("");
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			try {
-				writer.write("");
 				if(rs!=null)rs.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
 				if(proc!=null)proc.close();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			writer.write("");
 		} 
-
 	}
 }

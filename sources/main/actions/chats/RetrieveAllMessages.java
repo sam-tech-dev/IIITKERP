@@ -5,10 +5,8 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -18,12 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.chats.Message;
-import postgreSQLDatabase.onlineTest.Answer;
-import postgreSQLDatabase.onlineTest.Question;
 
 /**
  * Servlet implementation class RetrieveMessage
@@ -53,13 +48,13 @@ public class RetrieveAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ResultSet rs = null;
 		PrintWriter writer=response.getWriter();
-		PreparedStatement proc=null;
+		PreparedStatement proc = null;
+		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
-			proc.setInt(1,66);
+			proc.setInt(1,67);
 			proc.setInt(2,0);
 			proc.setInt(3,1000);
 			
@@ -85,11 +80,9 @@ public class RetrieveAllMessages extends HttpServlet {
 				System.out.println(current_object.getString("timestamp"));
 				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
-				 
 				messages.add(current);
 			}
 			Iterator<Message> iterator = messages.iterator();
-			
 			JSONArray message_array=new JSONArray();
 			JSONObject message_object;
 			while(iterator.hasNext()){
@@ -101,6 +94,7 @@ public class RetrieveAllMessages extends HttpServlet {
 				message_object.put("text",current.getText());
 				message_object.put("timecomp",current.getTime_stamp().getTime());
 				message_object.put("timestamp",new SimpleDateFormat("hh:mm a EEE dd MMM").format(current.getTime_stamp()));
+
 				//System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
 				//writer.write(current.getId()+" "+current.getUsername()+" "+current.getText());
 				message_array.put(message_object);
@@ -116,19 +110,24 @@ writer.write(message_array.toString());
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			try {
 				if(rs!=null)rs.close();
-				if(proc!=null)proc.close();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+			try {
+				if(proc!=null)	proc.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				writer.write("");
+			}
 			writer.write("");
 			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
+		
 
 	}
 }
