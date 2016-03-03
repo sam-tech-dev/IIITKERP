@@ -3,6 +3,7 @@
  */
 package postgreSQLDatabase.Registration;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -57,7 +58,7 @@ public class Query {
 
 			students=new ArrayList<Student>();
 			ResultSet rs=proc.executeQuery();
-			System.out.println(proc);
+			//System.out.println(proc);
 			rs.next();
 
 			JSONArray jArray=new JSONArray(rs.getString(1));
@@ -90,8 +91,8 @@ public class Query {
 				current.setPermanent_address(current_object.getString("address"));
 				current.setRc_name(current_object.getString("rc_name"));
 				current.setNationality(current_object.getString("nationality"));
-				current.setRegistration_id(current_object.getInt("id"));
-				current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
+				current.setCsab_id(current_object.getInt("id"));
+				current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 				
 				
 				students.add(current);
@@ -99,7 +100,7 @@ public class Query {
 			Iterator<Student> iterator = students.iterator();	
 			while(iterator.hasNext()){
 				Student current=iterator.next();
-				System.out.println(current.getRegistration_id()+" "+current.getName());
+				//System.out.println(current.getCsab_id()+" "+current.getName());
 			}
 
 			rs.close();
@@ -124,7 +125,7 @@ public class Query {
 			proc.setInt(1,reg_id);
 			students=new ArrayList<Student>();
 			ResultSet rs=proc.executeQuery();
-			System.out.println(proc);
+			//System.out.println(proc);
 			rs.next();
 
 			JSONArray jArray=new JSONArray(rs.getString(1));
@@ -157,16 +158,15 @@ public class Query {
 				current.setPermanent_address(current_object.getString("address"));
 				current.setRc_name(current_object.getString("rc_name"));
 				current.setNationality(current_object.getString("nationality"));
-				current.setRegistration_id(current_object.getInt("id"));
-				current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
-				
-				
+				current.setCsab_id(current_object.getInt("id"));
+				current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
+		
 				students.add(current);
 			}
 			Iterator<Student> iterator = students.iterator();	
 			while(iterator.hasNext()){
 				Student current=iterator.next();
-				System.out.println(current.getRegistration_id()+" "+current.getName());
+				//System.out.println(current.getRegistration_id()+" "+current.getName());
 			}
 
 			rs.close();
@@ -367,5 +367,20 @@ public class Query {
 		proc.executeQuery();
 	}
 	
+	public static int reportStudent(int csab_id) {
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report\"(?);");
+			proc.setInt(1,csab_id);
+			ResultSet rs=proc.executeQuery();
+			rs.next();
+			int reg_id=rs.getInt(1);
+			return reg_id;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
 	
 }
