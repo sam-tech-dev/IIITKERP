@@ -19,6 +19,7 @@ import org.json.JSONObject;
 public class Query {
 
 	static Connection conn ;
+	
 	public static void main(String[] args) {
 
 
@@ -255,10 +256,10 @@ public class Query {
 	public static ArrayList<TestPaper> getTestPaper() throws SQLException{
 		ArrayList<TestPaper> papers=null;
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getTestPaper\"();");
+			 PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getTestPaper\"();");
 			papers=new ArrayList<TestPaper>();
 			//proc.setInt(1,test_paper_id);
-			ResultSet rs=proc.executeQuery();
+			ResultSet rs = proc.executeQuery();
 			//System.out.println(proc);
 			rs.next();
 
