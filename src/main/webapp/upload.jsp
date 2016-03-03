@@ -9,7 +9,7 @@
     <body> 
         <div>
             <h3> Choose File to Upload in Server </h3>
-            <form action="uploads" method="post" enctype="multipart/form-data">
+            <form action="FileUpload" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <input type="submit" value="upload" />
             </form>          

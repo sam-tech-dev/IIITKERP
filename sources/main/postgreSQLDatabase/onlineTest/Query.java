@@ -269,7 +269,7 @@ public class Query {
 			{
 				JSONObject current_object=jArray.getJSONObject(i);
 				TestPaper current=new TestPaper();
-				current.setId(current_object.getInt("id"));
+				current.id = current_object.getInt("id");
 				current.setSubject(current_object.getString("subject"));
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
