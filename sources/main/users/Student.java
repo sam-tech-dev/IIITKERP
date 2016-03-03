@@ -24,6 +24,22 @@ public class Student {
     
 	private String student_id;
 	private int registration_id;
+	private int csab_id;
+
+	/**
+	 * @return the csab_id
+	 */
+	public int getCsab_id() {
+		return csab_id;
+	}
+
+	/**
+	 * @param csab_id the csab_id to set
+	 */
+	public void setCsab_id(int csab_id) {
+		this.csab_id = csab_id;
+	}
+
 	private String name;
 	private String first_name;
 	private String middle_name;
@@ -114,13 +130,6 @@ public class Student {
 	
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
-//     test.setAddress("aiebg jfgbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuj");
-//     test.setAllocated_category("open");
-//     test.setCategory("sc");
-//     test.setDate_of_birth("12-10-1993");
-//     test.setEmail("");
-//     test.setGender("male");
-//     test.setMobile("1234567890");
      test.setName("joey pinto");
      test.setProgram_allocated("computer engineering");
      test.setState_eligibility("Uttar Pradesh");
@@ -290,10 +299,7 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-		//String regex = Pattern.quote("\\+?[0-9]*)");
-		//Pattern pattern=Pattern.compile(regex);
-		//Matcher matcher=pattern.matcher(mobile);
-		 Pattern pattern= Pattern.compile("[a-zA-Z\\s]+");
+		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
 	      Matcher matcher = pattern.matcher(mobile);
 		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
@@ -728,5 +734,19 @@ public class Student {
 		this.pwd = pwd;
 	}
 
+	private boolean reported;
+	/**
+	 * @return the reported
+	 */
+	public boolean isReported() {
+		return reported;
+	}
+
+	/**
+	 * @param reported the reported to set
+	 */
+	public void setReported(boolean reported) {
+		this.reported = reported;
+	}
 	
 }

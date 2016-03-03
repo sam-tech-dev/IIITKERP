@@ -30,9 +30,9 @@ public class SimpleLdapAuthentication
 	public static void main(String[] args) 
 	{
 		try {
-		//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-		//addEntry("joeyp","pintojoey");
-		//changePassword("Joey Pinto", "123456789");
+			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
+			addEntry("joeypint","joeypinto");
+			//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class SimpleLdapAuthentication
 
 	}
 
-	
+
 
 	public static String searchAndAuthenticate(String username,String password) throws NamingException{
 		Hashtable<String, String> env = 
@@ -127,88 +127,81 @@ public class SimpleLdapAuthentication
 
 
 	}
-	 public static void addUser(DirContext context,String name,String password) {
- 	 	
-         Attributes attributes = new BasicAttributes();
- 	
-         Attribute attribute = new BasicAttribute("objectClass");
- 	
-         attribute.add("inetOrgPerson");
- 	
-         attributes.put(attribute);
- 	
-         
- 	
-         Attribute pwd = new BasicAttribute("userPassword");
- 	
-         
- 	
-         pwd.add(password);
- 	
-        
- 	
-         attributes.put(pwd);
-         Attribute sn = new BasicAttribute("sn");
-      	
-         
-      	
-         sn.add("iiitk");
- 	
-        
- 	
-         attributes.put(sn);
-  
- 	
-         try {
- 	
-             context.createSubcontext(
- 	
-                      "cn="+name+"cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
- 	
-         } catch (NamingException e) {
- 	
-             e.printStackTrace();
- 	
-         }
- 	
-     }
-	 
-	 public static void changePassword(String username,String new_password){
-	 Hashtable<String, String> env = new Hashtable<String, String>();
-     env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
-     env.put(Context.PROVIDER_URL,"ldap://172.16.1.231:389");
-     env.put(Context.SECURITY_AUTHENTICATION,"simple");
-     env.put(Context.SECURITY_PRINCIPAL,"cn=admin,dc=iiitk,dc=ac,dc=in");
-     env.put(Context.SECURITY_CREDENTIALS,"iiitk_2013");
+	public static void addUser(DirContext context,String name,String password) {
 
-     try
-     {
-         // Create the initial directory context
-         InitialDirContext initialContext = new InitialDirContext(env);
-         DirContext ctx = (DirContext)initialContext;
+		Attributes attributes = new BasicAttributes();
 
-         System.out.println("Context Sucessfully Initialized");
+		Attribute attribute = new BasicAttribute("objectClass");
 
-         ModificationItem[] mods = new ModificationItem[1];
+		attribute.add("inetOrgPerson");
 
-         Attribute mod0 = new BasicAttribute("userPassword",new_password);
+		attributes.put(attribute);
 
-         mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
-         ctx.modifyAttributes("cn="+username+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in", mods);
 
-     }
-     catch(Exception e)
-     {
-         System.err.println(e);
-     }
-	 
-	 }
-	 
+		Attribute pwd = new BasicAttribute("userPassword");
+
+
+		pwd.add(password);
+		attributes.put(pwd);
+		
+		Attribute sn = new BasicAttribute("sn");
+
+
+		sn.add("i");
+		attributes.put(sn);
+
+
+		try {
+
+			context.createSubcontext(
+
+					"cn="+name+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
+
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
+	public static void changePassword(String username,String new_password){
+		Hashtable<String, String> env = new Hashtable<String, String>();
+		env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
+		env.put(Context.PROVIDER_URL,"ldap://172.16.1.231:389");
+		env.put(Context.SECURITY_AUTHENTICATION,"simple");
+		env.put(Context.SECURITY_PRINCIPAL,"cn=admin,dc=iiitk,dc=ac,dc=in");
+		env.put(Context.SECURITY_CREDENTIALS,"iiitk_2013");
+
+		try
+		{
+			// Create the initial directory context
+			InitialDirContext initialContext = new InitialDirContext(env);
+			DirContext ctx = (DirContext)initialContext;
+
+			System.out.println("Context Sucessfully Initialized");
+
+			ModificationItem[] mods = new ModificationItem[1];
+
+			Attribute mod0 = new BasicAttribute("userPassword",new_password);
+
+			mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
+
+			ctx.modifyAttributes("cn="+username+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in", mods);
+
+		}
+		catch(Exception e)
+		{
+			System.err.println(e);
+		}
+
+	}
+
 }
 
 
-	
+
 
 
 
