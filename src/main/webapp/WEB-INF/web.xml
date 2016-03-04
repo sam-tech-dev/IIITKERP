@@ -69,6 +69,12 @@
   	<description></description>
   	<servlet-class>actions.registration.StudentServletTemplate</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SignOut</servlet-name>
+  	<display-name>SignOut</display-name>
+  	<description></description>
+  	<servlet-class>actions.authentication.SignOut</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -113,6 +119,10 @@
   <servlet-mapping>
   	<servlet-name>StudentServletTemplate</servlet-name>
   	<url-pattern>/StudentServletTemplate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SignOut</servlet-name>
+  	<url-pattern>/SignOut</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
