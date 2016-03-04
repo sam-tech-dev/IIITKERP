@@ -36,16 +36,14 @@ public class AddUsers {
 		     k++;
 			
 		}
-		/*for(int i=0;i<3;i++){
-			System.out.println(obj.get(1,j[i]));
-		}*/
+		
 		
 		for(int i=1;i<obj.getNumRows();i++){
 			username=obj.get(i,j[0]).toLowerCase()+obj.get(i,j[1]).toLowerCase();
 			password=obj.get(i,j[2]);
 			//System.out.println(username+password);
 			
-			SimpleLdapAuthentication.addEntry(username, password);
+			SimpleLdapAuthentication.addEntry(obj.get(i,j[0]).toLowerCase(),obj.get(i,j[1]).toLowerCase(),username, password);
 			
 		}
 		return "done";
