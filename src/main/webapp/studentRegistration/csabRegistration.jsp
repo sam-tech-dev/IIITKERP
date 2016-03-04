@@ -17,7 +17,10 @@
 		<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 		<link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
 		<link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-		
+		 <%@ page import="java.util.ArrayList" %>
+		 <%@ page import="java.util.Iterator" %>
+		 <%@ page import="users.Student" %>
+ 		 <%@ page import="postgreSQLDatabase.Registration.Query" %>
 		<script type="text/javascript">
 		    $(document).ready(function(){
 		    	$("#step-2").hide();
@@ -164,6 +167,12 @@
       	    <div class="col-md-3"></div>
       	    
       	    <div class="col-md-6">
+      	     <%
+                    ArrayList<Student> csab_list=Query.getCsabStudentProfile(1);
+                    Iterator<Student> iterator=csab_list.iterator();
+                    while(iterator.hasNext()){
+    				Student current=iterator.next();
+                   %>
       	    <div id="step-1">
       	    	<div class="box box-primary">
       			<!-- /.register-box -->
@@ -175,20 +184,22 @@
         <div class="register-box">
             <div class="register-box-body">
                	<form action="" method="post">
+               	   
 					<div class="form-group has-feedback">
-						<input type="text" name="std_id" class="form-control" placeholder="Sudent ID">
+						<input type="text" name="std_id" class="form-control" placeholder="Sudent ID" value="">
+						
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="std_main" class="form-control" placeholder="JEE Main Roll No.">
+						<input type="text" name="std_main" class="form-control" placeholder="JEE Main Roll No." value="<%=current.getJee_main_rollno()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="std_advanced" class="form-control" placeholder="JEE Advanced Roll No.">
+						<input type="text" name="std_advanced" class="form-control" placeholder="JEE Advanced Roll No." value="<%=current.getJee_adv_rollno()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="name" class="form-control" placeholder="Sudent Name">
+						<input type="text" name="name" class="form-control" placeholder="Sudent Name" value="<%=current.getName()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -202,7 +213,7 @@
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="pwd" class="form-control" placeholder="PWD">
+						<input type="text" name="pwd" class="form-control" placeholder="PWD" >
 					</div>
 					
 					<div class="row">
@@ -234,15 +245,15 @@
                	<form action="" method="post">
                	
                		<div class="form-group has-feedback">
-						<input type="text" name="gender" class="form-control" placeholder="Gender">
+						<input type="text" name="gender" class="form-control" placeholder="Gender" value="<%=current.getGender()%>">
 					</div>
                	
 					<div class="form-group has-feedback">
-						<input type="date" name="dob" class="form-control" placeholder="Date of Birth">
+						<input type="date" name="dob" class="form-control" placeholder="Date of Birth" value="<%=current.getDate_of_birth()%>">
 					</div>
       
 					<div class="form-group has-feedback">
-						<input type="text" name="state" class="form-control" placeholder="State">
+						<input type="text" name="state" class="form-control" placeholder="State" value="<%=current.getState_eligibility()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -250,7 +261,7 @@
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="nationality" class="form-control" placeholder="Nationality">
+						<input type="text" name="nationality" class="form-control" placeholder="Nationality" value="<%=current.getNationality()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -304,23 +315,23 @@
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="rank" class="form-control" placeholder="Allocated Rank">
+						<input type="text" name="rank" class="form-control" placeholder="Allocated Rank" value="<%=current.getAllocated_rank()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="choice" class="form-control" placeholder="Choice No.">
+						<input type="text" name="choice" class="form-control" placeholder="Choice No." value="<%=current.getChoice_no()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="quota" class="form-control" placeholder="Quota">
+						<input type="text" name="quota" class="form-control" placeholder="Quota" value="<%=current.getQuota()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="round" class="form-control" placeholder="Round">
+						<input type="text" name="round" class="form-control" placeholder="Round" value="<%=current.getRound()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="willingness" class="form-control" placeholder="Willingness">
+						<input type="text" name="willingness" class="form-control" placeholder="Willingness" value="<%=current.getWillingness()%>">
 					</div>
 					
 					<div class="row">
@@ -356,23 +367,23 @@
                	<form action="" method="post">
                		
 					<div class="form-group has-feedback">
-						<input type="text" name="status" class="form-control" placeholder="Status">
+						<input type="text" name="status" class="form-control" placeholder="Status" value="<%=current.getStatus()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="text" name="mobile" class="form-control" placeholder="Mobile">
+						<input type="text" name="mobile" class="form-control" placeholder="Mobile" value="<%=current.getMobile()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<input type="email" name="email" class="form-control" placeholder="Email">
+						<input type="email" name="email" class="form-control" placeholder="Email" value="<%=current.getEmail()%>">
 					</div>
 					
 					<div class="form-group has-feedback">
-						<textarea name="address" placeholder="Address..." class="form-control"/></textarea>
+						<textarea name="address" placeholder="Address..." class="form-control" /><%=current.getPermanent_address()%></textarea>
 					</div>
 					
 					<div class="form-group has-feedback">
-						<textarea name="rcname" placeholder="RC Name" class="form-control"/></textarea>
+						<textarea name="rcname" placeholder="RC Name" class="form-control" /><%=current.getRc_name()%></textarea>
 					</div>
 					
 					<div class="form-group has-feedback">
@@ -398,7 +409,7 @@
       		</div>
       	    
       	    </div>
-      	    
+      	    <%} %>
       	    </div>
       	    <div class="col-md-3"></div>
       		

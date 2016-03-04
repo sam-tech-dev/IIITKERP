@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  */
 public class Parser {
-	ArrayList<ArrayList<String>>	array;
+	public ArrayList<ArrayList<String>>	array;
 	int r,c;
 	String csvFile;
 	private static final String COMMA_DELIMITER = ",";
@@ -109,10 +109,12 @@ public class Parser {
 	public void printList(){
 		int rows=getNumRows();
 		
-		for(int i=0;i<rows;i++)
-		for(int j=0;j<getNumCols(i);j++)
-			System.out.print(get(i,j));
+		for(int i=0;i<rows;i++){
+		for(int j=0;j<getNumCols(i);j++){
+			System.out.println(get(i,j));
+		}
 		System.out.println("\n");
+		}
 	}
 	
 	public int checkAndAddColumn(String colName) throws IOException{

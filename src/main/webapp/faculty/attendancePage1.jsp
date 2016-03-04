@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -522,19 +523,19 @@
 			  </div>
 			 </div>
 			 <div class="col-xs-12">
-			  <div class="col-md-4">
+			  <div class="col-md-3">
 				<div class="form-group">
 					<label>From</label>
 					<input type="time" name="fromTime"/>
 				</div>
 			  </div>
-			  <div class="col-md-4">
+			  <div class="col-md-3">
 				<div class="form-group">
 					<label>To</label>
 					<input type="time" name="toTime"/>
 				</div>
 			  </div>
-			  <div class="col-md-4">
+			  <div class="col-md-3">
 				<div class="form-group">
                   <select class="form-control">
                     <option>Choose One</option>
@@ -543,7 +544,26 @@
                   </select>
                 </div>
 			  </div>
-            </div>
+			  <div class="col-md-3">
+			  	<div class="form-group">
+			  		<div class="form-group">
+		                <select class="form-control select2" multiple="multiple" data-placeholder="Select Batch" style="width: 100%;">
+		                  <option>Batch-A</option>
+		                  <option>Batch-B</option>
+		                  <option>Batch-C</option>
+		                  <option>Batch-D</option>
+		                  <option>Batch-E</option>
+		                  <option>Batch-F</option>
+		                  <option>Batch-G</option>
+                		</select>
+              		</div>
+			  	</div>
+			  </div>
+			  <br><br>
+			  <div class="btn-group pull-right">
+				<button type="button" class="btn btn-block btn-danger">Submit</button>
+			  </div>
+			</div>
             
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -671,12 +691,7 @@
                 </tr>
 				</tbody>
               </table>
-              
-			  <br><br>
-			  <div class="btn-group pull-right">
-				<button type="button" class="btn btn-block btn-danger">Submit</button>
-			  </div>
-			</div>
+           </div>
             <!-- /.box-body -->
           </div>
 		</div>
@@ -888,6 +903,7 @@
 <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstr../bootstrap.min.js"></script>
+<script src="../plugins/select2/select2.full.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -911,6 +927,11 @@
       "info": true,
       "autoWidth": false
     });
+  });
+</script>
+<script>
+  $(function () {
+    $(".select2").select2();
   });
 </script>
 </body>
