@@ -1,28 +1,27 @@
-package actions.chats;
+package actions.registration;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
+import postgreSQLDatabase.Registration.Query;
+
 /**
- * Servlet implementation class NewMessage
- * @author Megha
- * Servlet to add new message to database.
- *  
+ * Servlet implementation class ReportStudent
  */
-public class NewMessage extends HttpServlet {
+public class ReportStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewMessage() {
+    public ReportStudent() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,31 +35,18 @@ public class NewMessage extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Parameters message-text, author id, conversation id
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO remove hard coding
-		PreparedStatement proc;
-		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
-			proc.setString(1,request.getParameter("text"));
-			proc.setInt(2,3);
-			proc.setInt(3,67);
-			
-			//System.out.println(proc.toString());
-			 proc.executeQuery();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+
+		int csab_id=Integer.parseInt(request.getParameter("csab_id"));
+		System.out.println(csab_id);
+		int reg_id=Query.reportStudent(csab_id);
+		System.out.println("reg"+reg_id);
+		JSONObject reg=new JSONObject();
+		reg.put("reg", reg_id);
+		PrintWriter pw=response.getWriter();
+		pw.write(reg.toString());
 	}
 
 }

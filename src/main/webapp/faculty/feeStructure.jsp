@@ -14,15 +14,81 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
-  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+	<style>
+		.hideBorder{
+			border:none;
+		}
+	</style>
+	<script>
+		
+		var tableA = new Array(3);
+		var tableB = new Array(3);
+		var tableC = new Array(3);
+		var table = new Array(3);
+		var col_col=0;
+		
+		
+		
+		function changes(){
+			
+				 for(var i=0;i<2;i++){
+					 tableA[i] = new Array(3);
+					 for(var j=0;j<3;j++){
+						 tableA[i][j] = parseInt(document.getElementById("tableA["+i+"]["+j+"]").value);
+					 					 }
+				 		  			 }
+				 
+				 for(var i=0;i<7;i++){
+					 tableB[i] = new Array(3);
+					 for(var j=0;j<3;j++)
+						 tableB[i][j] = parseInt(document.getElementById("tableB["+i+"]["+j+"]").value);
+				 		   			}
+			
+			 	tableC[0] = new Array(3);
+				for(var j=0;j<3;j++){
+					tableC[0][j] = parseInt(document.getElementById("tableC[0]["+j+"]").value);
+								    }
+			
+				 for(var i=0;i<3;i++){
+					 var sum = 0; 
+					 for(var j=0;j<2;j++){
+				 	 	 sum += tableA[j][i];
+					 					}
+					 
+					 a = sum;
+					 document.getElementById("table["+col_col+"]["+i+"]").value = a;
+					 col_col++;
+					 
+					 var sum = 0;
+					 for(var j=0;j<7;j++){
+				 	 	 sum += tableB[j][i];
+					 					}
+					 
+					 b = sum;
+					 document.getElementById("table["+col_col+"]["+i+"]").value = b;
+					 col_col++;
+					 
+					 var sum = 0;
+					 for(var j=0;j<1;j++){
+				 	 	 sum += tableC[j][i];
+					 					}
+					 
+					 c = sum;
+					 document.getElementById("table["+col_col+"]["+i+"]").value = c;
+					 col_col++;
+					 
+					 z = a+b+c;
+					 document.getElementById("table["+col_col+"]["+i+"]").value = z;
+					 col_col = 0;
+					 
+				 					}
+			
+						        }
+	</script>	
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -371,12 +437,12 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="../icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="../buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="../sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="../timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="../modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -467,7 +533,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance(Page-1)
+        Data Tables
+        <small>advanced tables</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -481,220 +548,154 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-			 <div class="col-md-12"> 
-			  <div class="col-md-3">
-			    <div class="form-group">
-                  <select class="form-control">
-                    <option>Academic Year</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">		
-				<div class="form-group">
-                  <select class="form-control">
-                    <option>Semester</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="form-group">
-                  <select class="form-control">
-                    <option>Subcode</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="form-group">
-					<input type="date"/>
-				</div>
-			  </div>
-			 </div>
-			 <div class="col-xs-12">
-			  <div class="col-md-3">
-				<div class="form-group">
-					<label>From</label>
-					<input type="time" name="fromTime"/>
-				</div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="form-group">
-					<label>To</label>
-					<input type="time" name="toTime"/>
-				</div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="form-group">
-                  <select class="form-control">
-                    <option>Choose One</option>
-                    <option>Laboratory</option>
-                    <option>Theory</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">
-			  	<div class="form-group">
-			  		<div class="form-group">
-		                <select class="form-control select2" multiple="multiple" data-placeholder="Select Batch" style="width: 100%;">
-		                  <option>Batch-A</option>
-		                  <option>Batch-B</option>
-		                  <option>Batch-C</option>
-		                  <option>Batch-D</option>
-		                  <option>Batch-E</option>
-		                  <option>Batch-F</option>
-		                  <option>Batch-G</option>
-                		</select>
-              		</div>
-			  	</div>
-			  </div>
-			  <br><br>
-			  <div class="btn-group pull-right">
-				<button type="button" class="btn btn-block btn-danger">Submit</button>
-			  </div>
-			</div>
-            
+            <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Student Id</th>
-                  <th>Student Name</th>
-                  <th>Present</th>
-                  <th>Absent</th>
-                  <th>Leave</th>
+                  <th style="">S No.</th>
+                  <th>Head of Fees</th>
+                  <th>For General Category Student</th>
+                  <th>For SC/ST Category Student</th>
+                  <th>For DASA Student</th>
                 </tr>
-                </thead>
+			   	</thead>
+			   <thead>
+				<tr>
+					<th>A.</th> 
+					<th>Admission/Tuition Fees</th>	
+				</tr>
+			   </thead>  
                 <tbody>
                 <tr>
-                  <td>Std-1</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
+                  <td>1.</td>
+                  <td>Admission Processing Fee</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[0][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[0][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[0][2]" value="0"/></td>	
                 </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Tuition Fee</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[1][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[1][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableA[1][2]" value="0"/></td>
+                </tr>
+			    </tbody>
+				<thead>  
+                <tr>
+                  <th></th>
+                  <th>Total(A)</th>
+                  <th><input class="hideBorder" id="table[0][0]" value="0" disabled /></th>
+                  <th><input class="hideBorder" id="table[0][1]" value="0" disabled /></th>
+				  <th><input class="hideBorder" id="table[0][2]" value="0" disabled /></th>	
+                </tr>
+               </thead>
+			   <thead>
 				<tr>
-                  <td>Std-2</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
+					<th>B.</th>
+					<th>Institute Fees(Common for all students)</th>
+				</tr>
+			   </thead>	
+			   <tbody>
+			     <tr>
+				  <td>3.</td>
+                  <td>Development</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[0][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[0][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[0][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>4.</td>
+                  <td>Library & Book Bank</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[1][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[1][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[1][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>5.</td>
+                  <td>Computer/Internet</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[2][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[2][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[2][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>6.</td>
+                  <td>Sports & Creative Arts Society</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[3][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[3][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[3][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>7.</td>
+                  <td>Students Welfare</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[4][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[4][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[4][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>8.</td>
+                  <td>Industrial Training & Placement</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[5][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[5][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[5][2]" value="0"/></td>
+				 </tr>
+				 <tr>
+				  <td>9.</td>
+                  <td>Examination</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[6][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[6][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableB[6][2]" value="0"/></td>
+				 </tr>  
+			    </tbody>
+				<thead>  
+                <tr>
+                  <th></th>
+                  <th>Total(B)</th>
+                 <th><input class="hideBorder" id="table[1][0]" value="0" disabled /></th>
+                  <th><input class="hideBorder" id="table[1][1]" value="0" disabled /></th>
+				  <th><input class="hideBorder" id="table[1][2]" value="0" disabled /></th>
                 </tr>
+               </thead>
+			   <thead>  
+                <tr>
+					<th>C.</th> 
+					<th>Group Insurance **</th>
+                </tr>
+               </thead>
+			   <tbody>
 				<tr>
-                  <td>Std-3</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
+				  <td>10.</td>
+                  <td>Insurance Fees (Annual)</td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableC[0][0]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableC[0][1]" value="0"/></td>
+                  <td><input class="hideBorder" onkeyup="changes()" id="tableC[0][2]" value="0"/></td>	
                 </tr>
-				<tr>
-                  <td>Std-4</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
+			   </tbody>
+			   <thead>
+				 <tr>
+                  <th></th>
+                  <th>Total (C)</th>
+				  <th><input class="hideBorder" id="table[2][0]" value="0" disabled /></th>
+                  <th><input class="hideBorder" id="table[2][1]" value="0" disabled /></th>
+				  <th><input class="hideBorder" id="table[2][2]" value="0" disabled /></th>
                 </tr>
-				<tr>
-                  <td>Std-5</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
+               </thead>   
+			   <thead>
+				 <tr>
+                  <th></th>
+                  <th>Total (A+B+C)</th>
+                  <th><input class="hideBorder" id="table[3][0]" value="0" disabled /></th>
+                  <th><input class="hideBorder" id="table[3][1]" value="0" disabled /></th>
+				  <th><input class="hideBorder" id="table[3][2]" value="0" disabled /></th>
                 </tr>
-				<tr>
-                  <td>Std-6</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-7</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-8</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-9</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-10</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-11</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-12</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-13</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-14</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-15</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				<tr>
-                  <td>Std-16</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-				</tbody>
+               </thead>	  
               </table>
-           </div>
+            </div>
             <!-- /.box-body -->
           </div>
-		</div>
+          <!-- /.box -->
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -703,6 +704,7 @@
   </div>
   <!-- /.content-wrapper -->
   
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -902,8 +904,7 @@
 <!-- jQuery 2.1.4 -->
 <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="../bootstr../bootstrap.min.js"></script>
-<script src="../plugins/select2/select2.full.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -912,26 +913,21 @@
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../di../app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../di../demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
-      "paging": true,
+      "paging": false,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
-      "info": true,
+      "ordering": false,
+      "info": false,
       "autoWidth": false
     });
-  });
-</script>
-<script>
-  $(function () {
-    $(".select2").select2();
   });
 </script>
 </body>

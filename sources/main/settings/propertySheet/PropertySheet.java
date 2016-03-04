@@ -2,9 +2,6 @@
  * 
  */
 package settings.propertySheet;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.json.JSONArray;
@@ -12,13 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import exceptions.ConfigException;
-import fileExplorer.FileExplorer;
-
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 
 
@@ -28,12 +19,16 @@ import javax.swing.text.html.HTMLDocument.Iterator;
  */
 public class PropertySheet {
 
+	/**
+	 * @param sheet_name
+	 * Creates a New Property Sheet as a JSONObject
+	 */
 	public static void newPropertySheet(String sheet_name){
 		String content="{}";
 		fileExplorer.File.writeFile(content, sheet_name);
 	}	
 
-	public static void addAttribute(String sheet_name,String attribute,boolean isArray  ) throws ConfigException {
+	public static void addAttribute(String sheet_name,String attribute,boolean isArray) throws ConfigException {
 		JSONObject object=new JSONObject(fileExplorer.File.readFile(sheet_name));
 		if(checkAttribute(sheet_name, attribute)){
 			ConfigException e = new	exceptions.ConfigException("Attribute already exists!");
@@ -146,7 +141,7 @@ public class PropertySheet {
 		//		list.add("2");
 		//		list.add("3");
 		//		setAttributeArray("sheet2.config","marks",list);
-		
+
 		//		pushAttributeValue("sheet2.config", "marks", "7");
 
 		//Object object = getValue("sheet2.config", "user");

@@ -8,15 +8,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import exceptions.IncorrectFormatException;
-import postgreSQLDatabase.onlineTest.Question;
 import users.Student;
 
 /**

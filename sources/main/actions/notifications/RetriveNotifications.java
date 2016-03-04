@@ -26,55 +26,57 @@ import postgreSQLDatabase.notifications.Notifications;
  */
 public class RetriveNotifications extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RetriveNotifications() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public RetriveNotifications() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		PrintWriter writer = response.getWriter();
 		PreparedStatement proc;
-		ArrayList<Notifications> Notificationss=new ArrayList<Notifications>();
+		ArrayList<Notifications> notifications = new ArrayList<Notifications>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"getUnreadNotificationss\"(?);");
-			proc.setInt(1,1);
-
-			ResultSet rs=proc.executeQuery();
+			proc = postgreSQLDatabase.onlineTest.Query.getConnection()
+					.prepareStatement("SELECT public.\"getUnreadNotifications\"(?);");
+			proc.setInt(1, 1);
+			ResultSet rs = proc.executeQuery();
 			rs.next();
-			String postgre=rs.getString(1);
+			String postgre = rs.getString(1);
+			//System.out.println(rs.getString(1));
+			JSONArray jArray = new JSONArray(rs.getString(1));
 
-
-			JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
-			for(int i=0;i<jArray.length();i++)
-			{	
-				JSONArray Notifications=new JSONArray(jArray.getString(i));
-
-				JSONObject current_object=Notifications.getJSONObject(0);
-
-
-				Notifications current=new Notifications();
+			for (int i = 0; i < jArray.length(); i++) {
+				JSONObject current_object = jArray.getJSONObject(i);
+				Notifications current = new Notifications();
 				current.setId(current_object.getInt("notif_id"));
 				current.setType(current_object.getString("notif_type"));
 				current.setMessage(current_object.getString("message"));
-				System.out.println(current_object.getString("timestamp"));
+				current.setLink(current_object.getString("link"));
+				// System.out.println("time="+current_object.getString("notif_timestamp"));
 				try {
-					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("notif_timestamp")).getTime()));
-					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("expiry")).getTime()));
+					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+							.parse(current_object.getString("notif_timestamp")).getTime()));
+					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+							.parse(current_object.getString("expiry")).getTime()));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -82,30 +84,34 @@ public class RetriveNotifications extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Notificationss.add(current);
+				notifications.add(current);
 			}
-			Iterator<Notifications> iterator = Notificationss.iterator();
-			PrintWriter writer=response.getWriter();
-			JSONArray Notifications_array=new JSONArray();
-			JSONObject Notifications_object;
-			while(iterator.hasNext()){
-				Notifications_object = new JSONObject();
-				Notifications current=iterator.next();
-				Notifications_object.put("id",current.getId());
-				Notifications_object.put("type",current.getType());
-				Notifications_object.put("message",current.getMessage());
-				Notifications_object.put("link",current.getLink());
-				Notifications_object.put("timestamp",new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getTimestamp()));
-				Notifications_object.put("expiry",new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getExpiry()));
-				//System.out.println(current.getId()+" "+current.getUsername()+" "+current.getText()+""+current.getTime_stamp());
-				//writer.write(current.getId()+" "+current.getUsername()+" "+current.getText());
-				Notifications_array.put(Notifications_object);
+			Iterator<Notifications> iterator = notifications.iterator();
+
+			JSONArray notifications_array = new JSONArray();
+			JSONObject notifications_object;
+			while (iterator.hasNext()) {
+				notifications_object = new JSONObject();
+				Notifications current = iterator.next();
+				notifications_object.put("notif_id", current.getId());
+				notifications_object.put("type", current.getType());
+				notifications_object.put("message", current.getMessage());
+				notifications_object.put("link", current.getLink());
+				notifications_object.put("timestamp",
+						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getTimestamp()));
+				notifications_object.put("expiry",
+						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getExpiry()));
+				// System.out.println(current.getId()+"
+				// "+current.getUsername()+"
+				// "+current.getText()+""+current.getTime_stamp());
+				// writer.write(current.getId()+" "+current.getUsername()+"
+				// "+current.getText());
+				notifications_array.put(notifications_object);
 			}
-    
+
 			rs.close();
 			proc.close();
-writer.write(Notifications_array.toString());
-
+			writer.write(notifications_array.toString());
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -113,4 +119,4 @@ writer.write(Notifications_array.toString());
 		}
 
 	}
-	}
+}
