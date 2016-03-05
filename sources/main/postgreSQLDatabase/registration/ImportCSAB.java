@@ -1,7 +1,7 @@
 /**
  * 
  */
-package postgreSQLDatabase.Registration;
+package postgreSQLDatabase.registration;
 
 import java.io.IOException;
 import java.sql.Connection;

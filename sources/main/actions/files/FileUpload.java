@@ -57,7 +57,7 @@ public class FileUpload extends HttpServlet {
             String csvfile=uploadFilePath + File.separator + file;
             
             try {
-				new postgreSQLDatabase.Registration.ImportCSAB().createJSON(csvfile);
+				new postgreSQLDatabase.registration.ImportCSAB().createJSON(csvfile);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

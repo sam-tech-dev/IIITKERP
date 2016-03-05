@@ -42,31 +42,35 @@
 			<version>2.2.1</version>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
-	<groupId>javax.mail</groupId>
-	<artifactId>mail</artifactId>
-	<version>1.4</version>
-</dependency>
-<dependency>
-	<groupId>javax.activation</groupId>
-	<artifactId>activation</artifactId>
-	<version>1.1.1</version>
-=======
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
 			<groupId>net.sf.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
 			<version>2.3</version>
 		</dependency>
 		<dependency>
-     <groupId>commons-fileupload</groupId>
-     <artifactId>commons-fileupload</artifactId>
-     <version>1.2.2</version>
-</dependency>
-<dependency>
-     <groupId>commons-io</groupId>
-     <artifactId>commons-io</artifactId>
-     <version>2.4</version>
->>>>>>> c7b2390314022b3744ce2f10c1e71aeacf4703d7
-</dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>erp</finalName>

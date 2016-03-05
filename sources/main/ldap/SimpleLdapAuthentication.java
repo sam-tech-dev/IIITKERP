@@ -31,7 +31,7 @@ public class SimpleLdapAuthentication
 	{
 		try {
 			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			addEntry("ricky","martin", "rickymartin", "12345");
+			addEntry("ricky","martin", "rickymartin", "12345","1000000001");
 			//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,7 +92,14 @@ public class SimpleLdapAuthentication
 		return null;
 
 	}
-	public static void addEntry(String first_name,String last_name,String username,String password) {
+	/**
+	 * @param first_name
+	 * @param last_name
+	 * @param username
+	 * @param password
+	 * @param erp_id
+	 */
+	public static void addEntry(String first_name,String last_name,String username,String password,String erp_id) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -114,14 +121,14 @@ public class SimpleLdapAuthentication
 			pwd.add(password);
 			attributes.put(pwd);
 			Attribute sn = new BasicAttribute("sn");
-			sn.add(last_name);
+			sn.add(erp_id);
 			attributes.put(sn);
+			Attribute uid = new BasicAttribute("uid");
+			uid.add(username);
+			attributes.put(uid);
 			Attribute fname = new BasicAttribute("givenName");
-			fname.add(first_name);
+			fname.add(first_name+" "+last_name);
 			attributes.put(fname);
-			Attribute user_name = new BasicAttribute("userid");
-			user_name.add(username);
-			attributes.put(user_name);
 			try {
 
 				context.createSubcontext(
