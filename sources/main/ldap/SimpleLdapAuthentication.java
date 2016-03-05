@@ -31,7 +31,7 @@ public class SimpleLdapAuthentication
 	{
 		try {
 			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			addEntry("joeypint","joeypinto");
+			addEntry("ricky","martin", "rickymartin", "12345");
 			//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,7 +92,7 @@ public class SimpleLdapAuthentication
 		return null;
 
 	}
-	public static void addEntry(String name,String password) {
+	public static void addEntry(String first_name,String last_name,String username,String password) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -104,11 +104,35 @@ public class SimpleLdapAuthentication
 		env.put(Context.SECURITY_CREDENTIALS, "iiitk_2013");
 
 		try {
-			//System.out.println("hello");
 
 			DirContext context = new InitialDirContext(env);
+			Attributes attributes = new BasicAttributes();
+			Attribute attribute = new BasicAttribute("objectClass");
+			attribute.add("inetOrgPerson");
+			attributes.put(attribute);
+			Attribute pwd = new BasicAttribute("userPassword");
+			pwd.add(password);
+			attributes.put(pwd);
+			Attribute sn = new BasicAttribute("sn");
+			sn.add(last_name);
+			attributes.put(sn);
+			Attribute fname = new BasicAttribute("givenName");
+			fname.add(first_name);
+			attributes.put(fname);
+			Attribute user_name = new BasicAttribute("userid");
+			user_name.add(username);
+			attributes.put(user_name);
+			try {
 
-			addUser(context,name,password);
+				context.createSubcontext(
+						"cn="+first_name+" "+last_name+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
+
+			} catch (NamingException e) {
+
+				e.printStackTrace();
+
+			}
+
 			System.out.println("entered successfully");
 
 
@@ -129,41 +153,7 @@ public class SimpleLdapAuthentication
 	}
 	public static void addUser(DirContext context,String name,String password) {
 
-		Attributes attributes = new BasicAttributes();
-
-		Attribute attribute = new BasicAttribute("objectClass");
-
-		attribute.add("inetOrgPerson");
-
-		attributes.put(attribute);
-
-
-
-		Attribute pwd = new BasicAttribute("userPassword");
-
-
-		pwd.add(password);
-		attributes.put(pwd);
 		
-		Attribute sn = new BasicAttribute("sn");
-
-
-		sn.add("i");
-		attributes.put(sn);
-
-
-		try {
-
-			context.createSubcontext(
-
-					"cn="+name+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
-
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-
-		}
-
 	}
 
 	public static void changePassword(String username,String new_password){
