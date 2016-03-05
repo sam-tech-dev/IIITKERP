@@ -11,17 +11,14 @@
       <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
-        	
           <li>
             <a href="javascript::;">
-            
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">  
-              <div class="menu-info user">
-              
-                <h4 class="control-sidebar-subheading">Joey Pinto</h4>
 
-                Online
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
               </div>
             </a>
           </li>
@@ -41,7 +38,7 @@
               <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
               <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Joey is an idiot and he is very rude</h4>
+                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
 
                 <p>nora@example.com</p>
               </div>
