@@ -31,7 +31,7 @@ public class SimpleLdapAuthentication
 	{
 		try {
 			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			addEntry("ricky","martin", "rickymartin", "12345");
+			addEntry("ricky","martin", "rickymartin", "12345","1000000001");
 			//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -42,7 +42,7 @@ public class SimpleLdapAuthentication
 
 
 
-	public static String searchAndAuthenticate(String username,String password) throws NamingException{
+	public static JSONObject searchAndAuthenticate(String username,String password) throws NamingException{
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -81,18 +81,26 @@ public class SimpleLdapAuthentication
 				if(ou.equals("students"))credentials.put("type","student");
 				if(ou.equals("faculty"))credentials.put("type","faculty");
 				credentials.put("name",attrs.get("cn").get(0));
+				credentials.put("erpId",attrs.get("sn").get(0) );
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			return credentials.toString();
+			return credentials;
 		}
 		// Exception otherwise ...
 		return null;
 
 	}
-	public static void addEntry(String first_name,String last_name,String username,String password) {
+	/**
+	 * @param first_name
+	 * @param last_name
+	 * @param username
+	 * @param password
+	 * @param erp_id
+	 */
+	public static void addEntry(String first_name,String last_name,String username,String password,String erp_id) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -114,14 +122,14 @@ public class SimpleLdapAuthentication
 			pwd.add(password);
 			attributes.put(pwd);
 			Attribute sn = new BasicAttribute("sn");
-			sn.add(last_name);
+			sn.add(erp_id);
 			attributes.put(sn);
+			Attribute uid = new BasicAttribute("uid");
+			uid.add(username);
+			attributes.put(uid);
 			Attribute fname = new BasicAttribute("givenName");
-			fname.add(first_name);
+			fname.add(first_name+" "+last_name);
 			attributes.put(fname);
-			Attribute user_name = new BasicAttribute("userid");
-			user_name.add(username);
-			attributes.put(user_name);
 			try {
 
 				context.createSubcontext(

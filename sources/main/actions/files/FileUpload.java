@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
   
-@WebServlet("/FileUpload")
+
 @MultipartConfig(fileSizeThreshold=1024*1024*10,    // 10 MB 
                  maxFileSize=1024*1024*50,          // 50 MB
                  maxRequestSize=1024*1024*100)      // 100 MB
@@ -57,7 +57,7 @@ public class FileUpload extends HttpServlet {
             String csvfile=uploadFilePath + File.separator + file;
             
             try {
-				new postgreSQLDatabase.Registration.ImportCSAB().createJSON(csvfile);
+				new postgreSQLDatabase.registration.ImportCSAB().createJSON(csvfile);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

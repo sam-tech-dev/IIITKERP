@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import postgreSQLDatabase.Registration.Query;
+import postgreSQLDatabase.registration.Query;
 
 /**
  * Servlet implementation class ReportStudent
