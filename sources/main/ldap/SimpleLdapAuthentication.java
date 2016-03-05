@@ -42,7 +42,7 @@ public class SimpleLdapAuthentication
 
 
 
-	public static String searchAndAuthenticate(String username,String password) throws NamingException{
+	public static JSONObject searchAndAuthenticate(String username,String password) throws NamingException{
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -81,12 +81,13 @@ public class SimpleLdapAuthentication
 				if(ou.equals("students"))credentials.put("type","student");
 				if(ou.equals("faculty"))credentials.put("type","faculty");
 				credentials.put("name",attrs.get("cn").get(0));
+				credentials.put("erpId",attrs.get("sn").get(0) );
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			return credentials.toString();
+			return credentials;
 		}
 		// Exception otherwise ...
 		return null;
