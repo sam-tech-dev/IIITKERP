@@ -249,10 +249,10 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
-		if(state_list.contains(state_eligibility.toLowerCase()))
+//		if(state_list.contains(state_eligibility.toLowerCase()))
 			this.state_eligibility = state_eligibility;
-			else
-			throw new IncorrectFormatException("state");
+//			else
+//			throw new IncorrectFormatException("state");
 	
 		
 	}
