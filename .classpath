@@ -25,5 +25,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="C:/Users/tulsi/Downloads/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tulsi/Downloads/javamail1_4_6/javamail-1.4.6/mail.jar"/>
+=======
+>>>>>>> c7b2390314022b3744ce2f10c1e71aeacf4703d7
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
