@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 
 	<head>
@@ -20,7 +21,7 @@
 		 <%@ page import="java.util.ArrayList" %>
 		 <%@ page import="java.util.Iterator" %>
 		 <%@ page import="users.Student" %>
- 		 <%@ page import="postgreSQLDatabase.Registration.Query" %>
+ 		 
 		<script type="text/javascript">
 		    $(document).ready(function(){
 		    	$("#step-2").hide();
