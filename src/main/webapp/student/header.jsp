@@ -1,8 +1,7 @@
-<script src="../dist/js/notifications.js"></script>
 <div id="notif_template" style="display:none">
-				<li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i><span class="notif_msg">5 new members joined today</span> 
+				<li onClick="markAsRead(this)" class="notif_row" >
+                    <a class="notif_link">
+                      <i class="fa fa-users text-aqua"></i><span class="notif_msg" >5 new members joined today</span> 
                     </a>
                   </li>
 </div>
@@ -105,7 +104,7 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning" id="notif_count">10</span>
             </a>
             <ul class="dropdown-menu">
               <li class="header" id="notifications">You have 10 notifications</li>
@@ -233,7 +232,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../SignOut" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -246,4 +245,4 @@
       </div>
     </nav>
   </header>
-  
+  <script src="../dist/js/notifications.js"></script>

@@ -20,7 +20,7 @@ public class File {
 	public static String readFile(String filename){
 		String config="";
 		try{
-			BufferedReader br=new BufferedReader(new FileReader("C:\\Users\\Shubhi\\Desktop\\IIITKERP\\iiitk-erp\\"+filename));
+			BufferedReader br=new BufferedReader(new FileReader(filename));
 			String read=null;
 			StringBuffer sb=new StringBuffer();
 			while((read=br.readLine())!=null ){sb.append(read);}
