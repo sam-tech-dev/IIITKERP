@@ -24,6 +24,22 @@ public class Student {
     
 	private String student_id;
 	private int registration_id;
+	private int csab_id;
+
+	/**
+	 * @return the csab_id
+	 */
+	public int getCsab_id() {
+		return csab_id;
+	}
+
+	/**
+	 * @param csab_id the csab_id to set
+	 */
+	public void setCsab_id(int csab_id) {
+		this.csab_id = csab_id;
+	}
+
 	private String name;
 	private String first_name;
 	private String middle_name;
@@ -114,15 +130,8 @@ public class Student {
 	
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
-//     test.setAddress("aiebg jfgbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuj");
-//     test.setAllocated_category("open");
-//     test.setCategory("sc");
-//     test.setDate_of_birth("12-10-1993");
-//     test.setEmail("");
-//     test.setGender("male");
-//     test.setMobile("1234567890");
      test.setName("joey pinto");
-     test.setProgram_allocated("computer engineering");
+     test.setProgram_allocated("Computer Engineering (4 Years Bachelor of Technology)");
      test.setState_eligibility("Uttar Pradesh");
      test.setStudent_id("");
 	}
@@ -130,8 +139,19 @@ public class Student {
 	 public Student(){
 	 category_list.addAll(Arrays.asList("general","sc","st","obc-ncl"));
 	 gender_list.addAll(Arrays.asList("male","female"));
-	 state_list.addAll(Arrays.asList("uttar pradesh","uttarakhand"));
-	 program_allocated_list.addAll(Arrays.asList("computer engineering","electronics and communication engineering"));
+	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASTRA"
+				,"HARYANA"
+				,"DELHI (NCT)"
+				,"MADHYA PRADESH"
+				,"KERALA"
+				,"UTTAR PRADESH"
+				,"BIHAR"
+				,"CHANDIGARH (UT)"
+				,"PUNJAB"
+				,"RAJASTHAN"
+				,"TELANGANA"
+));
+	 program_allocated_list.addAll(Arrays.asList("Computer Engineering (4 Years Bachelor of Technology)"));
 	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl"));
 	 nationality_list.addAll(Arrays.asList("indian"));
 	 }
@@ -240,10 +260,10 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
-		if(state_list.contains(state_eligibility.toLowerCase()))
+		if(state_list.contains(state_eligibility.toUpperCase()))
 			this.state_eligibility = state_eligibility;
 			else
-			throw new IncorrectFormatException("state");
+			throw new IncorrectFormatException("state"+state_eligibility);
 	
 		
 	}
@@ -260,7 +280,7 @@ public class Student {
 		if(program_allocated_list.contains(program_allocated.toLowerCase()))
 			this.program_allocated = program_allocated;
 			else
-			throw new IncorrectFormatException("program_alloted");
+			throw new IncorrectFormatException("program_allocated"+program_allocated);
 		
 	}
 	/**
@@ -290,10 +310,7 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-		//String regex = Pattern.quote("\\+?[0-9]*)");
-		//Pattern pattern=Pattern.compile(regex);
-		//Matcher matcher=pattern.matcher(mobile);
-		 Pattern pattern= Pattern.compile("[a-zA-Z\\s]+");
+		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
 	      Matcher matcher = pattern.matcher(mobile);
 		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
@@ -728,5 +745,19 @@ public class Student {
 		this.pwd = pwd;
 	}
 
+	private boolean reported;
+	/**
+	 * @return the reported
+	 */
+	public boolean isReported() {
+		return reported;
+	}
+
+	/**
+	 * @param reported the reported to set
+	 */
+	public void setReported(boolean reported) {
+		this.reported = reported;
+	}
 	
 }

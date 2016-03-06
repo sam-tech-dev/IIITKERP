@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import settings.database.PostgreSQLConnection;
+
 /**
  * Servlet implementation class NewMessage
+ * @author Megha
+ * Servlet to add new message to database.
+ *  
  */
 public class NewMessage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,14 +38,15 @@ public class NewMessage extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Parameters message-text, author id, conversation id
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO remove hard coding
 		PreparedStatement proc;
 		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
 			proc.setString(1,request.getParameter("text"));
-			proc.setInt(2,3);
+			proc.setLong(2,Long.parseLong(request.getSession().getAttribute("erpId").toString()));
 			proc.setInt(3,67);
 			
 			//System.out.println(proc.toString());
@@ -54,7 +60,7 @@ public class NewMessage extends HttpServlet {
 		
 		
 		
-		//return rs.getInt("newTestPaper");
+		
 		
 		
 	}

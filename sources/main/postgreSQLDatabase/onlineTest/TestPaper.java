@@ -9,7 +9,7 @@ import org.json.JSONException;
 public class TestPaper {
 private String subject,author,status,question_file;
 private ArrayList<Integer> questions;
-private int id;
+int id;
 private Date creation_date;
 private Duration duration;
 public Duration getDuration() {

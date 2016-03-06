@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -9,9 +10,9 @@
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
@@ -19,6 +20,22 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
 
   <script>
 	function rowValue(string){
@@ -38,7 +55,13 @@
   <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
-  
+<script src="../dist/js/reportStudent.js"></script>
+ <%@ page import="java.util.ArrayList" %>
+ <%@ page import="java.util.Iterator" %>
+ <%@ page import="users.Student" %>
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,7 +76,129 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-
+	
+	<span id="hiddenDetails">
+		<div class="example-modal">
+        <div class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">x</span></button>
+                <h4 class="modal-title"></h4>
+              </div>
+              <div class="modal-body">
+                <table id="example1" class="table table-bordered table-striped">
+                	<tbody>
+                		<tr>
+                			<td>Name</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Student ID</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Category</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>JEE Main Roll No.</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>JEE Advanced Roll No.</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>State</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Phone Number</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Email</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Date Of Birth</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Program Allocated</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Allocated Category</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Allocated Rank</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Status</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Choice Number</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Physically Disabled</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Gender</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Quota</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Round</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Willingness</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Address</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>RC Name</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Nationality</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>ID</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Entry Date</td>
+                			<td></td>
+                		</tr>
+                		<tr>
+                			<td>Reported</td>
+                			<td></td>
+                		</tr>
+                	</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</span>
+	
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -68,151 +213,69 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Student ID</th>
+                  <th>Report</th>
+                  <th>View</th>	
                   <th>Name</th>
                   <th>Category</th>
-                  <th>Gender</th>
-                  <th>Date Of Birth</th>
-                  <th>State(Eligibility)</th>
-                  <th>Program Allocated</th>
-                  <th>Allocated Categoy</th>
-                  <th>Mobile</th>
+                  <th>JEE Main Roll No.</th>
+                  <th>JEE Advanced Roll No.</th>
+                  <th>State</th>
+                  <th>Phone Number</th>
                   <th>Email</th>
+                  <th>Date Of Birth</th>
+                  <th>Program Allocated</th>
+                  <th>Allocated Category</th>
+                  <th>Allocated Rank</th>
+                  <th>Status</th>
+                  <th>Choice Number</th>
+                  <th>Physically Disabled</th>
+                  <th>Gender</th>
+                  <th>Quota</th>
+                  <th>Round</th>
+                  <th>Willingness</th>
                   <th>Address</th>
-                </tr>
+                  <th>RC Name</th>
+                  <th>Nationality</th>
+                  <th>Entry Date</th>
+                  <th>Reported</th>
                 </thead>
                 <tbody>
-                <tr onclick="return rowValue('student-1')">
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
+                <%
+                ArrayList<Student> csab_list=Query.getCsabStudentList();
+                Iterator<Student> iterator=csab_list.iterator();
+                while(iterator.hasNext()){
+    				Student current=iterator.next();
+                %>
+                <tr>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
+                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><%=current.getName() %></td>
+                  <td><%=current.getCategory() %></td>
+                  <td><%=current.getJee_main_rollno() %></td>
+                  <td><%=current.getJee_adv_rollno() %></td>
+                  <td><%=current.getState_eligibility()%></td>
+                  <td><%=current.getMobile()%></td>
+                  <td><%=current.getEmail() %></td>
+                  <td><%=current.getDate_of_birth()%></td>
+                  <td><%=current.getProgram_allocated()%></td>
+                  <td><%=current.getAllocated_category()%></td>
+                  <td><%=current.getAllocated_rank()%></td>
+                  <td><%=current.getStatus() %></td>
+                  <td><%=current.getChoice_no() %></td>
+                  <td><%=current.isPwd()%></td>
+                  <td><%=current.getGender() %></td>
+                  <td><%=current.getQuota() %></td>
+                  <td><%=current.getRound() %></td>
+                  <td><%=current.getWillingness() %></td>
+                  <td><%=current.getPermanent_address() %></td>
+                  <td><%=current.getRc_name() %></td>
+                  <td><%=current.getNationality() %></td>
+                  <td><%=current.getEntry_time() %></td>
+                  <td><%=current.isReported() %></td>
                 </tr>
-				<tr onclick="return rowValue('student-2')">
-                  <td>2013KUCP1002</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-3')">
-                  <td>2013KUCP1003</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-4')">
-                  <td>2013KUCP1004</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-5')">
-                  <td>2013KUCP1005</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-6')">
-                  <td>2013KUCP1006</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-7')">
-                  <td>2013KUCP1007</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-8')">
-                  <td>2013KUCP1008</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-9')">
-                  <td>2013KUCP1009</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>SC</td>
-				  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				<tr onclick="return rowValue('student-10')">
-                  <td>2013KUCP1010</td>
-                  <td>Sumit Kumar Sagar</td>
-				  <td>SC</td>
-                  <td>Male</td>
-                  <td>12 July, 1996</td>
-                  <td>Uttar Pradesh</td>
-                  <td>Computer Science & Engineering</td>
-                  <td>Open</td>
-                  <td>1234567890</td>
-                  <td>timus.k.sagar@gmail.com</td>
-                  <td>Bareilly</td>
-                </tr>
-				
+				<%
+                }
+				%>
                 </tbody>
               </table>
             </div>

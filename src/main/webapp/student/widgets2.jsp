@@ -832,7 +832,7 @@
 		</div>
 		
       <div class="row">
-	   <div id="chatDiv" style="position:fixed;z-index:10;margin-top:-20px !important;">
+	   <div id="chatDiv" style="position:fixed;z-index:10;margin-top:-170px !important;">
 	     <span id="listPeople">
 		 	<div class="col-md-3">
 		 		<div class="box box-primary direct-chat direct-chat-primary">

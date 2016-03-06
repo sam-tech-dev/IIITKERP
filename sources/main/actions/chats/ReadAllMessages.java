@@ -2,7 +2,6 @@ package actions.chats;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -10,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import settings.database.PostgreSQLConnection;
+
 /**
  * Servlet implementation class ReadAllMessages
+ * mark messages as read
  */
 public class ReadAllMessages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,7 +40,7 @@ public class ReadAllMessages extends HttpServlet {
 		// TODO Auto-generated method stub
 		PreparedStatement proc;
 		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
 			proc.setInt(1,67);
 			//System.out.println(proc.toString());
 			 proc.executeQuery();

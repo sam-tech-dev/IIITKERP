@@ -5,10 +5,8 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -18,12 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.chats.Message;
-import postgreSQLDatabase.onlineTest.Answer;
-import postgreSQLDatabase.onlineTest.Question;
+import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class RetrieveMessage
@@ -54,12 +50,11 @@ public class RetrieveMessage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter writer=response.getWriter();
-		System.out.println("reached");
 		PreparedStatement proc = null;
 		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
 			proc.setInt(1,67);
 rs=proc.executeQuery();
 			rs.next();
@@ -108,7 +103,7 @@ rs=proc.executeQuery();
 			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			writer.write("");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
