@@ -18,6 +18,30 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
  
+  <script>
+  	function add(){
+  	
+  	  
+  	
+  		document.getElementById("allText").insertAdjacentHTML('beforeend',document.getElementById("textinput").innerHTML);
+  	}
+  	
+  	
+  	function generate(){
+  	
+  		  var fields=[];
+			
+			 var x=document.getElementById("form").getElementsByClassName("addfield");
+			
+			 for(var i = 0;i<x.length;i++){
+					
+			fields.push(x[i].value);
+	       }
+	       document.getElementById("allfields").value=fields;
+	       }
+  	
+  </script>
+ 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -26,6 +50,11 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+
+<span style="display:none;" id="textinput">
+	<div ><input type="text" class="addfield" placeholder="New Field"/></div><br>
+</span>
+
 <div class="wrapper">
 <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
@@ -46,11 +75,34 @@
     </section>
 
     <!-- Main content -->
-	<%int a=10;
-	out.print(a);
-	
-	%>
+	<label  style="color:blue; font-size:30px; margin:0px 0px 0px 380px;text-decoration:underline">Forms</label>
+	 <br> <br>
+	 <br> <br>
+	  <label style="font-size:25px; color:red;margin:0px 0px 0px 200px">Please Select Fields from below!</label><br>
+<br>
+	 <form method="post"  name="form1" action="inputFormat.jsp" id="form">
+	 
+	 <label style="font-size:22px; color:blue; margin:0px 0px 0px 90px">Enter Form Name : </label>
+	 
+	 <input type="text"  name="formname"  style="margin:0px 0px 0px 10px;"></input><br><br>
+	 
+	 <input type="checkbox"  name="fn" value="First Name" style="margin:0px 0px 0px 90px;"><span  style="color:blue; font-size:20px">First Name</span></input><br><br>
+	 <input type="checkbox" name="ln" value="Last Name" style="margin:0px 0px 0px 90px;"><span  style="color:blue; font-size:20px">Last Name</span></input><br><br>
+	 <input type="checkbox" name="ftn" value="Father's Name"  style="margin:0px 0px 0px 90px;"><span  style="color:blue; font-size:20px">Father's Name</span></input><br><br>
+	 <input type="checkbox" name="mn"  value="Mother's Name" style="margin:0px 0px 0px 90px;"><span  style="color:blue; font-size:20px">Mother's Name</span></input><br><br>
+	 
+  	<input type="hidden" id="allfields" name="fields"/>
+	 
+	 <span id="allText"></span>
+	 
+	 
+	 <br>
+    <div> <input type="submit" value="submit" name="submit" id="submit" onClick="generate()" style="width:170px;height:35px;color:white;background-color:#333399;font-size:20px;margin:0px 0px 0px 350px"/></div>
+</form>
+	<div class="btn-group pull-right" onClick="add()"><button class="btn btn-success"></button></div>
     <!-- /.content -->
+    
+    
   </div>
   <!-- /.content-wrapper -->
   <%@ include file="footer.jsp" %>

@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.forms.Query"%>
+<%@page import="java.lang.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="postgreSQLDatabase.forms.Query.java"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -46,12 +51,71 @@
     </section>
 
     <!-- Main content -->
-	<%int a=10;
-	out.print(a);
+    
+    
+    <style type="text/css">
+    
+    #sm:link{
+
+       color:#00cc00;margin:0px 0px 0px 90px;font-size:22px; text-decoration:underline
+	    }
 	
-	%>
+	#sm:hover{
+	
+	    color:blue; margin:0px 0px 0px 90px; font-size:26px;text-decoration:underline
+	
+	     }
+		 
+	
+     #sm:visited{	
+      color:#6666FF;margin:0px 0px 0px 90px; text-decoration:none
+        }
+        
+      </style>  
+ 
+    
+        <%
+        
+        try {
+   		
+   		
+   		 
+   		 ArrayList<String> list = Query.getFormNames();
+   		 
+   		 Iterator<String> iterator = list.iterator();
+   		 
+   		 while(iterator.hasNext()){
+   			 
+   			 out.println(iterator.next());
+   			 
+   		 }
+   		
+   	} catch (SQLException e) {
+   		// TODO Auto-generated catch block
+   		e.printStackTrace();
+   	}
+        
+        
+        
+        %>
+    
+    
+  <!--   
+      <label  style="color:blue; font-size:30px; margin:0px 0px 0px 380px;text-decoration:underline">Forms</label>
+	    <br> <br>
+	   <br> <br>
+	   <a id="sm" href="#" >Bonafide Form</a>
+       <br> <br>
+       <a  id="sm" href="#" >Backlog Form</a>
+       <br> <br> 
+       <a  id="sm" href="#" >Create new Form</a> 
     <!-- /.content -->
+    
+    
+    
   </div>
+  
+  --> 
   <!-- /.content-wrapper -->
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
