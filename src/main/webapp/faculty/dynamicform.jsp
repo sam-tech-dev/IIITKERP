@@ -35,7 +35,7 @@
 	function generate(){
 	  var question_array=[];
 			
-			var x=document.getElementById("testPaper").getElementsByClassName("box box-solid bg-teal-gradient");
+			 var x=document.getElementById("testPaper").getElementsByClassName("box box-solid bg-teal-gradient");
 			
 			for(var i = 0;i<x.length;i++){
 			
@@ -106,6 +106,7 @@
 			
 	    return JSON.stringify(question_array);
 	} 	
+	
 	function createTestPaper(){
 		alert(generate());
 		var questions=escape(generate());

@@ -46,7 +46,10 @@
     </section>
 
     <!-- Main content -->
+	<%int a=10;
+	out.print(a);
 	
+	%>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
