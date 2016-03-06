@@ -10,6 +10,10 @@
 		<servlet-class>actions.authentication.SignIn</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>RetrieveConversationsInfo</servlet-name>
+		<servlet-class>actions.chats.RetrieveConversationsInfo</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
 		<display-name>CreateTestPaper</display-name>
 		<description></description>
@@ -106,6 +110,10 @@
 	<servlet-mapping>
 		<servlet-name>GetQuestion</servlet-name>
 		<url-pattern>/GetQuestion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RetrieveConversationsInfo</servlet-name>
+		<url-pattern>/RetrieveConversationsInfo</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GenerateChallan</servlet-name>

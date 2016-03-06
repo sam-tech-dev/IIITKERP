@@ -46,40 +46,46 @@ public class RetrieveConversationsInfo extends HttpServlet {
 		PreparedStatement proc = null;
 		PrintWriter writer=response.getWriter();
 		try {
-			String user_id=request.getParameter("user_id");
+			Long user_id=Long.parseLong(request.getSession().getAttribute("erpId").toString());
 			
 			proc = Query.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
-			proc.setInt(1,Integer.parseInt(user_id));
-			 rs=proc.executeQuery();
+			proc.setLong(1,user_id);
 			System.out.println(proc);
+			 rs=proc.executeQuery();
+			
 			rs.next();
 			String postgre=rs.getString(1);
 			
 			JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
+			
 		    ArrayList<Conversation> convos=new ArrayList<Conversation>();
-			for(int i=0;i<jArray.length();i++)
+		   
+		    for(int t=0;t<jArray.length();t++)
 			{
-				JSONArray current_array=new JSONArray(jArray.getString(i));
-				//System.out.println(current_array);
-			for(int j=0;j<current_array.length();j++)	{
-				JSONObject current_object=current_array.getJSONObject(j);
+			    String temp=jArray.get(t).toString();
+			   
+				JSONObject current_object=new JSONObject(temp.substring(1,temp.length()-1));
+				
+			
 				Conversation convo=new Conversation();
 				convo.setChat_name(current_object.getString("chatname"));
-				
+				convo.setConversation_id(current_object.getLong("conversation_id"));
 				JSONArray j_array=current_object.getJSONArray("member_list");
 				ArrayList<String> members=new ArrayList<String>();
-				for(i=0;i<j_array.length();i++){
+				for(int i=0;i<j_array.length();i++){
 			       members.add(j_array.getString(i));
 				}
 				convo.setMembers(members);
 				convos.add(convo);
 			}
+				
 			JSONArray convo_array=new JSONArray();
 			Iterator<Conversation>convo_iterator=convos.iterator();
 			while(convo_iterator.hasNext()){
 				Conversation current=convo_iterator.next();
 				JSONObject convo_object=new JSONObject();
 				convo_object.put("chat_name",current.getChat_name());
+				convo_object.put("conversation_id",current.getConversation_id());
 				ArrayList<String>members=current.getMembers();
 				JSONArray members_array=new JSONArray();
 				Iterator<String> members_iterator = members.iterator();
@@ -89,13 +95,14 @@ public class RetrieveConversationsInfo extends HttpServlet {
 				convo_object.put("members", members_array);
 				convo_array.put(convo_object);
 			}
-			//System.out.println(convos.toString());	
+			
 				writer.write(convo_array.toString());
 
-			}
+			
 
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
+			writer.write("");
 			e1.printStackTrace();
 		}
 		

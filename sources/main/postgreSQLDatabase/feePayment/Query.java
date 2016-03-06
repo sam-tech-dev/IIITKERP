@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import settings.database.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,28 +22,7 @@ import actions.chats.Conversation;
  *
  */
 public class Query {
-	static Connection conn ;
-
-	public static Connection getConnection() {
-
-		if(conn==null){
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				conn = DriverManager
-						.getConnection("jdbc:postgresql://172.16.1.231:5432/iiitk",
-								"developer", "developer");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return conn;
-	}
+	
 
 
 	public static ArrayList<Payment> getFeePaymentHistory (long user_id) {
@@ -51,7 +30,7 @@ public class Query {
 		PreparedStatement proc;
 		ArrayList<Payment> history_info=new ArrayList<Payment>();
 		try {
-			proc = getConnection().prepareStatement("SELECT public.\"retrieveFeePaymentHistory\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeePaymentHistory\"(?);");
 
 
 			proc.setObject(1, user_id);
