@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="postgreSQLDatabase.forms.Query"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,7 +29,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -47,9 +51,68 @@
     </section>
 
     <!-- Main content -->
-	<div class="row" style="margin-top:230px">
-	   
-      </div>
+	<%
+	
+	int a=10;
+	out.print(a);
+	
+	
+	
+	    PrintWriter writer=response.getWriter();
+	
+	
+		 ArrayList<String> list = Query.getFormNames();
+		 
+		 Iterator<String> iterator = list.iterator();
+		 
+		 while(iterator.hasNext()){
+			 
+			 writer.write(iterator.next());
+		 }
+
+	
+
+	
+	
+	
+	
+	%>
+	
+	
+	 <style type="text/css">
+    
+    #sm:link{
+
+       color:#00cc00;margin:0px 0px 0px 90px;font-size:22px; text-decoration:underline
+	    }
+	
+	#sm:hover{
+	
+	    color:blue; margin:0px 0px 0px 90px; font-size:26px;text-decoration:underline
+	
+	     }
+		 
+	
+     #sm:visited{	
+      color:#6666FF;margin:0px 0px 0px 90px; text-decoration:none
+        }
+        
+      </style>  
+ 
+	 <label  style="color:blue; font-size:30px; margin:0px 0px 0px 380px;text-decoration:underline">Forms</label>
+	    <br> <br>
+	   <br> <br>
+	   <a id="sm" href="#" >Bonafide Form</a>
+       <br> <br>
+       <a  id="sm" href="#" >Backlog Form</a>
+       <br> <br> 
+       <a  id="sm" href="#" >Create new Form</a>
+	
+	
+	
+	
+	
+	
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -78,54 +141,5 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../dist/js/chats.js"></script>
-<script>
-        var count=0;
-		var insChat = new Array(); 
-		var listofpeople = new Array();
-
-		$(document).ready(function(){
-			$("#person-1").hide();
-			$("#person-2").hide();
-			$("#person-3").hide();
-			$("#listPeople").hide();
-		});
-		
-		function showChat(id){
-				id = id.substring(9);
-				var found = $.inArray(id,insChat);
-				
-				if(found==-1){
-					if(count==0){
-						$("#person-1").show();insChat.push(id);
-								}
-					if(count==1){
-						$("#person-2").show();insChat.push(id);
-								}
-					if(count==2){
-						$("#person-3").show();insChat.push(id);
-								}
-					if(count>=3){
-						$("#listPeople").show();
-						var found1 = $.inArray(id,listofpeople);
-						if(found1==-1){
-							listofpeople.push(id);
-							document.getElementById("LOP").innerHTML+='<div class="direct-chat-msg"><a onClick="orderChat('+'\'overflow-'+id+'\''+')">'+id+'</a></div>';
-								}
-							}	
-					count += 1;
-					        }
-				
-		}
-
-		function orderChat(id){
-				id = id.substring(9);
-				a = listofpeople.shift();
-				b = listofpeople.shift();
-				alert(insChat.unshift(a));
-				alert(listofpeople.unshift(b));
-		}
-  </script>
-  
 </body>
 </html>

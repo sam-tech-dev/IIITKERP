@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  
+  
+  <script src="http://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+  
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -24,7 +28,10 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
+ 
 
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -47,9 +54,81 @@
     </section>
 
     <!-- Main content -->
-	<div class="row" style="margin-top:230px">
+	
+	
+	
+
+   <%
+   
+   String formpara= request.getParameter("formname");
+   
+
+  
+    String fnpara= request.getParameter("fn");
+        if(fnpara==null){
+        	fnpara="";
+        }else{
+        	fnpara=fnpara+",";
+        }
+    
+
+    String lnpara= request.getParameter("ln");
+    if(lnpara==null){
+    	lnpara="";
+    }else{
+    	lnpara=lnpara+",";
+    }
+    
+    String ftnpara=request.getParameter("ftn");
+         
+    if(ftnpara==null){
+    	ftnpara="";
+    }else{
+    	ftnpara=ftnpara+",";
+    }
+    
+	 String mnpara= request.getParameter("mn");
+	 if(mnpara==null){
+     	mnpara="";
+     }else{
+     	mnpara=mnpara+",";
+     }
+	 
+
+	 String fields= request.getParameter("fields");
+	 
+	 if(fields==null){
+		 fields="";
+	     }
+		 
+	 
+	  String allFields=fnpara+lnpara+ftnpara+mnpara+fields;
+	  
+	  
+	
+	%>
+	
+	
+	
+	  <form  method="post" action="../RetrieveForms">
+	  
+	  <input style="display:none;" type="text" name="formname" value="<%=formpara%>"/>
+	  
+	  <input style="display:none;" type="text" name="allfield" value="<%=allFields%>"/>
 	   
-      </div>
+	  <textarea cols="80" id="editor1" name="editor1" rows="10"></textarea>   	
+		
+        <script>
+	    CKEDITOR.replace( 'editor1' );
+         </script>
+			
+		
+		<input type="submit" value="submit" name="submit"/>
+		
+		</form>
+		
+		
+	
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -78,54 +157,5 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../dist/js/chats.js"></script>
-<script>
-        var count=0;
-		var insChat = new Array(); 
-		var listofpeople = new Array();
-
-		$(document).ready(function(){
-			$("#person-1").hide();
-			$("#person-2").hide();
-			$("#person-3").hide();
-			$("#listPeople").hide();
-		});
-		
-		function showChat(id){
-				id = id.substring(9);
-				var found = $.inArray(id,insChat);
-				
-				if(found==-1){
-					if(count==0){
-						$("#person-1").show();insChat.push(id);
-								}
-					if(count==1){
-						$("#person-2").show();insChat.push(id);
-								}
-					if(count==2){
-						$("#person-3").show();insChat.push(id);
-								}
-					if(count>=3){
-						$("#listPeople").show();
-						var found1 = $.inArray(id,listofpeople);
-						if(found1==-1){
-							listofpeople.push(id);
-							document.getElementById("LOP").innerHTML+='<div class="direct-chat-msg"><a onClick="orderChat('+'\'overflow-'+id+'\''+')">'+id+'</a></div>';
-								}
-							}	
-					count += 1;
-					        }
-				
-		}
-
-		function orderChat(id){
-				id = id.substring(9);
-				a = listofpeople.shift();
-				b = listofpeople.shift();
-				alert(insChat.unshift(a));
-				alert(listofpeople.unshift(b));
-		}
-  </script>
-  
 </body>
 </html>

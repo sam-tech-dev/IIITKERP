@@ -65,6 +65,12 @@
 		<description></description>
 		<servlet-class>actions.chats.ReadAllMessages</servlet-class>
 	</servlet>
+<servlet>
+  	<servlet-name>RetrieveForms</servlet-name>
+  	<display-name>RetrieveForms</display-name>
+  	<description></description>
+  	<servlet-class>actions.forms.RetrieveForms</servlet-class>
+  </servlet>
 	<servlet>
 		<servlet-name>RetriveNotifications</servlet-name>
 		<display-name>RetriveNotifications</display-name>
@@ -103,6 +109,10 @@
 		<servlet-name>CreateTestPaper</servlet-name>
 		<url-pattern>/CreateTestPaper</url-pattern>
 	</servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetrieveForms</servlet-name>
+  	<url-pattern>/RetrieveForms</url-pattern>
+  </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Quartz</servlet-name>
 		<url-pattern>/Quartz</url-pattern>
