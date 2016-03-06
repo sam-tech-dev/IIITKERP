@@ -1,4 +1,4 @@
-package actions;
+package actions.authentication;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,13 +43,13 @@ public class SignIn extends HttpServlet {
 		String password=request.getParameter("password");
 
 		try {	
-			String result=SimpleLdapAuthentication.searchAndAuthenticate(username, password);
-			if(result!=null){
-			 JSONObject credentials = new JSONObject(result);
+			JSONObject credentials=SimpleLdapAuthentication.searchAndAuthenticate(username, password);
+			if(credentials!=null){
+			
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("name",  credentials.get("name"));
-			
+			session.setAttribute("erpId",credentials.get("erpId") );
 				JSONObject data = new JSONObject();
 
 				data.put("redirect", credentials.get("type")+"/home.jsp");
