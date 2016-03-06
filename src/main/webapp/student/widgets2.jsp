@@ -14,85 +14,91 @@
 
   <script>
         var count=0;
-	  	var order = 0;
+	 
 	  
-		var insChat = new Array(); 
-	  var ChatObjectArray = {}; 
+		var visibleChat = new Array(); 
+	    var ChatObjectArray = {}; 
 
 		  
-		var listofpeople = new Array();
+		var allChats = new Array();
  
-		$(document).ready(function(){
-			$("#listPeople").hide();
-		});
-		function display(){
-			document.getElementById("chatDiv").innerHTML="";//clear all visible chats
-			var allchats= document.getElementById("allChats").getElementsByClassName('chatWindow');
 		
-			//for (i=insChat.length-1;i>=0;i--){   //append to left
-			for (i=0;i<insChat.length;i++){        //append to right
+		
+		function display(id){
+		var visible = $.inArray(id,visibleChat);
+		
+		if(visible==-1){
+			
+			visibleChat.push(id);
+			var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
+						for (i=0;i<chats.length;i++){
+								if(chats[i].dataset.chatId==id){
+									//alert(document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i].nodeName);
+									var itm = document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i];
+
+									var cln = itm.cloneNode(true);
+									cln.style.display="inline";
+									document.getElementById("chatDiv").appendChild(cln);
+									document.getElementById("chatDiv").removeChild(document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i]);
+									
+		
+											break;
+												}
+									
+									}
+						if(visibleChat.length>3){
+							
+							var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
+							for (i=0;i<chats.length;i++){
+							if(chats[i].style.display!="none"){
+								hide(chats[i].dataset.chatId);
+								break;
+							}
+							
+							}
+						}		
+							
+						}
+		}
+			function hide(id){
 				
-				
-				document.getElementById("chatDiv").innerHTML+=allchats[ChatObjectArray[insChat[i]]].innerHTML;
+				var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
+				for (i=0;i<chats.length;i++){
+					
+					if(chats[i].dataset.chatId==id){
+						
+				document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i].style.display="none";
+				break;
+					}
+				visibleChat.splice(visibleChat.indexOf(id),1);
+			}
 				
 			}
-		}
-		function showChat(id){
-				id = id.substring(9);
-				var found = $.inArray(id,insChat);
+		function addChat(id){
+				var found = $.inArray(id,allChats);
 				
 				if(found==-1){
 					
 					var current=document.getElementById("chatBox");  /*Always do */
-						current.getElementsByClassName('chatHeader')[0].innerHTML=id;
-						ChatObjectArray[id]=count;
+						current.getElementsByClassName('chatHeader')[0].innerHTML="chat-"+id;
+						current.getElementsByClassName('chatWindow')[0].style.display="none";
+						current.getElementsByClassName('chatWindow')[0].dataset.chatId=id;
+						current.getElementsByClassName('btn btn-box-tool')[1].setAttribute( "onClick", "javascript: hide("+id+");" );
+					allChats.push(id);
 					
-						
-					document.getElementById("allChats").innerHTML += current.innerHTML;
+					count++;
+					//	alert(document.getElementById("chatDiv").innerHTML);
+					document.getElementById("chatDiv").innerHTML+=document.getElementById("chatBox").innerHTML;
+				//	alert(document.getElementById("chatDiv").getElementsByClassName('chatWindow').length);
+					  //display chat
+				}	
+						display(id);
 					
-					if(count<=2){  //display chat
-						
-						
-						
-								}
-					else{
-						
-						listofpeople.push(insChat[1]);
-						insChat.shift();
-					
-							}
-					insChat.push(id);
-						display();
-					count += 1;
-					        }
+										
 				
 		}
 
-		function orderChat(id){
-				id = id.substring(9);
-				
-				var i = listofpeople.indexOf(id);
-				
-				if(i != -1){
-					a = listofpeople.splice(i,1);alert(a);
-					$(document).ready(function(){
-							$("#overflow-"+a).remove();
-											});
-					
-					if(order<3){
-						c = insChat.splice(order,1);
-						b = insChat.splice(order,0,a);
-						listofpeople.push(c);
-						document.getElementById("LOP").innerHTML+='<div class="direct-chat-msg" id="overflow-'+c+'"><a onClick="orderChat('+'\'overflow-'+c+'\''+')">'+c+'</a></div>';
-						order += 1;
-							   }
-					if(order>=3)
-						order = 0;
-					alert(insChat);
-					alert(listofpeople);
-					
-						   }	
-		}
+		
   </script>
   
   
@@ -777,8 +783,9 @@
 	  <!-- Direct Chat -->
 		<div  style="display:none;">
 			<span id="chatBox">
-				<span class="chatWindow">
-					<div class="col-md-3">
+				<span class="chatWindow" >
+				<div >
+					<div class="col-md-3" >
 						<div class="box box-danger direct-chat direct-chat-danger">
 							<div class="box-header with-border">
 								<h3 class="box-title">
@@ -826,46 +833,14 @@
 							</div>
 						</div>
 					</div>
+					</div>
 				</span>
 			</span>
-			<span id="allChats"></span>
+			
 		</div>
 		
       <div class="row">
-	   <div id="chatDiv" style="position:fixed;z-index:10;margin-top:-170px !important;">
-	     <span id="listPeople">
-		 	<div class="col-md-3">
-		 		<div class="box box-primary direct-chat direct-chat-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">List of Chats</h3>
-						<div class="box-tools pull-right">
-							<span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-							<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body" style="height:250px;">
-						<div class="direct-chat-messages">
-							<div class="direct-chat-msg">
-								<div class="direct-cha-info-clearfix">
-									<span id="LOP"></span>
-								</div>
-							</div>	
-						</div>
-					</div> 
-					<div class="box-footer">
-						<form action="#" method="post">
-							<div class="input-group">
-								<input type="text" name="message" placeholder="Search People..." class="form-control">
-								<span class="input-group-btn">
-									<button type="submit" class="btn btn-primary btn-flat">Send</button>
-								</span>
-							</div>
-						</form>
-					</div>
-				</div>
-			 </div>
-		   </span> 
+	   <div id="chatDiv" style="position:fixed;z-index:10;margin-top:-170px !important;"> 
 	   </div> 	
       </div>
 	  
@@ -1365,7 +1340,7 @@
       <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
-			<li onclick="showChat('showChat-Chat1')">
+			<li onclick="addChat('1')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1377,7 +1352,7 @@
                 </div>	
 			</li>
 			
-			<li onclick="showChat('showChat-Chat2')">
+			<li onclick="addChat('2')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1388,7 +1363,7 @@
 					</div>
                 </div>	
 			</li>
-			<li onclick="showChat('showChat-chat3')">
+			<li onclick="addChat('3')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1399,7 +1374,7 @@
 					</div>
                 </div>	
 			</li>
-			<li onclick="showChat('showChat-chat4')">
+			<li onclick="addChat('4')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1410,7 +1385,7 @@
 					</div>
                 </div>	
 			</li>
-			<li onclick="showChat('showChat-chat5')">
+			<li onclick="addChat('5')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1421,7 +1396,7 @@
 					</div>
                 </div>	
 			</li>
-			<li onclick="showChat('showChat-chat6')">
+			<li onclick="addChat('6')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">
@@ -1432,7 +1407,7 @@
 					</div>
                 </div>	
 			</li>
-			<li onclick="showChat('showChat-chat7')">
+			<li onclick="addChat('7')">
 				<div class="user-panel box-comment">
 					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 					<div class="comment-text">

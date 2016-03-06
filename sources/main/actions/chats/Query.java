@@ -16,42 +16,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.onlineTest.Question;
-
+import settings.database.*;
 /**
  * @author Shubhi
  *
  */
 public class Query {
 
-	static Connection conn ;
 	
-		public static Connection getConnection() {
-
-			if(conn==null){
-				try {
-					Class.forName("org.postgresql.Driver");
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					conn = DriverManager
-							.getConnection("jdbc:postgresql://172.16.1.231:5432/iiitk",
-									"developer", "developer");
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			return conn;
-		}
+		
 	
 		
 				
 		public static void main(String args[]){
 			PreparedStatement proc;
 			try {
-				proc = getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
+				proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
 				proc.setInt(1,2);
 				ResultSet rs=proc.executeQuery();
 				System.out.println(proc);
@@ -97,7 +77,7 @@ public class Query {
 
 }
 public static ArrayList<Conversation> getConversationInfo (int user_id) throws SQLException{
-	PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
+	PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
 	proc.setInt(1,user_id);
 	ResultSet rs=proc.executeQuery();
 	System.out.println(proc);

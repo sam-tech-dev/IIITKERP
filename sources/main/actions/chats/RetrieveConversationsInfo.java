@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import settings.database.PostgreSQLConnection;
+
 /**
  * Servlet implementation class RetrieveConversationsInfo
  */
@@ -48,7 +50,7 @@ public class RetrieveConversationsInfo extends HttpServlet {
 		try {
 			Long user_id=Long.parseLong(request.getSession().getAttribute("erpId").toString());
 			
-			proc = Query.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
 			proc.setLong(1,user_id);
 			System.out.println(proc);
 			 rs=proc.executeQuery();
