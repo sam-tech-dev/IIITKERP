@@ -339,7 +339,7 @@
         </div>
 		<div class="col-xs-4">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-green">
             <div class="inner">
               <h3>100/100</h3>
 
@@ -353,7 +353,7 @@
         </div>
 		<div class="col-xs-4">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-red">
             <div class="inner">
               <h3>0/100</h3>
 

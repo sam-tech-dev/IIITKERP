@@ -12,10 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * @author Megha 
- * 
- */
+
 public class Query {
 
 	static Connection conn ;
