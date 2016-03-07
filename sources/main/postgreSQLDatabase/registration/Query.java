@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import com.sun.mail.handlers.message_rfc822;
 
 import exceptions.IncorrectFormatException;
+import settings.database.PostgreSQLConnection;
 import users.Student;
 
 /**
@@ -151,22 +152,20 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 
 
-public static ArrayList<Student> getCsabStudentProfile(int reg_id) throws SQLException,IncorrectFormatException{
-	ArrayList<Student> students=null;
+public static Student getCsabStudentProfile(int reg_id) throws SQLException,IncorrectFormatException{
+	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayCsabProfile\"(?);");
 		proc.setInt(1,reg_id);
-		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
-		//System.out.println(proc);
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
-
+		
 		for(int i=0;i<jArray.length();i++)
 		{
 			JSONObject current_object=jArray.getJSONObject(i);
-			Student current=new Student();
+			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
 			current.setMiddle_name(current_object.getString("middle_name"));
@@ -194,13 +193,9 @@ public static ArrayList<Student> getCsabStudentProfile(int reg_id) throws SQLExc
 			current.setCsab_id(current_object.getInt("id"));
 			current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 	
-			students.add(current);
+		
 		}
-		Iterator<Student> iterator = students.iterator();	
-		while(iterator.hasNext()){
-			Student current=iterator.next();
-			//System.out.println(current.getRegistration_id()+" "+current.getName());
-		}
+		
 
 		rs.close();
 		proc.close();
@@ -212,16 +207,15 @@ public static ArrayList<Student> getCsabStudentProfile(int reg_id) throws SQLExc
 		e.printStackTrace();
 	}
 
-	return students;
+	return current;
 }
 
 
-public static ArrayList<Student> getRegistrationStudentData(int reg_id) throws SQLException,IncorrectFormatException{
-	ArrayList<Student> students=null;
+public static Student getRegistrationStudentData(int reg_id) throws SQLException,IncorrectFormatException{
+	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentData\"(?);");
 		proc.setInt(1,reg_id);
-		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
 		rs.next();
@@ -231,7 +225,7 @@ public static ArrayList<Student> getRegistrationStudentData(int reg_id) throws S
 		for(int i=0;i<jArray.length();i++)
 		{
 			JSONObject current_object=jArray.getJSONObject(i);
-			Student current=new Student();
+			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
 			current.setMiddle_name(current_object.getString("middle_name"));
@@ -263,14 +257,8 @@ public static ArrayList<Student> getRegistrationStudentData(int reg_id) throws S
 			current.setRoom(address_obj.getString("room"));
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
-			students.add(current);
 		}
-		Iterator<Student> iterator = students.iterator();	
-		while(iterator.hasNext()){
-			Student current=iterator.next();
-			System.out.println(current.getRegistration_id()+" "+current.getName());
-		}
-
+		
 		rs.close();
 		proc.close();
 	}  catch (JSONException e) {
@@ -281,15 +269,14 @@ public static ArrayList<Student> getRegistrationStudentData(int reg_id) throws S
 		e.printStackTrace();
 	}
 
-	return students;
+	return current;
 }
 
-public static ArrayList<Student> getRegistrationStudentDataUpdate(int reg_id) throws SQLException,IncorrectFormatException{
-	ArrayList<Student> students=null;
+public static Student getRegistrationStudentDataUpdate(int reg_id) throws SQLException,IncorrectFormatException{
+	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentDataUpdate\"(?);");
 		proc.setInt(1,reg_id);
-		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
 		rs.next();
@@ -299,7 +286,7 @@ public static ArrayList<Student> getRegistrationStudentDataUpdate(int reg_id) th
 		for(int i=0;i<jArray.length();i++)
 		{
 			JSONObject current_object=jArray.getJSONObject(i);
-			Student current=new Student();
+			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
 			current.setMiddle_name(current_object.getString("middle_name"));
@@ -332,12 +319,6 @@ public static ArrayList<Student> getRegistrationStudentDataUpdate(int reg_id) th
 			current.setHostel(address_obj.getString("hostel"));
 			current.setRoom(address_obj.getString("room"));
 			
-			students.add(current);
-		}
-		Iterator<Student> iterator = students.iterator();	
-		while(iterator.hasNext()){
-			Student current=iterator.next();
-			System.out.println(current.getRegistration_id()+" "+current.getName());
 		}
 
 		rs.close();
@@ -350,7 +331,7 @@ public static ArrayList<Student> getRegistrationStudentDataUpdate(int reg_id) th
 		e.printStackTrace();
 	}
 
-	return students;
+	return current;
 }
 
 
@@ -404,18 +385,20 @@ public static int retrieveRegistrationStatus(int reg_id){
 	
 	
 	try {
-		proc = postgreSQLDatabase.onlineTest.Query.getConnection()
-				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+		proc = PostgreSQLConnection.getConnection().
+				prepareStatement("SELECT public.\"existsRegId\"(?);");
 		proc.setInt(1,reg_id);
 		ResultSet rs = proc.executeQuery();
-		
-		if(rs.next())
-		{
-			return -1;
-		}
-		else{
-			
+		rs.next();
+		System.out.println("exists "+rs.getBoolean(1));
+		if(rs.getBoolean(1)){
+		proc = PostgreSQLConnection.getConnection().
+				prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+		proc.setInt(1,reg_id);
+		rs = proc.executeQuery();	
+		  rs.next();
 			boolean verified=rs.getBoolean(1);
+			System.out.println("verified "+verified);
 			if(verified)
 			{
 				return 1;
@@ -423,6 +406,9 @@ public static int retrieveRegistrationStatus(int reg_id){
 			else{
 				return 0;
 			}
+		}
+		else{
+			return -1;
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block

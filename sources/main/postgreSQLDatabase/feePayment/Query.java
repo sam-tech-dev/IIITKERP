@@ -24,10 +24,10 @@ import actions.chats.Conversation;
 public class Query {
 	
 
-
+	private static PreparedStatement proc;
 	public static ArrayList<Payment> getFeePaymentHistory (long user_id) {
 
-		PreparedStatement proc;
+		
 		ArrayList<Payment> history_info=new ArrayList<Payment>();
 		try {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeePaymentHistory\"(?);");
@@ -61,6 +61,26 @@ public class Query {
 			e.printStackTrace();
 		}
 		return history_info;
+	}
+	
+	public static void addFeeBreakup(String semester,String category,String breakup,String year)
+    {
+		try {
+			JSONArray fee_breakup=new JSONArray(breakup);
+			JSONObject total_obj=fee_breakup.getJSONObject(fee_breakup.length());
+			int amount=Integer.parseInt((String)total_obj.get("total"));
+			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addFeeBreakup\"(?,?,?,?,?);");
+			proc.setString(1,year);
+			proc.setString(2,semester);
+			proc.setString(3,category);
+		    proc.setString(4,breakup);
+			proc.setInt(5,amount);
+			proc.executeQuery();
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static void main(String[] args) {
 
