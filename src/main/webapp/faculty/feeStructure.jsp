@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <script src="../dist/js/feeBreakup.js"></script>
 	<style>
 		.hideBorder{
 			border:none;
@@ -691,7 +692,15 @@
                 </tr>
                </thead>	  
               </table>
+              <form method="post" action="../FeeBreakup">
+              	<input type="hidden" name="year" >
+              	<input type="hidden" name="category">
+              	<input type="hidden" name="semester">
+              	<input type="hidden" name="breakup">
+              	<input type="hidden" name="amount">
+              </form>
             </div>
+            <input type="button" value="button" onClick="createFeeBreakUpJson()"/>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
