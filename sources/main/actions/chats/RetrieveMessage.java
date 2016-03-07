@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.chats.Message;
+import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class RetrieveMessage
@@ -53,7 +54,7 @@ public class RetrieveMessage extends HttpServlet {
 		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
 			proc.setInt(1,67);
 rs=proc.executeQuery();
 			rs.next();
@@ -102,7 +103,7 @@ rs=proc.executeQuery();
 			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			writer.write("");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

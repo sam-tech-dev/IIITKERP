@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import exceptions.IncorrectFormatException;
 import users.Student;
 
@@ -74,8 +76,10 @@ public class Query {
 		return "";
 		
 	}
-public static void main(String[] args) {
-	System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
+public static void main(String[] args) throws SQLException, IncorrectFormatException {
+	getCsabStudentList();
+
+	//System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
 }
 
 
@@ -86,9 +90,9 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
-		//System.out.println(proc);
+		System.out.println(proc);
 		rs.next();
-
+     
 		JSONArray jArray=new JSONArray(rs.getString(1));
 
 		for(int i=0;i<jArray.length();i++)
@@ -412,4 +416,6 @@ public static int reportStudent(int csab_id) {
 }
 
 }
+
+
 
