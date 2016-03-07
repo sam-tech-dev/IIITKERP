@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.notifications.Notifications;
+import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class RetriveNotifications
@@ -55,7 +56,7 @@ public class RetriveNotifications extends HttpServlet {
 		PreparedStatement proc;
 		ArrayList<Notifications> notifications = new ArrayList<Notifications>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection()
+			proc = PostgreSQLConnection.getConnection()
 					.prepareStatement("SELECT public.\"getUnreadNotifications\"(?);");
 			proc.setInt(1, 1);
 			ResultSet rs = proc.executeQuery();

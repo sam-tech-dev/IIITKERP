@@ -131,7 +131,7 @@ public class Student {
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
      test.setName("joey pinto");
-     test.setProgram_allocated("computer engineering");
+     test.setProgram_allocated("Computer Engineering (4 Years Bachelor of Technology)");
      test.setState_eligibility("Uttar Pradesh");
      test.setStudent_id("");
 	}
@@ -139,8 +139,19 @@ public class Student {
 	 public Student(){
 	 category_list.addAll(Arrays.asList("general","sc","st","obc-ncl"));
 	 gender_list.addAll(Arrays.asList("male","female"));
-	 state_list.addAll(Arrays.asList("uttar pradesh","uttarakhand"));
-	 program_allocated_list.addAll(Arrays.asList("computer engineering","electronics and communication engineering"));
+	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASTRA"
+				,"HARYANA"
+				,"DELHI (NCT)"
+				,"MADHYA PRADESH"
+				,"KERALA"
+				,"UTTAR PRADESH"
+				,"BIHAR"
+				,"CHANDIGARH (UT)"
+				,"PUNJAB"
+				,"RAJASTHAN"
+				,"TELANGANA"
+));
+	 program_allocated_list.addAll(Arrays.asList("Computer Engineering (4 Years Bachelor of Technology)"));
 	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl"));
 	 nationality_list.addAll(Arrays.asList("indian"));
 	 }
@@ -249,10 +260,10 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
-		if(state_list.contains(state_eligibility.toLowerCase()))
+		if(state_list.contains(state_eligibility.toUpperCase()))
 			this.state_eligibility = state_eligibility;
 			else
-			throw new IncorrectFormatException("state");
+			throw new IncorrectFormatException("state"+state_eligibility);
 	
 		
 	}
@@ -269,7 +280,7 @@ public class Student {
 		if(program_allocated_list.contains(program_allocated.toLowerCase()))
 			this.program_allocated = program_allocated;
 			else
-			throw new IncorrectFormatException("program_alloted");
+			throw new IncorrectFormatException("program_allocated"+program_allocated);
 		
 	}
 	/**

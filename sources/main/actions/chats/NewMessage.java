@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import settings.database.PostgreSQLConnection;
+
 /**
  * Servlet implementation class NewMessage
  * @author Megha
@@ -42,9 +44,9 @@ public class NewMessage extends HttpServlet {
 		// TODO remove hard coding
 		PreparedStatement proc;
 		 try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
 			proc.setString(1,request.getParameter("text"));
-			proc.setInt(2,3);
+			proc.setLong(2,Long.parseLong(request.getSession().getAttribute("erpId").toString()));
 			proc.setInt(3,67);
 			
 			//System.out.println(proc.toString());
