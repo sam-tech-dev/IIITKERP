@@ -31,6 +31,7 @@ import users.Student;
 public class Query {
 	
 	static Connection conn ;
+	private static PreparedStatement proc;
 	
 	/**
 	 * @return a new connection to postgreSQL
@@ -397,6 +398,39 @@ public static void applyUpdate(int reg_id) throws SQLException{
 	PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"applyUpdate\"(?);");
 	proc.setInt(1,reg_id);
 	proc.executeQuery();
+}
+
+public static int retrieveRegistrationStatus(int reg_id){
+	
+	
+	try {
+		proc = settings.database.PostgreSQLConnection.getConnection()
+				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+		proc.setInt(1,reg_id);
+		ResultSet rs = proc.executeQuery();
+		
+		if(rs.next())
+		{
+			return -1;
+		}
+		else{
+			
+			boolean verified=rs.getBoolean(1);
+			if(verified)
+			{
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return -1;
+	
 }
 
 public static int reportStudent(int csab_id) {
