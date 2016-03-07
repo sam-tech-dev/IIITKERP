@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.chats.Message;
+import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class RetrieveMessage
@@ -53,7 +54,7 @@ public class RetrieveAllMessages extends HttpServlet {
 		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
 			proc.setInt(1,67);
 			proc.setInt(2,0);
 			proc.setInt(3,1000);

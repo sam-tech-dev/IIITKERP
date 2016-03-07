@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -9,9 +10,9 @@
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
@@ -19,7 +20,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
   <style>
     .example-modal .modal {
       position: relative;
@@ -37,15 +38,6 @@
   </style>
 
   <script>
-    $(document).ready(function(){
-    	$("#hiddenDetails").hide();
-    });
-    function prompt(){
-    	$("#list").css({position:'fixed'});
-    	$("#list").hover(function(){$(this).css({cursor:'not-allowed'})});
-    	$("#list").fadeTo(100,0.2);
-    	$("#hiddenDetails").show().animate({top:'20px'},900);
-    }
 	function rowValue(string){
 		string = string.substring(8);
 		alert("Student No is "+string);
@@ -63,7 +55,13 @@
   <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
-  
+<script src="../dist/js/reportStudent.js"></script>
+ <%@ page import="java.util.ArrayList" %>
+ <%@ page import="java.util.Iterator" %>
+ <%@ page import="users.Student" %>
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -79,31 +77,21 @@
       </ol>
     </section>
 	
-	
-	
-    <!-- Main content -->
-    <section class="content">
-      
-      <div class="row">
-       
-      	<div class="col-md-12">
-      		<div class="col-md-4"></div>
-      		<div class="col-md-4">
-      			<span id="hiddenDetails" style="position:absolute;z-index:10;margin-top:-50px;">
+	<span id="hiddenDetails">
 		<div class="example-modal">
         <div class="modal">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">x</span></button>
-                <h4 class="modal-title">Student Details</h4>
+                <h4 class="modal-title"></h4>
               </div>
-              <div class="modal-body" style="height:600px;overflow-y:scroll;">
+              <div class="modal-body">
                 <table id="example1" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
-                			<td style="width:100px;">Name</td>
+                			<td>Name</td>
                 			<td></td>
                 		</tr>
                 		<tr>
@@ -210,15 +198,12 @@
         </div>
       </div>
 	</span>
-      		</div>
-      		<div class="col-md-4"></div>
-      	</div>
-      </div>
-      
-      
+	
+    <!-- Main content -->
+    <section class="content">
       <div class="row">
         <div class="col-xs-12">
-         <span id="list"> 
+          
 		  <div class="box">
             <div class="box-header">
               <h3 class="box-title">Student List</h3>
@@ -231,7 +216,6 @@
                   <th>Report</th>
                   <th>View</th>	
                   <th>Name</th>
-                  <th>Student ID</th>
                   <th>Category</th>
                   <th>JEE Main Roll No.</th>
                   <th>JEE Advanced Roll No.</th>
@@ -252,657 +236,52 @@
                   <th>Address</th>
                   <th>RC Name</th>
                   <th>Nationality</th>
-                  <th>ID</th>
                   <th>Entry Date</th>
                   <th>Reported</th>
                 </thead>
                 <tbody>
+                <%
+                ArrayList<Student> csab_list=Query.getCsabStudentList();
+                Iterator<Student> iterator=csab_list.iterator();
+                while(iterator.hasNext()){
+    				Student current=iterator.next();
+                %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" onclick="prompt()" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
                   <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
+                  <td><%=current.getName() %></td>
+                  <td><%=current.getCategory() %></td>
+                  <td><%=current.getJee_main_rollno() %></td>
+                  <td><%=current.getJee_adv_rollno() %></td>
+                  <td><%=current.getState_eligibility()%></td>
+                  <td><%=current.getMobile()%></td>
+                  <td><%=current.getEmail() %></td>
+                  <td><%=current.getDate_of_birth()%></td>
+                  <td><%=current.getProgram_allocated()%></td>
+                  <td><%=current.getAllocated_category()%></td>
+                  <td><%=current.getAllocated_rank()%></td>
+                  <td><%=current.getStatus() %></td>
+                  <td><%=current.getChoice_no() %></td>
+                  <td><%=current.isPwd()%></td>
+                  <td><%=current.getGender() %></td>
+                  <td><%=current.getQuota() %></td>
+                  <td><%=current.getRound() %></td>
+                  <td><%=current.getWillingness() %></td>
+                  <td><%=current.getPermanent_address() %></td>
+                  <td><%=current.getRc_name() %></td>
+                  <td><%=current.getNationality() %></td>
+                  <td><%=current.getEntry_time() %></td>
+                  <td><%=current.isReported() %></td>
                 </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
-				
-				<tr onclick="return rowValue('student-1')">
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
-                  <td>2013KUCP1001</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                  <td>Sumit Kumar Sagar</td>
-                </tr>
+				<%
+                }
+				%>
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-         </span> 
         </div>
         <!-- /.col -->
       </div>
