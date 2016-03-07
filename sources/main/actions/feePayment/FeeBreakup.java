@@ -1,59 +1,33 @@
-package actions;
+package actions.feePayment;
 
 import java.io.IOException;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.quartz.SchedulerException;
-
-import scheduler.MyApp;
-import scheduler.Test;
+import postgreSQLDatabase.feePayment.Query;
 
 /**
- * Servlet implementation class Quartz
+ * Servlet implementation class FeeBreakup
  */
-public class Quartz extends HttpServlet {
+public class FeeBreakup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Quartz() {
+    public FeeBreakup() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println(request.getParameter("job"));
-		if(request.getParameter("job").equals("add")){
-			try {
-				System.out.println("reached");
-				Test.run();
-			} catch (SchedulerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		if(request.getParameter("job").equals("create")){
-			System.out.println("initialized");
-			MyApp.run();
-		}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -61,7 +35,15 @@ public class Quartz extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String sem=request.getParameter("semester");
+		String cat=request.getParameter("category");
+		String year=request.getParameter("year");
+		String breakup=request.getParameter("breakup");
+		
+     //   postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,cat,breakup,year);
+    
+	
 	}
 
 }
