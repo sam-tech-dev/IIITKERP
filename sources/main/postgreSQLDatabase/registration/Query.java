@@ -404,7 +404,7 @@ public static int retrieveRegistrationStatus(int reg_id){
 	
 	
 	try {
-		proc = postgreSQLDatabase.onlineTest.Query.getConnection()
+		proc = settings.database.PostgreSQLConnection.getConnection()
 				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
 		proc.setInt(1,reg_id);
 		ResultSet rs = proc.executeQuery();
