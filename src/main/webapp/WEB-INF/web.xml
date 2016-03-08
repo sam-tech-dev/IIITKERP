@@ -57,6 +57,18 @@
   	<description></description>
   	<servlet-class>actions.chats.ReadAllMessages</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>StudentsList</servlet-name>
+  	<display-name>StudentsList</display-name>
+  	<description></description>
+  	<servlet-class>actions.attendance.StudentsList</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetrieveSubjects</servlet-name>
+  	<display-name>RetrieveSubjects</display-name>
+  	<description></description>
+  	<servlet-class>actions.gradingModule.RetrieveSubjects</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -92,6 +104,14 @@
   <servlet-mapping>
   	<servlet-name>ReadAllMessages</servlet-name>
   	<url-pattern>/ReadAllMessages</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>StudentsList</servlet-name>
+  	<url-pattern>/StudentsList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetrieveSubjects</servlet-name>
+  	<url-pattern>/RetrieveSubjects</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
