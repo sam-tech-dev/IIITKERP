@@ -88,16 +88,16 @@
 		<servlet-class>actions.feePayment.FeeBreakup</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>Login</servlet-name>
+		<display-name>Login</display-name>
+		<description></description>
+		<servlet-class>actions.registration.Login</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>RegistrationLogin</servlet-name>
 		<display-name>RegistrationLogin</display-name>
 		<description></description>
 		<servlet-class>actions.registration.RegistrationLogin</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>UpdateLastSeen</servlet-name>
-		<display-name>UpdateLastSeen</display-name>
-		<description></description>
-		<servlet-class>actions.authentication.UpdateLastSeen</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
@@ -157,15 +157,16 @@
 		<url-pattern>/FeeBreakup</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>RegistrationLogin</servlet-name>
-		<url-pattern>/RegistrationLogin</url-pattern>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>UpdateLastSeen</servlet-name>
-		<url-pattern>/UpdateLastSeen</url-pattern>
+		<servlet-name>RegistrationLogin</servlet-name>
+		<url-pattern>/RegistrationLogin</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 
 	</welcome-file-list>
+
 </web-app>

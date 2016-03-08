@@ -25,8 +25,9 @@
 		
 		
 		function display(id){
-		var visible = $.inArray(id,visibleChat);
 		
+			var visible = $.inArray(id,visibleChat);
+			
 		if(visible==-1){
 			
 			visibleChat.push(id);
@@ -68,11 +69,18 @@
 					if(chats[i].dataset.chatId==id){
 						
 				document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i].style.display="none";
+			//	alert("visible"+visibleChat);
+		    //    alert("removing"+id);
+		    //    alert("length"+visibleChat.length);
+		    //     alert("removing at position"+visibleChat.indexOf(id));
+				visibleChat.splice(visibleChat.indexOf(id),1);
+		         
+		  //       alert(visibleChat);
 				break;
 					}
-				visibleChat.splice(visibleChat.indexOf(id),1);
-			}
 				
+			}
+		//	alert(visibleChat);
 			}
 		function addChat(id){
 				var found = $.inArray(id,allChats);
@@ -83,7 +91,7 @@
 						current.getElementsByClassName('chatHeader')[0].innerHTML="chat-"+id;
 						current.getElementsByClassName('chatWindow')[0].style.display="none";
 						current.getElementsByClassName('chatWindow')[0].dataset.chatId=id;
-						current.getElementsByClassName('btn btn-box-tool')[1].setAttribute( "onClick", "javascript: hide("+id+");" );
+						current.getElementsByClassName('btn btn-box-tool')[1].setAttribute( "onClick", "javascript: hide('"+id+"');" );
 					allChats.push(id);
 					
 					count++;
@@ -796,7 +804,7 @@
 									<button type="button" class="btn btn-box-tool" data-widget="collapse">
 										<i class="fa fa-minus"></i>
 									</button>
-									<button type="button" class="btn btn-box-tool" data-widget="remove">
+									<button type="button" class="btn btn-box-tool" >
 										<i class="fa fa-times"></i>
 									</button>
 								</div>

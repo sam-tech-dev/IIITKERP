@@ -152,19 +152,22 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 
 
+
 public static Student getCsabStudentProfile(int reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayCsabProfile\"(?);");
 		proc.setInt(1,reg_id);
+		
 		ResultSet rs=proc.executeQuery();
+	
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
 		
-		for(int i=0;i<jArray.length();i++)
-		{
-			JSONObject current_object=jArray.getJSONObject(i);
+		
+			JSONObject current_object=jArray.getJSONObject(0);
+			
 			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
@@ -193,8 +196,10 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 			current.setCsab_id(current_object.getInt("id"));
 			current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 	
+			
 		
-		}
+		
+		
 		
 
 		rs.close();
@@ -202,13 +207,16 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 	}  catch (JSONException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		return null;
 	} catch (ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 
+
 	return current;
 }
+
 
 
 public static Student getRegistrationStudentData(int reg_id) throws SQLException,IncorrectFormatException{
@@ -216,15 +224,16 @@ public static Student getRegistrationStudentData(int reg_id) throws SQLException
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentData\"(?);");
 		proc.setInt(1,reg_id);
+
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
 
-		for(int i=0;i<jArray.length();i++)
-		{
-			JSONObject current_object=jArray.getJSONObject(i);
+		
+			JSONObject current_object=jArray.getJSONObject(0);
+			
 			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
@@ -257,7 +266,9 @@ public static Student getRegistrationStudentData(int reg_id) throws SQLException
 			current.setRoom(address_obj.getString("room"));
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
-		}
+			
+		
+		
 		
 		rs.close();
 		proc.close();
@@ -269,23 +280,26 @@ public static Student getRegistrationStudentData(int reg_id) throws SQLException
 		e.printStackTrace();
 	}
 
+	
 	return current;
 }
+
 
 public static Student getRegistrationStudentDataUpdate(int reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentDataUpdate\"(?);");
 		proc.setInt(1,reg_id);
+
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
 
-		for(int i=0;i<jArray.length();i++)
-		{
-			JSONObject current_object=jArray.getJSONObject(i);
+
+			JSONObject current_object=jArray.getJSONObject(0);
+
 			
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
@@ -319,7 +333,8 @@ public static Student getRegistrationStudentDataUpdate(int reg_id) throws SQLExc
 			current.setHostel(address_obj.getString("hostel"));
 			current.setRoom(address_obj.getString("room"));
 			
-		}
+			
+		
 
 		rs.close();
 		proc.close();
@@ -330,6 +345,7 @@ public static Student getRegistrationStudentDataUpdate(int reg_id) throws SQLExc
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+
 
 	return current;
 }
@@ -385,8 +401,9 @@ public static int retrieveRegistrationStatus(int reg_id){
 	
 	
 	try {
-		proc = PostgreSQLConnection.getConnection().
-				prepareStatement("SELECT public.\"existsRegId\"(?);");
+
+		proc = settings.database.PostgreSQLConnection.getConnection()
+				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
 		proc.setInt(1,reg_id);
 		ResultSet rs = proc.executeQuery();
 		rs.next();
