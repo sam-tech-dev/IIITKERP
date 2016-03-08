@@ -15,8 +15,6 @@
 		<description></description>
 		<servlet-class>actions.testPaper.CreateTestPaper</servlet-class>
 	</servlet>
-
-
 	<servlet>
 		<servlet-name>GetQuestion</servlet-name>
 		<display-name>GetQuestion</display-name>
@@ -78,6 +76,12 @@
 		<servlet-class>actions.registration.ReportStudent</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<display-name>UpdateLastSeen</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.UpdateLastSeen</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>UpdateStudentRegistrationData</servlet-name>
 		<display-name>UpdateStudentRegistrationData</display-name>
 		<description></description>
@@ -109,10 +113,13 @@
 		<servlet-name>CreateTestPaper</servlet-name>
 		<url-pattern>/CreateTestPaper</url-pattern>
 	</servlet-mapping>
-	
 	<servlet-mapping>
 		<servlet-name>GetQuestion</servlet-name>
 		<url-pattern>/GetQuestion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<url-pattern>/UpdateLastSeen</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GenerateChallan</servlet-name>
