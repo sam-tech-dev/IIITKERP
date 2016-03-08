@@ -4,7 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
- 
+
   <servlet>
     <servlet-name>SignIn</servlet-name>
     <servlet-class>actions.authentication.SignIn</servlet-class>
@@ -16,11 +16,7 @@
   	<servlet-class>actions.testPaper.CreateTestPaper</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Quartz</servlet-name>
-  	<display-name>Quartz</display-name>
-  	<description></description>
-  	<servlet-class>actions.Quartz</servlet-class>
-  </servlet>
+
   <servlet>
   	<servlet-name>GetQuestion</servlet-name>
   	<display-name>GetQuestion</display-name>
@@ -178,4 +174,5 @@
    <welcome-file>login.jsp</welcome-file>  
     
   </welcome-file-list>  
+	
 </web-app>
