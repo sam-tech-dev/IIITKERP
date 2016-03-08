@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="settings.database.PostgreSQLConnection"%>
 <%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 
@@ -170,10 +171,7 @@
       	    <div class="col-md-6">
       	     <%     
       	     		String reg_id=(String)request.getSession().getAttribute("reg_id");
-                    ArrayList<Student> csab_list=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
-                    Iterator<Student> iterator=csab_list.iterator();
-                    while(iterator.hasNext()){
-    				Student current=iterator.next();
+                    Student current=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
               %>
       	    <div id="step-1">
       	    	<div class="box box-primary">
@@ -411,7 +409,6 @@
       		</div>
       	    
       	    </div>
-      	    <%} %>
       	    </div>
       	    <div class="col-md-3"></div>
       		
