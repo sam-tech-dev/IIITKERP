@@ -15,8 +15,6 @@
 		<description></description>
 		<servlet-class>actions.testPaper.CreateTestPaper</servlet-class>
 	</servlet>
-
-
 	<servlet>
 		<servlet-name>GetQuestion</servlet-name>
 		<display-name>GetQuestion</display-name>
@@ -109,7 +107,6 @@
 		<servlet-name>CreateTestPaper</servlet-name>
 		<url-pattern>/CreateTestPaper</url-pattern>
 	</servlet-mapping>
-	
 	<servlet-mapping>
 		<servlet-name>GetQuestion</servlet-name>
 		<url-pattern>/GetQuestion</url-pattern>
