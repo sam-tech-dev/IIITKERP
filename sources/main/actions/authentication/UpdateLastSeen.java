@@ -1,6 +1,7 @@
-package actions.registration;
+package actions.authentication;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -8,19 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import postgreSQLDatabase.registration.Query;
-import users.Student;
+import settings.database.PostgreSQLConnection;
 
 /**
- * Servlet implementation class UpdateStudentRegistrationData
+ * Servlet implementation class UpdateLastSeen
  */
-public class UpdateStudentRegistrationData extends HttpServlet {
+public class UpdateLastSeen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateStudentRegistrationData() {
+    public UpdateLastSeen() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,18 +38,17 @@ public class UpdateStudentRegistrationData extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-	 Student student=new Student();
-	 try {
-		 
-		 
-		Query.addUpdateStudentRegistrationDetails(student);
-		
+      String erp_id=(String)request.getSession().getAttribute("erpId");
+      long  erpid=Long.parseLong(erp_id);
+      try {
+		PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"updateLastSeen\"(?);");
+		proc.setLong(1,erpid);
+		proc.executeQuery();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}	
-		
+	}
+      
 	}
 
 }

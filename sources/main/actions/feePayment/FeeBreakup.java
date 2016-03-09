@@ -41,7 +41,8 @@ public class FeeBreakup extends HttpServlet {
 		String year=request.getParameter("year");
 		String breakup=request.getParameter("breakup");
 		
-     //   postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,cat,breakup,year);
+        
+ //  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,cat,breakup,year);
     
 	
 	}
