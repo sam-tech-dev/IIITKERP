@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import exceptions.IncorrectFormatException;
 import users.Student;
 
@@ -29,6 +31,7 @@ import users.Student;
 public class Query {
 	
 	static Connection conn ;
+	private static PreparedStatement proc;
 	
 	/**
 	 * @return a new connection to postgreSQL
@@ -74,8 +77,10 @@ public class Query {
 		return "";
 		
 	}
-public static void main(String[] args) {
-	System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
+public static void main(String[] args) throws SQLException, IncorrectFormatException {
+	getCsabStudentList();
+
+	//System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
 }
 
 
@@ -86,9 +91,9 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
-		//System.out.println(proc);
+		System.out.println(proc);
 		rs.next();
-
+     
 		JSONArray jArray=new JSONArray(rs.getString(1));
 
 		for(int i=0;i<jArray.length();i++)
@@ -482,6 +487,39 @@ public static void applyUpdate(int reg_id) throws SQLException{
 	proc.executeQuery();
 }
 
+public static int retrieveRegistrationStatus(int reg_id){
+	
+	
+	try {
+		proc = settings.database.PostgreSQLConnection.getConnection()
+				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+		proc.setInt(1,reg_id);
+		ResultSet rs = proc.executeQuery();
+		
+		if(rs.next())
+		{
+			return -1;
+		}
+		else{
+			
+			boolean verified=rs.getBoolean(1);
+			if(verified)
+			{
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return -1;
+	
+}
+
 public static int reportStudent(int csab_id) {
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report\"(?);");
@@ -499,4 +537,6 @@ public static int reportStudent(int csab_id) {
 }
 
 }
+
+
 

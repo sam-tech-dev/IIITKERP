@@ -168,12 +168,13 @@
       	    <div class="col-md-3"></div>
       	    
       	    <div class="col-md-6">
-      	     <%
-                    ArrayList<Student> csab_list=Query.getCsabStudentProfile(1);
+      	     <%     
+      	     		String reg_id=(String)request.getSession().getAttribute("reg_id");
+                    ArrayList<Student> csab_list=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
                     Iterator<Student> iterator=csab_list.iterator();
                     while(iterator.hasNext()){
     				Student current=iterator.next();
-                   %>
+              %>
       	    <div id="step-1">
       	    	<div class="box box-primary">
       			<!-- /.register-box -->
@@ -187,7 +188,7 @@
                	<form action="" method="post">
                	   
 					<div class="form-group has-feedback">
-						<input type="text" name="std_id" class="form-control" placeholder="Sudent ID" value="">
+						<input type="text" name="std_id" class="form-control" placeholder="Registration ID" value="<%=current.getRegistration_id()%>">
 						
 					</div>
 					

@@ -47,7 +47,15 @@ public class AddUsers {
 			password=obj.get(i,j[2]);
 			//System.out.println(username+password);
 			String erp_id=Query.registerUser(username, first_name+" "+last_name, "student");
-			SimpleLdapAuthentication.addEntry(first_name, last_name, username, password,erp_id);
+			User user =new User();
+			user.setFirst_name(first_name);
+			user.setLast_name(last_name);
+			user.setDepartment("computer_science");
+			user.setErp_id(erp_id);
+			user.setPassword(password);
+			user.setRole("student");
+			
+			SimpleLdapAuthentication.addEntry(user);
 			
 		}
 		return "done";
