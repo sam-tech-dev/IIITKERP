@@ -131,7 +131,7 @@ public class Student {
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
      test.setName("joey pinto");
-     test.setProgram_allocated("Computer Engineering (4 Years Bachelor of Technology)");
+     test.setProgram_allocated("computer engineering (4 years bachelor of technology)");
      test.setState_eligibility("Uttar Pradesh");
      test.setStudent_id("");
 	}
@@ -151,8 +151,8 @@ public class Student {
 				,"RAJASTHAN"
 				,"TELANGANA"
 ));
-	 program_allocated_list.addAll(Arrays.asList("Computer Engineering (4 Years Bachelor of Technology)"));
-	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl"));
+	 program_allocated_list.addAll(Arrays.asList("computer engineering (4 years bachelor of technology)","computer engineering"));
+	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl","open(pwd)","obc-ncl(pwd)"));
 	 nationality_list.addAll(Arrays.asList("indian"));
 	 }
 

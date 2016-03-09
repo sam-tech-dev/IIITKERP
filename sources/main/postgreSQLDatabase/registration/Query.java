@@ -219,11 +219,11 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 
 
 
-public static Student getRegistrationStudentData(int reg_id) throws SQLException,IncorrectFormatException{
+public static Student getRegistrationStudentData(Long reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentData\"(?);");
-		proc.setInt(1,reg_id);
+		proc.setLong(1,reg_id);
 
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
@@ -285,11 +285,11 @@ public static Student getRegistrationStudentData(int reg_id) throws SQLException
 }
 
 
-public static Student getRegistrationStudentDataUpdate(int reg_id) throws SQLException,IncorrectFormatException{
+public static Student getRegistrationStudentDataUpdate(Long reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveRegistrationStudentDataUpdate\"(?);");
-		proc.setInt(1,reg_id);
+		proc.setLong(1,reg_id);
 
 		ResultSet rs=proc.executeQuery();
 		System.out.println(proc);
@@ -397,21 +397,21 @@ public static void applyUpdate(int reg_id) throws SQLException{
 	proc.executeQuery();
 }
 
-public static int retrieveRegistrationStatus(int reg_id){
+public static int retrieveRegistrationStatus(Long reg_id){
 	
 	
 	try {
 
 		proc = settings.database.PostgreSQLConnection.getConnection()
-				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
-		proc.setInt(1,reg_id);
+				.prepareStatement("SELECT public.\"existsRegId\"(?);");
+		proc.setLong(1,reg_id);
 		ResultSet rs = proc.executeQuery();
 		rs.next();
 		System.out.println("exists "+rs.getBoolean(1));
 		if(rs.getBoolean(1)){
 		proc = PostgreSQLConnection.getConnection().
 				prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
-		proc.setInt(1,reg_id);
+		proc.setLong(1,reg_id);
 		rs = proc.executeQuery();	
 		  rs.next();
 			boolean verified=rs.getBoolean(1);

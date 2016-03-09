@@ -10,9 +10,9 @@
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
@@ -77,7 +77,7 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails">
+	<span id="hiddenDetails" style="display:none">
 		<div class="example-modal">
         <div class="modal">
           <div class="modal-dialog">
@@ -88,7 +88,7 @@
                 <h4 class="modal-title"></h4>
               </div>
               <div class="modal-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table  class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
@@ -214,7 +214,6 @@
                 <thead>
                 <tr>
                   <th>Report</th>
-                  <th>View</th>	
                   <th>Name</th>
                   <th>Category</th>
                   <th>JEE Main Roll No.</th>
@@ -247,8 +246,7 @@
     				Student current=iterator.next();
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
                   <td><%=current.getName() %></td>
                   <td><%=current.getCategory() %></td>
                   <td><%=current.getJee_main_rollno() %></td>

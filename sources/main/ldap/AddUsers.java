@@ -44,8 +44,7 @@ public class AddUsers {
 			first_name=StringFormatter.TitleCase(obj.get(i,j[0]));
 			last_name=StringFormatter.TitleCase(obj.get(i,j[1]));
 			username=first_name.toLowerCase()+last_name.toLowerCase();
-			password=obj.get(i,j[2]);
-			//System.out.println(username+password);
+			password=obj.get(i,j[0]).toLowerCase();
 			String erp_id=Query.registerUser(username, first_name+" "+last_name, "student");
 			User user =new User();
 			user.setFirst_name(first_name);
