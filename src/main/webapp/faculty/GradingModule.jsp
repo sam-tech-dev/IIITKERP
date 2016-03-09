@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<%@ page import="postgreSQLDatabase.gradingModule.Query"%> 
+<%@ page import="postgreSQLDatabase.gradingModule.Subject"%>
+<%@ page import="actions.gradingModule.RetrieveSubjects" %>
+<%@ page import="java.util.ArrayList"%>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -47,7 +53,77 @@
 
     <!-- Main content -->
 	
+	<!DOCTYPE html>
+<html>
+<body>
+<table>
+<tr>
+
+<td>
+<h4>Admission Year</h4>
+&nbsp;
+ <select name="AdmissionYear" onchange="this.form.submit()">
+  <option value="0">--Select--</option>
+  <option value="2013">2013</option>
+  <option value="2014">2014</option>
+  <option value="2015">2015</option>
+  <option value="2016">2016</option>
+</select>
+</td>
+
+
+
+&nbsp;&nbsp;
+<td>
+<h4>&nbsp; &nbsp;&nbsp; &nbsp; Semester</h4>
+
+
+<% 
+/*
+Query q = new Query();
+
+ArrayList<Subject> list = new RetrieveSubjects().getSubjects();
+
+if(list != null)
+	System.out.println("Size : " + list.size());
 	
+System.out.println("SubjectCode : ");
+*/
+
+%>
+
+
+ <select name="Semester" onchange="getSemester()" id="semester">
+  <option value="0">--Select--</option>
+  <option value="1">I</option>
+  <option value="2">II</option>
+  <option value="3">III</option>
+  <option value="4">IV</option>
+  <option value="5">V</option>
+  <option value="6">VI</option>
+  <option value="7">VII</option>
+  <option value="8">VIII</option>
+</select>
+</td>
+
+
+
+
+&nbsp;
+<td>
+<h4>&nbsp;&nbsp; &nbsp; &nbsp;Subject ID</h4>
+ <select id="subject_id">
+  <option value="0">--Select--</option>
+ 
+</select>
+</td>
+<span id="semester_info"></span>
+&nbsp;&nbsp;
+</tr>
+</table>
+</body>
+</html>
+
 	
     <!-- /.content -->
   </div>
@@ -74,7 +150,7 @@
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>
-
+<script src="../dist/js/gradingModule.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 </body>

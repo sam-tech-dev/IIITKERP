@@ -1,6 +1,6 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+		<!DOCTYPE web-app PUBLIC
+		 "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+		 "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
@@ -76,6 +76,12 @@
 		<servlet-class>actions.registration.ReportStudent</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<display-name>UpdateLastSeen</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.UpdateLastSeen</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>UpdateStudentRegistrationData</servlet-name>
 		<display-name>UpdateStudentRegistrationData</display-name>
 		<description></description>
@@ -99,6 +105,18 @@
 		<description></description>
 		<servlet-class>actions.registration.RegistrationLogin</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>StudentsList</servlet-name>
+		<display-name>StudentsList</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.StudentsList</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RetrieveSubjects</servlet-name>
+		<display-name>RetrieveSubjects</display-name>
+		<description></description>
+		<servlet-class>actions.gradingModule.RetrieveSubjects</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -108,8 +126,16 @@
 		<url-pattern>/CreateTestPaper</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>RetrieveSubjects</servlet-name>
+		<url-pattern>/RetrieveSubjects</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>GetQuestion</servlet-name>
 		<url-pattern>/GetQuestion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<url-pattern>/UpdateLastSeen</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GenerateChallan</servlet-name>
@@ -164,6 +190,11 @@
 		<servlet-name>RegistrationLogin</servlet-name>
 		<url-pattern>/RegistrationLogin</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentsList</servlet-name>
+		<url-pattern>/StudentsList</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 
