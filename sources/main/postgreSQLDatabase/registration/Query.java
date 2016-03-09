@@ -79,10 +79,11 @@ public class Query {
 		
 	}
 public static void main(String[] args) throws SQLException, IncorrectFormatException {
-	getCsabStudentList();
-
-	//System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
+	//getCsabStudentList();
+	System.out.println( retrieveRegistrationStatus(3));
 }
+
+
 
 
 public static ArrayList<Student> getCsabStudentList() throws SQLException,IncorrectFormatException{
@@ -403,11 +404,11 @@ public static int retrieveRegistrationStatus(int reg_id){
 	try {
 
 		proc = settings.database.PostgreSQLConnection.getConnection()
-				.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+				.prepareStatement("SELECT public.\"existsRegId\"(?);");
 		proc.setInt(1,reg_id);
 		ResultSet rs = proc.executeQuery();
 		rs.next();
-		System.out.println("exists "+rs.getBoolean(1));
+		System.out.println("ID exists "+rs.getBoolean(1));
 		if(rs.getBoolean(1)){
 		proc = PostgreSQLConnection.getConnection().
 				prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");

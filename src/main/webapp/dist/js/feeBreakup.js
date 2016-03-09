@@ -90,3 +90,9 @@ function createFeeBreakUpJson(){
 	
 	
 }
+
+function readFeeBreakup(){
+	var subtable=document.getElementsByClassName("fee_breakup_field");
+	
+}
+
