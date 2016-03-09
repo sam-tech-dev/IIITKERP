@@ -44,6 +44,7 @@ public class RegistrationLogin extends HttpServlet {
 		JSONObject data = new JSONObject();
 		HttpSession session = request.getSession();
 		 int reg_id=Integer.parseInt(request.getParameter("reg_id"));
+		   
 		   int status=Query.retrieveRegistrationStatus(reg_id);
 		   System.out.println(status);
 		   if(status==1){

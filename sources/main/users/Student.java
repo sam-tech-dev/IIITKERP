@@ -151,7 +151,7 @@ public class Student {
 				,"RAJASTHAN"
 				,"TELANGANA"
 ));
-	 program_allocated_list.addAll(Arrays.asList("Computer Engineering (4 Years Bachelor of Technology)"));
+	 program_allocated_list.addAll(Arrays.asList("computer engineering"));
 	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl"));
 	 nationality_list.addAll(Arrays.asList("indian"));
 	 }
