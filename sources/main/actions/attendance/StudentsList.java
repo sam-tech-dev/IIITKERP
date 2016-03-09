@@ -1,26 +1,21 @@
-package actions.registration;
+package actions.attendance;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import postgreSQLDatabase.registration.Query;
-import users.Student;
-
 /**
- * Servlet implementation class UpdateStudentRegistrationData
+ * Servlet implementation class StudentsList
  */
-public class UpdateStudentRegistrationData extends HttpServlet {
+public class StudentsList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateStudentRegistrationData() {
+    public StudentsList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,17 +34,8 @@ public class UpdateStudentRegistrationData extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 Student student=new Student();
-	 try {
-		 
-		 
-		Query.addUpdateStudentRegistrationDetails(student);
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}	
-		
+		System.out.println("SS : " + request.getParameter("AdmissionYear"));
+		doGet(request, response);
 	}
 
 }

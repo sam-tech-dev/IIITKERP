@@ -1,5 +1,5 @@
 		
-  var notif_temp;
+ var notif_temp;
  function getNotifications(){
 	var xmlhttp;
 	try{
@@ -53,8 +53,34 @@
 	    xmlhttp.send("userid="+uid);
 	}
    }	
+function updateLastSeen(){
+	//alert("update");
+	var xmlhttp_obj;
+	try{
+		xmlhttp_obj = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			xmlhttp_obj = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				xmlhttp_obj = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+			//Browser doesn't support ajax	
+				alert("Your browser is unsupported");
+			}
+		}
+	}
 	
-window.setInterval(function(){getNotifications();},5000);
+	if(xmlhttp_obj){
+	   
+	    xmlhttp_obj.open("POST","../UpdateLastSeen",true);
+		xmlhttp_obj.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	    xmlhttp_obj.send();
+	}
+   }	
+	
+
 
 function markAsRead(notif){
 	
@@ -81,8 +107,7 @@ function markAsRead(notif){
 	    	
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				try{
-	        	//data=JSON.parse(xmlhttp.responseText);
-	        	    ///////////////
+	        	
 						
 					}
 			   
@@ -102,6 +127,10 @@ function markAsRead(notif){
 	    return false;
 	
 	}
+
 }
+
 	   
-	
+
+window.setInterval(function(){getNotifications();},5000);
+window.setInterval(function(){updateLastSeen();},7000);
