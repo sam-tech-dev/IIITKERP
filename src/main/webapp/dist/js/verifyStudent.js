@@ -22,8 +22,8 @@ function verify(csab_id){
 	    	
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				try{
-	        	
-	        	alert(xmlhttp.responseText);
+	        	window.href="registration.jsp";
+	        	//alert(xmlhttp.responseText);
 				}
 			   
 				catch(exception){
@@ -42,7 +42,7 @@ function verify(csab_id){
  */
 
 
-function updateData(){
+/*function updateData(){
 	//alert("in verify");
 	var xmlhttp;
 	try{
@@ -117,4 +117,4 @@ function updateData(){
 	    xmlhttp.send();
 	}
    }
- window.setInterval(function(){updateData();}(),10000)
+ window.setInterval(function(){updateData();}(),10000)*/

@@ -267,17 +267,17 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
-<<<<<<< HEAD
+
 		//if(state_list.contains(state_eligibility.toLowerCase()))
 			this.state_eligibility = state_eligibility;
 			//else
 			//throw new IncorrectFormatException("state");
-=======
+
 		if(state_list.contains(state_eligibility.toUpperCase()))
 			this.state_eligibility = state_eligibility;
 			else
 			throw new IncorrectFormatException("state"+state_eligibility);
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
 	
 		
 	}
@@ -293,13 +293,13 @@ public class Student {
 	public void setProgram_allocated(String program_allocated)throws IncorrectFormatException {
 		//if(program_allocated_list.contains(program_allocated.toLowerCase()))
 			this.program_allocated = program_allocated;
-<<<<<<< HEAD
+
 			//else
 			//throw new IncorrectFormatException("program_alloted");
-=======
-			else
-			throw new IncorrectFormatException("program_allocated"+program_allocated);
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
+			//else
+			//throw new IncorrectFormatException("program_allocated"+program_allocated);
+
 		
 	}
 	/**

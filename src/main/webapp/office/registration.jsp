@@ -94,6 +94,7 @@
                 			<td>Name</td>
                 			<td></td>
                 		</tr>
+                		
                 		<tr>
                 			<td>Student ID</td>
                 			<td></td>
@@ -210,43 +211,67 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
-              <table >
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Verify</th>
                   <th>View</th>	
                   <th>Name</th>
-                  <th>first name</th>
-                  <th>middle name</th>
-                  <th>last name</th>
+                  <th>Firstname</th>
+                  <th>Middlename</th>
+                  <th>Lastname</th>
                   <th>Category</th>
-                 <!--  <th>JEE Main Roll No.</th>   -->
-                 <!--  <th>JEE Advanced Roll No.</th> -->
+                 
                   <th>State</th>
                   <th>Phone Number</th>
                   <th>Email</th>
                   <th>Date Of Birth</th>
                   <th>Program Allocated</th>
-                 <!--   <th>Allocated Category</th>
-                  <th>Allocated Rank</th>-->
-                    <th>Status</th>
-                 <!-- <th>Choice Number</th>-->
+                 
+                  
+                  <th>Status</th>
+                  
                   <th>Physically Disabled</th>
                   <th>Gender</th>
-                  <!-- <th>Quota</th>
-                  <th>Round</th>
-                  <th>Willingness</th>
-                  <th>Address</th>
-                  <th>RC Name</th>  -->
+                  
                   <th>Nationality</th>
-                    <th>Entry Date</th>
+                  <th>Entry Date</th>
                   <th>Verified</th>
-                  </tr>
                 </thead>
-                <tbody id="reg_table">
-               
-                
-				
+                <tbody>
+                <%
+                ArrayList<Student> registration_list=Query.displayRegistrationData();
+                Iterator<Student> iterator=registration_list.iterator();
+                while(iterator.hasNext()){
+    				Student current=iterator.next();
+                %>
+                <tr>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getCsab_id()%>)">Verify</button></div></td>
+                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><%=current.getName() %></td>
+                  <td><%=current.getFirst_name() %></td>
+                  <td><%=current.getMiddle_name() %></td>
+                  <td><%=current.getLast_name() %></td>
+                  <td><%=current.getCategory() %></td>
+                  
+                  <td><%=current.getState_eligibility()%></td>
+                  <td><%=current.getMobile()%></td>
+                  <td><%=current.getEmail() %></td>
+                  <td><%=current.getDate_of_birth()%></td>
+                  <td><%=current.getProgram_allocated()%></td>
+                  
+                  <td><%=current.getStatus() %></td>
+                 
+                  <td><%=current.isPwd()%></td>
+                  <td><%=current.getGender() %></td>
+                  
+                  <td><%=current.getNationality() %></td>
+                  <td><%=current.getEntry_time() %></td>
+                  <td><%=current.getVerified() %></td>
+                </tr>
+				<%
+                }
+				%>
                 </tbody>
               </table>
             </div>
@@ -276,8 +301,8 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<!--<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
- <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script> -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -286,8 +311,8 @@
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../dist/js/verifyStudent.js"></script>
 <!-- page script -->
+<script src="../dist/js/verifyStudent.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
