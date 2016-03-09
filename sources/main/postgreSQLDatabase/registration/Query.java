@@ -79,10 +79,11 @@ public class Query {
 		
 	}
 public static void main(String[] args) throws SQLException, IncorrectFormatException {
-	getCsabStudentList();
-
-	//System.out.println(registerUser("rickymartin", "Ricky Martin", "student"));
+	//getCsabStudentList();
+//	System.out.println( retrieveRegistrationStatus(3));
 }
+
+
 
 
 public static ArrayList<Student> getCsabStudentList() throws SQLException,IncorrectFormatException{
@@ -218,7 +219,6 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 }
 
 
-
 public static Student getRegistrationStudentData(Long reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
@@ -284,7 +284,31 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 	return current;
 }
 
+public static JSONArray retrieveRegistrationData() throws SQLException{
+	
+	PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayRegistrationList\"();");
+	ResultSet rs=proc.executeQuery();
+	//System.out.println(proc);
+	rs.next();
 
+	JSONArray jArray=new JSONArray(rs.getString(1));
+	
+	return jArray;
+}
+public static void updateVerified(int csab_id){
+	try{
+		PreparedStatement proc=getConnection().prepareStatement("SELECT public.\"updateVerified\"(?);");
+		proc.setInt(1,csab_id);
+		System.out.println(proc);
+		proc.executeQuery();
+		
+	}
+	catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+}
 public static Student getRegistrationStudentDataUpdate(Long reg_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
 	try {
@@ -407,7 +431,7 @@ public static int retrieveRegistrationStatus(Long reg_id){
 		proc.setLong(1,reg_id);
 		ResultSet rs = proc.executeQuery();
 		rs.next();
-		System.out.println("exists "+rs.getBoolean(1));
+		System.out.println("ID exists "+rs.getBoolean(1));
 		if(rs.getBoolean(1)){
 		proc = PostgreSQLConnection.getConnection().
 				prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");

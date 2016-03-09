@@ -1,26 +1,25 @@
-package actions.authentication;
+package actions.registration;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import settings.database.PostgreSQLConnection;
+import postgreSQLDatabase.registration.Query;
 
 /**
- * Servlet implementation class UpdateLastSeen
+ * Servlet implementation class VerifyStudent
  */
-public class UpdateLastSeen extends HttpServlet {
+public class VerifyStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateLastSeen() {
+    public VerifyStudent() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +29,6 @@ public class UpdateLastSeen extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -38,17 +36,10 @@ public class UpdateLastSeen extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-   /*   String erp_id=(String)request.getSession().getAttribute("erpId");
-      long  erpid=Long.parseLong(erp_id);
-      try {
-		PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"updateLastSeen\"(?);");
-		proc.setLong(1,erpid);
-		proc.executeQuery();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      */
+		int csab_id=Integer.parseInt(request.getParameter("csab_id"));
+		Query.updateVerified(csab_id);
+		PrintWriter pw=response.getWriter();
+		pw.write("updated");
 	}
 
 }
