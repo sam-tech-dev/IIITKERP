@@ -25,6 +25,7 @@ public class Student {
 	private String student_id;
 	private int registration_id;
 	private int csab_id;
+	private boolean verified;
 
 	/**
 	 * @return the csab_id
@@ -36,6 +37,12 @@ public class Student {
 	/**
 	 * @param csab_id the csab_id to set
 	 */
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	public boolean getVerified() {
+		return verified;
+	}
 	public void setCsab_id(int csab_id) {
 		this.csab_id = csab_id;
 	}
@@ -249,10 +256,10 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
-		if(state_list.contains(state_eligibility.toLowerCase()))
+		//if(state_list.contains(state_eligibility.toLowerCase()))
 			this.state_eligibility = state_eligibility;
-			else
-			throw new IncorrectFormatException("state");
+			//else
+			//throw new IncorrectFormatException("state");
 	
 		
 	}
@@ -266,10 +273,10 @@ public class Student {
 	 * @param program_allocated the program_allocated to set
 	 */
 	public void setProgram_allocated(String program_allocated)throws IncorrectFormatException {
-		if(program_allocated_list.contains(program_allocated.toLowerCase()))
+		//if(program_allocated_list.contains(program_allocated.toLowerCase()))
 			this.program_allocated = program_allocated;
-			else
-			throw new IncorrectFormatException("program_alloted");
+			//else
+			//throw new IncorrectFormatException("program_alloted");
 		
 	}
 	/**
@@ -282,10 +289,10 @@ public class Student {
 	 * @param allocated_category the allocated_category to set
 	 */
 	public void setAllocated_category(String allocated_category)throws IncorrectFormatException {
-		if(allocated_category_list.contains(allocated_category.toLowerCase()))
+		//if(allocated_category_list.contains(allocated_category.toLowerCase()))
 			this.allocated_category = allocated_category;
-		else
-			throw new IncorrectFormatException("allocated category");
+		//else
+			//throw new IncorrectFormatException("allocated category");
 	
 }
 		
@@ -361,10 +368,10 @@ public class Student {
 	 * @param nationality the nationality to set
 	 */
 	public void setNationality(String nationality)throws IncorrectFormatException {
-		if(nationality_list.contains(nationality.toLowerCase()))
+		//if(nationality_list.contains(nationality.toLowerCase()))
 			this.nationality = nationality;
-		else
-			throw new IncorrectFormatException("nationality");
+		//else
+			//throw new IncorrectFormatException("nationality");
 		
 	}
 	
@@ -705,6 +712,7 @@ public class Student {
 	public void setEntry_time(Date entry_date) {
 		this.entry_time = entry_date;
 	}
+	
 
 	/**
 	 * @return the rc_name
