@@ -98,7 +98,7 @@ function getQuestion(question_id){
             	var no_options=data.options.length;
             	for (var i = 0; i < no_options; i++) {
             		id=document.getElementById(ques_type);
-            		alert(id.innerHTML);
+            		
             	id.getElementsByClassName("checkbox_text")[0].value=data.options[i];
             	id.getElementsByClassName("checkbox_text")[0].innerHTML=data.options[i];
             		answer_div+=id.innerHTML;

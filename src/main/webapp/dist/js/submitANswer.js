@@ -16,26 +16,27 @@ function submit(){
 
 		JObject["answer"]=document.getElementById("answer").getElementsByClassName('radio')[0].getElementsByClassName('optionRadio')[0].value;
 		jArray.push(JObject);
-		//alert(JSON.stringify(jArray));
+	//	alert(JSON.stringify(jArray));
 		
 		}
 	else if(document.getElementById("answer").getElementsByClassName('checkbox').length!=0){
-		//alert(document.getElementById("answer").getElementsByClassName('checkbox')[0].innerHTML);
+		alert(document.getElementById("answer").getElementsByClassName('checkbox')[0].innerHTML);
 		//alert(document.getElementById("answer").getElementsByClassName('checkbox')[0].getElementsByClassName('checkbox_text')[0].innerHTML);	
 	
-		var checkboxes=document.getElementById("answer").getElementsByClassName('checkbox')[0];
+		var checkboxes=document.getElementById("answer").getElementsByClassName('checkbox');
 		
 		for(var i=0;i< checkboxes.length;i++){
 		
-		alert(checkboxes.getElementsByClassName('checkbox_text')[0].value);
+		alert(checkboxes.innerHTML);
 		jArray.push(JObject);
-		alert(JSON.stringify(jArray));	}
+		}
+		alert(JSON.stringify(jArray));
 	}
 	else if(document.getElementById("answer").getElementsByClassName('form-group long').length!=0){
 		
 		JObject["answer"]=document.getElementById("answer").getElementsByClassName('form-group long')[0].getElementsByClassName('form-control')[0].value;
 		jArray.push(JObject);
-		//alert(JSON.stringify(jArray));
+//	alert(JSON.stringify(jArray));
 		
 	//alert(document.getElementById("answer").getElementsByClassName('form-group long')[0].getElementsByClassName('form-control')[0].value);	
 	}
@@ -44,7 +45,7 @@ function submit(){
 		
 		JObject["answer"]=document.getElementById("answer").getElementsByClassName('form-group short')[0].getElementsByClassName('form-control')[0].value;
 	jArray.push(JObject);
-	//alert(JSON.stringify(jArray));
+//	alert(JSON.stringify(jArray));
 	
 	
 	}

@@ -524,7 +524,7 @@
                   <td><%=current.getCreation_date() %></td>
                   
                   
-                  }
+                  
                 </tr>
 	<% } %>
 				
