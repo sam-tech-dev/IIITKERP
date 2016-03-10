@@ -235,7 +235,7 @@
 						</button>
 					</div>
 				</div>
-
+                  <form>
 				<div class="box-footer no-border">
 					<div class="box-body chat">
 
@@ -246,6 +246,7 @@
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</span> <span id="long_answer">
 			<div class="box box-solid bg-teal-gradient" data-type="long_answer">

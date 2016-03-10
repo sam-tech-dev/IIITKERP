@@ -1,34 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>AdminLTE 2 | Data Tables</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- DataTables -->
+<link rel="stylesheet"
+	href="../plugins/datatables/dataTables.bootstrap.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+	<div class="wrapper">
 <%@ include file="header.jsp" %>
 <!-- Left side column. contains the logo and sidebar -->
 <%@ include file="main-sidebar.jsp" %>
@@ -46,212 +53,217 @@
       </ol>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-			 <div class="col-md-12"> 
-			  <div class="col-md-3">
-			    <div class="form-group">
-                  <select class="form-control">
-                    <option>Academic Year</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">		
-				<div class="form-group">
-                  <select class="form-control">
-                    <option>Semester</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="form-group">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                      Mathwise
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-					  Total
-					</label>
-                  </div>
-                </div>
-			  </div>
-			  <div class="col-md-3">
-				<div class="btn-group pull-right">
-					<button type="button" class="btn btn-block btn-danger">Submit</button>
-				</div>
-			  </div>
-			 </div>
-			 
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Student Id</th>
-                  <th>Student Name</th>
-                  <th>Present</th>
-                  <th>Absent</th>
-                  <th>Leave</th>
-                  <th>Percentage</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Std-1</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-                  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-2</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-3</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-4</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-5</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-6</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-7</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-8</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-9</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-10</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-11</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-12</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-13</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-14</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-15</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				<tr>
-                  <td>Std-16</td>
-                  <td>Student-Name</td>
-                  <td>80</td>
-                  <td>10</td>
-                  <td>10</td>
-				  <td>75</td>
-                </tr>
-				</tbody>
-              </table>
-              
-			  <br><br>
-			  <div class="btn-group pull-left">
-				<h4>Student having less than 75% Attendance</h4>
-			  </div>
-			  <div class="btn-group pull-right">
-				<button type="button" class="btn btn-block btn-default btn-lg">Send Alert</button>
-			  </div>
-			</div>
-            <!-- /.box-body -->
-          </div>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<div class="col-md-12">
+									<div class="col-md-3">
+										<div class="form-group">
+											<select class="form-control">
+												<option>Academic Year</option>
+												<option>option 2</option>
+												<option>option 3</option>
+												<option>option 4</option>
+												<option>option 5</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<select class="form-control">
+												<option>Semester</option>
+												<option>option 2</option>
+												<option>option 3</option>
+												<option>option 4</option>
+												<option>option 5</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<div class="radio">
+												<label> <input type="radio" name="optionsRadios"
+													id="optionsRadios1" value="option1"> Monthwise
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio" name="optionsRadios"
+													id="optionsRadios2" value="option2"> Total
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="btn-group pull-right">
+											<button type="button" class="btn btn-block btn-danger">Submit</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="box-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Student Id</th>
+												<th>Student Name</th>
+												<th>Present</th>
+												<th>Absent</th>
+												<th>Leave</th>
+												<th>Percentage</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Std-1</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-2</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-3</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-4</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-5</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-6</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-7</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-8</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-9</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-10</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-11</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-12</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-13</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-14</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-15</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+											<tr>
+												<td>Std-16</td>
+												<td>Student-Name</td>
+												<td>80</td>
+												<td>10</td>
+												<td>10</td>
+												<td>75</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<br> <br>
+									<div class="btn-group pull-left">
+										<h4>Student having less than 75% Attendance</h4>
+									</div>
+									<div class="btn-group pull-right">
+										<button type="button" class="btn btn-block btn-default btn-lg">Send
+											Alert</button>
+									</div>
+								</div>
+								<!-- /.box-body -->
+							</div>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+			</section>
+			<!-- /.content -->
 		</div>
         <!-- /.col -->
       </div>
@@ -265,34 +277,34 @@
   <%@ include file="control-sidebar.jsp" %>
   <!-- ./wrapper -->
 
-<!-- jQuery 2.1.4 -->
-<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- Bootstrap 3.3.5 -->
-<script src="../bootstr../bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../di../app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../di../demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
+	<!-- jQuery 2.1.4 -->
+	<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<!-- Bootstrap 3.3.5 -->
+	<script src="../bootstr../bootstrap.min.js"></script>
+	<!-- DataTables -->
+	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="../plugins/fastclick/fastclick.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../di../app.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../di../demo.js"></script>
+	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable();
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : false
+			});
+		});
+	</script>
 </body>
 </html>

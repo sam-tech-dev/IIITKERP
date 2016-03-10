@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.onlineTest.Query;
@@ -44,27 +47,33 @@ public class GetQuestion extends HttpServlet {
 		//doGet(request, response);
 		
 		int test_paper_id=Integer.parseInt(request.getParameter("test_paper_id"));
-		int question_id=Integer.parseInt(request.getParameter("question_id"));
+	//	int question_id=Integer.parseInt(request.getParameter("question_id"));
 		
 		Query query_obj=new Query();
 		ArrayList<Question> question_list;
 		try {
 			question_list = query_obj.getQuestions(test_paper_id);
-			Question question = question_list.get(question_id-1);
-			JSONObject ques_obj=new JSONObject();
-			ques_obj.put("type",question.getType());
-			ques_obj.put("id",question.getId());
-			ques_obj.put("question",question.getQuestion());
-			ques_obj.put("options",question.getOptions());
-			ques_obj.put("answer",question.getAnswer());
-			ques_obj.put("marks",question.getMarks());
+			Iterator <Question> iterator=question_list.iterator();
+			JSONArray jarray=new JSONArray();
+			while(iterator.hasNext()){
+				JSONObject ques_obj=new JSONObject();
+				Question question=iterator.next();
+				ques_obj.put("type",question.getType());
+				ques_obj.put("id",question.getId());
+				ques_obj.put("question",question.getQuestion());
+				ques_obj.put("options",question.getOptions());
+				ques_obj.put("answer",question.getAnswer());
+				ques_obj.put("marks",question.getMarks());
+				
+				jarray.put(ques_obj);
+			}
 			
-			String question_json=ques_obj.toString();
+			String question_json=jarray.toString();
 			PrintWriter pw = response.getWriter();
 			pw.write(question_json);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block.
 			e.printStackTrace();
 		}
 		

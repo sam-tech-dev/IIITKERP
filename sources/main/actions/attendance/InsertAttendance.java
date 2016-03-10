@@ -1,28 +1,24 @@
-package actions.registration;
+package actions.attendance;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import postgreSQLDatabase.registration.Query;
-
 /**
- * Servlet implementation class RegistrationLogin
+ * Servlet implementation class InsertAttendance
  */
-public class RegistrationLogin extends HttpServlet {
+public class InsertAttendance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrationLogin() {
+    public InsertAttendance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +28,7 @@ public class RegistrationLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -40,24 +36,14 @@ public class RegistrationLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter pw=response.getWriter();
-		JSONObject data = new JSONObject();
-		HttpSession session = request.getSession();
-
-		Long reg_id=Long.parseLong(request.getParameter("reg_id"));
-		   
-		   int status=Query.retrieveRegistrationStatus(reg_id);
-		   System.out.println(status);
-		   if(status==1){
-			session.setAttribute("reg_id", reg_id);
-			data.put("redirect", "registrationPayment.jsp");
+		System.out.println(request.getParameter("attendance_json"));
+		JSONArray j_array=new JSONArray(request.getParameter("attendance_json"));
+		JSONObject[] j_objects=new JSONObject[j_array.length()];
+		for(int i=0;i<j_array.length();i++){
+			j_objects[i]=j_array.getJSONObject(i);
 			
-		   }
-		   else if(status==0){
-				session.setAttribute("reg_id", reg_id);
-				data.put("redirect", "csabRegistration.jsp");
-		   }
-		   pw.write(data.toString());
+		}
+		postgreSQLDatabase.attendance.Query.insertAttendance(request.getParameter("class_id"),j_objects);
 	}
 
 }

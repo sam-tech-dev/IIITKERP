@@ -84,12 +84,12 @@ public class Query {
 	}
 	
 	
-	public static JSONObject retrieveFeeJson(int reg_id ){
+	public static JSONObject retrieveFeeJson(Long reg_id ){
 		
 		
 		try {
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
-			proc.setInt(1,reg_id);
+			proc.setLong(1,reg_id);
 			ResultSet rs=proc.executeQuery();
 			rs.next();
 			JSONObject fee_breakup=new JSONObject(rs.getString(1));

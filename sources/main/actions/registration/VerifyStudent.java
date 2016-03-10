@@ -7,22 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.json.JSONObject;
 
 import postgreSQLDatabase.registration.Query;
 
 /**
- * Servlet implementation class RegistrationLogin
+ * Servlet implementation class VerifyStudent
  */
-public class RegistrationLogin extends HttpServlet {
+public class VerifyStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrationLogin() {
+    public VerifyStudent() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +29,6 @@ public class RegistrationLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -40,24 +36,10 @@ public class RegistrationLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int csab_id=Integer.parseInt(request.getParameter("csab_id"));
+		Query.updateVerified(csab_id);
 		PrintWriter pw=response.getWriter();
-		JSONObject data = new JSONObject();
-		HttpSession session = request.getSession();
-
-		Long reg_id=Long.parseLong(request.getParameter("reg_id"));
-		   
-		   int status=Query.retrieveRegistrationStatus(reg_id);
-		   System.out.println(status);
-		   if(status==1){
-			session.setAttribute("reg_id", reg_id);
-			data.put("redirect", "registrationPayment.jsp");
-			
-		   }
-		   else if(status==0){
-				session.setAttribute("reg_id", reg_id);
-				data.put("redirect", "csabRegistration.jsp");
-		   }
-		   pw.write(data.toString());
+		pw.write("updated");
 	}
 
 }

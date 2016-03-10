@@ -176,9 +176,9 @@
 
 						<div class="col-md-6">
 							<%
-							String reg_id=(String)request.getSession().getAttribute("reg_id");
+							Long reg_id=Long.parseLong((String)request.getSession().getAttribute("reg_id"));
                            // Student current=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
-							Student current = Query.getRegistrationStudentData(1);
+							Student current = Query.getRegistrationStudentData(reg_id);
 							%>
 							<div id="step-1">
 								<div class="box box-primary">

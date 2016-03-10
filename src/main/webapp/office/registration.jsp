@@ -77,7 +77,7 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails" style="display:none">
+	<span id="hiddenDetails">
 		<div class="example-modal">
         <div class="modal">
           <div class="modal-dialog">
@@ -88,12 +88,13 @@
                 <h4 class="modal-title"></h4>
               </div>
               <div class="modal-body">
-                <table  class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
                 			<td></td>
                 		</tr>
+                		
                 		<tr>
                 			<td>Student ID</td>
                 			<td></td>
@@ -213,63 +214,60 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Report</th>
+                  <th>Verify</th>
+                  <th>View</th>	
                   <th>Name</th>
+                  <th>Firstname</th>
+                  <th>Middlename</th>
+                  <th>Lastname</th>
                   <th>Category</th>
-                  <th>JEE Main Roll No.</th>
-                  <th>JEE Advanced Roll No.</th>
+                 
                   <th>State</th>
                   <th>Phone Number</th>
                   <th>Email</th>
                   <th>Date Of Birth</th>
                   <th>Program Allocated</th>
-                  <th>Allocated Category</th>
-                  <th>Allocated Rank</th>
+                 
+                  
                   <th>Status</th>
-                  <th>Choice Number</th>
+                  
                   <th>Physically Disabled</th>
                   <th>Gender</th>
-                  <th>Quota</th>
-                  <th>Round</th>
-                  <th>Willingness</th>
-                  <th>Address</th>
-                  <th>RC Name</th>
+                  
                   <th>Nationality</th>
                   <th>Entry Date</th>
-                  <th>Reported</th>
+                  <th>Verified</th>
                 </thead>
                 <tbody>
                 <%
-                ArrayList<Student> csab_list=Query.getCsabStudentList();
-                Iterator<Student> iterator=csab_list.iterator();
+                ArrayList<Student> registration_list=Query.displayRegistrationData();
+                Iterator<Student> iterator=registration_list.iterator();
                 while(iterator.hasNext()){
     				Student current=iterator.next();
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getCsab_id()%>)">Verify</button></div></td>
+                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
                   <td><%=current.getName() %></td>
+                  <td><%=current.getFirst_name() %></td>
+                  <td><%=current.getMiddle_name() %></td>
+                  <td><%=current.getLast_name() %></td>
                   <td><%=current.getCategory() %></td>
-                  <td><%=current.getJee_main_rollno() %></td>
-                  <td><%=current.getJee_adv_rollno() %></td>
+                  
                   <td><%=current.getState_eligibility()%></td>
                   <td><%=current.getMobile()%></td>
                   <td><%=current.getEmail() %></td>
                   <td><%=current.getDate_of_birth()%></td>
                   <td><%=current.getProgram_allocated()%></td>
-                  <td><%=current.getAllocated_category()%></td>
-                  <td><%=current.getAllocated_rank()%></td>
+                  
                   <td><%=current.getStatus() %></td>
-                  <td><%=current.getChoice_no() %></td>
+                 
                   <td><%=current.isPwd()%></td>
                   <td><%=current.getGender() %></td>
-                  <td><%=current.getQuota() %></td>
-                  <td><%=current.getRound() %></td>
-                  <td><%=current.getWillingness() %></td>
-                  <td><%=current.getPermanent_address() %></td>
-                  <td><%=current.getRc_name() %></td>
+                  
                   <td><%=current.getNationality() %></td>
                   <td><%=current.getEntry_time() %></td>
-                  <td><%=current.isReported() %></td>
+                  <td><%=current.getVerified() %></td>
                 </tr>
 				<%
                 }
@@ -314,6 +312,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
+<script src="../dist/js/verifyStudent.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
