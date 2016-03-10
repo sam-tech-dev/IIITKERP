@@ -5,12 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import settings.database.PostgreSQLConnection;
 
 /**
  * @author Megha 
@@ -19,6 +24,7 @@ import org.json.JSONObject;
 public class Query {
 
 	static Connection conn ;
+	
 	public static void main(String[] args) {
 
 
@@ -68,25 +74,7 @@ public class Query {
 			e.printStackTrace();
 		}
 	}
-	/**
-	 * @return a new connection to postgreSQL
-	 * @throws SQLException
-	 */
-	public static Connection getConnection() throws SQLException{
-
-		if(conn==null){
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			conn = DriverManager
-					.getConnection("jdbc:postgresql://172.16.1.231:5432/iiitk",
-							"developer", "developer");
-		}
-		return conn;
-	}
+	
 
 
 	/**
@@ -98,7 +86,7 @@ public class Query {
 	public static ArrayList<Question> getQuestions(int test_paper_id) throws SQLException{
 		ArrayList<Question> questions=null;
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getQuestions\"(?);");
+			PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getQuestions\"(?);");
 
 
 			questions=new ArrayList<Question>();
@@ -147,12 +135,12 @@ public class Query {
 	 * @throws SQLException
 	 */
 	public static void addQuestions(Question question,int test_paper_id) throws SQLException{
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addQuestion\"(?,?,?,?,?,?);");
+		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addQuestion\"(?,?,?,?,?,?);");
 		proc.setString(1,question.getQuestion().toString());
 		proc.setString(2,question.getType().toString());
 		System.out.println(question.getQuestion());
-		proc.setArray(3, getConnection().createArrayOf("text", question.getOptions().toArray()));
-		proc.setArray(4, getConnection().createArrayOf("text", question.getAnswer().toArray()));
+		proc.setArray(3, PostgreSQLConnection.getConnection().createArrayOf("text", question.getOptions().toArray()));
+		proc.setArray(4, PostgreSQLConnection.getConnection().createArrayOf("text", question.getAnswer().toArray()));
 		proc.setInt(5,test_paper_id);
 		proc.setInt(6,question.getMarks());
 		proc.executeQuery();
@@ -165,13 +153,13 @@ public class Query {
 	 * @throws SQLException
 	 */
 	public static void addAnswer(Answer answer,int answer_sheet_id) throws SQLException{
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addAnswer\"(?,?,?);");
-		proc.setArray(1, getConnection().createArrayOf("text", answer.getAnswer().toArray()));
+		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addAnswer\"(?,?,?);");
+		proc.setArray(1, PostgreSQLConnection.getConnection().createArrayOf("text", answer.getAnswer().toArray()));
 		proc.setInt(2,answer_sheet_id);
 		proc.setInt(3,answer.getQuestion_id());
 		proc.executeQuery();
 	}
-
+	
 	/**
 	 * get answers of a particular AnswerSheet
 	 * @param answer_sheet_id of answerSheet to get answers
@@ -181,7 +169,7 @@ public class Query {
 	public static ArrayList<Answer> getAnswer(int answer_sheet_id) throws SQLException{
 		ArrayList<Answer> answers=null;
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getAnswer\"(?);");
+			PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getAnswer\"(?);");
 
 			answers=new ArrayList<Answer>();
 			proc.setInt(1,answer_sheet_id);
@@ -222,8 +210,8 @@ public class Query {
 	 * @throws SQLException
 	 */
 	public static int addNewTestPaper(TestPaper paper) throws SQLException{
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?);");
-		proc.setArray(1, getConnection().createArrayOf("integer",paper.getQuestions().toArray()));
+		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?);");
+		proc.setArray(1, PostgreSQLConnection.getConnection().createArrayOf("integer",paper.getQuestions().toArray()));
 		proc.setString(2,paper.getSubject().toString());
 		proc.setString(3,paper.getAuthor().toString());
 		proc.setDate(4,paper.getCreation_date());
@@ -241,24 +229,25 @@ public class Query {
 	 * @throws SQLException
 	 */
 	public static void addNewAnswerSheet(AnswerSheet sheet) throws SQLException{
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"newAnswerSheet\"(?,?,?,?,?);");
+		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newAnswerSheet\"(?,?,?,?,?);");
 		proc.setInt(1,sheet.getTest_paper_id());
 		proc.setString(2, sheet.getAuthor());
 		proc.setDate(3, sheet.getSubmission_time());
 		proc.setString(4, sheet.getStatus());
-		proc.setArray(5, getConnection().createArrayOf("integer", sheet.getAnswer().toArray()));
+		proc.setArray(5,PostgreSQLConnection.getConnection().createArrayOf("integer", sheet.getAnswer().toArray()));
 
 		proc.executeQuery();
 	}
 
 
+	@SuppressWarnings("deprecation")
 	public static ArrayList<TestPaper> getTestPaper() throws SQLException{
 		ArrayList<TestPaper> papers=null;
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getTestPaper\"();");
+			 PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getTestPaper\"();");
 			papers=new ArrayList<TestPaper>();
 			//proc.setInt(1,test_paper_id);
-			ResultSet rs=proc.executeQuery();
+			ResultSet rs = proc.executeQuery();
 			//System.out.println(proc);
 			rs.next();
 
@@ -268,11 +257,20 @@ public class Query {
 			{
 				JSONObject current_object=jArray.getJSONObject(i);
 				TestPaper current=new TestPaper();
-				current.setId(current_object.getInt("id"));
+				current.id = current_object.getInt("id");
 				current.setSubject(current_object.getString("subject"));
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
-			//	current.setDate(current_object.getString("creation_date").toString());
+				current.setCreation_date((new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("creation_date").toString()).getTime())));
+				java.util.Date date = null;
+				try {
+					date = new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				current.setDuration(new java.sql.Time(date.getHours(), date.getMinutes(), date.getSeconds()));
 				current.setQuestions(current_object.get("questions").toString());
 
 				papers.add(current);
@@ -287,6 +285,9 @@ public class Query {
 			rs.close();
 			proc.close();
 		}  catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

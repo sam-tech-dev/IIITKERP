@@ -35,7 +35,7 @@
 	function generate(){
 	  var question_array=[];
 			
-			var x=document.getElementById("testPaper").getElementsByClassName("box box-solid bg-teal-gradient");
+			 var x=document.getElementById("testPaper").getElementsByClassName("box box-solid bg-teal-gradient");
 			
 			for(var i = 0;i<x.length;i++){
 			
@@ -106,6 +106,7 @@
 			
 	    return JSON.stringify(question_array);
 	} 	
+	
 	function createTestPaper(){
 		alert(generate());
 		var questions=escape(generate());
@@ -234,7 +235,7 @@
 						</button>
 					</div>
 				</div>
-
+                  <form>
 				<div class="box-footer no-border">
 					<div class="box-body chat">
 
@@ -245,6 +246,7 @@
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</span> <span id="long_answer">
 			<div class="box box-solid bg-teal-gradient" data-type="long_answer">
