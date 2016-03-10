@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="postgreSQLDatabase.onlineTest.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator" %>
@@ -523,7 +524,7 @@
                   <td><%=current.getStatus() %></td>
                   <td><%=current.getCreation_date() %></td>
                   
-                  
+                   <td><%=new SimpleDateFormat("HH:mm:ss").format(current.getDuration() )%></td>
                   
                 </tr>
 	<% } %>

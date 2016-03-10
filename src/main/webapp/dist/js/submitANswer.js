@@ -21,14 +21,13 @@ function submit(){
 		}
 	else if(document.getElementById("answer").getElementsByClassName('checkbox').length!=0){
 		alert(document.getElementById("answer").getElementsByClassName('checkbox')[0].innerHTML);
-		//alert(document.getElementById("answer").getElementsByClassName('checkbox')[0].getElementsByClassName('checkbox_text')[0].innerHTML);	
 	
-		var checkboxes=document.getElementById("answer").getElementsByClassName('checkbox');
+		var checkboxes=document.getElementById("answer").getElementsByClassName('checkbox');;
 		
 		for(var i=0;i< checkboxes.length;i++){
 		
-		alert(checkboxes.innerHTML);
-		jArray.push(JObject);
+		if(checkboxes[i].getElementsByTagName('input')[0].checked==true)
+			jArray.push(checkboxes[i].getElementsByClassName("checkBox_text")[0].innerHTML);
 		}
 		alert(JSON.stringify(jArray));
 	}
@@ -36,9 +35,7 @@ function submit(){
 		
 		JObject["answer"]=document.getElementById("answer").getElementsByClassName('form-group long')[0].getElementsByClassName('form-control')[0].value;
 		jArray.push(JObject);
-//	alert(JSON.stringify(jArray));
 		
-	//alert(document.getElementById("answer").getElementsByClassName('form-group long')[0].getElementsByClassName('form-control')[0].value);	
 	}
 	else if(document.getElementById("answer").getElementsByClassName('form-group short').length!=0){
 		//alert(document.getElementById("answer").getElementsByClassName('form-group short')[0].getElementsByClassName('form-control')[0].value);	

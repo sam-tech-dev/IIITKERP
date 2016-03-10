@@ -11,11 +11,11 @@ private String subject,author,status,question_file;
 private ArrayList<Integer> questions;
 int id;
 private Date creation_date;
-private Duration duration;
-public Duration getDuration() {
+private Date duration;
+public Date getDuration() {
 	return duration;
 }
-public void setDuration(Duration duration) {
+public void setDuration(Date duration) {
 	this.duration = duration;
 }
 public String getSubject() {

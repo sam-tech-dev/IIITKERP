@@ -10,6 +10,10 @@
 		<servlet-class>actions.authentication.SignIn</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>SignOut</servlet-name>
+		<servlet-class>actions.authentication.SignOut</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
 		<display-name>CreateTestPaper</display-name>
 		<description></description>
@@ -126,6 +130,10 @@
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SignOut</servlet-name>
+		<url-pattern>/SignOut</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>CreateTestPaper</servlet-name>

@@ -157,9 +157,9 @@
 
 						<div class="col-md-6">
 							<%
-							    int reg_id=1;
+							    Long  reg_id=Long.parseLong("1");
 								//String reg_id = (String) request.getSession().getAttribute("reg_id");
-								Student current = Query.getRegistrationStudentData(1);
+								Student current = Query.getRegistrationStudentData(reg_id);
 								//String fee = Query.getFeeBreakup(Integer.parseInt(reg_id));
 							
 							%>

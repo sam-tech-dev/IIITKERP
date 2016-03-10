@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -257,7 +260,8 @@ public class Query {
 				current.setSubject(current_object.getString("subject"));
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
-			//	current.setDate(current_object.getString("creation_date").toString());
+				current.setCreation_date((new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("creation_date").toString()).getTime())));
+				current.setDuration((new java.sql.Date(new SimpleDateFormat("hh:mm:ss").parse(current_object.getString("duration").toString()).getTime())));
 				current.setQuestions(current_object.get("questions").toString());
 
 				papers.add(current);
@@ -272,6 +276,9 @@ public class Query {
 			rs.close();
 			proc.close();
 		}  catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

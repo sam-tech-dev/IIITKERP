@@ -246,7 +246,7 @@
     				Student current=iterator.next();
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
                   <td><%=current.getName() %></td>
                   <td><%=current.getCategory() %></td>
                   <td><%=current.getJee_main_rollno() %></td>
