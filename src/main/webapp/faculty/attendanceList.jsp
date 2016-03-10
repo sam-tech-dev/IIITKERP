@@ -1,3 +1,7 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="postgreSQLDatabase.attendance.Attendance"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="postgreSQLDatabase.attendance.Query"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -476,8 +480,10 @@
 										<div class="form-group">
 											<select class="form-control">
 												<option>Academic Year</option>
-												<option>2016</option>
-												
+												<option>option 2</option>
+												<option>option 3</option>
+												<option>option 4</option>
+												<option>option 5</option>
 											</select>
 										</div>
 									</div>
@@ -485,14 +491,10 @@
 										<div class="form-group">
 											<select class="form-control">
 												<option>Semester</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												<option>8</option>
+												<option>option 2</option>
+												<option>option 3</option>
+												<option>option 4</option>
+												<option>option 5</option>
 											</select>
 										</div>
 									</div>
@@ -527,7 +529,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<select class="form-control">
-												<option>Class-Type</option>
+												<option>Choose One</option>
 												<option>Laboratory</option>
 												<option>Theory</option>
 											</select>
@@ -540,29 +542,32 @@
 										<thead>
 											<tr>
 												<th>Student Id</th>
-												<th>Student Name</th>
-												<th>Present</th>
-												<th>Absent</th>
-												<th>Leave</th>
+												<th>Name</th>
+												
+												
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Std-1</td>
-												<td>Student-Name</td>
-												<td>
-												<label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op1">
-												</label>
-											</td>
-												<td><label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op2">
-												</label></td>
-												<td><label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op3">
-												</label></td>
-											</tr>
+										<% 
+										ArrayList<Attendance> list = Query.getAttendanceList("CST-301");
+										Iterator<Attendance> iterator = list.iterator();
+										while(iterator.hasNext()) {
+											Attendance current = iterator.next(); 
+										
 											
+											
+											
+										
+										
+										%>
+											<tr>
+												<td><%=current.getStudent_id() %></td>
+												<td><%=current.getStudent_name() %></td>
+
+											
+											</tr>
+											<%
+											}%>
 										</tbody>
 									</table>
 
@@ -776,17 +781,17 @@
 	<script src="../di../demo.js"></script>
 	<!-- page script -->
 	<script>
-		/*$(function() {
+		$(function() {
 			$("#example1").DataTable();
 			$('#example2').DataTable({
-				"paging" : false,
+				"paging" : true,
 				"lengthChange" : false,
 				"searching" : false,
-				"ordering" : false,
+				"ordering" : true,
 				"info" : true,
 				"autoWidth" : false
 			});
-		});*/
+		});
 	</script>
 </body>
 </html>

@@ -1,11 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.Comparator"%>
+<%@page import="postgreSQLDatabase.attendance.Allocation"%>
+<%@page import="postgreSQLDatabase.attendance.Query"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="postgreSQLDatabase.attendance.Attendance"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>AdminLTE 2 | Data Tables</title>
+<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#semester_selected').change(function() {
+			var semester_selected = $('#semester_selected').val();
+			$.ajax({
+				type : 'Post',
+				data : {
+					faculty : 'EC101',
+					semester : semester_selected,
+					action: 'getCourseCodeList'
+				},
+				url : 'http://localhost:8086/erp/AjaxController',
+				success : function(result) {
+					$('#course_list').html(result);
+				}
+			});
+		});
+		$('#course_list').change(function() {
+			var course = $('#course_list').val();
+			$.ajax({
+				type : 'Post',
+				data : {
+					course_code : course,
+					action: 'getStudentList'
+				},
+				url : 'http://localhost:8086/erp/AjaxController',
+				success : function(result) {
+					$('#attendance_table').html(result);
+				}
+			});
+		});
+	});
+</script>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -474,42 +514,59 @@
 								<div class="col-md-12">
 									<div class="col-md-3">
 										<div class="form-group">
-											<select class="form-control">
-												<option>Academic Year</option>
-												<option>2016</option>
-												
+											<label>Academic Year:</label><select class="form-control" disabled>
+												<option selected>2016</option>
+												<option>2017</option>
+												<option>2018</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<select class="form-control">
+											<label>Semester:</label><select class="form-control" id="semester_selected">
 												<option>Semester</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												<option>8</option>
+												<%
+													ArrayList<Allocation> db_list = Query.getAllocationList("EC101");
+													/*			ArrayList<String>list=new ArrayList<String>();
+													db_list.sort(new Comparator<Allocation>(){
+													    
+													    
+													    public int compare(Allocation o1, Allocation o2) {
+													    	if(o1.getSemester()>o2.getSemester())
+													        return -1;
+													    	else return 0;
+													    }
+													
+													});
+													
+													Iterator<Allocation>db_iterator=db_list.iterator();
+													while(db_iterator.hasNext()){
+														Allocation db_current=db_iterator.next();
+														if(!list.contains(db_current)){list.add(db_current);
+														System.out.println(db_current);}
+													}*/
+													Iterator<Allocation> iterator = db_list.iterator();
+													while (iterator.hasNext()) {
+														Allocation current = iterator.next();
+												%>
+												<option value="<%=current.getSemester()%>"><%=current.getSemester()%></option>
+
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<select class="form-control">
-												<option>Subcode</option>
-												<option>option 2</option>
-												<option>option 3</option>
-												<option>option 4</option>
-												<option>option 5</option>
+											<label>Course-code:</label><select class="form-control" id="course_list">
+
 											</select>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<input type="date" />
+											<label>Date:</label><br><input type="date" />
 										</div>
 									</div>
 								</div>
@@ -530,6 +587,7 @@
 												<option>Class-Type</option>
 												<option>Laboratory</option>
 												<option>Theory</option>
+												<option>Tutorial</option>
 											</select>
 										</div>
 									</div>
@@ -546,29 +604,47 @@
 												<th>Leave</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>Std-1</td>
-												<td>Student-Name</td>
-												<td>
-												<label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op1">
-												</label>
-											</td>
-												<td><label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op2">
-												</label></td>
-												<td><label> <input type="radio" name="optionsRadios"
-													id="optionsRadios1" value="op3">
-												</label></td>
-											</tr>
-											
+										<tbody id="attendance_table">
+
 										</tbody>
+										<%-- Comment 
+
+											<%
+												ArrayList<Attendance> student_list = Query.getAttendanceList("CST-301");
+												Iterator<Attendance> student_iterator = student_list.iterator();
+												while (student_iterator.hasNext()) {
+													Attendance current = student_iterator.next();
+											%>
+											<tr>
+												<td><%=current.getStudent_id()%></td>
+												<td><%=current.getStudent_name()%></td>
+
+												<td><label> <input type="radio"
+														name="attendance_<%=current.getStudent_id()%>"
+														id="optionsRadios1" value="op1">
+												</label></td>
+												<td><label> <input type="radio"
+														name="attendance_<%=current.getStudent_id()%>"
+														id="optionsRadios2" value="op2">
+												</label></td>
+												<td><label> <input type="radio"
+														name="attendance_<%=current.getStudent_id()%>"
+														id="optionsRadios3" value="op3">
+												</label></td>
+
+											</tr>
+											<%
+												}
+											%>
+--%>
+
+
+
 									</table>
 
 									<br> <br>
 									<div class="btn-group pull-right">
-										<button type="button" class="btn btn-block btn-danger">Submit</button>
+										<button type="button" class="btn btn-block btn-danger" onclick="getAttendanceList()">Submit</button>
 									</div>
 								</div>
 								<!-- /.box-body -->
@@ -762,7 +838,7 @@
 	<!-- jQuery 2.1.4 -->
 	<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<!-- Bootstrap 3.3.5 -->
-	<script src="../bootstr../bootstrap.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -771,22 +847,23 @@
 	<!-- FastClick -->
 	<script src="../plugins/fastclick/fastclick.min.js"></script>
 	<!-- AdminLTE App -->
-	<script src="../di../app.min.js"></script>
+	<script src="../dist/js/app.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
-	<script src="../di../demo.js"></script>
+	<script src="../dist/js/demo.js"></script>
+	<script src="../dist/js/attendanceList.js"></script>
 	<!-- page script -->
 	<script>
-		/*$(function() {
-			$("#example1").DataTable();
-			$('#example2').DataTable({
+		$(function() {
+
+			$('#example1').DataTable({
 				"paging" : false,
 				"lengthChange" : false,
 				"searching" : false,
-				"ordering" : false,
+				"ordering" : true,
 				"info" : true,
-				"autoWidth" : false
+				"autoWidth" : true
 			});
-		});*/
+		});
 	</script>
 </body>
 </html>
