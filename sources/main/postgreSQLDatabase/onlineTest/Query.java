@@ -240,6 +240,7 @@ public class Query {
 	}
 
 
+	@SuppressWarnings("deprecation")
 	public static ArrayList<TestPaper> getTestPaper() throws SQLException{
 		ArrayList<TestPaper> papers=null;
 		try {
@@ -261,7 +262,15 @@ public class Query {
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
 				current.setCreation_date((new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("creation_date").toString()).getTime())));
-				current.setDuration((new java.sql.Date(new SimpleDateFormat("hh:mm:ss").parse(current_object.getString("duration").toString()).getTime())));
+				java.util.Date date = null;
+				try {
+					date = new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				current.setDuration(new java.sql.Time(date.getHours(), date.getMinutes(), date.getSeconds()));
 				current.setQuestions(current_object.get("questions").toString());
 
 				papers.add(current);
