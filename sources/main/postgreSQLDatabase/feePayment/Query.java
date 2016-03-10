@@ -82,6 +82,51 @@ public class Query {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public static JSONObject retrieveFeeJson(Long reg_id ){
+		
+		
+		try {
+			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
+			proc.setLong(1,reg_id);
+			ResultSet rs=proc.executeQuery();
+			rs.next();
+			JSONObject fee_breakup=new JSONObject(rs.getString(1));
+			return fee_breakup;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
+	//insert into payment table
+	
+public static int addFeePayment(String comment,int pay_method,JSONObject details,int amt,int reg_id){
+	
+		try {
+			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addFeePayment\"(?,?,?,?,?);");
+			
+			proc.setString(1,comment);
+			proc.setInt(2,pay_method);
+			proc.setObject(3,details);
+			proc.setInt(4,amt);
+			proc.setInt(5,reg_id);
+			ResultSet rs=proc.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+	
+	
 	public static void main(String[] args) {
 
 		ArrayList<Payment> fee=getFeePaymentHistory(1);

@@ -10,9 +10,9 @@
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
@@ -77,7 +77,7 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails" style="display:none">
+	<span id="hiddenDetails">
 		<div class="example-modal">
         <div class="modal">
           <div class="modal-dialog">
@@ -88,7 +88,7 @@
                 <h4 class="modal-title"></h4>
               </div>
               <div class="modal-body">
-                <table  class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
@@ -213,60 +213,68 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Report</th>
+                  <th>Verify</th>
+                  <th>View</th>	
                   <th>Name</th>
+                  <th>first name</th>
+                  <th>middle name</th>
+                  <th>last name</th>
                   <th>Category</th>
-                  <th>JEE Main Roll No.</th>
-                  <th>JEE Advanced Roll No.</th>
+                 <!--  <th>JEE Main Roll No.</th>   -->
+                 <!--  <th>JEE Advanced Roll No.</th> -->
                   <th>State</th>
                   <th>Phone Number</th>
                   <th>Email</th>
                   <th>Date Of Birth</th>
                   <th>Program Allocated</th>
-                  <th>Allocated Category</th>
-                  <th>Allocated Rank</th>
-                  <th>Status</th>
-                  <th>Choice Number</th>
+                 <!--   <th>Allocated Category</th>
+                  <th>Allocated Rank</th>-->
+                 <!--   <th>Status</th>
+                  <th>Choice Number</th>-->
                   <th>Physically Disabled</th>
                   <th>Gender</th>
-                  <th>Quota</th>
+                  <!-- <th>Quota</th>
                   <th>Round</th>
                   <th>Willingness</th>
                   <th>Address</th>
-                  <th>RC Name</th>
+                  <th>RC Name</th>  -->
                   <th>Nationality</th>
-                  <th>Entry Date</th>
+                    <th>Entry Date</th>
                   <th>Reported</th>
                 </thead>
                 <tbody>
                 <%
-                ArrayList<Student> csab_list=Query.getCsabStudentList();
-                Iterator<Student> iterator=csab_list.iterator();
+                ArrayList<Student> registration_list=Query.displayRegistrationData();
+                Iterator<Student> iterator=registration_list.iterator();
                 while(iterator.hasNext()){
     				Student current=iterator.next();
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
+                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
                   <td><%=current.getName() %></td>
+                  <td><%=current.getFirst_name() %>
+                  <td><%=current.getMiddle_name() %>
+                  <td><%=current.getLast_name() %>
                   <td><%=current.getCategory() %></td>
-                  <td><%=current.getJee_main_rollno() %></td>
-                  <td><%=current.getJee_adv_rollno() %></td>
+                 <!--   <td><%=current.getJee_main_rollno() %></td> -->
+                 <!-- <td><%=current.getJee_adv_rollno() %></td> -->
                   <td><%=current.getState_eligibility()%></td>
                   <td><%=current.getMobile()%></td>
                   <td><%=current.getEmail() %></td>
                   <td><%=current.getDate_of_birth()%></td>
                   <td><%=current.getProgram_allocated()%></td>
-                  <td><%=current.getAllocated_category()%></td>
+                  <!--  <td><%=current.getAllocated_category()%></td>
                   <td><%=current.getAllocated_rank()%></td>
                   <td><%=current.getStatus() %></td>
-                  <td><%=current.getChoice_no() %></td>
+                  <td><%=current.getChoice_no() %></td>-->
                   <td><%=current.isPwd()%></td>
                   <td><%=current.getGender() %></td>
-                  <td><%=current.getQuota() %></td>
+                 <!--  <td><%=current.getQuota() %></td>
                   <td><%=current.getRound() %></td>
                   <td><%=current.getWillingness() %></td>
                   <td><%=current.getPermanent_address() %></td>
-                  <td><%=current.getRc_name() %></td>
+                  <td><%=current.getRc_name() %></td>  -->
                   <td><%=current.getNationality() %></td>
                   <td><%=current.getEntry_time() %></td>
                   <td><%=current.isReported() %></td>

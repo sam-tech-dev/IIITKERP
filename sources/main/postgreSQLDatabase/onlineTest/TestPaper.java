@@ -1,5 +1,6 @@
 package postgreSQLDatabase.onlineTest;
 import java.sql.Date;
+import java.sql.Time;
 import java.time.Duration;
 import java.util.ArrayList;
 
@@ -11,11 +12,11 @@ private String subject,author,status,question_file;
 private ArrayList<Integer> questions;
 int id;
 private Date creation_date;
-private Duration duration;
-public Duration getDuration() {
+private Time duration;
+public Time getDuration() {
 	return duration;
 }
-public void setDuration(Duration duration) {
+public void setDuration(Time duration) {
 	this.duration = duration;
 }
 public String getSubject() {

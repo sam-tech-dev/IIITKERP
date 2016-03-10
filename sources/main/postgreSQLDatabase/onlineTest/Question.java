@@ -26,6 +26,7 @@ public class Question {
 		return question;
 	}
 	public void setQuestion(String question) {
+		question=question.replace("+", "\\+");
 		this.question = question;
 	}
 	public String getType() {
