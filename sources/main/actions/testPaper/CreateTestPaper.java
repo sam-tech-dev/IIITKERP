@@ -2,7 +2,10 @@ package actions.testPaper;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +51,15 @@ public class CreateTestPaper extends HttpServlet {
 		String question_file=request.getParameter("questions");
 		TestPaper paper=new TestPaper();
 		paper.setAuthor("megha");
-		paper.setDuration(Duration.ofMinutes(Integer.parseInt(duration)));
+		Date date = null;
+		try {
+			date = new SimpleDateFormat("HH:mm:ss").parse(duration);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		paper.setDuration(new java.sql.Time(date.getHours(), date.getMinutes(), date.getSeconds()));
 		paper.setQuestions("[]");
 		paper.setStatus(status);
 		paper.setSubject(subject);

@@ -138,7 +138,7 @@
 					<th>Admission/Tuition Fees</th>	
 				</tr>
 			   </thead>  
-                <tbody>
+                <tbody class="fee_breakup_field">
                 <tr>
                   <td>1.</td>
                   <td>Admission Processing Fee</td>
@@ -169,7 +169,7 @@
 					<th>Institute Fees(Common for all students)</th>
 				</tr>
 			   </thead>	
-			   <tbody>
+			   <tbody class="fee_breakup_field">
 			     <tr>
 				  <td>3.</td>
                   <td>Development</td>
@@ -235,7 +235,7 @@
 					<th>Group Insurance **</th>
                 </tr>
                </thead>
-			   <tbody>
+			   <tbody class="fee_breakup_field">
 				<tr>
 				  <td>10.</td>
                   <td>Insurance Fees (Annual)</td>

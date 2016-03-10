@@ -1,26 +1,24 @@
-package actions.authentication;
+package actions.attendance;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import settings.database.PostgreSQLConnection;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
- * Servlet implementation class UpdateLastSeen
+ * Servlet implementation class InsertAttendance
  */
-public class UpdateLastSeen extends HttpServlet {
+public class InsertAttendance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateLastSeen() {
+    public InsertAttendance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +28,7 @@ public class UpdateLastSeen extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -38,17 +36,14 @@ public class UpdateLastSeen extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-   /*   String erp_id=(String)request.getSession().getAttribute("erpId");
-      long  erpid=Long.parseLong(erp_id);
-      try {
-		PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"updateLastSeen\"(?);");
-		proc.setLong(1,erpid);
-		proc.executeQuery();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      */
+		System.out.println(request.getParameter("attendance_json"));
+		JSONArray j_array=new JSONArray(request.getParameter("attendance_json"));
+		JSONObject[] j_objects=new JSONObject[j_array.length()];
+		for(int i=0;i<j_array.length();i++){
+			j_objects[i]=j_array.getJSONObject(i);
+			
+		}
+		postgreSQLDatabase.attendance.Query.insertAttendance(request.getParameter("class_id"),j_objects);
 	}
 
 }

@@ -65,6 +65,12 @@ public class Payment {
 		case 3:
 			this.payment_method="NEFT";
 			break;
+		case 4:
+			this.payment_method="CHEQUE";
+			break;
+		case 5:
+			this.payment_method="CHALLAN";
+			break;
 		}
 		this.payment_method = payment_method;
 	}
