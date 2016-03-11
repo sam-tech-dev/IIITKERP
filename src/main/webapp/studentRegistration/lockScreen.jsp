@@ -53,7 +53,7 @@
   </div>
   <!-- /.lockscreen-item -->
   <div class="help-block text-center">
-    Enter your registration ID provided to your edit desk
+    Enter your registration ID provided to your at the desk
   </div>
   <div class="text-center">
     <a href="../login.jsp">I have already registered</a>
