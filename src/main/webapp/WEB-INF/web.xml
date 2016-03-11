@@ -1,7 +1,6 @@
 <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
  
@@ -22,12 +21,186 @@
   	<servlet-class>actions.Quartz</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetQuestion</servlet-name>
-  	<display-name>GetQuestion</display-name>
-  	<description></description>
-  	<servlet-class>actions.testPaper.GetQuestion</servlet-class>
+    <servlet-name>student_challan</servlet-name>
+    <jsp-file>/student/challan.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_challan</servlet-name>
+    <url-pattern>/student/Challan</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_challan_preview</servlet-name>
+    <jsp-file>/student/challan-preview.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_challan_preview</servlet-name>
+    <url-pattern>/student/Preview_of_challan</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_challan_print</servlet-name>
+    
+    <jsp-file>/student/challan-print.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_challan_print</servlet-name>
+    <url-pattern>/student/Printed_challan</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_chats</servlet-name>
+    <jsp-file>/student/chats.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_chats</servlet-name>
+    <url-pattern>/student/Chatting</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_csab</servlet-name>
+    <jsp-file>/student/csab.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_csab</servlet-name>
+    <url-pattern>/student/CSAB1</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_generate_challan</servlet-name>
+    <jsp-file>/student/generatechallan.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_generate_challan</servlet-name>
+    <url-pattern>/student/Your_challan</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_home</servlet-name>
+    <jsp-file>/student/home.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_home</servlet-name>
+    <url-pattern>/student/Home</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_questions</servlet-name>
+    <jsp-file>/student/questions.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_questions</servlet-name>
+    <url-pattern>/student/Quiz</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>student_register</servlet-name>
+    <jsp-file>/student/register.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>student_register</servlet-name>
+    <url-pattern>/student/Registration</url-pattern>   
+</servlet-mapping>
+
+ <servlet>
+    <servlet-name>office_calender</servlet-name>
+    <jsp-file>/office/calender.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>office_calender</servlet-name>
+    <url-pattern>/office/Calender</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>office_csab</servlet-name>
+    <jsp-file>/office/csab.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>office_challan</servlet-name>
+    <url-pattern>/office/CSAB</url-pattern>   
+</servlet-mapping>
+ <servlet>
+    <servlet-name>faculty_attendancePage1</servlet-name>
+    <jsp-file>/faculty/attendancePage1.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_attendancePage1</servlet-name>
+    <url-pattern>/faculty/Attendance1</url-pattern>   
+</servlet-mapping>
+ <servlet>
+ <servlet-name>faculty_attendancePage2</servlet-name>
+    <jsp-file>/faculty/attendancePage2.jsp</jsp-file>
   </servlet>
-  <servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_attendancePage2</servlet-name>
+    <url-pattern>/faculty/Attendance</url-pattern>   
+</servlet-mapping>
+<servlet>
+ <servlet-name>faculty_blank</servlet-name>
+    <jsp-file>/faculty/blank.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_blank</servlet-name>
+    <url-pattern>/faculty/Blank</url-pattern>   
+</servlet-mapping>
+ <servlet>
+ <servlet-name>faculty_dynamicform</servlet-name>
+    <jsp-file>/faculty/dynamicform.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_dynamicform</servlet-name>
+    <url-pattern>/faculty/Form1</url-pattern>   
+</servlet-mapping>
+ <servlet>
+ <servlet-name>faculty_fee_structure</servlet-name>
+    <jsp-file>/faculty/feeStructure.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_fee_structure</servlet-name>
+    <url-pattern>/faculty/Fee_Structure</url-pattern>   
+</servlet-mapping>
+<servlet>
+ <servlet-name>faculty_form</servlet-name>
+    <jsp-file>/faculty/form.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_form</servlet-name>
+    <url-pattern>/faculty/Form</url-pattern>   
+</servlet-mapping>
+
+<servlet>
+ <servlet-name>faculty_online_test</servlet-name>
+    <jsp-file>/faculty/onlineTest.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_online_test</servlet-name>
+    <url-pattern>/faculty/Online_Test</url-pattern>   
+</servlet-mapping>
+
+<servlet>
+ <servlet-name>faculty_forgot</servlet-name>
+    <jsp-file>/faculty/forgot.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>faculty_forgot</servlet-name>
+    <url-pattern>/faculty/Forgot</url-pattern>   
+</servlet-mapping>
+
+
+
+
+
+<servlet>
   	<servlet-name>GenerateChallan</servlet-name>
   	<display-name>GenerateChallan</display-name>
   	<description></description>
@@ -76,12 +249,7 @@
   <servlet-mapping>
   	<servlet-name>CreateTestPaper</servlet-name>
   	<url-pattern>/CreateTestPaper</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>Quartz</servlet-name>
-  	<url-pattern>/Quartz</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
+  </servlet-mapping>  <servlet-mapping>
   	<servlet-name>GetQuestion</servlet-name>
   	<url-pattern>/GetQuestion</url-pattern>
   </servlet-mapping>
@@ -113,6 +281,10 @@
   <servlet-mapping>
   	<servlet-name>StudentServletTemplate</servlet-name>
   	<url-pattern>/StudentServletTemplate</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>student_generate_challan</servlet-name>
+  	<url-pattern>/student/generatechallan</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
