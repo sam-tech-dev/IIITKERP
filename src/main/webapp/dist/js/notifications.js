@@ -41,7 +41,9 @@
 				}
 			   
 				catch(exception){
-
+					document.getElementById("notif_count").innerHTML="";
+					document.getElementById("notifications").innerHTML="You have no new notifications";
+					document.getElementById("notif_list").innerHTML="";
 				}
 			}
 	        if(xmlhttp.status == 404)
@@ -132,5 +134,5 @@ function markAsRead(notif){
 
 	   
 
-window.setInterval(function(){getNotifications();},5000);
-window.setInterval(function(){updateLastSeen();},7000);
+window.setInterval(function(){getNotifications();}(),5000);
+window.setInterval(function(){updateLastSeen();}(),7000);

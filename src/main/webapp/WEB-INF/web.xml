@@ -4,7 +4,6 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-
 	<servlet>
 		<servlet-name>SignIn</servlet-name>
 		<servlet-class>actions.authentication.SignIn</servlet-class>
@@ -90,7 +89,8 @@
 		<display-name>UpdateStudentRegistrationData</display-name>
 		<description></description>
 		<servlet-class>actions.registration.UpdateStudentRegistrationData</servlet-class>
-	</servlet><servlet>
+	</servlet>
+	<servlet>
 		<servlet-name>GetSubjectAllocation</servlet-name>
 		<display-name>GetSubjectAllocation</display-name>
 		<description></description>
@@ -150,6 +150,12 @@
 		<display-name>AddPaymentInfo</display-name>
 		<description></description>
 		<servlet-class>actions.feePayment.AddPaymentInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateAnswerSheet</servlet-name>
+		<display-name>CreateAnswerSheet</display-name>
+		<description></description>
+		<servlet-class>actions.testPaper.CreateAnswerSheet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
@@ -236,7 +242,7 @@
 		<servlet-name>AddPaymentInfo</servlet-name>
 		<url-pattern>/AddPaymentInfo</url-pattern>
 	</servlet-mapping>
-<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>GetSubjectAllocation</servlet-name>
 		<url-pattern>/GetSubjectAllocation</url-pattern>
 	</servlet-mapping>
@@ -251,6 +257,10 @@
 	<servlet-mapping>
 		<servlet-name>InsertAttendance</servlet-name>
 		<url-pattern>/InsertAttendance</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateAnswerSheet</servlet-name>
+		<url-pattern>/CreateAnswerSheet</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

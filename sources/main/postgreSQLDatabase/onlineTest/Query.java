@@ -76,7 +76,63 @@ public class Query {
 	}
 	
 
+	public static void InsertTestPaper(TestPaper paper){
+		try{
+        	
+			int test_paper_id=Query.addNewTestPaper(paper);
+			System.out.println(paper.getQuestion_file());
+			JSONArray jArray=new JSONArray(paper.getQuestion_file());
+			JSONObject current;
+			Question current_question;
+			for(int i=0;i<jArray.length();i++){
+				current=(JSONObject) jArray.get(i);
+				current_question=new Question();
+				current_question.setType(current.getString("type"));
+				current_question.setAnswer(current.getJSONArray("answer").toString());
+				if(!current.has("options")) current_question.setOptions("[]");
+				else
+					current_question.setOptions(current.getJSONArray("options").toString());
+				current_question.setMarks(5);
+				current_question.setQuestion(current.getString("statement"));
 
+				Query.addQuestions(current_question,test_paper_id);
+			}
+			//System.out.println(test_paper_id);
+		//	Query.getQuestions(test_paper_id);
+
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+	}
+	}
+	public static void InsertAnswerSheet(AnswerSheet answer_sheet){
+		try{
+        	
+			int test_paper_id=Query.addNewAnswerSheet(answer_sheet);
+			
+			JSONArray jArray=new JSONArray(answer_sheet.getAnswer_file());
+			JSONObject current;
+			Answer current_answer;
+			for(int i=0;i<jArray.length();i++){
+				current=(JSONObject) jArray.get(i);
+				current_answer=new Answer();
+				
+				current_answer.setAnswer(current.getJSONArray("answer").toString());
+				current_answer.setQuestion_id(current.getInt("id"));
+				
+
+				Query.addAnswer(current_answer,test_paper_id);
+			}
+			//System.out.println(test_paper_id);
+		//	Query.getQuestions(test_paper_id);
+
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+	}
+	}
 	/**
 	 * get questions of a particular TestPaper
 	 * @param test_paper_id of testPaper to get questions
@@ -213,7 +269,7 @@ public class Query {
 		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?);");
 		proc.setArray(1, PostgreSQLConnection.getConnection().createArrayOf("integer",paper.getQuestions().toArray()));
 		proc.setString(2,paper.getSubject().toString());
-		proc.setString(3,paper.getAuthor().toString());
+		proc.setLong(3,paper.getAuthor_id());
 		proc.setDate(4,paper.getCreation_date());
 		proc.setString(5, paper.getStatus().toString());
 		System.out.println(proc.toString());
@@ -228,15 +284,17 @@ public class Query {
 	 * @param sheet an object of type AnswerSheet
 	 * @throws SQLException
 	 */
-	public static void addNewAnswerSheet(AnswerSheet sheet) throws SQLException{
+	public static int addNewAnswerSheet(AnswerSheet sheet) throws SQLException{
 		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newAnswerSheet\"(?,?,?,?,?);");
 		proc.setInt(1,sheet.getTest_paper_id());
-		proc.setString(2, sheet.getAuthor());
+		proc.setLong(2, sheet.getAuthor());
 		proc.setDate(3, sheet.getSubmission_time());
 		proc.setString(4, sheet.getStatus());
 		proc.setArray(5,PostgreSQLConnection.getConnection().createArrayOf("integer", sheet.getAnswer().toArray()));
 
-		proc.executeQuery();
+		ResultSet rs=proc.executeQuery();
+		rs.next();
+		return rs.getInt(1);
 	}
 
 
@@ -295,6 +353,9 @@ public class Query {
 		return papers;
 	}
 
+
+
+	
 
 
 

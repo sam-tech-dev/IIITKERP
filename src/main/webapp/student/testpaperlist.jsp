@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="java.time.Duration"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="postgreSQLDatabase.onlineTest.*"%>
 <%@page import="java.util.ArrayList"%>

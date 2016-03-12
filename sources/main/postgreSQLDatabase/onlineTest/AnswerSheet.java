@@ -8,7 +8,9 @@ import org.json.JSONException;
 
 public class AnswerSheet {
 private	int test_paper_id,id;
-private	String status,author;
+private	String status;
+private Long author;
+private String answer_file;
 private	ArrayList<Integer> answer;
 private	Date submission_time;
 	public int getTest_paper_id() {
@@ -29,10 +31,10 @@ private	Date submission_time;
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getAuthor() {
+	public Long getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(Long author) {
 		this.author = author;
 	}
 	public ArrayList<Integer> getAnswer() {
@@ -62,6 +64,18 @@ private	Date submission_time;
 	}
 	public static void main(String[] args) {
 		
+	}
+	/**
+	 * @return the answer_file
+	 */
+	public String getAnswer_file() {
+		return answer_file;
+	}
+	/**
+	 * @param answer_file the answer_file to set
+	 */
+	public void setAnswer_file(String answer_file) {
+		this.answer_file = answer_file;
 	}
 
 }
