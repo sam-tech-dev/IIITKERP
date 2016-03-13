@@ -1,20 +1,15 @@
 package postgreSQLDatabase.onlineTest;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.sql.*;
+import java.sql.Date;
 
+import postgreSQLDatabase.forms.Query.java;
 import settings.database.PostgreSQLConnection;
 
 /**
@@ -287,7 +282,7 @@ public class Query {
 	public static int addNewAnswerSheet(AnswerSheet sheet) throws SQLException{
 		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newAnswerSheet\"(?,?,?,?,?);");
 		proc.setInt(1,sheet.getTest_paper_id());
-		proc.setLong(2, sheet.getAuthor());
+		proc.setLong(2, sheet.getAuthor_id());
 		proc.setDate(3, sheet.getSubmission_time());
 		proc.setString(4, sheet.getStatus());
 		proc.setArray(5,PostgreSQLConnection.getConnection().createArrayOf("integer", sheet.getAnswer().toArray()));
@@ -319,26 +314,15 @@ public class Query {
 				current.setSubject(current_object.getString("subject"));
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
-				current.setCreation_date((new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("creation_date").toString()).getTime())));
-				java.util.Date date = null;
-				try {
-					date = new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				current.setCreation_date((new Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("creation_date").toString()).getTime())));
+				
 
-				current.setDuration(new java.sql.Time(date.getHours(), date.getMinutes(), date.getSeconds()));
+				current.setDuration(new Time(new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString()).getHours(), new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString()).getMinutes(),new SimpleDateFormat("HH:mm:ss").parse(current_object.getString("duration").toString()).getSeconds()));
 				current.setQuestions(current_object.get("questions").toString());
 
 				papers.add(current);
 			}
-			Iterator<TestPaper> iterator = papers.iterator();	
-			while(iterator.hasNext()){
-				TestPaper current=iterator.next();
-				System.out.println(current.getId()+" "+current.getAuthor()+" "+current.getStatus()+" "+current.getSubject()+" "
-						+current.getCreation_date()+" "+current.getQuestions());
-			}
+			
 
 			rs.close();
 			proc.close();
@@ -353,11 +337,68 @@ public class Query {
 		return papers;
 	}
 
+	public static ArrayList<AnswerSheet> getAnswerSheets(int test_paper_id) throws SQLException{
+		ArrayList<AnswerSheet> submissions=null;
+		try {
+			 PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getAnswerSheet\"(?);");
+			 submissions=new ArrayList<AnswerSheet>();
+			proc.setInt(1,test_paper_id);
+			ResultSet rs = proc.executeQuery();
+			//System.out.println(proc);
+			rs.next();
+			if(rs.getString(1)!=null){
+			JSONArray jArray=new JSONArray(rs.getString(1));
+            // System.out.println(rs.getString(1));
+			for(int i=0;i<jArray.length();i++)
+			{
+				JSONObject current_object=jArray.getJSONObject(i);
+				AnswerSheet current=new AnswerSheet();
+				current.setId(current_object.getInt("id"));
+				current.setAuthor(current_object.getString("author"));
+				current.setStatus(current_object.getString("status"));
+				current.setSubmission_time((new Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("submission_time").toString()).getTime())));
+				
+				submissions.add(current);
+			}
+			
+			}
+			rs.close();
+			proc.close();
+		}  catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		return submissions;
+	}
 
 	
 
-
+public static ArrayList<Solution> getSolutionSheet(int answer_sheet_id) throws SQLException{
+	ArrayList<Solution> list=new ArrayList<Solution>();
+    PreparedStatement proc=PostgreSQLConnection.getConnection().prepareStatement("SELECT \"getSolutionSheet\"(?)");
+	proc.setInt(1, answer_sheet_id);
+	ResultSet rs=proc.executeQuery();
+	rs.next();
+	JSONArray j_array=new JSONArray(rs.getString(1));
+	for(int i=0;i<j_array.length();i++){
+		JSONObject j_object=j_array.getJSONObject(i);
+		Solution current=new Solution();
+		current.getQuestion().setId(j_object.getInt("question_id"));
+		current.getQuestion().setMarks(j_object.getInt("marks"));
+		current.getQuestion().setQuestion(j_object.getString("question"));
+		current.getQuestion().setType(j_object.getString("type"));
+		current.getQuestion().setOptions(j_object.getJSONArray("options").toString());
+		current.getQuestion().setAnswer(j_object.getJSONArray("correct_answer").toString());
+		current.getAnswer().setAnswer(j_object.getJSONArray("given_answer").toString());
+		current.getAnswer().setId(j_object.getInt("answer_id"));
+		list.add(current);
+	}
+    return list;
+}
 
 
 }

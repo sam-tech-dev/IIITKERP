@@ -54,7 +54,7 @@ public class CreateAnswerSheet extends HttpServlet {
 				String answer_file=request.getParameter("answers");
 				AnswerSheet answer_sheet=new AnswerSheet();
 				answer_sheet.setAnswer("[]");
-				answer_sheet.setAuthor(author);
+				answer_sheet.setAuthor_id(author);
 				answer_sheet.setStatus(status);
 				answer_sheet.setSubmission_time(submission_time);
 				answer_sheet.setTest_paper_id(test_paper_id);

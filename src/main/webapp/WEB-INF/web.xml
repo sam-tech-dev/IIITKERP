@@ -157,6 +157,12 @@
 		<description></description>
 		<servlet-class>actions.testPaper.CreateAnswerSheet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetSolutionSheet</servlet-name>
+		<display-name>GetSolutionSheet</display-name>
+		<description></description>
+		<servlet-class>actions.testPaper.GetSolutionSheet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -261,6 +267,10 @@
 	<servlet-mapping>
 		<servlet-name>CreateAnswerSheet</servlet-name>
 		<url-pattern>/CreateAnswerSheet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetSolutionSheet</servlet-name>
+		<url-pattern>/GetSolutionSheet</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
