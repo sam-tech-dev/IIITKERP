@@ -62,8 +62,14 @@ public class CreateAnswerSheet extends HttpServlet {
 				
 				
 			
-					Query.InsertAnswerSheet(answer_sheet);
-				
+					int answer_sheet_id=Query.InsertAnswerSheet(answer_sheet);
+					postgreSQLDatabase.onlineTest.Query.verify(answer_sheet_id);
+					try {
+						postgreSQLDatabase.onlineTest.Query.calculateTotal(answer_sheet_id);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				//paper.setDuration();
 				pw.write("success");
 

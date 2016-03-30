@@ -28,7 +28,7 @@
   <script>
 	function rowValue(id){
 		
-		window.location.href="solutionSheet.jsp?answer_sheet_id="+id;
+		window.location.href="submissions.jsp?test_paper_id="+id;
 	}
   </script>
   
@@ -500,28 +500,31 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>TEST PAPER ID</th>
+                  <th>SUBJECT</th>
                   <th>AUTHOR</th>
                   <th>STATUS</th>
-                  <th>SUBMISSION TIME</th>
-                  <th>MARKS</th>             
+                  <th>CREATION DATE</th>
+                  <th>DURATION</th>
+                 
                 </tr>
                 </thead>
                 <tbody>
                  
     <%
-   
-    ArrayList<AnswerSheet>submissions=postgreSQLDatabase.onlineTest.Query.getAnswerSheets(Integer.parseInt((String)request.getParameter("test_paper_id")));
-   
- Iterator<AnswerSheet> iterator = submissions.iterator();	
+ ArrayList<TestPaper>papers=postgreSQLDatabase.onlineTest.Query.getTestPaper();
+ Iterator<TestPaper> iterator = papers.iterator();	
 	while(iterator.hasNext()){
-		AnswerSheet current=iterator.next();   
+		TestPaper current=iterator.next();   
 		%>
                 <tr onclick="return rowValue('<%=current.getId() %>')">
-                 
+                  <td><%=current.getId() %></td>
+                  <td><%=current.getSubject()%></td>
 				  <td><%=current.getAuthor() %></td>
                   <td><%=current.getStatus() %></td>
-                  <td><%=current.getSubmission_time() %></td>
-                   <td><%=current.getTotal_marks() %></td>
+                  <td><%=current.getCreation_date() %></td>
+                  
+                   <td><%=current.getDuration().toString()%></td>
                   
                 </tr>
 	<% } %>

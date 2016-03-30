@@ -20,54 +20,8 @@ public class Query {
 
 	static Connection conn ;
 	
-	public static void main(String[] args) {
-
-
-		try {
-//			Question question=new Question();
-//			question.setQuestion("What's my name?");
-//			question.setAnswer("[\"Sheila\"]");
-//			question.setOptions("[\"Sheila\",\"Maggie\"]");
-//			question.setType("MCQ");
-//			question.setMarks(45);
-//			//addQuestions(question,1);
-//			//getQuestion(1035);
-//			Answer answer=new Answer();
-//			answer.setAnswer("[\"Sheila\",\"Maggie\"]");
-//
-//			//answer.setQuestion_id(1);
-//			//addAnswer(answer,1);
-//			//  getAnswer(3);
-//			TestPaper paper=new TestPaper();
-//			paper.setQuestions("[1,2]");
-//			//paper.setDuration(null);
-//			//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//			paper.setCreation_date(new Date(new java.util.Date().getTime()));
-//			paper.setSubject("Maths");
-//			paper.setAuthor("abewkjegc");
-//			paper.setStatus("created");
-//			//addNewTestPaper(paper);
-//
-//			AnswerSheet sheet=new AnswerSheet();
-//			sheet.setAuthor("Megha");
-//			sheet.setStatus("Process");
-//			sheet.setSubmission_time(new Date(new java.util.Date().getTime()));
-//			sheet.setAnswer("[1,2]");
-//			sheet.setTest_paper_id(3);
-//			//addNewAnswerSheet(sheet);
-
-
-			ArrayList<Question> list = getQuestions(1);
-			Iterator<Question> abc = list.iterator();
-			while(abc.hasNext()){
-				Question current=abc.next();
-				System.out.println(current.getQuestion());
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static void main(String[] args) throws SQLException {
+verify(5);
 	}
 	
 
@@ -101,10 +55,11 @@ public class Query {
 			e.printStackTrace();
 	}
 	}
-	public static void InsertAnswerSheet(AnswerSheet answer_sheet){
+	public static int InsertAnswerSheet(AnswerSheet answer_sheet){
+		int answer_sheet_id=0;
 		try{
         	
-			int test_paper_id=Query.addNewAnswerSheet(answer_sheet);
+			answer_sheet_id=Query.addNewAnswerSheet(answer_sheet);
 			
 			JSONArray jArray=new JSONArray(answer_sheet.getAnswer_file());
 			JSONObject current;
@@ -117,7 +72,7 @@ public class Query {
 				current_answer.setQuestion_id(current.getInt("id"));
 				
 
-				Query.addAnswer(current_answer,test_paper_id);
+				Query.addAnswer(current_answer,answer_sheet_id);
 			}
 			//System.out.println(test_paper_id);
 		//	Query.getQuestions(test_paper_id);
@@ -127,6 +82,7 @@ public class Query {
 		catch(Exception e){
 			e.printStackTrace();
 	}
+		return answer_sheet_id;
 	}
 	/**
 	 * get questions of a particular TestPaper
@@ -356,6 +312,7 @@ public class Query {
 				current.setId(current_object.getInt("id"));
 				current.setAuthor(current_object.getString("author"));
 				current.setStatus(current_object.getString("status"));
+				current.setTotal_marks(current_object.getLong("total_marks"));
 				current.setSubmission_time((new Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("submission_time").toString()).getTime())));
 				
 				submissions.add(current);
@@ -371,11 +328,50 @@ public class Query {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return submissions;
 	}
 
-	
+
+	public static ArrayList<AnswerSheet> getUserAnswerSheets(int test_paper_id,Long erpId) throws SQLException{
+		ArrayList<AnswerSheet> submissions=null;
+		try {
+			 PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getUserAnswerSheets\"(?,?);");
+			 submissions=new ArrayList<AnswerSheet>();
+			proc.setInt(1,test_paper_id);
+			proc.setLong(2, erpId);
+			ResultSet rs = proc.executeQuery();
+			//System.out.println(proc);
+			rs.next();
+			if(rs.getString(1)!=null){
+			JSONArray jArray=new JSONArray(rs.getString(1));
+            // System.out.println(rs.getString(1));
+			for(int i=0;i<jArray.length();i++)
+			{
+				JSONObject current_object=jArray.getJSONObject(i);
+				AnswerSheet current=new AnswerSheet();
+				current.setId(current_object.getInt("id"));
+				current.setAuthor(current_object.getString("author"));
+				current.setStatus(current_object.getString("status"));
+				current.setTotal_marks(current_object.getLong("total_marks"));
+				current.setSubmission_time((new Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(current_object.getString("submission_time").toString()).getTime())));
+				
+				submissions.add(current);
+			}
+			
+			}
+			rs.close();
+			proc.close();
+		}  catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return submissions;
+	}
+
+
 
 public static ArrayList<Solution> getSolutionSheet(int answer_sheet_id) throws SQLException{
 	ArrayList<Solution> list=new ArrayList<Solution>();
@@ -397,10 +393,57 @@ public static ArrayList<Solution> getSolutionSheet(int answer_sheet_id) throws S
 		current.getAnswer().setId(j_object.getInt("answer_id"));
 		list.add(current);
 	}
+	proc.close();
     return list;
 }
 
-
+public static void verify(int answer_sheet_id){
+	
+	 ArrayList<Solution> solution_sheet = null;
+	try {
+		solution_sheet = getSolutionSheet(answer_sheet_id);
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	Iterator<Solution> answer_iterator = solution_sheet.iterator();
+	while(answer_iterator.hasNext()){
+		Solution current=answer_iterator.next();
+		ArrayList<String> correct_answer = current.getQuestion().getAnswer();
+		ArrayList<String> user_answer = current.getAnswer().getAnswer();
+		int marks=0;
+		if(current.getQuestion().getType().equals("checkbox_answer")||current.getQuestion().getType().equals("radio_answer")){
+		boolean correct=false;
+		
+		if(correct_answer.containsAll(user_answer)&& user_answer.containsAll(correct_answer)){			
+			correct=true;
+			marks=current.getQuestion().getMarks();
+		}
+		try {
+			setAnswerCorrection(correct,current.getAnswer().getId(),marks);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+	}
+	
+}
+public static void setAnswerCorrection(boolean correct,int answer_id,int marks) throws SQLException{
+	PreparedStatement proc=PostgreSQLConnection.getConnection().prepareStatement("SELECT \"setAnswerCorrection\"(?,?,?)");
+	proc.setBoolean(1, correct);
+	proc.setInt(2, answer_id);
+	proc.setInt(3, marks);
+	proc.executeQuery();
+	proc.close();
+}
+public static void calculateTotal(int answer_sheet_id) throws SQLException {
+	PreparedStatement proc=PostgreSQLConnection.getConnection().prepareStatement("SELECT \"calculateTotal\"(?)");
+	proc.setInt(1, answer_sheet_id);
+	proc.executeQuery();
+	proc.close();
+}
 }
 
 

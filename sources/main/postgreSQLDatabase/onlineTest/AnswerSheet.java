@@ -13,6 +13,7 @@ private String author;
 private Long author_id;
 private String answer_file;
 private	ArrayList<Integer> answer;
+private Long total_marks;
 private	Date submission_time;
 	public int getTest_paper_id() {
 		return test_paper_id;
@@ -89,6 +90,18 @@ private	Date submission_time;
 	 */
 	public void setAuthor_id(Long author_id) {
 		this.author_id = author_id;
+	}
+	/**
+	 * @return the total_marks
+	 */
+	public Long getTotal_marks() {
+		return total_marks;
+	}
+	/**
+	 * @param total_marks the total_marks to set
+	 */
+	public void setTotal_marks(Long total_marks) {
+		this.total_marks = total_marks;
 	}
 
 }

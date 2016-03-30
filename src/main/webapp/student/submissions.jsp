@@ -510,7 +510,7 @@
                  
     <%
    
-    ArrayList<AnswerSheet>submissions=postgreSQLDatabase.onlineTest.Query.getAnswerSheets(Integer.parseInt((String)request.getParameter("test_paper_id")));
+    ArrayList<AnswerSheet>submissions=postgreSQLDatabase.onlineTest.Query.getUserAnswerSheets(Integer.parseInt((String)request.getParameter("test_paper_id")),Long.parseLong((String)session.getAttribute("erpId")));
    
  Iterator<AnswerSheet> iterator = submissions.iterator();	
 	while(iterator.hasNext()){
