@@ -29,7 +29,7 @@ public class AddUsers {
 
 	}
 	public String addUser(String...s) throws IOException{
-		obj.run("test.csv");
+		obj.run("thirdyear.csv");
 		int k=0;
 		int j[]=new int[s.length];
 		String username,first_name,last_name,password;
@@ -49,11 +49,12 @@ public class AddUsers {
 			User user =new User();
 			user.setFirst_name(first_name);
 			user.setLast_name(last_name);
+			user.setUsername(username);
 			user.setDepartment("computer_science");
 			user.setErp_id(erp_id);
 			user.setPassword(password);
-			user.setRole("student");
-			
+			user.setRole("students");
+			System.out.println(username);
 			SimpleLdapAuthentication.addEntry(user);
 			
 		}

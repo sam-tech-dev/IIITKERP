@@ -11,8 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import postgreSQLDatabase.onlineTest.Actions;
+import postgreSQLDatabase.onlineTest.Query;
 import postgreSQLDatabase.onlineTest.TestPaper;
 
 /**
@@ -43,6 +44,7 @@ public class CreateTestPaper extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
+		HttpSession session=request.getSession();
 		PrintWriter pw=response.getWriter();
 		response.setContentType("text/html");
 		String status=request.getParameter("status");
@@ -50,22 +52,16 @@ public class CreateTestPaper extends HttpServlet {
 		String duration=request.getParameter("duration");
 		String question_file=request.getParameter("questions");
 		TestPaper paper=new TestPaper();
-		paper.setAuthor("megha");
-		Date date = null;
-		try {
-			date = new SimpleDateFormat("HH:mm:ss").parse(duration);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		paper.setAuthor_id(Long.parseLong(session.getAttribute("erpId").toString()));
 		
-		paper.setDuration(new java.sql.Time(date.getHours(), date.getMinutes(), date.getSeconds()));
+		
+		paper.setDuration(new java.sql.Time(0, Integer.parseInt(duration), 0));
 		paper.setQuestions("[]");
 		paper.setStatus(status);
 		paper.setSubject(subject);
 		paper.setQuestion_file(question_file);
 		paper.setCreation_date(new java.sql.Date(new java.util.Date().getTime()));
-		Actions.InsertTestPaper(paper);	
+		Query.InsertTestPaper(paper);	
 		//paper.setDuration();
 		pw.write("success");
 
