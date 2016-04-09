@@ -329,7 +329,7 @@
 				<div class="row">
 					<input type="text" placeholder="subject" id="subject" /><br />
 					<br /> <input type="text" placeholder="status" id="status" /><br />
-					<br /> <input type="text" placeholder="duration" id="duration" /><br />
+					<br /> <input type="number" placeholder="duration" id="duration" /><br />
 					<div class="btn-group pull-right">
 
 						<button type="button"
