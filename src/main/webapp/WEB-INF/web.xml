@@ -4,6 +4,29 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
+	<filter>
+		<filter-name>Session</filter-name>
+		<display-name>Session</display-name>
+		<description>checks session presence</description>
+		<filter-class>actions.authentication.Session</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/student/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/office/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/administration/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/studentRegistration/*</url-pattern>
+	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>SignIn</servlet-name>
 		<servlet-class>actions.authentication.SignIn</servlet-class>
@@ -277,5 +300,14 @@
 		<welcome-file>login.jsp</welcome-file>
 
 	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>exceptions.SessionException</exception-type>
+		<location>/SessionExpired.jsp</location>
+	</error-page>
+
 
 </web-app>
