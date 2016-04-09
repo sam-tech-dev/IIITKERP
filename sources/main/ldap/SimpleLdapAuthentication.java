@@ -90,7 +90,7 @@ public class SimpleLdapAuthentication
 				if(ou.equals("students"))credentials.put("type","student");
 				if(ou.equals("faculty"))credentials.put("type","faculty");
 				if(ou.equals("office"))credentials.put("type","office");
-				credentials.put("name",attrs.get("cn").get(0));
+				credentials.put("name",attrs.get("givenName").get(0));
 				credentials.put("erpId",attrs.get("sn").get(0) );
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block

@@ -1,13 +1,14 @@
-
+var test_paper_number;
 
 var current_question=0;
+var question_db_id=0;
 
 var testpaper=[];
 var testpaper_length=0;
 
-
+document.getElementById("submit").style.display="none";
 function nextQuestion(){
-	
+	document.getElementById("submit").style.display="none";
 	
 	submit();
 	
@@ -17,12 +18,15 @@ function nextQuestion(){
 		getQuestion(current_question);
 			
 	}
+	else{
+		document.getElementById("submit").style.display="inline";
+	}
 	
 	
 }
 
 function previousQuestion(){
-	
+	document.getElementById("submit").style.display="none";
 	submit();
 	
 	if(current_question !=0){
@@ -36,13 +40,14 @@ function previousQuestion(){
 }
 
 function getQuestion(question_id){
-	
+	document.getElementById("question_number").innerHTML=question_id+1;
 	if(question_id==0){
 		document.getElementById("previous_btn").className="btn btn-default btn-sm disabled";
 	    document.getElementById("previous_btn").disable=true;
 			
 		
 	}
+	
 	
 	else if(question_id >testpaper_length-1){
 		
@@ -64,7 +69,7 @@ function getQuestion(question_id){
 	
         var	data={};
         data=testpaper[question_id];
-       
+        question_db_id=data.id;
 			var question_stmt=document.getElementById("question_stmt");
 			question_stmt.innerHTML=data.question;
 			var ques_type=data.type;
@@ -111,6 +116,7 @@ function getQuestion(question_id){
 	
 }
 function getTestpaper(test_paper_id){
+	test_paper_number=test_paper_id;
 	var ajax_request;
 	try{
 		ajax_request = new XMLHttpRequest();
