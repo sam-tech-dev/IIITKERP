@@ -38,15 +38,16 @@ public class UpdateLastSeen extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-      String erp_id=(String)request.getSession().getAttribute("erpId");
-      long  erpid=Long.parseLong(erp_id);
+
       try {
+    	  String erp_id=(String)request.getSession().getAttribute("erpId");
+          long  erpid=Long.parseLong(erp_id);
 		PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"updateLastSeen\"(?);");
 		proc.setLong(1,erpid);
 		proc.executeQuery();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		//e.printStackTrace();
 	}
       
 	}

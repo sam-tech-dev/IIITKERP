@@ -77,7 +77,7 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails" style="display:none">
+	<span id="hiddenDetails">
 		<div class="example-modal">
         <div class="modal">
           <div class="modal-dialog">
@@ -88,7 +88,7 @@
                 <h4 class="modal-title"></h4>
               </div>
               <div class="modal-body">
-                <table  class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
@@ -214,6 +214,7 @@
                 <thead>
                 <tr>
                   <th>Report</th>
+                  <th>View</th>	
                   <th>Name</th>
                   <th>Category</th>
                   <th>JEE Main Roll No.</th>
@@ -245,8 +246,16 @@
                 while(iterator.hasNext()){
     				Student current=iterator.next();
                 %>
+                
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div> </td>
+                <%
+                if(current.isReported()==true){
+                %>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-success"onclick="report(<%=current.getCsab_id()%>)">Reported</button></div></td>
+                  <% }else{ %>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
+                  <%} %>
+                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
                   <td><%=current.getName() %></td>
                   <td><%=current.getCategory() %></td>
                   <td><%=current.getJee_main_rollno() %></td>
