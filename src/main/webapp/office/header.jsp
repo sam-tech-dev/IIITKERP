@@ -245,8 +245,7 @@
       </div>
     </nav>
   </header>
-<<<<<<< HEAD
+
   <script src="../dist/js/notifications.js"></script>
-=======
-  <script src="../dist/js/notifications.js"></script>
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
+

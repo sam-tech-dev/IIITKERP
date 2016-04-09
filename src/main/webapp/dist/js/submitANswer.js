@@ -48,6 +48,7 @@ function submit(){
 	else{
 		//alert("no");
 	}
+	
 }
 function createAnswerSheet(){
 	var status="submitted";
@@ -56,7 +57,7 @@ function createAnswerSheet(){
 	var xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-			if(xmlhttp.responseText.length!=0) alert(xmlhttp.responseText);
+			if(xmlhttp.responseText.length!=0)window.location="solutionList.jsp";
 		}
 	}
 	xmlhttp.open("POST","../CreateAnswerSheet",true);
