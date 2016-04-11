@@ -186,6 +186,12 @@
 		<description></description>
 		<servlet-class>actions.testPaper.GetSolutionSheet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>sendGroupNotification</servlet-name>
+		<display-name>sendGroupNotification</display-name>
+		<description></description>
+		<servlet-class>actions.notifications.sendGroupNotification</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -294,6 +300,10 @@
 	<servlet-mapping>
 		<servlet-name>GetSolutionSheet</servlet-name>
 		<url-pattern>/GetSolutionSheet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sendGroupNotification</servlet-name>
+		<url-pattern>/sendGroupNotification</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
