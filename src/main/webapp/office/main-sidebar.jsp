@@ -27,6 +27,16 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+          <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Online Test Registration</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="csab.jsp"><i class="fa fa-circle-o"></i>CSAB</a></li>
+           <!--   <li><a href="index2.html"><i class="fa fa-circle-o"></i>My Tests</a></li>-->
+          </ul>
+        </li>
+        
       </ul>
     </section>
     <!-- /.sidebar -->

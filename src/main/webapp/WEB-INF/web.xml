@@ -1,33 +1,45 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+		<!DOCTYPE web-app PUBLIC
+		 "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+		 "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-
+	<filter>
+		<filter-name>Session</filter-name>
+		<display-name>Session</display-name>
+		<description>checks session presence</description>
+		<filter-class>actions.authentication.Session</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/student/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/office/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/administration/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Session</filter-name>
+		<url-pattern>/studentRegistration/*</url-pattern>
+	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>SignIn</servlet-name>
 		<servlet-class>actions.authentication.SignIn</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>RetrieveConversationsInfo</servlet-name>
-		<servlet-class>actions.chats.RetrieveConversationsInfo</servlet-class>
+		<servlet-name>SignOut</servlet-name>
+		<servlet-class>actions.authentication.SignOut</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
 		<display-name>CreateTestPaper</display-name>
 		<description></description>
 		<servlet-class>actions.testPaper.CreateTestPaper</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>FileUpload</servlet-name>
-		<servlet-class>actions.files.FileUpload</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Quartz</servlet-name>
-		<display-name>Quartz</display-name>
-		<description></description>
-		<servlet-class>actions.Quartz</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetQuestion</servlet-name>
@@ -65,12 +77,6 @@
 		<description></description>
 		<servlet-class>actions.chats.ReadAllMessages</servlet-class>
 	</servlet>
-<servlet>
-  	<servlet-name>RetrieveForms</servlet-name>
-  	<display-name>RetrieveForms</display-name>
-  	<description></description>
-  	<servlet-class>actions.forms.RetrieveForms</servlet-class>
-  </servlet>
 	<servlet>
 		<servlet-name>RetriveNotifications</servlet-name>
 		<display-name>RetriveNotifications</display-name>
@@ -84,12 +90,6 @@
 		<servlet-class>actions.registration.StudentServletTemplate</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>SignOut</servlet-name>
-		<display-name>SignOut</display-name>
-		<description></description>
-		<servlet-class>actions.authentication.SignOut</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>MarkAsRead</servlet-name>
 		<display-name>MarkAsRead</display-name>
 		<description></description>
@@ -101,29 +101,114 @@
 		<description></description>
 		<servlet-class>actions.registration.ReportStudent</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<display-name>UpdateLastSeen</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.UpdateLastSeen</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateStudentRegistrationData</servlet-name>
+		<display-name>UpdateStudentRegistrationData</display-name>
+		<description></description>
+		<servlet-class>actions.registration.UpdateStudentRegistrationData</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetSubjectAllocation</servlet-name>
+		<display-name>GetSubjectAllocation</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.GetSubjectAllocation</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>sample</servlet-name>
+		<display-name>sample</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.sample</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AjaxController</servlet-name>
+		<display-name>AjaxController</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.AjaxController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InsertAttendance</servlet-name>
+		<display-name>InsertAttendance</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.InsertAttendance</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>FeeBreakup</servlet-name>
+		<display-name>FeeBreakup</display-name>
+		<description></description>
+		<servlet-class>actions.feePayment.FeeBreakup</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<display-name>Login</display-name>
+		<description></description>
+		<servlet-class>actions.registration.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RegistrationLogin</servlet-name>
+		<display-name>RegistrationLogin</display-name>
+		<description></description>
+		<servlet-class>actions.registration.RegistrationLogin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>StudentsList</servlet-name>
+		<display-name>StudentsList</display-name>
+		<description></description>
+		<servlet-class>actions.attendance.StudentsList</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RetrieveSubjects</servlet-name>
+		<display-name>RetrieveSubjects</display-name>
+		<description></description>
+		<servlet-class>actions.gradingModule.RetrieveSubjects</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddPaymentInfo</servlet-name>
+		<display-name>AddPaymentInfo</display-name>
+		<description></description>
+		<servlet-class>actions.feePayment.AddPaymentInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateAnswerSheet</servlet-name>
+		<display-name>CreateAnswerSheet</display-name>
+		<description></description>
+		<servlet-class>actions.testPaper.CreateAnswerSheet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetSolutionSheet</servlet-name>
+		<display-name>GetSolutionSheet</display-name>
+		<description></description>
+		<servlet-class>actions.testPaper.GetSolutionSheet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>SignOut</servlet-name>
+		<url-pattern>/SignOut</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>CreateTestPaper</servlet-name>
 		<url-pattern>/CreateTestPaper</url-pattern>
 	</servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>RetrieveForms</servlet-name>
-  	<url-pattern>/RetrieveForms</url-pattern>
-  </servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>Quartz</servlet-name>
-		<url-pattern>/Quartz</url-pattern>
+		<servlet-name>RetrieveSubjects</servlet-name>
+		<url-pattern>/RetrieveSubjects</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetQuestion</servlet-name>
 		<url-pattern>/GetQuestion</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>RetrieveConversationsInfo</servlet-name>
-		<url-pattern>/RetrieveConversationsInfo</url-pattern>
+		<servlet-name>UpdateLastSeen</servlet-name>
+		<url-pattern>/UpdateLastSeen</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GenerateChallan</servlet-name>
@@ -133,6 +218,7 @@
 		<servlet-name>RetriveNotifications</servlet-name>
 		<url-pattern>/RetriveNotifications</url-pattern>
 	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>RetrieveMessage</servlet-name>
 		<url-pattern>/RetrieveMessage</url-pattern>
@@ -154,14 +240,6 @@
 		<url-pattern>/StudentServletTemplate</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>SignOut</servlet-name>
-		<url-pattern>/SignOut</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>FileUpload</servlet-name>
-		<url-pattern>/FileUpload</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>MarkAsRead</servlet-name>
 		<url-pattern>/MarkAsRead</url-pattern>
 	</servlet-mapping>
@@ -169,7 +247,67 @@
 		<servlet-name>ReportStudent</servlet-name>
 		<url-pattern>/ReportStudent</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateStudentRegistrationData</servlet-name>
+		<url-pattern>/UpdateStudentRegistrationData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FeeBreakup</servlet-name>
+		<url-pattern>/FeeBreakup</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistrationLogin</servlet-name>
+		<url-pattern>/RegistrationLogin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentsList</servlet-name>
+		<url-pattern>/StudentsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddPaymentInfo</servlet-name>
+		<url-pattern>/AddPaymentInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetSubjectAllocation</servlet-name>
+		<url-pattern>/GetSubjectAllocation</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sample</servlet-name>
+		<url-pattern>/sample</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxController</servlet-name>
+		<url-pattern>/AjaxController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InsertAttendance</servlet-name>
+		<url-pattern>/InsertAttendance</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateAnswerSheet</servlet-name>
+		<url-pattern>/CreateAnswerSheet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetSolutionSheet</servlet-name>
+		<url-pattern>/GetSolutionSheet</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
+
 	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>exceptions.SessionException</exception-type>
+		<location>/SessionExpired.jsp</location>
+	</error-page>
+
+
 </web-app>
