@@ -124,7 +124,7 @@ public static int addFeePayment(String comment,int pay_method,JSONObject details
 	}
 	
 	
-	public static void main(String[] args) {
+	
 
 	public static void main(String[] args) throws SQLException {
 
