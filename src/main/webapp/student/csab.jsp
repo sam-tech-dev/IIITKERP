@@ -71,7 +71,7 @@
 		
     	for(i=0;i<=len;i++){
     		del = z.getElementsByTagName("tr")[i];
-			alert(del.parentNode.nodeName);
+			//alert(del.parentNode.nodeName);
 						  }
 		$("#hiddenDetails").hide();
 		$("#list").css({position:'static'});
@@ -128,7 +128,7 @@
                   <span aria-hidden="true">x</span></button>
                 <h4 class="modal-title">Student Details</h4>
               </div>
-              <div class="modal-body" style="height:600px;overflow-y:scroll;">
+              <div class="modal-body" style="height:500px;overflow-y:scroll;">
                 <table id="example1" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
