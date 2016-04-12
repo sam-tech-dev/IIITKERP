@@ -77,9 +77,9 @@ public class RetriveNotifications extends HttpServlet {
 				current.setLink(current_object.getString("link"));
 				// System.out.println("time="+current_object.getString("notif_timestamp"));
 				try {
-					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 							.parse(current_object.getString("notif_timestamp")).getTime()));
-					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 							.parse(current_object.getString("expiry")).getTime()));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -102,7 +102,7 @@ public class RetriveNotifications extends HttpServlet {
 				notifications_object.put("message", current.getMessage());
 				notifications_object.put("link", current.getLink());
 				notifications_object.put("timestamp",
-						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getTimestamp()));
+						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(current.getTimestamp()));
 				notifications_object.put("expiry",
 						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getExpiry()));
 				// System.out.println(current.getId()+"
