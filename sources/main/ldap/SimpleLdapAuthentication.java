@@ -27,11 +27,20 @@ import org.json.JSONObject;
 
 public class SimpleLdapAuthentication
 {
+	static User new_user=new User();
 	public static void main(String[] args) 
 	{
 		try {
+			
+			new_user.setDepartment("assistance");
+			new_user.setErp_id("1000000001");
+			new_user.setFirst_name("Ramlal");
+			new_user.setLast_name("Yadav");
+			new_user.setPassword("Ramlal");
+			new_user.setRole("office");
+			new_user.setUsername("ramlalyadav");
 			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			addEntry("ricky","martin", "rickymartin", "12345","1000000001");
+			addEntry(new_user);
 			//changePassword("Joey Pinto", "123456789");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -80,7 +89,8 @@ public class SimpleLdapAuthentication
 				String ou=fullDN.substring(index, fullDN.indexOf(",",index));
 				if(ou.equals("students"))credentials.put("type","student");
 				if(ou.equals("faculty"))credentials.put("type","faculty");
-				credentials.put("name",attrs.get("cn").get(0));
+				if(ou.equals("office"))credentials.put("type","office");
+				credentials.put("name",attrs.get("givenName").get(0));
 				credentials.put("erpId",attrs.get("sn").get(0) );
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -100,7 +110,7 @@ public class SimpleLdapAuthentication
 	 * @param password
 	 * @param erp_id
 	 */
-	public static void addEntry(String first_name,String last_name,String username,String password,String erp_id) {
+	public static void addEntry(User new_user) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -119,21 +129,23 @@ public class SimpleLdapAuthentication
 			attribute.add("inetOrgPerson");
 			attributes.put(attribute);
 			Attribute pwd = new BasicAttribute("userPassword");
-			pwd.add(password);
+			
+			
+			pwd.add(new_user.getPassword());
 			attributes.put(pwd);
 			Attribute sn = new BasicAttribute("sn");
-			sn.add(erp_id);
+			sn.add(new_user.getErp_id());
 			attributes.put(sn);
 			Attribute uid = new BasicAttribute("uid");
-			uid.add(username);
+			uid.add(new_user.getUsername());
 			attributes.put(uid);
 			Attribute fname = new BasicAttribute("givenName");
-			fname.add(first_name+" "+last_name);
+			fname.add(new_user.getFirst_name()+" "+new_user.getLast_name());
 			attributes.put(fname);
 			try {
 
 				context.createSubcontext(
-						"cn="+first_name+" "+last_name+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in",attributes);
+						"cn="+new_user.getUsername()+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in",attributes);
 
 			} catch (NamingException e) {
 
@@ -159,7 +171,7 @@ public class SimpleLdapAuthentication
 
 
 	}
-	public static void addUser(DirContext context,String name,String password) {
+	public static void addUser(DirContext context) {
 
 		
 	}
@@ -186,7 +198,7 @@ public class SimpleLdapAuthentication
 
 			mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
-			ctx.modifyAttributes("cn="+username+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in", mods);
+			ctx.modifyAttributes("cn="+new_user.getUsername()+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
 
 		}
 		catch(Exception e)

@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import postgreSQLDatabase.notifications.Notifications;
+import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class RetriveNotifications
@@ -55,14 +56,15 @@ public class RetriveNotifications extends HttpServlet {
 		PreparedStatement proc;
 		ArrayList<Notifications> notifications = new ArrayList<Notifications>();
 		try {
-			proc = postgreSQLDatabase.onlineTest.Query.getConnection()
+			proc = PostgreSQLConnection.getConnection()
 					.prepareStatement("SELECT public.\"getUnreadNotifications\"(?);");
 			proc.setInt(1, 1);
 			ResultSet rs = proc.executeQuery();
 			rs.next();
 			String postgre = rs.getString(1);
 			//System.out.println(rs.getString(1));
-			JSONArray jArray = new JSONArray(rs.getString(1));
+		if(rs.getString(1)!=null)
+			{JSONArray jArray = new JSONArray(rs.getString(1));
 
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject current_object = jArray.getJSONObject(i);
@@ -112,10 +114,10 @@ public class RetriveNotifications extends HttpServlet {
 			rs.close();
 			proc.close();
 			writer.write(notifications_array.toString());
-
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	}
