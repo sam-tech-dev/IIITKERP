@@ -34,7 +34,7 @@ public class FileUpload extends HttpServlet {
         String applicationPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-          
+          System.out.println(uploadFilePath);
         // creates the save directory if it does not exists
         File fileSaveDir = new File(uploadFilePath);
         if (!fileSaveDir.exists()) {
@@ -47,7 +47,7 @@ public class FileUpload extends HttpServlet {
         for (Part part : request.getParts()) {
         	long date=new Date().getTime();
             String time=String.valueOf(date);
-            
+            System.out.println(time);
             fileName = getFileName(part);
             String file=fileName+time;
             part.write(uploadFilePath + File.separator + file);
@@ -55,6 +55,7 @@ public class FileUpload extends HttpServlet {
            // PrintWriter out=response.getWriter();
            // out.println(uploadFilePath + File.separator + file);
             String csvfile=uploadFilePath + File.separator + file;
+            System.out.println(csvfile);
             
             try {
 				new postgreSQLDatabase.registration.ImportCSAB().createJSON(csvfile);

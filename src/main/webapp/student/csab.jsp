@@ -207,6 +207,10 @@
 		  <div class="box">
             <div class="box-header">
               <h3 class="box-title">Student List</h3>
+              <form action="../FileUpload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input type="submit" value="upload" />
+            </form>   
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
