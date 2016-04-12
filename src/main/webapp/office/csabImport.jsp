@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
+  <title>IIITK | ERP</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <style>
-    .example-modal .modal {
+  .myModal {
       position: relative;
       top: auto;
       bottom: auto;
@@ -32,17 +32,12 @@
       z-index: 1;
     }
 
-    .example-modal .modal {
+   .myModal {
       background: transparent !important;
     }
   </style>
 
-  <script>
-	function rowValue(string){
-		string = string.substring(8);
-		alert("Student No is "+string);
-	}
-  </script>
+  
   
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -67,8 +62,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        CSAB 
+        <small>Student Registration List</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -77,18 +72,20 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails">
-		<div class="example-modal">
-        <div class="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">x</span></button>
-                <h4 class="modal-title"></h4>
-              </div>
-              <div class="modal-body">
-                <table id="example1" class="table table-bordered table-striped">
+	
+        
+      <!-- Modal -->
+      
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Student Details</h4>
+      </div>
+      <div class="modal-body">
+        
+                <table id="modal_table" class="table table-bordered table-striped">
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
@@ -192,12 +189,15 @@
                 		</tr>
                 	</tbody>
                 </table>
-              </div>
-            </div>
-          </div>
-        </div>
+              
       </div>
-	</span>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
     <!-- Main content -->
     <section class="content">
@@ -246,16 +246,9 @@
                 while(iterator.hasNext()){
     				Student current=iterator.next();
                 %>
-                
                 <tr>
-                <%
-                if(current.isReported()==true){
-                %>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-success"onclick="report(<%=current.getCsab_id()%>)">Reported</button></div></td>
-                  <% }else{ %>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
-                  <%} %>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>
+                  <td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i></button></td>
                   <td><%=current.getName() %></td>
                   <td><%=current.getCategory() %></td>
                   <td><%=current.getJee_main_rollno() %></td>
@@ -326,7 +319,7 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-		"paging": true,
+	  "paging": true,
       "lengthChange": true,
       "searching": true,
       "ordering": true,
@@ -335,5 +328,14 @@
 	});
   });
 </script>
+<script>
+$('#myModal').modal();
+
+	function rowValue(string){
+		string = string.substring(8);
+		alert("Student No is "+string);
+		$("#myModal").modal('show');
+	}
+  </script>
 </body>
 </html>

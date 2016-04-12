@@ -35,7 +35,7 @@ function getQuestion(question_id){
             		id=document.getElementById(ques_type);
             	id.getElementsByClassName("optionsRadio")[0].value=data.options[i];
             	id.getElementsByClassName("options_label")[0].innerHTML=data.options[i];
-            	
+            	id.getElementsByClassName("optionsRadio")[0].setAttribute('name', 'optionsRadio'+question_id);
             	if(data.correct_answer.indexOf(data.options[i])!=-1)
             		id.getElementsByClassName("options_label")[0].innerHTML=data.options[i].fontcolor("green");
             	if(data.given_answer.indexOf(data.options[i])!=-1)

@@ -11,8 +11,7 @@
       <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
-<<<<<<< HEAD
-        	
+    	
           <li>
             <a href="javascript::;">
             
@@ -52,11 +51,11 @@
               <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
               <div class="menu-info">
-<<<<<<< HEAD
+
                 <h4 class="control-sidebar-subheading">Joey is an idiot and he is very rude</h4>
-=======
+
                 <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
 
                 <p>nora@example.com</p>
               </div>
@@ -209,8 +208,5 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-<<<<<<< HEAD
-</div>
-=======
-</div>
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
+
