@@ -139,11 +139,7 @@ public class Query {
 		return "";
 		
 	}
-public static void main(String[] args) throws SQLException, IncorrectFormatException {
-	Long csab_id=(long) 1;
-	getRegistrationStudentData(csab_id);
-//	System.out.println( retrieveRegistrationStatus(3));
-}
+
 
 
 
@@ -533,6 +529,34 @@ public static int reportStudent(int csab_id) {
 	}
 	return 0;
 	
+}
+public static void retrieveStudentList(){
+	PreparedStatement proc;
+	try {
+		proc = getConnection().prepareStatement("SELECT \"retrieveStudentList\"();");
+	
+	ResultSet rs = proc.executeQuery();
+	rs.next();
+	JSONArray student_list=new JSONArray(rs.getString(1));
+	int i=0;
+	JSONObject student;
+	for(i=0;i<student_list.length();i++){
+		 student = student_list.getJSONObject(i);
+		
+		 Student current=new Student();
+		 current.setStudent_id(student.get("student_id").toString());
+	}
+
+	
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+public static void main(String[] args) {
+	retrieveStudentList();
 }
 
 }

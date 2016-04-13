@@ -24,10 +24,7 @@
 		<filter-name>Session</filter-name>
 		<url-pattern>/administration/*</url-pattern>
 	</filter-mapping>
-	<filter-mapping>
-		<filter-name>Session</filter-name>
-		<url-pattern>/studentRegistration/*</url-pattern>
-	</filter-mapping>
+	
 	<!--onlineTest -->
 	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
