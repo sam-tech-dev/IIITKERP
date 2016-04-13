@@ -60,6 +60,38 @@ public class Query {
 		return history_info;
 	}
 	
+	
+	public static FeePaymentDetails getFeePaymentDetails(long user_id) {
+		FeePaymentDetails payment_details=new FeePaymentDetails();
+		try {
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getFeePayemtDetails\"(?);");
+
+
+			proc.setObject(1, user_id);
+			ResultSet rs=proc.executeQuery();
+			System.out.println(proc);
+			rs.next();
+			JSONArray jArray=new JSONArray(rs.getString(1));
+			
+				JSONObject current_object=jArray.getJSONObject(0);
+				payment_details.setId(current_object.getInt("ref_no"));
+				payment_details.setName(current_object.getString("name"));
+				String details=current_object.get("details").toString();
+				payment_details.setDetails(details);
+				payment_details.setPayment_method(current_object.getInt("payment_method"));
+			
+			
+			System.out.println();	
+			rs.close();
+			proc.close();
+		
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return payment_details;
+	}
+	
 	public static void addFeeBreakup(String semester,String category,String breakup,String year)
     {
 		try {
@@ -123,6 +155,20 @@ public static int addFeePayment(String comment,int pay_method,JSONObject details
 		
 	}
 	
+public static void verifyFeePayment(long ref_no){
+	
+	try {
+		proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"feeVerify\"(?);");
+		proc.setLong(1,ref_no);
+		proc.executeQuery();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+
 	
 	
 

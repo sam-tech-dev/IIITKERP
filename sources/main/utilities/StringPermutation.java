@@ -90,6 +90,7 @@ public class StringPermutation
         	//sequence[i]=sc.next();
         
           System.out.println("\nThe permuted sequences are: ");
+          
           callAll("arushi","gupta","1012");
        // permute(0,"arushi","gupta","1012");
        // System.out.println(count);
