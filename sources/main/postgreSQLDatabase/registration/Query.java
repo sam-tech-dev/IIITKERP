@@ -143,6 +143,23 @@ public class Query {
 
 
 
+public static JSONObject retrieveUsernameGenParameters(long reg_id){
+	 JSONObject current_object=null;
+	try {
+		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveUsernameGenParameters\"(?);");
+		proc.setLong(1,reg_id);
+		ResultSet rs=proc.executeQuery();
+	   current_object=new JSONObject(rs.getString(1));
+		
+	}
+	catch(SQLException e){
+		e.printStackTrace();
+		
+	}
+	return current_object;
+
+}
+
 
 public static ArrayList<Student> getCsabStudentList() throws SQLException,IncorrectFormatException{
 	ArrayList<Student> students=null;

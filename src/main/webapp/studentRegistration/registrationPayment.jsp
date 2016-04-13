@@ -238,12 +238,7 @@
 													</div>
 												</span>
 												<div class="form-group">
-													<div class="radio">
-														<label> <input type="radio" name="payment"
-															onChange="$('#error').html('')" value="step-6">
-															Net Banking
-														</label>
-													</div>
+													
 
 													<div class="radio">
 														<label> <input type="radio" name="payment"
@@ -263,12 +258,7 @@
 															value="step-7"> NEFT
 														</label>
 													</div>
-													<div class="radio">
-														<label> <input type="radio" name="payment"
-															onChange="$('#error').html('')" id="optionsRadios3"
-															value="step-5"> Cheque
-														</label>
-													</div>
+													
 												</div>
 
 												<div class="row">
@@ -342,7 +332,7 @@
 
 												<div class="form-group has-feedback">
 													<label for="exampleInputPassword1">Payable To :
-														Registrar, IIIT Kota</label>
+														Director, IIIT Kota</label>
 												</div>
 
 												<div class="form-group has-feedback">
