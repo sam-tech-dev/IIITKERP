@@ -104,10 +104,10 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning" id="notif_count">10</span>
+              <span class="label label-warning" id="notif_count"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header" id="notifications">You have 10 notifications</li>
+              <li class="header" id="notifications"></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu" id="notif_list">

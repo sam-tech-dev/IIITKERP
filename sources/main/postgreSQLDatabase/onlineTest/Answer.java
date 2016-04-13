@@ -7,6 +7,7 @@ import org.json.JSONException;
 
 public class Answer {
 private	int id,question_id;
+private int marks;
 private		ArrayList<String> answer;
 	
 	
@@ -55,6 +56,22 @@ private		ArrayList<String> answer;
 
 	public static void main(String[] args) {
 		
+	}
+
+
+	/**
+	 * @return the marks
+	 */
+	public int getMarks() {
+		return marks;
+	}
+
+
+	/**
+	 * @param marks the marks to set
+	 */
+	public void setMarks(int marks) {
+		this.marks = marks;
 	}
 
 }

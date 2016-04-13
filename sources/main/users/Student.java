@@ -244,7 +244,7 @@ public class Student {
 	public void setDate_of_birth(String date_of_birth)throws IncorrectFormatException {
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date date;
 		try {
 			date = sdf.parse(date_of_birth);
@@ -349,7 +349,7 @@ public class Student {
 	 * @param email the email to set
 	 */
 	public void setEmail(String email)throws IncorrectFormatException {
-		
+	    if(email==null){this.email="";return;}
 		String regex = Pattern.quote("");
 		Pattern pattern=Pattern.compile(regex);
 		Matcher matcher=pattern.matcher(email);

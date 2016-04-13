@@ -139,10 +139,7 @@ public class Query {
 		return "";
 		
 	}
-public static void main(String[] args) throws SQLException, IncorrectFormatException {
-	//getCsabStudentList();
-//	System.out.println( retrieveRegistrationStatus(3));
-}
+
 
 
 
@@ -171,7 +168,7 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
-		System.out.println(proc);
+		//System.out.println(proc);
 		rs.next();
      
 		JSONArray jArray=new JSONArray(rs.getString(1));
@@ -206,7 +203,7 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 			current.setNationality(current_object.getString("nationality"));
 			current.setCsab_id(current_object.getInt("id"));
 			current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
-			
+			current.setReported(current_object.getBoolean("reported"));
 			
 			students.add(current);
 		}
@@ -304,7 +301,7 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 		proc.setLong(1,reg_id);
 
 		ResultSet rs=proc.executeQuery();
-		System.out.println(proc);
+	//	System.out.println(rs.next());
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
@@ -312,7 +309,7 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 		
 			JSONObject current_object=jArray.getJSONObject(0);
 			
-			
+			System.out.println(current_object);
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
 			current.setMiddle_name(current_object.getString("middle_name"));
@@ -344,10 +341,7 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setRoom(address_obj.getString("room"));
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
-			
-		
-		
-		
+			//System.out.println(current.getName());
 		rs.close();
 		proc.close();
 	}  catch (JSONException e) {
@@ -552,6 +546,34 @@ public static int reportStudent(int csab_id) {
 	}
 	return 0;
 	
+}
+public static void retrieveStudentList(){
+	PreparedStatement proc;
+	try {
+		proc = getConnection().prepareStatement("SELECT \"retrieveStudentList\"();");
+	
+	ResultSet rs = proc.executeQuery();
+	rs.next();
+	JSONArray student_list=new JSONArray(rs.getString(1));
+	int i=0;
+	JSONObject student;
+	for(i=0;i<student_list.length();i++){
+		 student = student_list.getJSONObject(i);
+		
+		 Student current=new Student();
+		 current.setStudent_id(student.get("student_id").toString());
+	}
+
+	
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+public static void main(String[] args) {
+	retrieveStudentList();
 }
 
 }
