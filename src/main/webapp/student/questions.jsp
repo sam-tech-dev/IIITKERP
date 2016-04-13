@@ -361,7 +361,7 @@
     <span id="checkbox_answer" style="display:none">
     <div class="checkbox">
                     <label>
-                      <input type="checkbox" >
+                      <input type="checkbox" class="checkbox_value">
                       <div  class="checkbox_text" value="option">Hello</div>
                     </label>
                   </div>
@@ -394,7 +394,7 @@
           <div class="box">
             <div class="box-body">
 			
-                <h3>Question: 1</h3><br>
+                <h3>Question: <span id="question_number">1</span></h3><br>
 				
 				<h4 id="question_stmt">Retrieve Question</h4><br>
 					
@@ -413,7 +413,7 @@
             </div>
 			<div class="box-footer">
 				<div class="btn-group">
-					<button type="button" id="submit" class="btn btn-block btn-success">Submit</button>
+					<button type="button" id="submit" class="btn btn-block btn-success" onclick="createAnswerSheet()">Submit</button>
 				</div>
 				<div class="btn-group pull-right">
                     <button type="button" id="previous_btn" class="btn btn-default btn-sm" onclick="previousQuestion()"><i class="fa fa-chevron-left"></i></button>

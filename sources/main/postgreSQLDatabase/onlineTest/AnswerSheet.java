@@ -8,8 +8,12 @@ import org.json.JSONException;
 
 public class AnswerSheet {
 private	int test_paper_id,id;
-private	String status,author;
+private	String status;
+private String author;
+private Long author_id;
+private String answer_file;
 private	ArrayList<Integer> answer;
+private Long total_marks;
 private	Date submission_time;
 	public int getTest_paper_id() {
 		return test_paper_id;
@@ -32,8 +36,8 @@ private	Date submission_time;
 	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthor(String string) {
+		this.author = string;
 	}
 	public ArrayList<Integer> getAnswer() {
 		return answer;
@@ -62,6 +66,42 @@ private	Date submission_time;
 	}
 	public static void main(String[] args) {
 		
+	}
+	/**
+	 * @return the answer_file
+	 */
+	public String getAnswer_file() {
+		return answer_file;
+	}
+	/**
+	 * @param answer_file the answer_file to set
+	 */
+	public void setAnswer_file(String answer_file) {
+		this.answer_file = answer_file;
+	}
+	/**
+	 * @return the author_id
+	 */
+	public Long getAuthor_id() {
+		return author_id;
+	}
+	/**
+	 * @param author_id the author_id to set
+	 */
+	public void setAuthor_id(Long author_id) {
+		this.author_id = author_id;
+	}
+	/**
+	 * @return the total_marks
+	 */
+	public Long getTotal_marks() {
+		return total_marks;
+	}
+	/**
+	 * @param total_marks the total_marks to set
+	 */
+	public void setTotal_marks(Long total_marks) {
+		this.total_marks = total_marks;
 	}
 
 }

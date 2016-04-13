@@ -24,7 +24,7 @@
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 				try{
 	        	data=JSON.parse(xmlhttp.responseText);
-	        	var	notification;
+	        	   	var	notification;
 	        	document.getElementById("notif_count").innerHTML=data.length;
 	        	document.getElementById("notifications").innerHTML="You have "+data.length+" notifications";
 	        	document.getElementById("notif_list").innerHTML="";
@@ -41,7 +41,9 @@
 				}
 			   
 				catch(exception){
-
+					document.getElementById("notif_count").innerHTML="";
+					document.getElementById("notifications").innerHTML="You have no new notifications";
+					document.getElementById("notif_list").innerHTML="";
 				}
 			}
 	        if(xmlhttp.status == 404)
@@ -52,6 +54,7 @@
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	    xmlhttp.send("userid="+uid);
 	}
+	
    }	
 function updateLastSeen(){
 	//alert("update");
@@ -131,6 +134,6 @@ function markAsRead(notif){
 }
 
 	   
-
+getNotifications();updateLastSeen();
 window.setInterval(function(){getNotifications();},5000);
 window.setInterval(function(){updateLastSeen();},7000);
