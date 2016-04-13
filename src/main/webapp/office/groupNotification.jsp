@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="postgreSQLDatabase.feePayment.*"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -9,6 +8,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -18,9 +18,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../plugins/iCheck/minimal/_all.css">
-  <link rel="stylesheet" href="../plugins/iCheck/all.css">
-  <link rel="stylesheet" href="../plugins/colorpicker/bootstrap-colorpicker.min.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +42,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
-        
       </ol>
     </section>
 
@@ -61,34 +57,52 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <%
-            long reg_id=1;
-            FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
-            %>
-            <form role="form" action="../VerifyFeePayment" method="POST">
-            <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
+            <form role="form">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"> Registration ID</label>
-                  <input type="text" class="form-control" value="<%=reg_id %>" disabled>
+                  <label>Notification Type</label>
+                  <select class="form-control">
+                    <option value="">Select any One</option>
+                    <option value="Grades">Grades</option>
+                    <option value="Tests">Tests</option>
+                    <option value="Fees">Fees</option>
+                    <option value="attendance">Attendance</option>
+                    <option value="miscellaneous">Miscellaneous</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"> Name</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getName() %>" disabled>
+                  <label for="exampleInputPassword1">Message</label>
+                  <textarea class="form-control" rows="3" placeholder="Type your message..." name="message"></textarea>
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Notification Timestamp</label>
+                  <input type="text" class="form-control" name="notif_timestamp" >
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red" required> Mode of Payment</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getPayment_method() %>" disabled>
+                  <label for="exampleInputPassword1">Link</label>
+                  <input type="text" class="form-control" name="link" name="link">
                 </div>
                 <div class="form-group">
-                  <label><input type="checkbox" class="flat-red" required> Payment Details</label>
-                  <textarea class="form-control" rows="3" disabled=""><%=payment_details.getDetails() %></textarea>
+                     <label>Expiry Date</label>
+                     <input type="time"  name="expiry">
+                </div>
+                <div class="form-group">
+                  <label>Users</label>
+                  <select id="user_list" onkeyup="alert(this);" class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                  <option>Alabama</option>
+                  <option>Alaska</option>
+                  <option>California</option>
+                  <option>Delaware</option>
+                  <option>Tennessee</option>
+                  <option>Texas</option>
+                  <option>Washington</option>
+                </select>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Verify</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
@@ -103,7 +117,7 @@
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
- </div>
+ 
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
@@ -111,36 +125,21 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass: 'iradio_minimal-blue'
-    });
-  $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass: 'iradio_minimal-red'
-    });
-  $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass: 'iradio_flat-green'
-    });
-//Colorpicker
-  $(".my-colorpicker1").colorpicker();
-  //color picker with addon
-  $(".my-colorpicker2").colorpicker();
-</script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../plugins/iCheck/icheck.min.js"></script>
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
+<script src="../plugins/select2/select2.full.min.js"></script>
 <script src="../dist/js/app.min.js"></script>
-
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+  $(function(){$(".select2").select2();});
+  
+</script>
 </body>
 </html>

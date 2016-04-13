@@ -22,29 +22,26 @@ import actions.chats.Conversation;
  *
  */
 public class Query {
-	
 
 	private static PreparedStatement proc;
 	public static ArrayList<Payment> getFeePaymentHistory (long user_id) {
-
 		
-		ArrayList<Payment> history_info=new ArrayList<Payment>();
+		ArrayList<Payment> history_info = new ArrayList<Payment>();
 		try {
-			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeePaymentHistory\"(?);");
-
+			proc = PostgreSQLConnection.getConnection()
+					.prepareStatement("SELECT public.\"retrieveFeePaymentHistory\"(?);");
 
 			proc.setObject(1, user_id);
-			ResultSet rs=proc.executeQuery();
+			ResultSet rs = proc.executeQuery();
 			System.out.println(proc);
 			rs.next();
-			//String postgre=rs.getString(1);
-			JSONArray jArray=new JSONArray(rs.getString(1));
+			// String postgre=rs.getString(1);
+			JSONArray jArray = new JSONArray(rs.getString(1));
 
-			for(int i=0;i<jArray.length();i++)
-			{
-				JSONObject current_object=jArray.getJSONObject(i);
-				
-				Payment history=new Payment();
+			for (int i = 0; i < jArray.length(); i++) {
+				JSONObject current_object = jArray.getJSONObject(i);
+
+				Payment history = new Payment();
 				history.setRef_no(current_object.getInt("ref_no"));
 				history.setComment(current_object.getString("comment"));
 				history.setDetails(current_object.getJSONObject("details"));
@@ -53,7 +50,7 @@ public class Query {
 				history.setPayment_method(current_object.getInt("payment_method"));
 				history_info.add(history);
 			}
-			System.out.println();	
+			System.out.println();
 			rs.close();
 			proc.close();
 		} catch (SQLException e) {
@@ -61,6 +58,38 @@ public class Query {
 			e.printStackTrace();
 		}
 		return history_info;
+	}
+	
+	
+	public static FeePaymentDetails getFeePaymentDetails(long user_id) {
+		FeePaymentDetails payment_details=new FeePaymentDetails();
+		try {
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getFeePayemtDetails\"(?);");
+
+
+			proc.setObject(1, user_id);
+			ResultSet rs=proc.executeQuery();
+			System.out.println(proc);
+			rs.next();
+			JSONArray jArray=new JSONArray(rs.getString(1));
+			
+				JSONObject current_object=jArray.getJSONObject(0);
+				payment_details.setId(current_object.getInt("ref_no"));
+				payment_details.setName(current_object.getString("name"));
+				String details=current_object.get("details").toString();
+				payment_details.setDetails(details);
+				payment_details.setPayment_method(current_object.getInt("payment_method"));
+			
+			
+			System.out.println();	
+			rs.close();
+			proc.close();
+		
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return payment_details;
 	}
 	
 	public static void addFeeBreakup(String semester,String category,String breakup,String year)
@@ -126,12 +155,46 @@ public static int addFeePayment(String comment,int pay_method,JSONObject details
 		
 	}
 	
+public static void verifyFeePayment(long ref_no){
 	
-	public static void main(String[] args) {
+	try {
+		proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"feeVerify\"(?);");
+		proc.setLong(1,ref_no);
+		proc.executeQuery();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
 
-		ArrayList<Payment> fee=getFeePaymentHistory(1);
+	
+	
+
+	public static void main(String[] args) throws SQLException {
+
+		// ArrayList<Payment> fee=getFeePaymentHistory(1);
+		//getFeeBreakup(1);
+		System.out.println(getFeeBreakup(1));
+
+	}
+
+	public static JSONObject getFeeBreakup(int reg_id) throws SQLException {
+		PreparedStatement proc = PostgreSQLConnection.getConnection()
+				.prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
+		try {
+			proc.setObject(1, reg_id);
+			ResultSet rs = proc.executeQuery();
+			rs.next();
+			String fee = rs.getString(1);
+			JSONObject fee_breakup = new JSONObject(fee);
+			return fee_breakup;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 }
-
-
