@@ -176,11 +176,12 @@
 
 						<div class="col-md-6">
 							<%
-							long reg=1;
-							out.print(request.getSession().getAttribute("reg_id"));
-							//Long reg_id=Long.parseLong((String)request.getSession().getAttribute("reg_id"));
-                           // Student current=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
-							Student current = Query.getRegistrationStudentData(reg);
+							
+							
+							System.out.println("session="+request.getSession().getAttribute("reg_id"));
+							long reg_id=Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+						
+							Student current = Query.getRegistrationStudentData(reg_id);
 							%>
 							<div id="step-1">
 								<div class="box box-primary">
