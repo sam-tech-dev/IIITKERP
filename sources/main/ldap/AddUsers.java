@@ -29,7 +29,7 @@ public class AddUsers {
 
 	}
 	public String addUser(String...s) throws IOException{
-		obj.run("thirdyear.csv");
+		obj.run("firstyear.csv");
 		int k=0;
 		int j[]=new int[s.length];
 		String username,first_name,last_name,password;

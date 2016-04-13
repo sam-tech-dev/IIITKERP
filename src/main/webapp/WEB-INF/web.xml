@@ -24,10 +24,7 @@
 		<filter-name>Session</filter-name>
 		<url-pattern>/administration/*</url-pattern>
 	</filter-mapping>
-	<filter-mapping>
-		<filter-name>Session</filter-name>
-		<url-pattern>/studentRegistration/*</url-pattern>
-	</filter-mapping>
+	
 	<!--onlineTest -->
 	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
@@ -195,6 +192,12 @@
 		<servlet-name>SignIn</servlet-name>
 		<servlet-class>actions.authentication.SignIn</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>VerifyFeePayment</servlet-name>
+		<display-name>VerifyFeePayment</display-name>
+		<description></description>
+		<servlet-class>actions.feePayment.VerifyFeePayment</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -316,6 +319,11 @@
 	<servlet-mapping>
 		<servlet-name>sample</servlet-name>
 		<url-pattern>/sample</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>VerifyFeePayment</servlet-name>
+		<url-pattern>/VerifyFeePayment</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
