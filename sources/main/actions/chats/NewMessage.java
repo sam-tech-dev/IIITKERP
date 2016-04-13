@@ -47,7 +47,7 @@ public class NewMessage extends HttpServlet {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newMessage\"(?,?,?);");
 			proc.setString(1,request.getParameter("text"));
 			proc.setLong(2,Long.parseLong(request.getSession().getAttribute("erpId").toString()));
-			proc.setInt(3,67);
+			proc.setLong(3,Long.parseLong(request.getParameter("conversation_id")));
 			
 			//System.out.println(proc.toString());
 			 proc.executeQuery();
