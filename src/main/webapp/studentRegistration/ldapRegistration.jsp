@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="postgreSQLDatabase.feePayment.*"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -18,9 +17,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../plugins/iCheck/minimal/_all.css">
-  <link rel="stylesheet" href="../plugins/iCheck/all.css">
-  <link rel="stylesheet" href="../plugins/colorpicker/bootstrap-colorpicker.min.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +29,7 @@
 <div class="wrapper">
 <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
- <%@ include file="main-sidebar.jsp" %>
+ <%@ include file="new-asidebar.jsp"%>
  
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -57,35 +53,48 @@
 				<div class="col-md-6">
 					<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Enter Title</h3>
+              <h3 class="box-title">Registration ID : 55</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <%
-            
-            long reg_id=Long.parseLong(request.getAttribute("reg_id").toString());
-            System.out.println(reg_id);
-            FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
-            %>
             
             <form role="form" action="../VerifyFeePayment" method="POST">
-            <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
+            <span><input type="hidden" name="ref_no" value=""></span>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"> Registration ID</label>
-                  <input type="text" class="form-control" value="<%=reg_id %>" disabled>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value=""> Option1
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value=""> Option2
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios3" value=""> Option3
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios4" value=""> Option4
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios5" value=""> Option5
+                    </label>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"> Name</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getName() %>" disabled>
+                  <label for="exampleInputPassword1"> Password</label>
+                  <input type="password" class="form-control" value="" placeholder="Password">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red" required> Mode of Payment</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getPayment_method() %>" disabled>
-                </div>
-                <div class="form-group">
-                  <label><input type="checkbox" class="flat-red" required> Payment Details</label>
-                  <textarea class="form-control" rows="3" disabled=""><%=payment_details.getDetails() %></textarea>
+                  <label for="exampleInputPassword1"> Repeat Password</label>
+                  <input type="password" class="form-control" value="" placeholder="Repeat Password">
                 </div>
               </div>
               <!-- /.box-body -->
@@ -116,29 +125,12 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
-  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass: 'iradio_minimal-blue'
-    });
-  $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass: 'iradio_minimal-red'
-    });
-  $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass: 'iradio_flat-green'
-    });
-//Colorpicker
-  $(".my-colorpicker1").colorpicker();
-  //color picker with addon
-  $(".my-colorpicker2").colorpicker();
 </script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../plugins/iCheck/icheck.min.js"></script>
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>

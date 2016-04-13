@@ -95,7 +95,7 @@ public class Query {
 				//current.setPermanent_address(current_object.getString("address"));
 				//current.setRc_name(current_object.getString("rc_name"));
 				current.setNationality(current_object.getString("nationality"));
-				current.setCsab_id(current_object.getInt("id"));
+				current.setRegistration_id(current_object.getInt("id"));
 				//current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 				current.setVerified(current_object.getBoolean("verified"));
 				students.add(current);

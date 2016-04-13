@@ -42,7 +42,7 @@ public class AddPaymentInfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		// challan 5
 		HttpSession session=request.getSession();
-        if(request.getParameter("payment_method").equals("demand_draft")){
+        if(request.getParameter("payment_method").toString().equals("demand_draft")){
         JSONObject details=new JSONObject();
         details.put("amount",request.getParameter("amount"));
         details.put("bank",request.getParameter("bank"));

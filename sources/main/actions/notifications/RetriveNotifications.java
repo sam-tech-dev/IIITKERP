@@ -80,10 +80,10 @@ public class RetriveNotifications extends HttpServlet {
 							.parse(current_object.getString("expiry")).getTime()));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 				notifications.add(current);
 			}
@@ -114,9 +114,9 @@ public class RetriveNotifications extends HttpServlet {
 			proc.close();
 			writer.write(notifications_array.toString());
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//	e.printStackTrace();
 		}
 
 	}
