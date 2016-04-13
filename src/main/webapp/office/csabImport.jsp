@@ -241,10 +241,10 @@
                 </thead>
                 <tbody>
                 <%
-                ArrayList<Student> csab_list=Query.getCsabStudentList();
-                Iterator<Student> iterator=csab_list.iterator();
-                while(iterator.hasNext()){
-    				Student current=iterator.next();
+                	ArrayList<Student> csab_list=postgreSQLDatabase.registration.Query.getCsabStudentList();
+                                Iterator<Student> iterator=csab_list.iterator();
+                                while(iterator.hasNext()){
+                    				Student current=iterator.next();
                 %>
                 <tr>
                   <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>

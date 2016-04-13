@@ -24,18 +24,18 @@
   </div>
   
   <div class="login-box-body">
-    <p class="login-box-msg">Login Account</p>
+    <p class="login-box-msg">Reset Password</p>
 
     <form method="post" onSubmit="return authenticate(this.ldap_username.value,this.ldap_password.value)">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="ldap_username" onclick="$('#error_username').html('')" id="ldap_username" placeholder="Username">
+        <input type="password" class="form-control" name="ldap_username" onclick="$('#error_username').html('')" id="ldap_username" placeholder="New Password">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 		<div class="form-group has-error">
             <label class="control-label" for="inputError"><span id="error_username"></span></label>
         </div>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="ldap_password" onclick="$('#error_password').html('')" id="ldap_password" placeholder="Password">
+        <input type="password" class="form-control" name="ldap_password" onclick="$('#error_password').html('')" id="ldap_password" placeholder="Repeat Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		<div class="form-group has-error">
             <label class="control-label" for="inputError"><span id="error_password"></span></label>
@@ -47,8 +47,6 @@
         </div>
       </div>
     </form>
-
-    <a href="forgotPassword.jsp">I forgot my password</a><br>
 
   </div>
   

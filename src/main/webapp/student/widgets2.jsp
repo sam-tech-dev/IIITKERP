@@ -13,99 +13,7 @@
   <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
   <script>
-        var count=0;
-	 
-	  
-		var visibleChat = new Array(); 
-	    var ChatObjectArray = {}; 
-
-		  
-		var allChats = new Array();
- 
-		
-		
-		function display(id){
-		
-			var visible = $.inArray(id,visibleChat);
-			
-		if(visible==-1){
-			
-			visibleChat.push(id);
-			var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
-						for (i=0;i<chats.length;i++){
-								if(chats[i].dataset.chatId==id){
-									//alert(document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i].nodeName);
-									var itm = document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i];
-
-									var cln = itm.cloneNode(true);
-									cln.style.display="inline";
-									document.getElementById("chatDiv").appendChild(cln);
-									document.getElementById("chatDiv").removeChild(document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i]);
-									
-		
-											break;
-												}
-									
-									}
-						if(visibleChat.length>3){
-							
-							var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
-							for (i=0;i<chats.length;i++){
-							if(chats[i].style.display!="none"){
-								hide(chats[i].dataset.chatId);
-								break;
-							}
-							
-							}
-						}		
-							
-						}
-		}
-			function hide(id){
-				
-				var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
-				for (i=0;i<chats.length;i++){
-					
-					if(chats[i].dataset.chatId==id){
-						
-				document.getElementById("chatDiv").getElementsByClassName('chatWindow')[i].style.display="none";
-			//	alert("visible"+visibleChat);
-		    //    alert("removing"+id);
-		    //    alert("length"+visibleChat.length);
-		    //     alert("removing at position"+visibleChat.indexOf(id));
-				visibleChat.splice(visibleChat.indexOf(id),1);
-		         
-		  //       alert(visibleChat);
-				break;
-					}
-				
-			}
-		//	alert(visibleChat);
-			}
-		function addChat(id){
-				var found = $.inArray(id,allChats);
-				
-				if(found==-1){
-					
-					var current=document.getElementById("chatBox");  /*Always do */
-						current.getElementsByClassName('chatHeader')[0].innerHTML="chat-"+id;
-						current.getElementsByClassName('chatWindow')[0].style.display="none";
-						current.getElementsByClassName('chatWindow')[0].dataset.chatId=id;
-						current.getElementsByClassName('btn btn-box-tool')[1].setAttribute( "onClick", "javascript: hide('"+id+"');" );
-					allChats.push(id);
-					
-					count++;
-					//	alert(document.getElementById("chatDiv").innerHTML);
-					document.getElementById("chatDiv").innerHTML+=document.getElementById("chatBox").innerHTML;
-				//	alert(document.getElementById("chatDiv").getElementsByClassName('chatWindow').length);
-					  //display chat
-				}	
-						display(id);
-					
-										
-				
-		}
-
+var session_user_name="<%=session.getAttribute("name")%>"        
 		
   </script>
   
@@ -789,6 +697,36 @@
 
 	  
 	  <!-- Direct Chat -->
+	  <div style="display:none">
+<span id="left_message">
+                <div class="direct-chat-msg" >
+                  <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-name pull-left username">Alexander Pierce</span>
+                    <span class="direct-chat-timestamp pull-right timestamp">23 Jan 2:00 pm</span>
+                  </div>
+                  <!-- /.direct-chat-info -->
+                  <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <div class="direct-chat-text text">
+                    Is this template really for free? That's unbelievable!
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                </span>
+<span id="right_message">
+                <div class="direct-chat-msg right">
+                  <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-name pull-right username">Sarah Bullock</span>
+                    <span class="direct-chat-timestamp pull-left timestamp">23 Jan 2:05 pm</span>
+                  </div>
+                  <!-- /.direct-chat-info -->
+                  <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <div class="direct-chat-text text">
+                    You better believe it!
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                </span>                
+</div>
 		<div  style="display:none;">
 			<span id="chatBox">
 				<span class="chatWindow" >
@@ -830,14 +768,14 @@
 								</div>
 							</div>
 							<div class="box-footer">
-								<form action="#" method="post">
+								
 									<div class="input-group">
-										<input type="text" name="message" placeholder="Type Message ..." class="form-control">
+										<input type="text" name="message" placeholder="Type Message ..." class="form-control message">
 										<span class="input-group-btn">
-											<button type="submit" class="btn btn-danger btn-flat">Send</button>
+											<button  class="btn btn-danger btn-flat">Send</button>
 										</span>
 									</div>
-								</form>
+								
 							</div>
 						</div>
 					</div>
@@ -1345,89 +1283,32 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <!-- Home tab content -->
+      
       <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <span style="display:none;" id="chat_list_template">
+					<li>
+							<div class="user-panel box-comment">
+								<img class="img-circle img-sm"
+									src="../dist/img/user3-128x128.jpg" alt="User Image">
+								<div class="comment-text">
+									
+									<span class="chat_name"
+										style="margin: 12px; vertical-align: middle;" >&nbsp;Chat1</span>
+										<span class="text-muted pull-right"><i
+											class="fa fa-circle text-success"></i></span>
+								
+								</div>
+							</div>
+						</li>
+					</span>
+					
         <ul class="control-sidebar-menu">
-			<li onclick="addChat('1')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;Chat1</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
+        <span id="chat_list">
+        </span>
+		
 			
-			<li onclick="addChat('2')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;Chat2</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			<li onclick="addChat('3')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;chat3</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			<li onclick="addChat('4')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;chat4</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			<li onclick="addChat('5')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;chat5</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			<li onclick="addChat('6')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;chat6</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			<li onclick="addChat('7')">
-				<div class="user-panel box-comment">
-					<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-					<div class="comment-text">
-                      <span class="username">
-						<span style="margin:12px;vertical-align:middle;">&nbsp;chat7</span> 
-                        <span class="text-muted pull-right"><i class="fa fa-circle text-success"></i></span>
-                      </span>
-					</div>
-                </div>	
-			</li>
-			
-		</ul>
+			</ul>
         <!-- /.control-sidebar-menu -->
       </div>
       <!-- /.tab-pane -->
@@ -1524,5 +1405,6 @@
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script src="../dist/js/chats.js"></script>
 </body>
 </html>

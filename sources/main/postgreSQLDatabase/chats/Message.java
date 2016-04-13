@@ -11,17 +11,17 @@ import java.sql.Date;
  */
 public class Message {
 private String username;
-private int id;
-private int author;
+private long id;
+private long author;
 private String text;
 private Date time_stamp;
-public int getId() {
+public long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(long id) {
 	this.id = id;
 }
-public int getAuthor() {
+public long getAuthor() {
 	return author;
 }
 public void setAuthor(int author) {

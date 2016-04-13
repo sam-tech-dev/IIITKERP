@@ -231,6 +231,17 @@
 		<servlet-name>RetrieveMessage</servlet-name>
 		<url-pattern>/RetrieveMessage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RetrieveConversationsInfo</servlet-name>
+		<display-name>RetrieveConversationsInfo</display-name>
+		<description></description>
+		<servlet-class>actions.chats.RetrieveConversationsInfo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RetrieveConversationsInfo</servlet-name>
+		<url-pattern>/RetrieveConversationsInfo</url-pattern>
+	</servlet-mapping>
 
 
 	<servlet>
