@@ -162,7 +162,8 @@ function retrieveMessages(convo_id){
 	}
 	return false;
 }
-function unreadMessages(){
+function unreadMessages(id){
+
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -184,6 +185,17 @@ function unreadMessages(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
+				var current_window;
+				for (i=0;i<chats.length;i++){
+						if(chats[i].dataset.chatId==id){
+							current_window=chats[i];
+						}
+						}
+				
+						
+				//current_window.getElementsByClassName("direct-chat-messages")[0].innerHTML="";
+				
 				data=JSON.parse(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
@@ -204,8 +216,8 @@ function unreadMessages(){
 						current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message.innerHTML);
 					}
 				}
-				document.getElementById("chat_box").scrollTop=9999999;
-				readMessage();
+			//	document.getElementById("chat_box").scrollTop=9999999;
+				readMessage(id);
 				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
 			}
 			if(xmlhttp.status == 404)
@@ -213,7 +225,7 @@ function unreadMessages(){
 		}
 		xmlhttp.open("POST","../RetrieveMessage",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send();
+		xmlhttp.send("convo_id="+id);
 	}
 	return false;
 }
@@ -271,9 +283,9 @@ function sendMessage(id){
 	}
 	return false;
 }
-function readMessage(){
+function readMessage(id){
 	
-var message=document.getElementById('chat_message').value;
+
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -301,7 +313,7 @@ var message=document.getElementById('chat_message').value;
 		}
 		xmlhttp.open("POST","../ReadAllMessages",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send();
+		xmlhttp.send("convo_id="+id);
 	}
 	return false;
 }
@@ -376,7 +388,14 @@ var members_list="";
 		getConversationsInfo();
 
 	},10000);*/
-
-//window.setInterval(function(){if (refresh==1)unreadMessages();}(),5000);
-
 getConversationsInfo();
+refresh=1;
+window.setInterval(function(){
+	for(var x=0;x<visibleChat.length;x++){
+		unreadMessages(visibleChat[x]);
+		
+	}
+	
+	},2000);
+
+
