@@ -50,7 +50,6 @@ public class RetrieveMessage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
-		System.out.println(convo_id);
 		PrintWriter writer=response.getWriter();
 		PreparedStatement proc = null;
 		ResultSet rs = null;
@@ -104,7 +103,7 @@ rs=proc.executeQuery();
 		} catch (Exception e) {
 			writer.write("");
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}  
 	}

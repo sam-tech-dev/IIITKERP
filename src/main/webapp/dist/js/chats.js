@@ -128,6 +128,9 @@ function retrieveMessages(convo_id){
 					
 			current_window.getElementsByClassName("direct-chat-messages")[0].innerHTML="";
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				
+				if(xmlhttp.responseText=="")return false;
+				
 				data=JSON.parse(xmlhttp.responseText);
 				
 				var	message;
@@ -150,7 +153,7 @@ function retrieveMessages(convo_id){
 						current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message.innerHTML);
 					}
 				}
-			//	current_window.getElementsByClassName("chat-box")[0].scrollTop=9999999;
+				current_window.getElementsByClassName("box-body")[0].scrollTop=9999999;
 				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
 			}
 			if(xmlhttp.status == 404)
@@ -195,7 +198,8 @@ function unreadMessages(id){
 				
 						
 				//current_window.getElementsByClassName("direct-chat-messages")[0].innerHTML="";
-				
+			
+				if(xmlhttp.responseText=="")return false;
 				data=JSON.parse(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
@@ -216,7 +220,7 @@ function unreadMessages(id){
 						current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message.innerHTML);
 					}
 				}
-			//	document.getElementById("chat_box").scrollTop=9999999;
+				current_window.getElementsByClassName("box-body")[0].scrollTop=9999999;
 				readMessage(id);
 				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
 			}
