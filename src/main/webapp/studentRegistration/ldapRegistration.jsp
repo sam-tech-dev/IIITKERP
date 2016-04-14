@@ -8,7 +8,6 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -30,7 +29,7 @@
 <div class="wrapper">
 <%@ include file="header.jsp" %>
  <!-- Left side column. contains the logo and sidebar -->
- <%@ include file="main-sidebar.jsp" %>
+ <%@ include file="new-asidebar.jsp"%>
  
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -42,6 +41,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
+        
       </ol>
     </section>
 
@@ -53,50 +53,54 @@
 				<div class="col-md-6">
 					<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Enter Title</h3>
+              <h3 class="box-title">Registration ID : 55</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            
+            <form role="form" action="../VerifyFeePayment" method="POST">
+            <span><input type="hidden" name="ref_no" value=""></span>
               <div class="box-body">
                 <div class="form-group">
-                  <label>Notification Type</label>
-                  <select class="form-control">
-                    <option value="">Select any One</option>
-                    <option value="Grades">Grades</option>
-                    <option value="Tests">Tests</option>
-                    <option value="Fees">Fees</option>
-                    <option value="attendance">Attendance</option>
-                    <option value="miscellaneous">Miscellaneous</option>
-                  </select>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value=""> Option1
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value=""> Option2
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios3" value=""> Option3
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios4" value=""> Option4
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios5" value=""> Option5
+                    </label>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Message</label>
-                  <textarea class="form-control" rows="3" placeholder="Type your message..." name="message"></textarea>
-                </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Notification Timestamp</label>
-                  <input type="text" class="form-control" name="notif_timestamp" >
+                  <label for="exampleInputPassword1"> Password</label>
+                  <input type="password" class="form-control" value="" placeholder="Password">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Link</label>
-                  <input type="text" class="form-control" name="link" name="link">
-                </div>
-                <div class="form-group">
-                     <label>Expiry Date</label>
-                     <input type="time"  name="expiry">
-                </div>
-                <div class="form-group">
-                  <label>Users</label>
-                  <select id="user_list" onkeyup="alert(this);" class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                  <option>Washington</option>
-                </select>
+                  <label for="exampleInputPassword1"> Repeat Password</label>
+                  <input type="password" class="form-control" value="" placeholder="Repeat Password">
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Verify</button>
               </div>
             </form>
           </div>
@@ -111,7 +115,7 @@
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
- 
+ </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
@@ -119,6 +123,9 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
@@ -126,14 +133,9 @@
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../plugins/select2/select2.full.min.js"></script>
 <script src="../dist/js/app.min.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-  $(function(){$(".select2").select2();});
-  
-</script>
 </body>
 </html>

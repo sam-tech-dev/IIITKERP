@@ -246,3 +246,7 @@
     </nav>
   </header>
   <script src="../dist/js/notifications.js"></script>
+  <script>
+var session_user_name="<%=session.getAttribute("name")%>"        
+		
+  </script>

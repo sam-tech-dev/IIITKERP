@@ -118,9 +118,9 @@ public class RetriveNotifications extends HttpServlet {
 			//System.out.println(notifications_array.toString());
 			writer.write(notifications_array.toString());
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	}

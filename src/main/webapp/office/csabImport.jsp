@@ -207,6 +207,10 @@
 		  <div class="box">
             <div class="box-header">
               <h3 class="box-title">Student List</h3>
+              <form action="../FileUpload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input type="submit" value="upload" />
+            </form>   
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
@@ -241,10 +245,10 @@
                 </thead>
                 <tbody>
                 <%
-                ArrayList<Student> csab_list=Query.getCsabStudentList();
-                Iterator<Student> iterator=csab_list.iterator();
-                while(iterator.hasNext()){
-    				Student current=iterator.next();
+                	ArrayList<Student> csab_list=postgreSQLDatabase.registration.Query.getCsabStudentList();
+                                Iterator<Student> iterator=csab_list.iterator();
+                                while(iterator.hasNext()){
+                    				Student current=iterator.next();
                 %>
                 <tr>
                   <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" onclick="report(<%=current.getCsab_id()%>)">Report</button></div></td>

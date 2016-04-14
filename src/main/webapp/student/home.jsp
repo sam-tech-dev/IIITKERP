@@ -47,12 +47,13 @@
     </section>
 
     <!-- Main content -->
-	<div class="row" style="margin-top:230px">
-	   
-      </div>
+	
     <!-- /.content -->
+   <%@ include file="chats.jsp" %>  
   </div>
+
   <!-- /.content-wrapper -->
+  
   <%@ include file="footer.jsp" %>
   <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
@@ -100,6 +101,6 @@
 				alert(listofpeople.unshift(b));
 		}
   </script>
-  
+
 </body>
 </html>
