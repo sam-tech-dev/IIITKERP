@@ -70,6 +70,7 @@
             
             <form role="form" action="../VerifyFeePayment" method="POST">
             <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
+             <span><input type="hidden" name="reg_id" value="<%=reg_id%>"></span>
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1"> Registration ID</label>

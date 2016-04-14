@@ -54,6 +54,19 @@ public class Query {
 		return conn;
 	}
 	
+	public static void updateVerificationStatus(int status,long reg_id){
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"updateVerificationStatus\"(?,?);");
+		    proc.setInt(1,status);
+		    proc.setLong(2, reg_id);
+		    proc.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static ArrayList<Student> displayRegistrationData() throws SQLException,IncorrectFormatException{
 		ArrayList<Student> students=null;
 		 
@@ -72,6 +85,7 @@ public class Query {
 				JSONObject current_object=jArray.getJSONObject(i);
 				Student current=new Student();
 				current.setName(current_object.getString("name"));
+				current.setVerification_status(current_object.getInt("verification_status"));
 				current.setFirst_name(current_object.getString("first_name"));
 				current.setMiddle_name(current_object.getString("middle_name"));
 				current.setLast_name(current_object.getString("last_name"));

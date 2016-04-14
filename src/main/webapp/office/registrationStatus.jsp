@@ -51,7 +51,7 @@
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
 <script src="../dist/js/reportStudent.js"></script>
- <%@page import="java.util.ArrayList"%>
+ <%@ page import="java.util.ArrayList" %>
  <%@ page import="java.util.Iterator" %>
  <%@ page import="users.Student" %>
 
@@ -87,7 +87,6 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Verify</th>
                   <th>Id</th>	
                   <th>Name</th>
                   <th>Verified Status</th>
@@ -100,23 +99,33 @@
     				Student current=iterator.next();
     				int status=current.getVerification_status();
     				String status_msg="";
-    				if(status==3){
-    					status_msg="not verified";
-    				}
-    				else if(status==4){
-    					status_msg="verified";
-    				}
-    				else{
-    					continue;
+    				switch(status){
+    				case 0: status_msg="reported";
+    				break;
+    				case 1: status_msg="data entered";
+					break;
+    				case 2: status_msg="data approved";
+					break;
+    				case 3: status_msg="fee paid";
+					break;
+    				case 4: status_msg="fee verified";
+					break;
+    				case 5: status_msg="registered";
+					break;
+    					
     				}
     				
-
+    				//0 reported
+    				//1 data entered
+    				// 2 approved
+    				// 3 fee paid
+    				// 4 fee approved
+    				//5 registered
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verifyFee(<%=current.getRegistration_id()%>)">Verify</button></div></td>
                   <td><%=current.getRegistration_id() %></td>
                   <td><%=current.getName() %></td>
-                  <td><%=status_msg %></td>
+                  <td><%=status_msg%></td>
                 </tr>
 				<%
                 }
