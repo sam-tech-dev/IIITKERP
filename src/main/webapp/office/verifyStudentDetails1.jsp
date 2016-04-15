@@ -62,14 +62,15 @@
             <!-- /.box-header -->
             <!-- form start -->
             <%
-            
-            long reg_id=Long.parseLong(request.getAttribute("reg_id").toString());
-            System.out.println(reg_id);
+            System.out.println(request.getParameter("reg_id"));
+            long reg_id=Long.parseLong(request.getParameter("reg_id").toString());
+       
             FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
             %>
             
             <form role="form" action="../VerifyFeePayment" method="POST">
             <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
+             <span><input type="hidden" name="reg_id" value="<%=reg_id%>"></span>
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1"> Registration ID</label>

@@ -1,4 +1,5 @@
 function makePayment(method){
+	alert(method);
 	if(method=="dd"){
 	amount=document.getElementById('dd_amount').value;
 	payment_method="demand_draft";
@@ -46,3 +47,12 @@ function makePayment(method){
 	   
 	}
 }
+
+
+
+
+
+function verifyFee(reg_id){
+	window.location="verifyStudentDetails1.jsp?reg_id="+reg_id;
+	}
+   
