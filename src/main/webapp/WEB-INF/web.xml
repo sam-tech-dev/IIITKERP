@@ -361,6 +361,12 @@
 		<description></description>
 		<servlet-class>actions.registration.CsabStudentProfile</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ResetPassword</servlet-name>
+		<display-name>ResetPassword</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.ResetPassword</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
@@ -384,6 +390,10 @@
 	<servlet-mapping>
 		<servlet-name>CsabStudentProfile</servlet-name>
 		<url-pattern>/CsabStudentProfile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPassword</servlet-name>
+		<url-pattern>/ResetPassword</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
