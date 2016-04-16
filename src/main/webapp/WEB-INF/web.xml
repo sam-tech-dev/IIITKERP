@@ -355,6 +355,12 @@
 		<description></description>
 		<servlet-class>actions.registration.Login</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CsabStudentProfile</servlet-name>
+		<display-name>CsabStudentProfile</display-name>
+		<description></description>
+		<servlet-class>actions.registration.CsabStudentProfile</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
@@ -374,6 +380,10 @@
 	<servlet-mapping>
 		<servlet-name>GenerateStudentId</servlet-name>
 		<url-pattern>/GenerateStudentId</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CsabStudentProfile</servlet-name>
+		<url-pattern>/CsabStudentProfile</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
