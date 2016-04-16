@@ -1,7 +1,7 @@
 function authenticateRegId(){
 
     var reg_id=document.getElementById("login_reg_id").value;
-    alert(reg_id);
+   // alert(reg_id);
 	// to support all browsers
 	var xmlhttp;
 	try{
@@ -25,7 +25,7 @@ function authenticateRegId(){
 	    xmlhttp.onreadystatechange=function() {
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 	        	
-				alert(xmlhttp.responseText);
+	//			alert(xmlhttp.responseText);
 	        	data=JSON.parse(xmlhttp.responseText);
 				if (data.redirect) {
 					// data.redirect contains the string URL to redirect to

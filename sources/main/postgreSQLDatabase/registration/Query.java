@@ -213,6 +213,7 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 			current.setRc_name(current_object.getString("rc_name"));
 			current.setNationality(current_object.getString("nationality"));
 			current.setCsab_id(current_object.getInt("id"));
+			current.setRegistration_id(current_object.getLong("registration_id"));
 			current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 			current.setReported(current_object.getBoolean("reported"));
 			
@@ -240,11 +241,12 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 
 
-public static Student getCsabStudentProfile(int reg_id) throws SQLException,IncorrectFormatException{
+public static JSONObject getCsabStudentProfile(long csab_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
+	JSONObject current_object=null;
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayCsabProfile\"(?);");
-		proc.setInt(1,reg_id);
+		proc.setLong(1,csab_id);
 		
 		ResultSet rs=proc.executeQuery();
 	
@@ -253,7 +255,7 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 		JSONArray jArray=new JSONArray(rs.getString(1));
 		
 		
-			JSONObject current_object=jArray.getJSONObject(0);
+			 current_object=jArray.getJSONObject(0);
 			
 			
 			current.setName(current_object.getString("name"));
@@ -301,7 +303,7 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 	}
 
 
-	return current;
+	return current_object;
 }
 
 
@@ -475,7 +477,7 @@ public static void addUpdateStudentRegistrationDetails(Student student) throws S
 	proc.setBoolean(12,student.isPwd());
 	proc.setString(13,student.getGender());
 	proc.setString(14,student.getNationality());
-	proc.setInt(15,student.getRegistration_id());
+	proc.setLong(15,student.getRegistration_id());
 	proc.setString(16,student.getGuardian_name());
 	proc.setString(17,student.getGuardian_contact());
 	proc.setString(18,student.getGuardian_email());
@@ -545,7 +547,7 @@ public static int retrieveRegistrationStatus(Long reg_id){
 
 public static int reportStudent(int csab_id) {
 	try {
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report\"(?);");
+		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report_student\"(?);");
 		proc.setInt(1,csab_id);
 		ResultSet rs=proc.executeQuery();
 		rs.next();
