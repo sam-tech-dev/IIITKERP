@@ -89,107 +89,81 @@
                 	<tbody>
                 		<tr>
                 			<td>Name</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Student ID</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Category</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>JEE Main Roll No.</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>JEE Advanced Roll No.</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>State</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Phone Number</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Email</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Date Of Birth</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Program Allocated</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Allocated Category</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Allocated Rank</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Status</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Choice Number</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Physically Disabled</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Gender</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Quota</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Round</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Willingness</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Address</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>RC Name</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Nationality</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>ID</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Entry Date</td>
-                			<td></td>
                 		</tr>
                 		<tr>
                 			<td>Reported</td>
-                			<td></td>
                 		</tr>
                 	</tbody>
                 </table>
-              
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

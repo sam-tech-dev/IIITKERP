@@ -186,6 +186,12 @@
 		<description></description>
 		<servlet-class>actions.testPaper.GetSolutionSheet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AutoSuggest</servlet-name>
+		<display-name>AutoSuggest</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.AutoSuggest</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -294,6 +300,10 @@
 	<servlet-mapping>
 		<servlet-name>GetSolutionSheet</servlet-name>
 		<url-pattern>/GetSolutionSheet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AutoSuggest</servlet-name>
+		<url-pattern>/AutoSuggest</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
