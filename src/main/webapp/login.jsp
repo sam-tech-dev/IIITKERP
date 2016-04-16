@@ -48,7 +48,7 @@
       </div>
     </form>
 
-    <a href="#">I forgot my password</a><br>
+    <a href="forgotPassword.jsp">I forgot my password</a><br>
 
   </div>
   

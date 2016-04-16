@@ -1,15 +1,17 @@
 package postgreSQLDatabase.onlineTest;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.Duration;
+//import java.time.Duration;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class TestPaper {
-private String subject,author,status,question_file;
+private String subject,status,question_file;
 private ArrayList<Integer> questions;
+private long author_id;
+private String author;
 int id;
 private Date creation_date;
 private Time duration;
@@ -80,6 +82,18 @@ public String getQuestion_file() {
  */
 public void setQuestion_file(String question_file) {
 	this.question_file = question_file;
+}
+/**
+ * @return the author_id
+ */
+public long getAuthor_id() {
+	return author_id;
+}
+/**
+ * @param author_id the author_id to set
+ */
+public void setAuthor_id(long author_id) {
+	this.author_id = author_id;
 }
 
 }

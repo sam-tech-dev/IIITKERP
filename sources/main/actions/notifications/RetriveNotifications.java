@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,16 +54,18 @@ public class RetriveNotifications extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter writer = response.getWriter();
 		PreparedStatement proc;
+		HttpSession session = request.getSession();
 		ArrayList<Notifications> notifications = new ArrayList<Notifications>();
 		try {
 			proc = PostgreSQLConnection.getConnection()
 					.prepareStatement("SELECT public.\"getUnreadNotifications\"(?);");
-			proc.setInt(1, 1);
+			proc.setLong(1, Long.parseLong(session.getAttribute("erpId").toString()));
 			ResultSet rs = proc.executeQuery();
 			rs.next();
 			String postgre = rs.getString(1);
 			//System.out.println(rs.getString(1));
-			JSONArray jArray = new JSONArray(rs.getString(1));
+		if(rs.getString(1)!=null)
+			{JSONArray jArray = new JSONArray(rs.getString(1));
 
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject current_object = jArray.getJSONObject(i);
@@ -74,16 +76,16 @@ public class RetriveNotifications extends HttpServlet {
 				current.setLink(current_object.getString("link"));
 				// System.out.println("time="+current_object.getString("notif_timestamp"));
 				try {
-					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+					current.setTimestamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 							.parse(current_object.getString("notif_timestamp")).getTime()));
-					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS")
+					current.setExpiry(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 							.parse(current_object.getString("expiry")).getTime()));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 				notifications.add(current);
 			}
@@ -99,7 +101,7 @@ public class RetriveNotifications extends HttpServlet {
 				notifications_object.put("message", current.getMessage());
 				notifications_object.put("link", current.getLink());
 				notifications_object.put("timestamp",
-						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getTimestamp()));
+						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(current.getTimestamp()));
 				notifications_object.put("expiry",
 						new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").format(current.getExpiry()));
 				// System.out.println(current.getId()+"
@@ -112,11 +114,11 @@ public class RetriveNotifications extends HttpServlet {
 
 			rs.close();
 			proc.close();
+			//System.out.println(notifications_array.toString());
 			writer.write(notifications_array.toString());
-
-		} catch (SQLException e) {
+			}
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}

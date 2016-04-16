@@ -3,7 +3,6 @@
  */
 package postgreSQLDatabase.registration;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -18,8 +17,6 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.sun.mail.handlers.message_rfc822;
 
 import exceptions.IncorrectFormatException;
 import settings.database.PostgreSQLConnection;
@@ -54,6 +51,19 @@ public class Query {
 		return conn;
 	}
 	
+	public static void updateVerificationStatus(int status,long reg_id){
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"updateVerificationStatus\"(?,?);");
+		    proc.setInt(1,status);
+		    proc.setLong(2, reg_id);
+		    proc.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static ArrayList<Student> displayRegistrationData() throws SQLException,IncorrectFormatException{
 		ArrayList<Student> students=null;
 		 
@@ -72,6 +82,7 @@ public class Query {
 				JSONObject current_object=jArray.getJSONObject(i);
 				Student current=new Student();
 				current.setName(current_object.getString("name"));
+				current.setVerification_status(current_object.getInt("verification_status"));
 				current.setFirst_name(current_object.getString("first_name"));
 				current.setMiddle_name(current_object.getString("middle_name"));
 				current.setLast_name(current_object.getString("last_name"));
@@ -95,7 +106,7 @@ public class Query {
 				//current.setPermanent_address(current_object.getString("address"));
 				//current.setRc_name(current_object.getString("rc_name"));
 				current.setNationality(current_object.getString("nationality"));
-				current.setCsab_id(current_object.getInt("id"));
+				current.setRegistration_id(current_object.getInt("id"));
 				//current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 				current.setVerified(current_object.getBoolean("verified"));
 				students.add(current);
@@ -139,12 +150,26 @@ public class Query {
 		return "";
 		
 	}
-public static void main(String[] args) throws SQLException, IncorrectFormatException {
-	//getCsabStudentList();
-//	System.out.println( retrieveRegistrationStatus(3));
+
+
+
+
+public static JSONObject retrieveUsernameGenParameters(long reg_id){
+	 JSONObject current_object=null;
+	try {
+		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveUsernameGenParameters\"(?);");
+		proc.setLong(1,reg_id);
+		ResultSet rs=proc.executeQuery();
+	   current_object=new JSONObject(rs.getString(1));
+		
+	}
+	catch(SQLException e){
+		e.printStackTrace();
+		
+	}
+	return current_object;
+
 }
-
-
 
 
 public static ArrayList<Student> getCsabStudentList() throws SQLException,IncorrectFormatException{
@@ -154,7 +179,7 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 		students=new ArrayList<Student>();
 		ResultSet rs=proc.executeQuery();
-		System.out.println(proc);
+		//System.out.println(proc);
 		rs.next();
      
 		JSONArray jArray=new JSONArray(rs.getString(1));
@@ -188,8 +213,9 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 			current.setRc_name(current_object.getString("rc_name"));
 			current.setNationality(current_object.getString("nationality"));
 			current.setCsab_id(current_object.getInt("id"));
+			current.setRegistration_id(current_object.getLong("registration_id"));
 			current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
-			
+			current.setReported(current_object.getBoolean("reported"));
 			
 			students.add(current);
 		}
@@ -215,11 +241,12 @@ public static ArrayList<Student> getCsabStudentList() throws SQLException,Incorr
 
 
 
-public static Student getCsabStudentProfile(int reg_id) throws SQLException,IncorrectFormatException{
+public static JSONObject getCsabStudentProfile(long csab_id) throws SQLException,IncorrectFormatException{
 	Student current=new Student();
+	JSONObject current_object=null;
 	try {
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayCsabProfile\"(?);");
-		proc.setInt(1,reg_id);
+		proc.setLong(1,csab_id);
 		
 		ResultSet rs=proc.executeQuery();
 	
@@ -228,7 +255,7 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 		JSONArray jArray=new JSONArray(rs.getString(1));
 		
 		
-			JSONObject current_object=jArray.getJSONObject(0);
+			 current_object=jArray.getJSONObject(0);
 			
 			
 			current.setName(current_object.getString("name"));
@@ -276,7 +303,7 @@ public static Student getCsabStudentProfile(int reg_id) throws SQLException,Inco
 	}
 
 
-	return current;
+	return current_object;
 }
 
 
@@ -287,7 +314,7 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 		proc.setLong(1,reg_id);
 
 		ResultSet rs=proc.executeQuery();
-		System.out.println(proc);
+	//	System.out.println(rs.next());
 		rs.next();
 
 		JSONArray jArray=new JSONArray(rs.getString(1));
@@ -295,7 +322,7 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 		
 			JSONObject current_object=jArray.getJSONObject(0);
 			
-			
+			System.out.println(current_object);
 			current.setName(current_object.getString("name"));
 			current.setFirst_name(current_object.getString("first_name"));
 			current.setMiddle_name(current_object.getString("middle_name"));
@@ -321,16 +348,13 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setFather_contact(current_object.getString("father_contact"));
 			current.setMother_name(current_object.getString("mother_name"));
 			current.setHosteller(current_object.getBoolean("hosteller"));
-			String json_string=current_object.getString("hostel_address");
-			JSONObject address_obj=new JSONObject(json_string);
-			current.setHostel(address_obj.getString("hostel"));
-			current.setRoom(address_obj.getString("room"));
+			JSONObject address_obj=current_object.getJSONObject("hostel_address");
+			
+			current.setHostel(address_obj.get("hostel").toString());
+			current.setRoom(address_obj.get("room").toString());
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
-			
-		
-		
-		
+			//System.out.println(current.getName());
 		rs.close();
 		proc.close();
 	}  catch (JSONException e) {
@@ -453,7 +477,7 @@ public static void addUpdateStudentRegistrationDetails(Student student) throws S
 	proc.setBoolean(12,student.isPwd());
 	proc.setString(13,student.getGender());
 	proc.setString(14,student.getNationality());
-	proc.setInt(15,student.getRegistration_id());
+	proc.setLong(15,student.getRegistration_id());
 	proc.setString(16,student.getGuardian_name());
 	proc.setString(17,student.getGuardian_contact());
 	proc.setString(18,student.getGuardian_email());
@@ -523,7 +547,7 @@ public static int retrieveRegistrationStatus(Long reg_id){
 
 public static int reportStudent(int csab_id) {
 	try {
-		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report\"(?);");
+		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"report_student\"(?);");
 		proc.setInt(1,csab_id);
 		ResultSet rs=proc.executeQuery();
 		rs.next();
@@ -535,6 +559,34 @@ public static int reportStudent(int csab_id) {
 	}
 	return 0;
 	
+}
+public static void retrieveStudentList(){
+	PreparedStatement proc;
+	try {
+		proc = getConnection().prepareStatement("SELECT \"retrieveStudentList\"();");
+	
+	ResultSet rs = proc.executeQuery();
+	rs.next();
+	JSONArray student_list=new JSONArray(rs.getString(1));
+	int i=0;
+	JSONObject student;
+	for(i=0;i<student_list.length();i++){
+		 student = student_list.getJSONObject(i);
+		
+		 Student current=new Student();
+		 current.setStudent_id(student.get("student_id").toString());
+	}
+
+	
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+public static void main(String[] args) {
+	retrieveStudentList();
 }
 
 }

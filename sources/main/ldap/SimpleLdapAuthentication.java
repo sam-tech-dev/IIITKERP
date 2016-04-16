@@ -28,26 +28,6 @@ import org.json.JSONObject;
 public class SimpleLdapAuthentication
 {
 	static User new_user=new User();
-	public static void main(String[] args) 
-	{
-		try {
-			
-			new_user.setDepartment("assistance");
-			new_user.setErp_id("1000000001");
-			new_user.setFirst_name("Ramlal");
-			new_user.setLast_name("Yadav");
-			new_user.setPassword("Ramlal");
-			new_user.setRole("office");
-			new_user.setUsername("ramlalyadav");
-			//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-			addEntry(new_user);
-			//changePassword("Joey Pinto", "123456789");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 
 
 
@@ -87,11 +67,14 @@ public class SimpleLdapAuthentication
 			try {
 				int index=fullDN.indexOf("ou=")+3;
 				String ou=fullDN.substring(index, fullDN.indexOf(",",index));
-				if(ou.equals("students"))credentials.put("type","student");
-				if(ou.equals("faculty"))credentials.put("type","faculty");
-				if(ou.equals("office"))credentials.put("type","office");
-				credentials.put("name",attrs.get("cn").get(0));
-				credentials.put("erpId",attrs.get("sn").get(0) );
+				new_user.setRole(ou);
+				if(ou.equals("students")){credentials.put("type","student");}
+				if(ou.equals("faculty")){credentials.put("type","faculty");}
+				if(ou.equals("office")){credentials.put("type","office");}
+				new_user.setDepartment("computer_science");
+				credentials.put("name",attrs.get("givenName").get(0));
+				credentials.put("erpId",attrs.get("sn").get(0));
+				new_user.setErp_id(attrs.get("sn").get(0).toString());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -198,12 +181,37 @@ public class SimpleLdapAuthentication
 
 			mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
-			ctx.modifyAttributes("cn="+new_user.getUsername()+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
+			ctx.modifyAttributes("sn="+username+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
 
 		}
 		catch(Exception e)
 		{
 			System.err.println(e);
+		}
+
+	}
+ public static boolean resetPassword(String username,String old_password,String new_password){
+	 try {
+		searchAndAuthenticate(username,old_password);
+		changePassword(username, new_password);
+	} catch (NamingException e) {
+		System.out.println("Error username or password incorrect");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return false;
+	}
+	return true;
+ }
+ 
+	public static void main(String[] args) 
+	{
+		try {
+				searchAndAuthenticate("joeypinto", "megha");
+			//resetPassword("joeypinto","joey","joey");
+			//changePassword("joeypinto", "12345678");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

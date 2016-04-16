@@ -24,7 +24,7 @@
 					semester : semester_selected,
 					action: 'getCourseCodeList'
 				},
-				url : 'http://localhost:8086/erp/AjaxController',
+				url : '../AjaxController',
 				success : function(result) {
 					$('#course_list').html(result);
 				}

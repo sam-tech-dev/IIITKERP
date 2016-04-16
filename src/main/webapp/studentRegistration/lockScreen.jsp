@@ -28,7 +28,7 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="../index2.html"><b>IIITK</b> ERP</a>
+    <a><b>IIITK</b> ERP</a>
   </div>
   <!-- User name -->
 
@@ -41,15 +41,17 @@
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials">
+    <div class="lockscreen-credentials">
       <div class="input-group">
-        <input type="text" class="form-control" id="login_reg_id" placeholder="Registration ID">
-
+        <input type="text" class="form-control" id="login_reg_id" placeholder="Registration ID" >
+<script>
+document.getElementById("login_reg_id").setAttribute("onkeydown","javascript: if (event.keyCode == 13) authenticateRegId();");
+</script>
         <div class="input-group-btn">
           <button type="button" class="btn"><i class="fa fa-arrow-right text-muted" onclick="authenticateRegId()"></i></button>
         </div>
       </div>
-    </form>
+    </div>
     <!-- /.lockscreen credentials -->
 
   </div>

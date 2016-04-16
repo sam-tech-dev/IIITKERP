@@ -104,10 +104,10 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning" id="notif_count">10</span>
+              <span class="label label-warning" id="notif_count"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header" id="notifications">You have 10 notifications</li>
+              <li class="header" id="notifications"></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu" id="notif_list">
@@ -239,10 +239,11 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-commenting"></i></a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
   <script src="../dist/js/notifications.js"></script>
+  
