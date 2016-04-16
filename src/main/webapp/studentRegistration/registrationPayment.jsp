@@ -81,10 +81,10 @@
 <body class="hold-transition skin-blue sidebar-mini"
 	style="background: url('../image/image.jpg'); background-size: cover;">
 	<div class="wrapper">
-		<%@ include file="../student/header.jsp"%>
+		<%@ include file="header.jsp"%>
 
 		<!-- Left side column. contains the logo and sidebar -->
-		<%@ include file="new-asidebar.jsp"%>
+		<%@ include file="new-asidebar.jsp" %>
 
 		<div class="content-wrapper" style="min-height: 901px;">
 			<!-- Content Header (Page header) -->
@@ -98,8 +98,8 @@
 
 						<div class="col-md-6">
 							<%
-							    Long  reg_id=Long.parseLong("1");
-								//String reg_id = (String) request.getSession().getAttribute("reg_id");
+							    Long  reg_id=Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+								
 								Student current = Query.getRegistrationStudentData(reg_id);
 								//String fee = Query.getFeeBreakup(Integer.parseInt(reg_id));
 							
@@ -241,7 +241,7 @@
 												</div>
 
 												<div class="form-group has-feedback">
-													<input type="text" name="dd" class="form-control"
+													<input type="text" name="dd" id="dd_no" class="form-control"
 														placeholder="DD Number">
 												</div>
 
@@ -610,7 +610,7 @@
 															class="btn btn-warning btn-block btn-flat" />
 													</div>
 													<div class="col-xs-4 pull-right">
-														<input type="button" name="submitCheque" value="Submit"
+														<input type="submit" name="submitCheque" value="Submit"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->

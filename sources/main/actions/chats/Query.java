@@ -3,19 +3,14 @@
  */
 package actions.chats;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import postgreSQLDatabase.onlineTest.Question;
 import settings.database.*;
 /**
  * @author Shubhi

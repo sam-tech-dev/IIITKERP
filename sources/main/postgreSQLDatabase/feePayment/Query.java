@@ -3,19 +3,14 @@
  */
 package postgreSQLDatabase.feePayment;
 
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import settings.database.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import actions.chats.Conversation;
+import org.postgresql.util.PGobject;
 
 /**
  * @author Shubhi
@@ -119,6 +114,7 @@ public class Query {
 		try {
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
 			proc.setLong(1,reg_id);
+			System.out.println(proc);
 			ResultSet rs=proc.executeQuery();
 			rs.next();
 			JSONObject fee_breakup=new JSONObject(rs.getString(1));
@@ -140,11 +136,18 @@ public static int addFeePayment(String comment,int pay_method,JSONObject details
 			
 			proc.setString(1,comment);
 			proc.setInt(2,pay_method);
-			proc.setObject(3,details);
+			PGobject jsonObject = new PGobject();
+			jsonObject.setType("json");
+			jsonObject.setValue(details.toString());
+			
+			proc.setObject(3,jsonObject);
+		
 			proc.setInt(4,amt);
 			proc.setInt(5,reg_id);
+			System.out.println(proc);
 			ResultSet rs=proc.executeQuery();
 			rs.next();
+			System.out.println(rs.getInt(1));
 			return rs.getInt(1);
 			
 		} catch (SQLException e) {

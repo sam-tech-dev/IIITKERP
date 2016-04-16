@@ -3,7 +3,6 @@
  */
 package postgreSQLDatabase.registration;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -18,8 +17,6 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.sun.mail.handlers.message_rfc822;
 
 import exceptions.IncorrectFormatException;
 import settings.database.PostgreSQLConnection;
@@ -54,6 +51,19 @@ public class Query {
 		return conn;
 	}
 	
+	public static void updateVerificationStatus(int status,long reg_id){
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"updateVerificationStatus\"(?,?);");
+		    proc.setInt(1,status);
+		    proc.setLong(2, reg_id);
+		    proc.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static ArrayList<Student> displayRegistrationData() throws SQLException,IncorrectFormatException{
 		ArrayList<Student> students=null;
 		 
@@ -72,6 +82,7 @@ public class Query {
 				JSONObject current_object=jArray.getJSONObject(i);
 				Student current=new Student();
 				current.setName(current_object.getString("name"));
+				current.setVerification_status(current_object.getInt("verification_status"));
 				current.setFirst_name(current_object.getString("first_name"));
 				current.setMiddle_name(current_object.getString("middle_name"));
 				current.setLast_name(current_object.getString("last_name"));
@@ -95,7 +106,7 @@ public class Query {
 				//current.setPermanent_address(current_object.getString("address"));
 				//current.setRc_name(current_object.getString("rc_name"));
 				current.setNationality(current_object.getString("nationality"));
-				current.setCsab_id(current_object.getInt("id"));
+				current.setRegistration_id(current_object.getInt("id"));
 				//current.setEntry_time(new java.sql.Date(new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
 				current.setVerified(current_object.getBoolean("verified"));
 				students.add(current);
@@ -335,10 +346,10 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setFather_contact(current_object.getString("father_contact"));
 			current.setMother_name(current_object.getString("mother_name"));
 			current.setHosteller(current_object.getBoolean("hosteller"));
-			String json_string=current_object.getString("hostel_address");
-			JSONObject address_obj=new JSONObject(json_string);
-			current.setHostel(address_obj.getString("hostel"));
-			current.setRoom(address_obj.getString("room"));
+			JSONObject address_obj=current_object.getJSONObject("hostel_address");
+			
+			current.setHostel(address_obj.get("hostel").toString());
+			current.setRoom(address_obj.get("room").toString());
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
 			//System.out.println(current.getName());

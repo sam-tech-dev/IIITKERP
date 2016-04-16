@@ -11,7 +11,6 @@ import org.postgresql.util.PGInterval;
 import java.sql.*;
 import java.sql.Date;
 
-import postgreSQLDatabase.forms.Query.java;
 import settings.database.PostgreSQLConnection;
 
 /**

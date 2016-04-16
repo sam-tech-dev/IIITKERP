@@ -49,7 +49,8 @@
     <!-- Main content -->
 	
     <!-- /.content -->
-   <%@ include file="chats.jsp" %>  
+   <%@ include file="chats.jsp" %>
+   <script src="../dist/js/chats.js"></script>  
   </div>
 
   <!-- /.content-wrapper -->
@@ -78,29 +79,7 @@
 <script src="../dist/js/app.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<script>
-        var count=0;
-		var insChat = new Array(); 
-		var listofpeople = new Array();
 
-		$(document).ready(function(){
-			$("#person-1").hide();
-			$("#person-2").hide();
-			$("#person-3").hide();
-			$("#listPeople").hide();
-		});
-		
-		
-
-		function orderChat(id){
-				id = id.substring(9);
-				a = listofpeople.shift();
-				b = listofpeople.shift();
-				alert(insChat.unshift(a));
-				alert(listofpeople.unshift(b));
-		}
-  </script>
 
 </body>
 </html>
