@@ -69,6 +69,12 @@
   	<description></description>
   	<servlet-class>actions.gradingModule.RetrieveSubjects</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<display-name>ExportGradesheet</display-name>
+  	<description></description>
+  	<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/SignIn</url-pattern>
@@ -112,6 +118,10 @@
   <servlet-mapping>
   	<servlet-name>RetrieveSubjects</servlet-name>
   	<url-pattern>/RetrieveSubjects</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<url-pattern>/ExportGradesheet</url-pattern>
   </servlet-mapping>
    <welcome-file-list>  
    <welcome-file>login.jsp</welcome-file>  
