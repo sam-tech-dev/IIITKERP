@@ -26,6 +26,21 @@ public class Student {
 	private int registration_id;
 	private int csab_id;
 	private boolean verified;
+	private int verification_status;
+
+	/**
+	 * @return the verification_status
+	 */
+	public int getVerification_status() {
+		return verification_status;
+	}
+
+	/**
+	 * @param verification_status the verification_status to set
+	 */
+	public void setVerification_status(int verification_status) {
+		this.verification_status = verification_status;
+	}
 
 	/**
 	 * @return the csab_id

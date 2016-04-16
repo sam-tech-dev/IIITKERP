@@ -239,10 +239,11 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-commenting"></i></a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
   <script src="../dist/js/notifications.js"></script>
+  

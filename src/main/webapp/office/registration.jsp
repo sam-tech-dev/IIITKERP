@@ -103,14 +103,7 @@
                 			<td>Category</td>
                 			<td></td>
                 		</tr>
-                		<tr>
-                			<td>JEE Main Roll No.</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>JEE Advanced Roll No.</td>
-                			<td></td>
-                		</tr>
+                		
                 		<tr>
                 			<td>State</td>
                 			<td></td>

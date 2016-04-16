@@ -1,7 +1,7 @@
 package actions.authentication;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="postgreSQLDatabase.onlineTest.*"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Iterator" %>
-
+<%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -25,12 +21,23 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <script>
-	function rowValue(id){
-		
-		window.location.href="questions.jsp?testpaper="+id;
-	}
-  </script>
+  <style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
+
+  
   
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -40,9 +47,16 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <%@ include file="header.jsp"%>
-  <!-- Left side column. contains the logo and sidebar -->
-  <%@ include file="main-sidebar.jsp" %>
+  <%@ include file="header.jsp" %>
+ <!-- Left side column. contains the logo and sidebar -->
+ <%@ include file="main-sidebar.jsp" %>
+<script src="../dist/js/reportStudent.js"></script>
+ <%@ page import="java.util.ArrayList" %>
+ <%@ page import="java.util.Iterator" %>
+ <%@ page import="users.Student" %>
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -57,7 +71,8 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-
+	
+	
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -72,35 +87,49 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>TEST PAPER ID</th>
-                  <th>SUBJECT</th>
-                  <th>AUTHOR</th>
-                  <th>STATUS</th>
-                  <th>CREATION DATE</th>
-                  <th>DURATION</th>
-                 
-                </tr>
+                  <th>Id</th>	
+                  <th>Name</th>
+                  <th>Verified Status</th>
                 </thead>
-                <tbody style="cursor:pointer;">
-                 
-    <%
- ArrayList<TestPaper>papers=postgreSQLDatabase.onlineTest.Query.getTestPaper();
- Iterator<TestPaper> iterator = papers.iterator();	
-	while(iterator.hasNext()){
-		TestPaper current=iterator.next();   
-		%>
-                <tr onclick="return rowValue('<%=current.getId() %>')">
-                  <td><%=current.getId() %></td>
-                  <td><%=current.getSubject()%></td>
-				  <td><%=current.getAuthor() %></td>
-                  <td><%=current.getStatus() %></td>
-                  <td><%=current.getCreation_date() %></td>
-                  
-                   <td><%=current.getDuration().toString()%></td>
-                  
+                <tbody>
+                <%
+                ArrayList<Student> registration_list=Query.displayRegistrationData();
+                Iterator<Student> iterator=registration_list.iterator();
+                while(iterator.hasNext()){
+    				Student current=iterator.next();
+    				int status=current.getVerification_status();
+    				String status_msg="";
+    				switch(status){
+    				case 0: status_msg="reported";
+    				break;
+    				case 1: status_msg="data entered";
+					break;
+    				case 2: status_msg="data approved";
+					break;
+    				case 3: status_msg="fee paid";
+					break;
+    				case 4: status_msg="fee verified";
+					break;
+    				case 5: status_msg="registered";
+					break;
+    					
+    				}
+    				
+    				//0 reported
+    				//1 data entered
+    				// 2 approved
+    				// 3 fee paid
+    				// 4 fee approved
+    				//5 registered
+                %>
+                <tr>
+                  <td><%=current.getRegistration_id() %></td>
+                  <td><%=current.getName() %></td>
+                  <td><%=status_msg%></td>
                 </tr>
-	<% } %>
-				
+				<%
+                }
+				%>
                 </tbody>
               </table>
             </div>
@@ -115,9 +144,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%@ include file="footer.jsp" %>
+  
+ <%@ include file="footer.jsp" %>
+  <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
-  <!-- /.control-sidebar -->
+   <!-- /.control-sidebar -->
   
   <div class="control-sidebar-bg"></div>
 </div>
@@ -136,8 +167,10 @@
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>
-
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
 <!-- page script -->
+<script src="../dist/js/payment.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({

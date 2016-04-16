@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -83,10 +82,10 @@ public class RetriveNotifications extends HttpServlet {
 							.parse(current_object.getString("expiry")).getTime()));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 				notifications.add(current);
 			}
@@ -118,9 +117,8 @@ public class RetriveNotifications extends HttpServlet {
 			//System.out.println(notifications_array.toString());
 			writer.write(notifications_array.toString());
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}

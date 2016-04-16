@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="postgreSQLDatabase.onlineTest.*"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Iterator" %>
-
 <html>
 <head>
   <meta charset="utf-8">
@@ -25,13 +20,8 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <script>
-	function rowValue(id){
-		
-		window.location.href="questions.jsp?testpaper="+id;
-	}
-  </script>
-  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -40,9 +30,10 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <%@ include file="header.jsp"%>
-  <!-- Left side column. contains the logo and sidebar -->
-  <%@ include file="main-sidebar.jsp" %>
+  <%@ include file="header.jsp" %>
+ <!-- Left side column. contains the logo and sidebar -->
+ <%@ include file="main-sidebar.jsp" %>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -62,46 +53,36 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          
-		  <div class="box">
+          <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Student List</h3>
+              <h3 class="box-title">Data Table With Full Features</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body" style="overflow-x:scroll;">
+            <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>TEST PAPER ID</th>
-                  <th>SUBJECT</th>
-                  <th>AUTHOR</th>
-                  <th>STATUS</th>
-                  <th>CREATION DATE</th>
-                  <th>DURATION</th>
-                 
+                  <th>Registratin ID</th>
+                  <th>Student Name</th>
+                  <th>Verification</th>
                 </tr>
                 </thead>
-                <tbody style="cursor:pointer;">
-                 
-    <%
- ArrayList<TestPaper>papers=postgreSQLDatabase.onlineTest.Query.getTestPaper();
- Iterator<TestPaper> iterator = papers.iterator();	
-	while(iterator.hasNext()){
-		TestPaper current=iterator.next();   
-		%>
-                <tr onclick="return rowValue('<%=current.getId() %>')">
-                  <td><%=current.getId() %></td>
-                  <td><%=current.getSubject()%></td>
-				  <td><%=current.getAuthor() %></td>
-                  <td><%=current.getStatus() %></td>
-                  <td><%=current.getCreation_date() %></td>
-                  
-                   <td><%=current.getDuration().toString()%></td>
-                  
+                <tbody>
+                <tr>
+                  <td>Trident</td>
+                  <td> 4</td>
+                  <td>X</td>
                 </tr>
-	<% } %>
-				
-                </tbody>
+                <tr>
+                  <td>Trident</td>
+                  <td> 6</td>
+                  <td>X</td>
+                </tr>
+                <tr>
+                  <td>Trident</td>
+                  <td> 5</td>
+                  <td>X</td>
+                </tr>
               </table>
             </div>
             <!-- /.box-body -->
@@ -116,9 +97,11 @@
   </div>
   <!-- /.content-wrapper -->
   <%@ include file="footer.jsp" %>
+  <!-- Control Sidebar -->
   <%@ include file="control-sidebar.jsp" %>
-  <!-- /.control-sidebar -->
-  
+  <!-- Control Sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -136,18 +119,19 @@
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/app.min.js"></script>
-
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable({
-		"paging": true,
-      "lengthChange": true,
+      "paging": true,
+      "lengthChange": false,
       "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": true
-	});
+    });
   });
 </script>
 </body>
