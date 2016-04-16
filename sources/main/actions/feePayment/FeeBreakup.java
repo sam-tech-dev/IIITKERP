@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import postgreSQLDatabase.feePayment.Query;
-
 /**
  * Servlet implementation class FeeBreakup
  */

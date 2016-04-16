@@ -3,20 +3,14 @@
  */
 package postgreSQLDatabase.feePayment;
 
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import settings.database.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
-
-import actions.chats.Conversation;
 
 /**
  * @author Shubhi
@@ -120,6 +114,7 @@ public class Query {
 		try {
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
 			proc.setLong(1,reg_id);
+			System.out.println(proc);
 			ResultSet rs=proc.executeQuery();
 			rs.next();
 			JSONObject fee_breakup=new JSONObject(rs.getString(1));

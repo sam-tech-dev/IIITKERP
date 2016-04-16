@@ -98,8 +98,8 @@
 
 						<div class="col-md-6">
 							<%
-							    Long  reg_id=Long.parseLong("1");
-								//String reg_id = (String) request.getSession().getAttribute("reg_id");
+							    Long  reg_id=Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+								
 								Student current = Query.getRegistrationStudentData(reg_id);
 								//String fee = Query.getFeeBreakup(Integer.parseInt(reg_id));
 							

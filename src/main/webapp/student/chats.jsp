@@ -95,4 +95,4 @@
       <!-- =========================================================== -->
       <script>
       var session_user_name="<%=request.getSession().getAttribute("name").toString()%>";
-      </script></script>
+      </script>

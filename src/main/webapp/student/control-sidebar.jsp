@@ -2,13 +2,13 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-commenting"></i></a></li>
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-commenting"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
       <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
+      <div class="tab-paneactive" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Chats</h3>
         <span style="display:none;" id="chat_list_template">
 					<li>

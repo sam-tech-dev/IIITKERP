@@ -101,6 +101,16 @@
 		<url-pattern>/ReportStudent</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>VerifyStudent</servlet-name>
+		<display-name>VerifyStudent</display-name>
+		<description></description>
+		<servlet-class>actions.registration.VerifyStudent</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VerifyStudent</servlet-name>
+		<url-pattern>/VerifyStudent</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>StudentServletTemplate</servlet-name>
 		<display-name>StudentServletTemplate</display-name>
 		<description></description>
@@ -350,16 +360,6 @@
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>sample</servlet-name>
-		<display-name>sample</display-name>
-		<description></description>
-		<servlet-class>actions.attendance.sample</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sample</servlet-name>
-		<url-pattern>/sample</url-pattern>
-	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>VerifyFeePayment</servlet-name>

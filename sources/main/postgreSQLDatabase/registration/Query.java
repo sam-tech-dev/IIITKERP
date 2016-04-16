@@ -3,7 +3,6 @@
  */
 package postgreSQLDatabase.registration;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -18,8 +17,6 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.sun.mail.handlers.message_rfc822;
 
 import exceptions.IncorrectFormatException;
 import settings.database.PostgreSQLConnection;
@@ -349,10 +346,10 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setFather_contact(current_object.getString("father_contact"));
 			current.setMother_name(current_object.getString("mother_name"));
 			current.setHosteller(current_object.getBoolean("hosteller"));
-			String json_string=current_object.getString("hostel_address");
-			JSONObject address_obj=new JSONObject(json_string);
-			current.setHostel(address_obj.getString("hostel"));
-			current.setRoom(address_obj.getString("room"));
+			JSONObject address_obj=current_object.getJSONObject("hostel_address");
+			
+			current.setHostel(address_obj.get("hostel").toString());
+			current.setRoom(address_obj.get("room").toString());
 			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
 			//System.out.println(current.getName());
