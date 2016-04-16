@@ -1,3 +1,10 @@
+<div id="notif_template" style="display:none">
+				<li onClick="markAsRead(this)" class="notif_row" >
+                    <a class="notif_link">
+                      <i class="fa fa-users text-aqua"></i><span class="notif_msg" >5 new members joined today</span> 
+                    </a>
+                  </li>
+</div>
 
   <header class="main-header">
     <!-- Logo -->
@@ -97,37 +104,16 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning" id="notif_count"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header" id="notifications"></li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                <ul class="menu">
+                <ul class="menu" id="notif_list">
                   <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
                     </a>
                   </li>
                 </ul>
@@ -213,7 +199,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><%=request.getSession().getAttribute("name")%></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -221,8 +207,8 @@
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <%=request.getSession().getAttribute("name")%> - Student
+                  <small>Member since February 2016</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -246,17 +232,18 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../SignOut" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-commenting"></i></a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
+  <script src="../dist/js/notifications.js"></script>
   

@@ -27,22 +27,11 @@ import org.json.JSONObject;
 
 public class SimpleLdapAuthentication
 {
-	public static void main(String[] args) 
-	{
-		try {
-		//System.out.println(searchAndAuthenticate("admin", "iiitk"));
-	//	addEntry("joeyp","pintojoey","students");
-		changePassword("Joey Pinto", "123456789");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	static User new_user=new User();
 
-	}
 
-	
 
-	public static String searchAndAuthenticate(String username,String password) throws NamingException{
+	public static JSONObject searchAndAuthenticate(String username,String password) throws NamingException{
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -76,20 +65,35 @@ public class SimpleLdapAuthentication
 
 			JSONObject credentials = new JSONObject();
 			try {
-				credentials.put("type","student");
-				credentials.put("name",attrs.get("cn").get(0));
+				int index=fullDN.indexOf("ou=")+3;
+				String ou=fullDN.substring(index, fullDN.indexOf(",",index));
+				new_user.setRole(ou);
+				if(ou.equals("students")){credentials.put("type","student");}
+				if(ou.equals("faculty")){credentials.put("type","faculty");}
+				if(ou.equals("office")){credentials.put("type","office");}
+				new_user.setDepartment("computer_science");
+				credentials.put("name",attrs.get("givenName").get(0));
+				credentials.put("erpId",attrs.get("sn").get(0));
+				new_user.setErp_id(attrs.get("sn").get(0).toString());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			return credentials.toString();
+			return credentials;
 		}
 		// Exception otherwise ...
 		return null;
 
 	}
-	public static void addEntry(String name,String password) {
+	/**
+	 * @param first_name
+	 * @param last_name
+	 * @param username
+	 * @param password
+	 * @param erp_id
+	 */
+	public static void addEntry(User new_user) {
 
 		Hashtable<String, String> env = 
 				new Hashtable<String, String>();
@@ -97,14 +101,42 @@ public class SimpleLdapAuthentication
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL, "ldap://172.16.1.231:389");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		env.put(Context.SECURITY_PRINCIPAL, "cn=admin,dc=iiitk,dc=com");
-		env.put(Context.SECURITY_CREDENTIALS, "iiitk");
+		env.put(Context.SECURITY_PRINCIPAL, "cn=admin,dc=iiitk,dc=ac,dc=in");
+		env.put(Context.SECURITY_CREDENTIALS, "iiitk_2013");
 
 		try {
 
 			DirContext context = new InitialDirContext(env);
+			Attributes attributes = new BasicAttributes();
+			Attribute attribute = new BasicAttribute("objectClass");
+			attribute.add("inetOrgPerson");
+			attributes.put(attribute);
+			Attribute pwd = new BasicAttribute("userPassword");
+			
+			
+			pwd.add(new_user.getPassword());
+			attributes.put(pwd);
+			Attribute sn = new BasicAttribute("sn");
+			sn.add(new_user.getErp_id());
+			attributes.put(sn);
+			Attribute uid = new BasicAttribute("uid");
+			uid.add(new_user.getUsername());
+			attributes.put(uid);
+			Attribute fname = new BasicAttribute("givenName");
+			fname.add(new_user.getFirst_name()+" "+new_user.getLast_name());
+			attributes.put(fname);
+			try {
 
-			addUser(context,name,password);
+				context.createSubcontext(
+						"cn="+new_user.getUsername()+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in",attributes);
+
+			} catch (NamingException e) {
+
+				e.printStackTrace();
+
+			}
+
+			System.out.println("entered successfully");
 
 
 			context.close();
@@ -122,80 +154,72 @@ public class SimpleLdapAuthentication
 
 
 	}
-	 public static void addUser(DirContext context,String name,String password) {
- 	 	
-         Attributes attributes = new BasicAttributes();
- 	
-         Attribute attribute = new BasicAttribute("objectClass");
- 	
-         attribute.add("inetOrgPerson");
- 	
-         attributes.put(attribute);
- 	
-         
- 	
-         Attribute pwd = new BasicAttribute("userPassword");
- 	
-         
- 	
-         pwd.add(password);
- 	
-        
- 	
-         attributes.put(pwd);
- 	
-  
- 	
-         try {
- 	
-             context.createSubcontext(
- 	
-                      "cn="+name+",cn=thirdyear,ou=students,dc=iiitk,dc=com",attributes);
- 	
-         } catch (NamingException e) {
- 	
-             e.printStackTrace();
- 	
-         }
- 	
-     }
-	 
-	 public static void changePassword(String username,String new_password){
-	 Hashtable<String, String> env = new Hashtable<String, String>();
-     env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
-     env.put(Context.PROVIDER_URL,"ldap://172.16.1.231:389");
-     env.put(Context.SECURITY_AUTHENTICATION,"simple");
-     env.put(Context.SECURITY_PRINCIPAL,"cn=admin,dc=iiitk,dc=ac,dc=in");
-     env.put(Context.SECURITY_CREDENTIALS,"iiitk_2013");
+	public static void addUser(DirContext context) {
 
-     try
-     {
-         // Create the initial directory context
-         InitialDirContext initialContext = new InitialDirContext(env);
-         DirContext ctx = (DirContext)initialContext;
+		
+	}
 
-         System.out.println("Context Sucessfully Initialized");
+	public static void changePassword(String username,String new_password){
+		Hashtable<String, String> env = new Hashtable<String, String>();
+		env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
+		env.put(Context.PROVIDER_URL,"ldap://172.16.1.231:389");
+		env.put(Context.SECURITY_AUTHENTICATION,"simple");
+		env.put(Context.SECURITY_PRINCIPAL,"cn=admin,dc=iiitk,dc=ac,dc=in");
+		env.put(Context.SECURITY_CREDENTIALS,"iiitk_2013");
 
-         ModificationItem[] mods = new ModificationItem[1];
+		try
+		{
+			// Create the initial directory context
+			InitialDirContext initialContext = new InitialDirContext(env);
+			DirContext ctx = (DirContext)initialContext;
 
-         Attribute mod0 = new BasicAttribute("userPassword",new_password);
+			System.out.println("Context Sucessfully Initialized");
 
-         mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
+			ModificationItem[] mods = new ModificationItem[1];
 
-         ctx.modifyAttributes("cn="+username+",cn=thirdyear,ou=students,dc=iiitk,dc=ac,dc=in", mods);
+			Attribute mod0 = new BasicAttribute("userPassword",new_password);
 
-     }
-     catch(Exception e)
-     {
-         System.err.println(e);
-     }
-	 
-	 }
-	 
+			mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
+
+			ctx.modifyAttributes("sn="+username+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
+
+		}
+		catch(Exception e)
+		{
+			System.err.println(e);
+		}
+
+	}
+ public static boolean resetPassword(String username,String old_password,String new_password){
+	 try {
+		searchAndAuthenticate(username,old_password);
+		changePassword(username, new_password);
+	} catch (NamingException e) {
+		System.out.println("Error username or password incorrect");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return false;
+	}
+	return true;
+ }
+ 
+	public static void main(String[] args) 
+	{
+		try {
+				searchAndAuthenticate("joeypinto", "megha");
+			//resetPassword("joeypinto","joey","joey");
+			//changePassword("joeypinto", "12345678");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 }
 
 
-	
+
 
 
 

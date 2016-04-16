@@ -26,7 +26,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script src="../dist/js/testAnswer.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -358,11 +358,11 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-    <span id="check_answer" style="display:none">
+    <span id="checkbox_answer" style="display:none">
     <div class="checkbox">
                     <label>
-                      <input type="checkbox">
-                      <div class="checkbox_text" value="option">Hello</div>
+                      <input type="checkbox" class="checkbox_value">
+                      <div  class="checkbox_text" value="option">Hello</div>
                     </label>
                   </div>
     </span>
@@ -375,23 +375,26 @@
                   </div>
     </span>
     <span id="short_answer" style="display:none">
-    <div class="form-group">
+    <div class="form-group short">
                   <input type="text" class="form-control" placeholder="Enter ...">
                 </div>
     </span>
     <span id="long_answer" style="display:none">
-    <div class="form-group">
+    <div class="form-group long">
                   <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                 </div>
     </span>
     <!-- Main content -->
+    <script >
+    var current_paper=<%=request.getParameter("testpaper")%>;
+    </script>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-body">
 			
-                <h3>Question: 1</h3><br>
+                <h3>Question: <span id="question_number">1</span></h3><br>
 				
 				<h4 id="question_stmt">Retrieve Question</h4><br>
 					
@@ -410,11 +413,11 @@
             </div>
 			<div class="box-footer">
 				<div class="btn-group">
-					<button type="button" class="btn btn-block btn-success">Submit</button>
+					<button type="button" id="submit" class="btn btn-block btn-success" onclick="createAnswerSheet()">Submit</button>
 				</div>
 				<div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    <button type="button" id="previous_btn" class="btn btn-default btn-sm" onclick="previousQuestion()"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" id="next_btn" class="btn btn-default btn-sm"onclick="nextQuestion()"><i class="fa fa-chevron-right"></i></button>
                 </div>
 			</div>
 		  </div>
@@ -631,9 +634,12 @@
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script src="../dist/js/submitANswer.js"></script>
 <!-- page script -->
-<script>
-getQuestion(2,1);
+
+  <script src="../dist/js/testAnswer.js"></script>
+  <script>
+getTestpaper(current_paper);
 </script>
 </body>
 </html>

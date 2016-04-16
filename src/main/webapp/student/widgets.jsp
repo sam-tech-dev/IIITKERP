@@ -1499,100 +1499,26 @@
 				<!-- Home tab content -->
 				<div class="tab-pane" id="control-sidebar-home-tab">
 					<h3 class="control-sidebar-heading">Recent Activity</h3>
-					<ul class="control-sidebar-menu">
-						<li onclick="showChat('showChat-Chat1')">
+					<span style="display:none;" id="chat_list_template">
+					<li>
 							<div class="user-panel box-comment">
 								<img class="img-circle img-sm"
 									src="../dist/img/user3-128x128.jpg" alt="User Image">
 								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;Chat1</span>
+									
+									<span class="chat_name"
+										style="margin: 12px; vertical-align: middle;" >&nbsp;Chat1</span>
 										<span class="text-muted pull-right"><i
 											class="fa fa-circle text-success"></i></span>
-									</span>
+								
 								</div>
 							</div>
 						</li>
+					</span>
+					<ul class="control-sidebar-menu" id="chat_list">
+						
 
-						<li onclick="showChat('showChat-Chat2')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;Chat2</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li onclick="showChat('showChat-chat3')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;chat3</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li onclick="showChat('showChat-chat4')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;chat4</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li onclick="showChat('showChat-chat5')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;chat5</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li onclick="showChat('showChat-chat6')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;chat6</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-						<li onclick="showChat('showChat-chat7')">
-							<div class="user-panel box-comment">
-								<img class="img-circle img-sm"
-									src="../dist/img/user3-128x128.jpg" alt="User Image">
-								<div class="comment-text">
-									<span class="username"> <span
-										style="margin: 12px; vertical-align: middle;">&nbsp;chat7</span>
-										<span class="text-muted pull-right"><i
-											class="fa fa-circle text-success"></i></span>
-									</span>
-								</div>
-							</div>
-						</li>
-
+						
 					</ul>
 					<!-- /.control-sidebar-menu -->
 				</div>

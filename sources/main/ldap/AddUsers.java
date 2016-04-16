@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import csv.Parser;
 import ldap.SimpleLdapAuthentication;
+import postgreSQLDatabase.registration.Query;
+import utilities.StringFormatter;
 
 /**
  * @author Arushi
@@ -26,19 +28,33 @@ public class AddUsers {
 
 	}
 	public String addUser(String...s) throws IOException{
-		obj.run();
+		obj.run("firstyear.csv");
 		int k=0;
 		int j[]=new int[s.length];
-		String username,password;
+		String username,first_name,last_name,password;
 		for(int i=0;i<s.length;i++){
-		//	 j[k]=obj.checkAndAddColumn(s[i]);
-			 k++;
+			 j[k]=obj.checkAndAddColumn(s[i]);
+		     k++;
 			
 		}
+		
+		
 		for(int i=1;i<obj.getNumRows();i++){
-			username=obj.get(i, j[0]).toLowerCase()+obj.get(i, j[1]).toLowerCase();
-			password=obj.get(i, j[2]);
-			SimpleLdapAuthentication.addEntry(username, password);
+			first_name=StringFormatter.TitleCase(obj.get(i,j[0]));
+			last_name=StringFormatter.TitleCase(obj.get(i,j[1]));
+			username=first_name.toLowerCase()+last_name.toLowerCase();
+			password=obj.get(i,j[0]).toLowerCase();
+			String erp_id=Query.registerUser(username, first_name+" "+last_name, "student");
+			User user =new User();
+			user.setFirst_name(first_name);
+			user.setLast_name(last_name);
+			user.setUsername(username);
+			user.setDepartment("computer_science");
+			user.setErp_id(erp_id);
+			user.setPassword(password);
+			user.setRole("students");
+			System.out.println(username);
+			SimpleLdapAuthentication.addEntry(user);
 			
 		}
 		return "done";
