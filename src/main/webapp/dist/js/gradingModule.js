@@ -43,8 +43,15 @@ function getSemester(){
 	}
 	
 	
+	
 }
 
-
+function getGrades(){
+	var course_code=document.getElementById('subject_id').value;
+	var year=document.getElementById('year').value;
+	if(course_code!=0){
+		window.location.href="GradingModule.jsp?course_code="+course_code+"&year="+year;
+	}
+}
 
 

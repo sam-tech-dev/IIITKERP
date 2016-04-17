@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="postgreSQLDatabase.gradingModule.Grade"%>
 <%@ page import="postgreSQLDatabase.gradingModule.Query"%> 
 <%@ page import="postgreSQLDatabase.gradingModule.Subject"%>
 <%@ page import="actions.gradingModule.RetrieveSubjects" %>
@@ -30,6 +32,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -62,7 +65,7 @@
 <td>
 <h4>Admission Year</h4>
 &nbsp;
- <select name="AdmissionYear" onchange="this.form.submit()">
+ <select name="AdmissionYear" onchange="this.form.submit()" id="year">
   <option value="0">--Select--</option>
   <option value="2013">2013</option>
   <option value="2014">2014</option>
@@ -78,19 +81,7 @@
 <h4>&nbsp; &nbsp;&nbsp; &nbsp; Semester</h4>
 
 
-<% 
-/*
-Query q = new Query();
 
-ArrayList<Subject> list = new RetrieveSubjects().getSubjects();
-
-if(list != null)
-	System.out.println("Size : " + list.size());
-	
-System.out.println("SubjectCode : ");
-*/
-
-%>
 
 
  <select name="Semester" onchange="getSemester()" id="semester">
@@ -112,7 +103,7 @@ System.out.println("SubjectCode : ");
 &nbsp;
 <td>
 <h4>&nbsp;&nbsp; &nbsp; &nbsp;Subject ID</h4>
- <select id="subject_id">
+ <select id="subject_id" onchange="getGrades()">
   <option value="0">--Select--</option>
  
 </select>
@@ -121,6 +112,62 @@ System.out.println("SubjectCode : ");
 &nbsp;&nbsp;
 </tr>
 </table>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          
+		  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Student List</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="overflow-x:scroll;">
+              <table id="tableToExport" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Grade</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <%
+              
+                if(request.getParameter("course_code")!=null)
+                {
+               	ArrayList<Grade> list = Query.retrieveGradeList(request.getParameter("course_code"),Integer.parseInt(request.getParameter("year")));
+                Iterator<Grade> iterator = list.iterator();
+                while(iterator.hasNext()){
+                	Grade current = iterator.next();
+                	
+               
+                %>
+                <tr >
+                  <td><%=current.getStudent_id() %></td>
+                  <td><%=current.getStudent_name() %></td>
+				  <td><%=current.getStudent_grade() %></td>
+                  
+                </tr>
+				
+				
+		<%} }%>		
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+  
+
+
+<a href="../ExportGradesheet?course_code=<%=request.getParameter("course_code") %>"><button  value="Export"  >Export</button></a>
+
 </body>
 </html>
 
