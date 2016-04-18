@@ -1,7 +1,7 @@
-package actions.chats;
+package actions.registration;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import settings.database.PostgreSQLConnection;
+import org.json.JSONObject;
+
+import exceptions.IncorrectFormatException;
 
 /**
- * Servlet implementation class ReadAllMessages
- * mark messages as read
+ * Servlet implementation class CsabStudentProfile
  */
-public class ReadAllMessages extends HttpServlet {
+public class CsabStudentProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadAllMessages() {
+    public CsabStudentProfile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,26 +39,20 @@ public class ReadAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
-		PreparedStatement proc;
-		 try {
-			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
-			proc.setLong(1,convo_id);
-			//System.out.println(proc.toString());
-			 proc.executeQuery();
-			
-			
+		long csab_id=Long.parseLong(request.getParameter("csab_id").toString());
+		JSONObject current_object = null;
+		try {
+			current_object = postgreSQLDatabase.registration.Query.getCsabStudentProfile(csab_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IncorrectFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
-		
-		
+		PrintWriter writer=response.getWriter();
+		writer.write(current_object.toString());
 		
 	}
 
 }
-
-

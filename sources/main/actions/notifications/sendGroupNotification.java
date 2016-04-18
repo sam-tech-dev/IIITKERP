@@ -2,7 +2,6 @@ package actions.notifications;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
-
 import postgreSQLDatabase.notifications.Notifications;
-import settings.database.PostgreSQLConnection;
 
 /**
  * Servlet implementation class sendGroupNotification

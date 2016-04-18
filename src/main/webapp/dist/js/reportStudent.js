@@ -1,5 +1,4 @@
 function report(csab_id){
-	
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -21,13 +20,11 @@ function report(csab_id){
 	    xmlhttp.onreadystatechange=function() {
 	    	
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				
 	        	data=JSON.parse(xmlhttp.responseText);
-	        	alert(data.reg);
-				
-			   
-				
+	        	//alert(data.reg);
+	        	location.reload();	
 			}
+	        
 	        if(xmlhttp.status == 404)
 				alert("Could not connect to server");
 			}

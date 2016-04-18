@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.postgresql.util.PGobject;
-
 import settings.database.PostgreSQLConnection;
 
 /**

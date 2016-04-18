@@ -28,9 +28,9 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>My Tests</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-book"></i> <span>My Tests</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="testpaperlist.jsp"><i class="fa fa-circle-o"></i>All Tests</a></li>
@@ -38,6 +38,14 @@
           </ul>
         </li>
         
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cogs"></i> <span>My Account</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../resetPassword.jsp"><i class="fa fa-circle-o"></i>Change Password</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

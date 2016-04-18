@@ -1,27 +1,24 @@
-package actions.chats;
+package actions.registration;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import settings.database.PostgreSQLConnection;
+import utilities.StudentIdGeneration;
 
 /**
- * Servlet implementation class ReadAllMessages
- * mark messages as read
+ * Servlet implementation class GenerateStudentId
  */
-public class ReadAllMessages extends HttpServlet {
+public class GenerateStudentId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadAllMessages() {
+    public GenerateStudentId() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,26 +35,8 @@ public class ReadAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
-		PreparedStatement proc;
-		 try {
-			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
-			proc.setLong(1,convo_id);
-			//System.out.println(proc.toString());
-			 proc.executeQuery();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
+		Long id=Long.parseLong(String.valueOf(request.getSession(false).getAttribute("erp_id")));
+		StudentIdGeneration.generate_id(id);
 	}
 
 }
-
-

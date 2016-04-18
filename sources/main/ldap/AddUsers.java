@@ -6,7 +6,6 @@ package ldap;
 import java.io.IOException;
 
 import csv.Parser;
-import fileExplorer.File;
 import ldap.SimpleLdapAuthentication;
 import postgreSQLDatabase.registration.Query;
 import utilities.StringFormatter;
