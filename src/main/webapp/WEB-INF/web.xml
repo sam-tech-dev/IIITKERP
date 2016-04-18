@@ -336,7 +336,17 @@
 		<url-pattern>/FeeBreakup</url-pattern>
 	</servlet-mapping>
 
-	
+	<!--grading module-->
+ <servlet>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<display-name>ExportGradesheet</display-name>
+  	<description></description>
+  	<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<url-pattern>/ExportGradesheet</url-pattern>
+  </servlet-mapping>
 	<!--remaining -->
 	<servlet>
 		<servlet-name>GenerateChallan</servlet-name>

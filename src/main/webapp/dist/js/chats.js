@@ -248,7 +248,7 @@ function sendMessage(id){
 	
 	var message=current_window.getElementsByClassName("form-control message")[0].value;
 	
-	if (message="")return;
+	if (message=="")return;
 		message_div=document.getElementById("left_message");
 	
 		message_div.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML=session_user_name;

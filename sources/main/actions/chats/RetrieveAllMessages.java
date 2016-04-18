@@ -62,7 +62,7 @@ public class RetrieveAllMessages extends HttpServlet {
 
 			 rs=proc.executeQuery();
 			rs.next();
-			String postgre=rs.getString(1);
+			
           System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");

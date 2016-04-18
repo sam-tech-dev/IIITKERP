@@ -100,16 +100,20 @@ function reset(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				alert(xmlhttp.responseText);
+				
 			var data= JSON.parse(xmlhttp.responseText);
-			alert("status is"+data[0].reset_status);
+			if(data.reset=="success")
+			window.location.href="login.jsp";
+			else
+				alert("Sorry there was an error");
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
+			
 		}
 		xmlhttp.open("POST","ResetPassword",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("old_password="+old_password+"new_password="+new_password);
+		xmlhttp.send("old_password="+old_password+"&new_password="+new_password);
 	}
 	return false;
 }
