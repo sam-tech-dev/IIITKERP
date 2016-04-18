@@ -22,27 +22,7 @@ import org.json.JSONObject;
  *
  */
 public class Query {
-	static Connection conn ;
 
-	/**
-	 * @return a new connection to postgreSQL
-	 * @throws SQLException
-	 */
-	public static Connection getConnection() throws SQLException{
-
-		if(conn==null){
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			conn = DriverManager
-					.getConnection("jdbc:postgresql://172.16.1.231:5432/iiitk",
-							"developer", "developer");
-		}
-		return conn;
-	}
 
 	public static ArrayList<Subject> retrieveSubjects(int semester) throws SQLException{
 		
@@ -50,7 +30,7 @@ public class Query {
 		
 		
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"retrieveSubjects\"(?);");
+			PreparedStatement proc = settings.database.PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveSubjects\"(?);");
 			
 			proc.setInt(1,semester);
 			ResultSet rs = proc.executeQuery();
@@ -95,7 +75,7 @@ public static ArrayList<Grade> retrieveGradeList(String course_code,Integer year
 		
 		
 		try {
-			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getCourseGradeList\"(?,?);");
+			PreparedStatement proc = settings.database.PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCourseGradeList\"(?,?);");
 			
 			proc.setString(1,course_code);
 			proc.setInt(2,year);

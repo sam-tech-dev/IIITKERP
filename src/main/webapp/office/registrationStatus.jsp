@@ -90,6 +90,7 @@
                   <th>Id</th>	
                   <th>Name</th>
                   <th>Verified Status</th>
+                  </tr>
                 </thead>
                 <tbody>
                 <%

@@ -181,7 +181,7 @@ public class SimpleLdapAuthentication
 
 			mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
-			ctx.modifyAttributes("sn="+username+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
+			ctx.modifyAttributes("cn="+username+",cn="+new_user.getDepartment()+",ou="+new_user.getRole()+",dc=iiitk,dc=ac,dc=in", mods);
 
 		}
 		catch(Exception e)

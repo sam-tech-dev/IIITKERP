@@ -323,44 +323,47 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			JSONObject current_object=jArray.getJSONObject(0);
 			
 			System.out.println(current_object);
-			current.setName(current_object.getString("name"));
-			current.setFirst_name(current_object.getString("first_name"));
-			current.setMiddle_name(current_object.getString("middle_name"));
-			current.setLast_name(current_object.getString("last_name"));
-			current.setCategory(current_object.getString("category"));
-			current.setState_eligibility(current_object.getString("state"));
-			current.setMobile(current_object.getString("phone_number"));
-			current.setEmail(current_object.getString("email"));
-			current.setDate_of_birth(current_object.getString("date_of_birth"));
-			current.setProgram_allocated(current_object.getString("program_allocated"));
-			current.setStatus(current_object.getString("status"));
+			current.setName(current_object.get("name").toString());
+			current.setFirst_name(current_object.get("first_name").toString());
+			current.setMiddle_name(current_object.get("middle_name").toString());
+			current.setLast_name(current_object.get("last_name").toString());
+			current.setCategory(current_object.get("category").toString());
+			current.setState_eligibility(current_object.get("state").toString());
+			current.setMobile(current_object.get("phone_number").toString());
+			current.setEmail(current_object.get("email").toString());
+			current.setDate_of_birth(current_object.get("date_of_birth").toString());
+			current.setProgram_allocated(current_object.get("program_allocated").toString());
+			current.setStatus(current_object.get("status").toString());
 			current.setPwd(current_object.getBoolean("physically_disabled"));
-			current.setGender(current_object.getString("gender"));
-			current.setPermanent_address(current_object.getString("permanent_address"));
-			current.setLocal_address(current_object.getString("local_address"));
-			current.setNationality(current_object.getString("nationality"));
-			current.setGuardian_name(current_object.getString("guardian_name"));
-			current.setGuardian_contact(current_object.getString("guardian_contact"));
-			current.setGuardian_email(current_object.getString("guardian_email"));
-			current.setGuardian_address(current_object.getString("guardian_address"));
-			current.setFather_name(current_object.getString("father_name"));
-			current.setMother_name(current_object.getString("mother_name"));
-			current.setFather_contact(current_object.getString("father_contact"));
-			current.setMother_name(current_object.getString("mother_name"));
+			current.setGender(current_object.get("gender").toString());
+			current.setPermanent_address(current_object.get("permanent_address").toString());
+			current.setLocal_address(current_object.get("local_address").toString().toString());
+			current.setNationality(current_object.get("nationality").toString());
+			current.setGuardian_name(current_object.get("guardian_name").toString().toString());
+			current.setGuardian_contact(current_object.get("guardian_contact").toString());
+			current.setGuardian_email(current_object.get("guardian_email").toString());
+			current.setGuardian_address(current_object.get("guardian_address").toString());
+			current.setFather_name(current_object.get("father_name").toString());
+			current.setMother_name(current_object.get("mother_name").toString());
+			current.setFather_contact(current_object.get("father_contact").toString());
+			current.setMother_name(current_object.get("mother_name").toString());
+			
+			try{
 			current.setHosteller(current_object.getBoolean("hosteller"));
-			JSONObject address_obj=current_object.getJSONObject("hostel_address");
+            JSONObject address_obj=current_object.getJSONObject("hostel_address");
 			
 			current.setHostel(address_obj.get("hostel").toString());
 			current.setRoom(address_obj.get("room").toString());
-			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
+			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.get("entry_time").toString()));
+			
+			}
+			catch (Exception e){}
+			
 			
 			//System.out.println(current.getName());
 		rs.close();
 		proc.close();
 	}  catch (JSONException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

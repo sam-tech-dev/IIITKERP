@@ -59,7 +59,7 @@ public class Query {
 	public static FeePaymentDetails getFeePaymentDetails(long user_id) {
 		FeePaymentDetails payment_details=new FeePaymentDetails();
 		try {
-			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getFeePayemtDetails\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getFeePaymentDetails\"(?);");
 
 
 			proc.setObject(1, user_id);
