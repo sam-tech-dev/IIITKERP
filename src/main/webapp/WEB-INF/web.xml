@@ -336,7 +336,17 @@
 		<url-pattern>/FeeBreakup</url-pattern>
 	</servlet-mapping>
 
-	
+	<!--grading module-->
+ <servlet>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<display-name>ExportGradesheet</display-name>
+  	<description></description>
+  	<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ExportGradesheet</servlet-name>
+  	<url-pattern>/ExportGradesheet</url-pattern>
+  </servlet-mapping>
 	<!--remaining -->
 	<servlet>
 		<servlet-name>GenerateChallan</servlet-name>
@@ -354,6 +364,18 @@
 		<display-name>Login</display-name>
 		<description></description>
 		<servlet-class>actions.registration.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CsabStudentProfile</servlet-name>
+		<display-name>CsabStudentProfile</display-name>
+		<description></description>
+		<servlet-class>actions.registration.CsabStudentProfile</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ResetPassword</servlet-name>
+		<display-name>ResetPassword</display-name>
+		<description></description>
+		<servlet-class>actions.authentication.ResetPassword</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -374,6 +396,14 @@
 	<servlet-mapping>
 		<servlet-name>GenerateStudentId</servlet-name>
 		<url-pattern>/GenerateStudentId</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CsabStudentProfile</servlet-name>
+		<url-pattern>/CsabStudentProfile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPassword</servlet-name>
+		<url-pattern>/ResetPassword</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

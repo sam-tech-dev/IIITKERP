@@ -26,16 +26,23 @@
   <div class="login-box-body">
     <p class="login-box-msg">Reset Password</p>
 
-    <form method="post" onSubmit="return authenticate(this.ldap_username.value,this.ldap_password.value)">
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="ldap_username" onclick="$('#error_username').html('')" id="ldap_username" placeholder="New Password">
+     <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="old_password" onclick="$('#error_username').html('')" id="old_password" placeholder="Old Password">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 		<div class="form-group has-error">
             <label class="control-label" for="inputError"><span id="error_username"></span></label>
         </div>
       </div>
+      
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="ldap_password" onclick="$('#error_password').html('')" id="ldap_password" placeholder="Repeat Password">
+        <input type="password" class="form-control" name="new_password" onclick="$('#error_username').html('')" id="new_password" placeholder="New Password">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+		<div class="form-group has-error">
+            <label class="control-label" for="inputError"><span id="error_username"></span></label>
+        </div>
+  </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="repeat_password" onclick="$('#error_password').html('')" id="repeat_password" placeholder="Repeat Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		<div class="form-group has-error">
             <label class="control-label" for="inputError"><span id="error_password"></span></label>
@@ -43,10 +50,9 @@
       </div>
       <div class="row">
         <div class="col-xs-5 pull-right">
-          <button type="submit" name="ldap_submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="button" onclick="reset()" class="btn btn-primary btn-block btn-flat">Reset Password</button>
         </div>
       </div>
-    </form>
 
   </div>
   
@@ -63,6 +69,55 @@
       increaseArea: '20%' // optional
     });
   });
+</script>
+<script >
+
+function reset(){
+	var old_password,new_password,repeat_password;
+	old_password=document.getElementById("old_password").value;
+	new_password=document.getElementById("new_password").value;
+	repeat_password=document.getElementById("repeat_password").value;
+	
+	
+	var xmlhttp;
+	try{
+		xmlhttp = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				//Browser doesn't support ajax	
+				alert("Your browser is unsupported");
+			}
+		}
+	}	
+	//var xmlhttp=new XMLHttpRequest();
+
+	if(xmlhttp){	
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				
+			var data= JSON.parse(xmlhttp.responseText);
+			if(data.reset=="success")
+			window.location.href="login.jsp";
+			else
+				alert("Sorry there was an error");
+			}
+			if(xmlhttp.status == 404)
+				alert("Could not connect to server");
+			
+		}
+		xmlhttp.open("POST","ResetPassword",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("old_password="+old_password+"&new_password="+new_password);
+	}
+	return false;
+}
+
 </script>
 </body>
 </html>

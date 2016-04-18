@@ -23,8 +23,8 @@ public class Student {
     private static int mobile_max_length=13;
     
 	private String student_id;
-	private int registration_id;
-	private int csab_id;
+	private long registration_id;
+	private long csab_id;
 	private boolean verified;
 	private int verification_status;
 
@@ -45,7 +45,7 @@ public class Student {
 	/**
 	 * @return the csab_id
 	 */
-	public int getCsab_id() {
+	public long getCsab_id() {
 		return csab_id;
 	}
 
@@ -58,7 +58,7 @@ public class Student {
 	public boolean getVerified() {
 		return verified;
 	}
-	public void setCsab_id(int csab_id) {
+	public void setCsab_id(long csab_id) {
 		this.csab_id = csab_id;
 	}
 
@@ -416,14 +416,14 @@ public class Student {
 	/**
 	 * @return the registration_id
 	 */
-	public int getRegistration_id() {
+	public long getRegistration_id() {
 		return registration_id;
 	}
 
 	/**
 	 * @param registration_id the registration_id to set
 	 */
-	public void setRegistration_id(int registration_id) {
+	public void setRegistration_id(long registration_id) {
 		this.registration_id = registration_id;
 	}
 

@@ -43,10 +43,10 @@
     <!-- lockscreen credentials (contains the form) -->
     <form class="lockscreen-credentials">
       <div class="input-group">
-        <input type="email" class="form-control" id="login_reg_id" placeholder="Email">
+        <input type="text" class="form-control" id="login_reg_id" placeholder="ERP username">
 
         <div class="input-group-btn">
-          <button type="button" class="btn"><i class="fa fa-arrow-right text-muted" onclick="authenticateRegId()"></i></button>
+          <button type="button" class="btn"><i class="fa fa-arrow-right text-muted" onclick="forgot()"></i></button>
         </div>
       </div>
     </form>
@@ -58,11 +58,17 @@
    Enter your username
   </div>
   <div class="text-center">
-    <a href="login.jsp">I have already registered</a>
+    <a href="login.jsp">I remember my credentials</a>
   </div>
 </div>
 <!-- /.center -->
+<script>
+function forgot(){
+	alert("A reset Link has been sent to your registered Email ID");
+	window.location.href="login.jsp";
+}
 
+</script>
 <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
