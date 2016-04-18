@@ -18,7 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class UploadMultipleFiles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String UPLOAD_DIRECTORY = "uploads";
+	private static final String UPLOAD_DIRECTORY = "/uploads";
 	private static final int THRESHOLD_SIZE = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 10; // 10MB
 	private static final int REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
@@ -46,8 +46,7 @@ public class UploadMultipleFiles extends HttpServlet {
 		upload.setSizeMax(REQUEST_SIZE);
 		
 		// constructs the directory path to store upload file
-		String uploadPath = "WEB-INF"+File.separator+UPLOAD_DIRECTORY;
-				 //request.getServletContext().getRealPath(UPLOAD_DIRECTORY);
+		String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY);
 		// creates the directory if it does not exist
 		File uploadDir = new File(uploadPath);
 		if (!uploadDir.exists()) {
@@ -58,7 +57,6 @@ public class UploadMultipleFiles extends HttpServlet {
 			// parses the request's content to extract file data
 			List<FileItem> formItems = upload.parseRequest(request);
 			Iterator<FileItem> iter = formItems.iterator();
-			System.out.println(formItems.size());
 			// iterates over form's fields
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
@@ -66,14 +64,11 @@ public class UploadMultipleFiles extends HttpServlet {
 				if (!item.isFormField()) {
 					String fileName = new File(item.getName()).getName();
 					String filePath=getServletContext().getRealPath("/")+"uploads\\";
-					System.out.println(filePath);
-					File storeFile = new File(filePath);
+					File storeFile = new File(filePath+fileName);
 					
-					// saves the file on disk
 					item.write(storeFile);
 				}
 			}
-			//request.setAttribute("message", "Upload has been done successfully!");
 		} catch (Exception ex) {
 			request.setAttribute("message", "There was an error: " + ex.getMessage());
 			ex.printStackTrace();
