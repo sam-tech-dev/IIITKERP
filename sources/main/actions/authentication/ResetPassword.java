@@ -41,9 +41,11 @@ public class ResetPassword extends HttpServlet {
 		// TODO Auto-generated method stub
 		Long erp_id=Long.parseLong( request.getSession().getAttribute("erpId").toString());
 		String username=postgreSQLDatabase.authentication.Query.getUserUsername(erp_id);
+		System.out.println(username);
 		String old_password=request.getParameter("old_password");
 		String new_password=request.getParameter("new_password");
 		PrintWriter writer = response.getWriter();
+		System.out.println(username+ old_password+ new_password);
 		boolean reset = SimpleLdapAuthentication.resetPassword(username, old_password, new_password);
 		JSONObject reset_status=new JSONObject();
 		

@@ -343,16 +343,6 @@
   	<description></description>
   	<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
   </servlet>
-<servlet>
-  	<servlet-name>RetrieveSubjects</servlet-name>
-  	<display-name>RetrieveSubjects</display-name>
-  	<description></description>
-  	<servlet-class>actions.gradingModule.RetrieveSubjects</servlet-class>
-  </servlet>
-<servlet-mapping>
-  	<servlet-name>RetrieveSubjects</servlet-name>
-  	<url-pattern>/RetrieveSubjects</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ExportGradesheet</servlet-name>
   	<url-pattern>/ExportGradesheet</url-pattern>
