@@ -345,8 +345,6 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setGuardian_address(current_object.get("guardian_address").toString());
 			current.setFather_name(current_object.get("father_name").toString());
 			current.setMother_name(current_object.get("mother_name").toString());
-			current.setFather_contact(current_object.get("father_contact").toString());
-			current.setMother_name(current_object.get("mother_name").toString());
 			
 			try{
 			current.setHosteller(current_object.getBoolean("hosteller"));

@@ -100,7 +100,7 @@
 <body class="hold-transition skin-blue sidebar-mini"
 	style="background: url('../image/image.jpg'); background-size: cover;">
 	<div class="wrapper">
-		<%@ include file="../student/header.jsp"%>
+		<%@ include file="header.jsp"%>
 
 
 		<!-- Left side column. contains the logo and sidebar -->
@@ -196,7 +196,7 @@
 											<form action="" method="post">
 
 												<div class="form-group has-feedback">
-													<input type="text" name="std_name" class="form-control" 
+													<input type="text" name="std_name" class="form-control"  id="name"
 														placeholder="Sudent Name" value="<%=current.getName()%>" >
 
 												</div>
@@ -205,13 +205,13 @@
 
 												<div class="form-group has-feedback">
 													<input type="date" name="dob" class="form-control"
-														placeholder="Date of Birth"
+														placeholder="Date of Birth" id="date_of_birth"
 														value="<%=current.getDate_of_birth()%>">
 												</div>
 
 												<div class="form-group has-feedback">
 													<input type="text" name="state" class="form-control"
-														placeholder="State"
+														placeholder="State" id="state_eligibility"
 														value="<%=current.getState_eligibility()%>">
 												</div>
 
@@ -219,13 +219,13 @@
 
 												<div class="form-group has-feedback">
 													<input type="text" name="std_email" class="form-control"
-														placeholder="Email ">
+														placeholder="Email " id="email">
 												</div>
 
 
 
 												<div class="form-group has-feedback">
-													<select class="form-control" name="category">
+													<select class="form-control" name="category" id="category">
 														<option value="">Category</option>
 														<option value="General">General</option>
 														<option value="OBC">OBC</option>
@@ -234,7 +234,7 @@
 													</select>
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="gender" class="form-control"
+													<input type="text" name="gender" class="form-control" id="gender"
 														placeholder="Gender" value="<%=current.getGender()%>">
 												</div>
 
@@ -272,25 +272,25 @@
 
 
 												<div class="form-group has-feedback">
-													<input type="text" name="std_father_name"
+													<input type="text" name="std_father_name" id="father_name"
 														class="form-control" placeholder="Father's Name" value="<%=current.getFather_name()%>">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_mother_name"
+													<input type="text" name="std_mother_name" id="mother_name"
 														class="form-control" placeholder="Mother's Name" value= "<%=current.getMother_name()%>">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_father_contact"
+													<input type="text" name="std_father_contact" id="father_contact"
 														class="form-control" placeholder="Father's Contact">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_mother_contact"
+													<input type="text" name="std_mother_contact" id="mother_contact"
 														class="form-control" placeholder="Mother's Contact">
 												</div>
 
 												<div class="form-group has-feedback">
 													<input type="text" name="nationality" class="form-control"
-														placeholder="Nationality"
+														placeholder="Nationality" id="nationality"
 														value="<%=current.getNationality()%>">
 												</div>
 
@@ -300,7 +300,7 @@
 
 
 												<div class="form-group has-feedback">
-													<select class="form-control" name="p_category">
+													<select class="form-control" name="program_allocated" id="program_allocated">
 														<option value="">Program Allocated</option>
 														<option value="CSE">Computer Science &
 															Engineering</option>
@@ -345,35 +345,26 @@
 										<div class="register-box-body">
 											<form action="" method="post">
 												<div class="form-group has-feedback">
-													<input type="text" name="std_permanent_add"
+													<input type="text" name="std_permanent_add" id="permanent_address"
 														class="form-control" placeholder="Permanent Address">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_guardian_name"
+													<input type="text" name="std_guardian_name" id="guardian_name"
 														class="form-control" placeholder="Guardian Name">
 												</div>
 
-												<div class="form-group has-feedback">
-													<input type="text" name="hosteller" class="form-control"
+												<div class="form-group has-feedback"> 
+													<input type="text" name="hosteller" class="form-control" id="hosteller"
 														placeholder="Hosteller">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_local_add"
+													<input type="text" name="std_local_add" id="local_address"
 														class="form-control" placeholder="Local Address">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_hostel_add"
+													<input type="text" name="std_hostel_add" id="hostel_address"
 														class="form-control" placeholder="Hostel Address">
 												</div>
-
-												<div class="form-group has-feedback">
-													<input type="text" name="std_payment" class="form-control"
-														placeholder="Payment">
-												</div>
-
-
-
-
 
 
 												<div class="row">
@@ -411,17 +402,17 @@
 											<form action="" method="post">
 
 												<div class="form-group has-feedback">
-													<input type="text" name="std_guardian_contact"
+													<input type="text" name="std_guardian_contact" id="guardian_contact"
 														class="form-control" placeholder="Guardian Contact">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="std_guardian_email"
+													<input type="text" name="std_guardian_email" id="guardian_email"
 														class="form-control" placeholder="Guardian Email">
 												</div>
 
 
 												<div class="form-group has-feedback">
-													<input type="text" name="std_guardian_address"
+													<input type="text" name="std_guardian_address" id="guardian_address"
 														class="form-control" placeholder="Guardian Address">
 												</div>
 
@@ -432,7 +423,7 @@
 													</div>
 													<div class="col-xs-4 pull-right">
 														<input type="button" name="step-4" id="step4"
-															value="Submit" class="btn btn-primary btn-block btn-flat" />
+															value="Submit" class="btn btn-primary btn-block btn-flat" onClick="updateStudentRegistrationDetails()"/>
 													</div>
 													<!-- /.col -->
 												</div>

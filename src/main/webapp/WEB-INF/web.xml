@@ -377,6 +377,12 @@
 		<description></description>
 		<servlet-class>actions.authentication.ResetPassword</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>addUpdateStudentRegistrationDetails</servlet-name>
+		<display-name>addUpdateStudentRegistrationDetails</display-name>
+		<description></description>
+		<servlet-class>actions.registration.addUpdateStudentRegistrationDetails</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
@@ -404,6 +410,10 @@
 	<servlet-mapping>
 		<servlet-name>ResetPassword</servlet-name>
 		<url-pattern>/ResetPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>addUpdateStudentRegistrationDetails</servlet-name>
+		<url-pattern>/addUpdateStudentRegistrationDetails</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
