@@ -33,9 +33,9 @@ function updateStudentRegistrationDetails(){
 		xmlhttp.open("POST","../addUpdateStudentRegistrationDetails",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send("name="+document.getElementById('name').value
-				+"&first_name="+document.getElementById('first_name').value
-				+"&middle_name="+document.getElementById('middle_name').value
-				+"&last_name="+document.getElementById('last_name').value
+				//+"&first_name="+document.getElementById('first_name').value
+				//+"&middle_name="+document.getElementById('middle_name').value
+				//+"&last_name="+document.getElementById('last_name').value
 				+"&category="+document.getElementById('category').value
 				+"&jee_main_rollno="+document.getElementById('jee_main_rollno').value
 				+"&jee_adv_rollno="+document.getElementById('jee_adv_rollno').value

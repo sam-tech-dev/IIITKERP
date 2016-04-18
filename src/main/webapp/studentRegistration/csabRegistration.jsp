@@ -196,7 +196,7 @@
 											<form action="" method="post">
 
 												<div class="form-group has-feedback">
-													<input type="text" name="std_name" class="form-control"  id="name"
+													<input type="text" name="std_name" class="form-control"  id="first_name"
 														placeholder="Sudent Name" value="<%=current.getName()%>" >
 
 												</div>
@@ -472,7 +472,7 @@
 	<script src="../plugins/fastclick/fastclick.min.js"></script>
 	<script src="../dist/js/app.min.js"></script>
 	<script src="../dist/js/pages/dashboard.js"></script>
-	<script src="../dist/js/demo.js"></script>
+	<script src="../dist/js/updateStudentRegistrationData.js"></script>
 </body>
 
 </html>
