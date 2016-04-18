@@ -40,10 +40,10 @@ public class AddUsers {
 		
 		
 		for(int i=1;i<obj.getNumRows();i++){
-			first_name=StringFormatter.TitleCase(obj.get(i,j[0]));
-			last_name=StringFormatter.TitleCase(obj.get(i,j[1]));
-			username=first_name.toLowerCase()+last_name.toLowerCase();
-			password=obj.get(i,j[0]).toLowerCase();
+			first_name=StringFormatter.TitleCase(obj.get(i,j[0])).trim();
+			last_name=StringFormatter.TitleCase(obj.get(i,j[1])).trim();
+			username=first_name.toLowerCase()+last_name.toLowerCase().trim();
+			password=obj.get(i,j[0]).toLowerCase().trim();
 			String erp_id=Query.registerUser(username, first_name+" "+last_name, "student");
 			User user =new User();
 			user.setFirst_name(first_name);

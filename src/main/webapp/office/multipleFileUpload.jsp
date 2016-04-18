@@ -60,39 +60,39 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" action="../UploadMultipleFiles" method="POST" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label>1st Document</label><br>
-                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file1"/></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file1" size="50"/></label>
                   <div class="col-sm-6 pull-right">
                     <input type="text" class="form-control" id="file1" placeholder="Type here...">
                   </div>
                 </div><br>
                 <div class="form-group">
                   <label>2nd Document</label><br>
-                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file2"/></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file2" size="50"/></label>
                   <div class="col-sm-6 pull-right">
                     <input type="text" class="form-control" id="file2" placeholder="Type here...">
                   </div>
                 </div><br>
                 <div class="form-group">
                   <label>3rd Document</label><br>
-                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file3"/></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file3" size="50"/></label>
                   <div class="col-sm-6 pull-right">
                     <input type="text" class="form-control" id="file3" placeholder="Type here...">
                   </div>
                 </div><br>
                 <div class="form-group">
                   <label>4th Document</label><br>
-                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file4"/></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file4" size="50"/></label>
                   <div class="col-sm-6 pull-right">
                     <input type="text" class="form-control" id="file4" placeholder="Type here...">
                   </div>
                 </div><br>
                 <div class="form-group">
                   <label>5th Document</label><br>
-                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file5"/></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file5" size="50"/></label>
                   <div class="col-sm-6 pull-right">
                     <input type="text" class="form-control" id="file5" placeholder="Type here...">
                   </div>

@@ -39,14 +39,15 @@ public class UploadMultipleFiles extends HttpServlet {
 		// configures some settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(THRESHOLD_SIZE);
-		factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+		//factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		upload.setFileSizeMax(MAX_FILE_SIZE);
 		upload.setSizeMax(REQUEST_SIZE);
 		
 		// constructs the directory path to store upload file
-		String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY);
+		String uploadPath = "WEB-INF"+File.separator+UPLOAD_DIRECTORY;
+				 //request.getServletContext().getRealPath(UPLOAD_DIRECTORY);
 		// creates the directory if it does not exist
 		File uploadDir = new File(uploadPath);
 		if (!uploadDir.exists()) {
@@ -64,7 +65,7 @@ public class UploadMultipleFiles extends HttpServlet {
 				// processes only fields that are not form fields
 				if (!item.isFormField()) {
 					String fileName = new File(item.getName()).getName();
-					String filePath = uploadPath + File.separator + fileName;
+					String filePath=getServletContext().getRealPath("/")+"uploads\\";
 					System.out.println(filePath);
 					File storeFile = new File(filePath);
 					
