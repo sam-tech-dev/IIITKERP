@@ -57,7 +57,7 @@
     <span id="radio_answer" style="display:none">
      <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadio" class="optionsRadio" value="option">
+                      <input type="radio"  class="optionsRadio" value="option">
                      <span class="options_label">Option 2</span> 
                     </label>
                   </div>

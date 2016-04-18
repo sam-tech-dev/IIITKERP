@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,20 +48,21 @@ public class RetrieveAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Integer convo_id=Integer.parseInt(request.getParameter("conversation_id"));
 		PrintWriter writer=response.getWriter();
 		PreparedStatement proc = null;
 		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveChatMessages\"(?,?,?);");
-			proc.setInt(1,67);
+			proc.setInt(1,convo_id);
 			proc.setInt(2,0);
 			proc.setInt(3,1000);
 			
 
 			 rs=proc.executeQuery();
 			rs.next();
-			String postgre=rs.getString(1);
+			
           System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");
@@ -78,7 +78,7 @@ public class RetrieveAllMessages extends HttpServlet {
 				current.setUsername(current_object.getString("username"));
 				current.setText(current_object.getString("text"));
 				current.setAuthor(current_object.getInt("author"));
-				System.out.println(current_object.getString("timestamp"));
+				
 				
 					current.setTime_stamp(new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS").parse(current_object.getString("timestamp")).getTime()));
 				messages.add(current);
@@ -90,6 +90,12 @@ public class RetrieveAllMessages extends HttpServlet {
 				message_object = new JSONObject();
 				Message current=iterator.next();
 				message_object.put("id",current.getId());
+				if(current.getAuthor()==Long.parseLong(request.getSession().getAttribute("erpId").toString())){
+				   current.setAuthor(1);
+				}
+				else{
+					current.setAuthor(0);
+				}
 				message_object.put("author",current.getAuthor());
 				message_object.put("username",current.getUsername());
 				message_object.put("text",current.getText());
@@ -103,30 +109,14 @@ public class RetrieveAllMessages extends HttpServlet {
     
 			rs.close();
 			proc.close();
+			System.out.println("X"+message_array.toString()+"X");
 writer.write(message_array.toString());
 
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			writer.write("");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			try {
-				if(rs!=null)rs.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				if(proc!=null)	proc.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-				writer.write("");
-			}
-			writer.write("");
-			
 		} 
 		
 

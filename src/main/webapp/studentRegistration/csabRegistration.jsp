@@ -176,8 +176,11 @@
 
 						<div class="col-md-6">
 							<%
-							Long reg_id=Long.parseLong((String)request.getSession().getAttribute("reg_id"));
-                           // Student current=Query.getRegistrationStudentData(Integer.parseInt(reg_id));
+							
+							
+							System.out.println("session="+request.getSession().getAttribute("reg_id"));
+							long reg_id=Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+						
 							Student current = Query.getRegistrationStudentData(reg_id);
 							%>
 							<div id="step-1">

@@ -23,14 +23,29 @@ public class Student {
     private static int mobile_max_length=13;
     
 	private String student_id;
-	private int registration_id;
-	private int csab_id;
+	private long registration_id;
+	private long csab_id;
 	private boolean verified;
+	private int verification_status;
+
+	/**
+	 * @return the verification_status
+	 */
+	public int getVerification_status() {
+		return verification_status;
+	}
+
+	/**
+	 * @param verification_status the verification_status to set
+	 */
+	public void setVerification_status(int verification_status) {
+		this.verification_status = verification_status;
+	}
 
 	/**
 	 * @return the csab_id
 	 */
-	public int getCsab_id() {
+	public long getCsab_id() {
 		return csab_id;
 	}
 
@@ -43,7 +58,7 @@ public class Student {
 	public boolean getVerified() {
 		return verified;
 	}
-	public void setCsab_id(int csab_id) {
+	public void setCsab_id(long csab_id) {
 		this.csab_id = csab_id;
 	}
 
@@ -244,7 +259,7 @@ public class Student {
 	public void setDate_of_birth(String date_of_birth)throws IncorrectFormatException {
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date date;
 		try {
 			date = sdf.parse(date_of_birth);
@@ -349,7 +364,7 @@ public class Student {
 	 * @param email the email to set
 	 */
 	public void setEmail(String email)throws IncorrectFormatException {
-		
+	    if(email==null){this.email="";return;}
 		String regex = Pattern.quote("");
 		Pattern pattern=Pattern.compile(regex);
 		Matcher matcher=pattern.matcher(email);
@@ -401,14 +416,14 @@ public class Student {
 	/**
 	 * @return the registration_id
 	 */
-	public int getRegistration_id() {
+	public long getRegistration_id() {
 		return registration_id;
 	}
 
 	/**
 	 * @param registration_id the registration_id to set
 	 */
-	public void setRegistration_id(int registration_id) {
+	public void setRegistration_id(long registration_id) {
 		this.registration_id = registration_id;
 	}
 

@@ -38,10 +38,11 @@ public class ReadAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
 		PreparedStatement proc;
 		 try {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
-			proc.setInt(1,67);
+			proc.setLong(1,convo_id);
 			//System.out.println(proc.toString());
 			 proc.executeQuery();
 			

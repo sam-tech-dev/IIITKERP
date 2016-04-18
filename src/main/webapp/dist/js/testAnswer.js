@@ -26,7 +26,7 @@ function nextQuestion(){
 }
 
 function previousQuestion(){
-	document.getElementById("submit").style.display="none";
+/*	document.getElementById("submit").style.display="none";
 	submit();
 	
 	if(current_question !=0){
@@ -35,7 +35,7 @@ function previousQuestion(){
 	current_question--;
 	getQuestion(current_question);
 	}
-	
+	*/
 	
 }
 

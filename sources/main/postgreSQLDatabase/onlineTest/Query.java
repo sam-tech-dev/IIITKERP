@@ -6,10 +6,11 @@ import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.postgresql.util.PGInterval;
+
 import java.sql.*;
 import java.sql.Date;
 
-import postgreSQLDatabase.forms.Query.java;
 import settings.database.PostgreSQLConnection;
 
 /**
@@ -217,12 +218,17 @@ verify(5);
 	 * @throws SQLException
 	 */
 	public static int addNewTestPaper(TestPaper paper) throws SQLException{
-		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?);");
+		PreparedStatement proc =PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"newTestPaper\"(?,?,?,?,?,?);");
 		proc.setArray(1, PostgreSQLConnection.getConnection().createArrayOf("integer",paper.getQuestions().toArray()));
 		proc.setString(2,paper.getSubject().toString());
 		proc.setLong(3,paper.getAuthor_id());
 		proc.setDate(4,paper.getCreation_date());
 		proc.setString(5, paper.getStatus().toString());
+		
+		PGInterval duration=new PGInterval();
+		duration.setValue(paper.getDuration().toString());
+		proc.setObject(6, duration);
+		
 		System.out.println(proc.toString());
 		ResultSet rs = proc.executeQuery();
 		rs.next();
