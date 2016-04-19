@@ -20,7 +20,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
+  <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  
   <style>
   .myModal {
       position: relative;
@@ -37,7 +38,6 @@
     }
   </style>
 
-  
   
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -74,8 +74,7 @@
 	
 	
         
-      <!-- Modal -->
-      
+      <!-- Modal --> 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -172,6 +171,7 @@
     </div>
   </div>
 </div>
+
 	
     <!-- Main content -->
     <section class="content">
@@ -229,7 +229,7 @@
                   <td><%=current.getJee_adv_rollno() %></td>
                   <td><%=current.getState_eligibility()%></td>
                   <td><%=current.getMobile()%></td>
-                  <td><%=current.getEmail() %></td>
+                  <td><%=current.getEmail()%></td>
                   <td><%=current.getDate_of_birth()%></td>
                   <td><%=current.getProgram_allocated()%></td>
                   <td><%=current.getAllocated_category()%></td>
