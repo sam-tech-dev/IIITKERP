@@ -122,6 +122,32 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="form-group">
+                  <label>Semester</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                  </select>
+          </div>
+          <div class="form-group">
+                  <label>Year</label>
+                  <select class="form-control">
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                  </select>
+          </div>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
