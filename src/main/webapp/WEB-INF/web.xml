@@ -411,14 +411,11 @@
 		<servlet-name>ResetPassword</servlet-name>
 		<url-pattern>/ResetPassword</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 	<servlet-mapping>
 		<servlet-name>AutoSuggest</servlet-name>
 		<url-pattern>/AutoSuggest</url-pattern>
 	</servlet-mapping>
 
-=======
->>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 

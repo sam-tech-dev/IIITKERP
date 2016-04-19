@@ -195,20 +195,19 @@
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
-<<<<<<< HEAD
 <script src="../plugins/select2/suggestion.js"></script>
-=======
+
 <script src="../plugins/select2/select2.full.min.js"></script>
->>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
+
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
-<<<<<<< HEAD
+
   //$(function(){$(".select2").select2();});
   $(".select2").select2({
-	  ajax: {
+   ajax: {
 	    url: "../AutoSuggest",
 	    dataType: 'json',
 	    delay: 250,
@@ -240,10 +239,8 @@
 	  //templateResult: formatRepo, // omitted for brevity, see the source of this page
 	  //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
 	});
-=======
   $(function(){$(".select2").select2();});
   
->>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
 </script>
 </body>
 </html>
