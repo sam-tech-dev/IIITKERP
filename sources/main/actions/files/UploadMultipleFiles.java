@@ -18,7 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class UploadMultipleFiles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String UPLOAD_DIRECTORY = "uploads";
+	private static final String UPLOAD_DIRECTORY = "/uploads";
 	private static final int THRESHOLD_SIZE = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 10; // 10MB
 	private static final int REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
@@ -39,7 +39,7 @@ public class UploadMultipleFiles extends HttpServlet {
 		// configures some settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(THRESHOLD_SIZE);
-		factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+		//factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		upload.setFileSizeMax(MAX_FILE_SIZE);
@@ -57,22 +57,18 @@ public class UploadMultipleFiles extends HttpServlet {
 			// parses the request's content to extract file data
 			List<FileItem> formItems = upload.parseRequest(request);
 			Iterator<FileItem> iter = formItems.iterator();
-			System.out.println(formItems.size());
 			// iterates over form's fields
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 				// processes only fields that are not form fields
 				if (!item.isFormField()) {
 					String fileName = new File(item.getName()).getName();
-					String filePath = uploadPath + File.separator + fileName;
-					System.out.println(filePath);
-					File storeFile = new File(filePath);
+					String filePath=getServletContext().getRealPath("/")+"uploads\\";
+					File storeFile = new File(filePath+fileName);
 					
-					// saves the file on disk
 					item.write(storeFile);
 				}
 			}
-			//request.setAttribute("message", "Upload has been done successfully!");
 		} catch (Exception ex) {
 			request.setAttribute("message", "There was an error: " + ex.getMessage());
 			ex.printStackTrace();

@@ -43,12 +43,15 @@
     <!-- lockscreen credentials (contains the form) -->
     <div class="lockscreen-credentials">
       <div class="input-group">
-        <input type="text" class="form-control" id="login_reg_id" placeholder="Registration ID" >
+        <input type="text" class="form-control" id="login_reg_id"/>
 <script>
 document.getElementById("login_reg_id").setAttribute("onkeydown","javascript: if (event.keyCode == 13) authenticateRegId();");
 </script>
         <div class="input-group-btn">
-          <button type="button" class="btn"><i class="fa fa-arrow-right text-muted" onclick="authenticateRegId()"></i></button>
+          <button type="button" id="send" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <script>
+                  document.getElementById("send").setAttribute("onClick","javascript:authenticateRegId()");
+		  </script>
         </div>
       </div>
     </div>
