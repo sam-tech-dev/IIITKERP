@@ -85,63 +85,48 @@
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
               <table id="example1" class="table table-bordered table-striped">
-               <thead>
+                <thead>
                 <tr>
-                  <th>Verify</th>
-                  <th>View</th>	
+                  <th>Id</th>	
                   <th>Name</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Lastname</th>
-                  <th>Category</th>
-                 
-                  <th>State</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
-                  <th>Date Of Birth</th>
-                  <th>Program Allocated</th>
-                 
-                  
-                  <th>Status</th>
-                  
-                  <th>Physically Disabled</th>
-                  <th>Gender</th>
-                  
-                  <th>Nationality</th>
-                  <th>Entry Date</th>
-                  <th>Verified</th>
+                  <th>Verified Status</th>
                   </tr>
                 </thead>
                 <tbody>
                 <%
                 ArrayList<Student> registration_list=Query.displayRegistrationData();
                 Iterator<Student> iterator=registration_list.iterator();
-                 while(iterator.hasNext()){
+                while(iterator.hasNext()){
     				Student current=iterator.next();
+    				int status=current.getVerification_status();
+    				String status_msg="";
+    				switch(status){
+    				case 0: status_msg="reported";
+    				break;
+    				case 1: status_msg="data entered";
+					break;
+    				case 2: status_msg="data approved";
+					break;
+    				case 3: status_msg="fee paid";
+					break;
+    				case 4: status_msg="fee verified";
+					break;
+    				case 5: status_msg="registered";
+					break;
+    					
+    				}
+    				
+    				//0 reported
+    				//1 data entered
+    				// 2 approved
+    				// 3 fee paid
+    				// 4 fee approved
+    				//5 registered
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getRegistration_id()%>)">Verify</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><%=current.getRegistration_id() %></td>
                   <td><%=current.getName() %></td>
-                  <td><%=current.getFirst_name() %></td>
-                  <td><%=current.getMiddle_name() %></td>
-                  <td><%=current.getLast_name() %></td>
-                  <td><%=current.getCategory() %></td>
-                  
-                  <td><%=current.getState_eligibility()%></td>
-                  <td><%=current.getMobile()%></td>
-                  <td><%=current.getEmail() %></td>
-                  <td><%=current.getDate_of_birth()%></td>
-                  <td><%=current.getProgram_allocated()%></td>
-                  
-                  <td><%=current.getStatus() %></td>
-                 
-                  <td><%=current.isPwd()%></td>
-                  <td><%=current.getGender() %></td>
-                  
-                  <td><%=current.getNationality() %></td>
-                  <td><%=current.getEntry_time() %></td>
-                  <td><%=current.getVerified() %></td>
+                  <td><%=status_msg%></td>
                 </tr>
 				<%
                 }

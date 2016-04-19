@@ -80,8 +80,10 @@ function addChat(id,chat_name){
 				current.getElementsByClassName('chatHeader')[0].innerHTML=chat_name;
 				current.getElementsByClassName('chatWindow')[0].style.display="none";
 				current.getElementsByClassName('chatWindow')[0].dataset.chatId=id;
+				
 				current.getElementsByClassName('btn btn-danger btn-flat')[0].setAttribute( "onClick", "javascript: sendMessage('"+id+"');" );
 				current.getElementsByClassName('btn btn-box-tool')[1].setAttribute( "onClick", "javascript: hide('"+id+"');" );
+				current.getElementsByClassName('form-control message')[0].setAttribute("onkeydown","javascript: if (event.keyCode == 13) sendMessage('"+id+"');");
 			allChats.push(id);
 			
 			count++;
@@ -128,6 +130,9 @@ function retrieveMessages(convo_id){
 					
 			current_window.getElementsByClassName("direct-chat-messages")[0].innerHTML="";
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				
+				if(xmlhttp.responseText=="")return false;
+				
 				data=JSON.parse(xmlhttp.responseText);
 				
 				var	message;
@@ -150,8 +155,7 @@ function retrieveMessages(convo_id){
 						current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message.innerHTML);
 					}
 				}
-			//	current_window.getElementsByClassName("chat-box")[0].scrollTop=9999999;
-				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
+				current_window.getElementsByClassName("direct-chat-messages")[0].scrollTop=9999999;
 			}
 			if(xmlhttp.status == 404)
 				alert("Could not connect to server");
@@ -162,7 +166,8 @@ function retrieveMessages(convo_id){
 	}
 	return false;
 }
-function unreadMessages(){
+function unreadMessages(id){
+
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -184,6 +189,18 @@ function unreadMessages(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
+				var current_window;
+				for (i=0;i<chats.length;i++){
+						if(chats[i].dataset.chatId==id){
+							current_window=chats[i];
+						}
+						}
+				
+						
+				//current_window.getElementsByClassName("direct-chat-messages")[0].innerHTML="";
+			
+				if(xmlhttp.responseText=="")return false;
 				data=JSON.parse(xmlhttp.responseText);
 				var	message;
 				for(var i=0;i<data.length;i++){
@@ -204,8 +221,8 @@ function unreadMessages(){
 						current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message.innerHTML);
 					}
 				}
-				document.getElementById("chat_box").scrollTop=9999999;
-				readMessage();
+				current_window.getElementsByClassName("direct-chat-messages")[0].scrollTop=9999999;
+				readMessage(id);
 				//$('#chat_box').animate({scrollTop: $('#chat_box').get(0).scrollHeight});
 			}
 			if(xmlhttp.status == 404)
@@ -213,10 +230,11 @@ function unreadMessages(){
 		}
 		xmlhttp.open("POST","../RetrieveMessage",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send();
+		xmlhttp.send("convo_id="+id);
 	}
 	return false;
 }
+
 function sendMessage(id){
 	var chats=document.getElementById("chatDiv").getElementsByClassName('chatWindow');
 	var current_window;
@@ -226,9 +244,11 @@ function sendMessage(id){
 			}
 			}
 	
-	
+	current_window.getElementsByClassName("direct-chat-messages")[0].scrollTop=9999999;	
 	
 	var message=current_window.getElementsByClassName("form-control message")[0].value;
+	
+	if (message=="")return;
 		message_div=document.getElementById("left_message");
 	
 		message_div.getElementsByClassName("direct-chat-name pull-left username")[0].innerHTML=session_user_name;
@@ -236,7 +256,7 @@ function sendMessage(id){
 		message_div.getElementsByClassName("direct-chat-text text")[0].innerHTML=message;
 		current_window.getElementsByClassName("direct-chat-messages")[0].insertAdjacentHTML("beforeend",message_div.innerHTML);
 	
-	 //	document.getElementById("chat_box").scrollTop=9999999;
+		current_window.getElementsByClassName("direct-chat-messages")[0].scrollTop=9999999;
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -271,9 +291,9 @@ function sendMessage(id){
 	}
 	return false;
 }
-function readMessage(){
+function readMessage(id){
 	
-var message=document.getElementById('chat_message').value;
+
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -301,7 +321,7 @@ var message=document.getElementById('chat_message').value;
 		}
 		xmlhttp.open("POST","../ReadAllMessages",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send();
+		xmlhttp.send("convo_id="+id);
 	}
 	return false;
 }
@@ -331,9 +351,10 @@ function getConversationsInfo(){
 	if(xmlhttp){	
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				//alert(xmlhttp.responseText);
+			
 				
 				if(xmlhttp.responseText!=""){
+					
 					data=JSON.parse(xmlhttp.responseText);
 				for(i=0;i<data.length;i++){
 					addConversation(data[i].chat_name,data[i].members,data[i].conversation_id);
@@ -371,12 +392,19 @@ var members_list="";
  	document.getElementById('chat_list').innerHTML+=chat_list_template.innerHTML;
 }
 
-/*window.setInterval(function(){
+window.setInterval(function(){
 	 document.getElementById('chat_list').innerHTML="";
 		getConversationsInfo();
 
-	},10000);*/
-
-//window.setInterval(function(){if (refresh==1)unreadMessages();}(),5000);
-
+	},20000);
 getConversationsInfo();
+refresh=1;
+window.setInterval(function(){
+	for(var x=0;x<visibleChat.length;x++){
+		unreadMessages(visibleChat[x]);
+		
+	}
+	
+	},2000);
+
+

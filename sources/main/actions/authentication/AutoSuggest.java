@@ -1,27 +1,23 @@
-package actions.chats;
+package actions.authentication;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import settings.database.PostgreSQLConnection;
-
 /**
- * Servlet implementation class ReadAllMessages
- * mark messages as read
+ * Servlet implementation class AutoSuggest
  */
-public class ReadAllMessages extends HttpServlet {
+public class AutoSuggest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadAllMessages() {
+    public AutoSuggest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,6 +27,8 @@ public class ReadAllMessages extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		PrintWriter writer = response.getWriter();
+		writer.write(postgreSQLDatabase.authentication.Query.getAutoSuggest(request.getParameter("string")).toString());
 	}
 
 	/**
@@ -38,26 +36,7 @@ public class ReadAllMessages extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
-		PreparedStatement proc;
-		 try {
-			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"markAsReadMessages\"(?);");
-			proc.setLong(1,convo_id);
-			//System.out.println(proc.toString());
-			 proc.executeQuery();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
+		doGet(request, response);
 	}
 
 }
-
-

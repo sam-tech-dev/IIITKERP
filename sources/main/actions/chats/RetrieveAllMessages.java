@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -63,7 +62,7 @@ public class RetrieveAllMessages extends HttpServlet {
 
 			 rs=proc.executeQuery();
 			rs.next();
-			String postgre=rs.getString(1);
+			
           System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
 			//JSONArray jArray=new JSONArray("["+postgre.substring(1,postgre.length()-1)+"]");

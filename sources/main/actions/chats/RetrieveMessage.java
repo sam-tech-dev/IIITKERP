@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,13 +48,14 @@ public class RetrieveMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Long convo_id=Long.parseLong(request.getParameter("convo_id").toString());
 		PrintWriter writer=response.getWriter();
 		PreparedStatement proc = null;
 		ResultSet rs = null;
 		ArrayList<Message> messages=new ArrayList<Message>();
 		try {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveUnreadMessages\"(?);");
-			proc.setInt(1,67);
+			proc.setLong(1,convo_id);
 rs=proc.executeQuery();
 			rs.next();
 			String postgre=rs.getString(1);
@@ -99,27 +99,11 @@ rs=proc.executeQuery();
 			writer.write(message_array.toString());
 
 
-		} catch (SQLException e) {
-			writer.write("");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			try {
-				if(rs!=null)rs.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				if(proc!=null)proc.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			writer.write("");
-		} 
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			
+		}  
 	}
 }

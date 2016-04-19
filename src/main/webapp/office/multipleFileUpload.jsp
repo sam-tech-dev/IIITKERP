@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="postgreSQLDatabase.feePayment.*"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -61,34 +60,48 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <%
-            long reg_id=1;
-            FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
-            %>
-            <form role="form" action="../VerifyFeePayment" method="POST">
-            <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
+            <form role="form" action="../UploadMultipleFiles" method="POST" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"> Registration ID</label>
-                  <input type="text" class="form-control" value="<%=reg_id %>" disabled>
-                </div>
+                  <label>1st Document</label><br>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file1" size="50"/></label>
+                  <div class="col-sm-6 pull-right">
+                    <input type="text" class="form-control" id="file1" placeholder="Type here...">
+                  </div>
+                </div><br>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"> Name</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getName() %>" disabled>
-                </div>
+                  <label>2nd Document</label><br>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file2" size="50"/></label>
+                  <div class="col-sm-6 pull-right">
+                    <input type="text" class="form-control" id="file2" placeholder="Type here...">
+                  </div>
+                </div><br>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red" required> Mode of Payment</label>
-                  <input type="text" class="form-control" value="<%=payment_details.getPayment_method() %>" disabled>
-                </div>
+                  <label>3rd Document</label><br>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file3" size="50"/></label>
+                  <div class="col-sm-6 pull-right">
+                    <input type="text" class="form-control" id="file3" placeholder="Type here...">
+                  </div>
+                </div><br>
                 <div class="form-group">
-                  <label><input type="checkbox" class="flat-red" required> Payment Details</label>
-                  <textarea class="form-control" rows="3" disabled=""><%=payment_details.getDetails() %></textarea>
+                  <label>4th Document</label><br>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file4" size="50"/></label>
+                  <div class="col-sm-6 pull-right">
+                    <input type="text" class="form-control" id="file4" placeholder="Type here...">
+                  </div>
+                </div><br>
+                <div class="form-group">
+                  <label>5th Document</label><br>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><input type="file" name="file5" size="50"/></label>
+                  <div class="col-sm-6 pull-right">
+                    <input type="text" class="form-control" id="file5" placeholder="Type here...">
+                  </div>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Verify</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>

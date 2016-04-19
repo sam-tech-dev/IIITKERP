@@ -51,7 +51,7 @@
  <!-- Left side column. contains the logo and sidebar -->
  <%@ include file="main-sidebar.jsp" %>
 <script src="../dist/js/reportStudent.js"></script>
- <%@ page import="java.util.ArrayList" %>
+ <%@page import="java.util.ArrayList"%>
  <%@ page import="java.util.Iterator" %>
  <%@ page import="users.Student" %>
 
@@ -85,63 +85,38 @@
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
               <table id="example1" class="table table-bordered table-striped">
-               <thead>
+                <thead>
                 <tr>
                   <th>Verify</th>
-                  <th>View</th>	
+                  <th>Id</th>	
                   <th>Name</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Lastname</th>
-                  <th>Category</th>
-                 
-                  <th>State</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
-                  <th>Date Of Birth</th>
-                  <th>Program Allocated</th>
-                 
-                  
-                  <th>Status</th>
-                  
-                  <th>Physically Disabled</th>
-                  <th>Gender</th>
-                  
-                  <th>Nationality</th>
-                  <th>Entry Date</th>
-                  <th>Verified</th>
-                  </tr>
+                  <th>Verified Status</th>
                 </thead>
                 <tbody>
                 <%
                 ArrayList<Student> registration_list=Query.displayRegistrationData();
                 Iterator<Student> iterator=registration_list.iterator();
-                 while(iterator.hasNext()){
+                while(iterator.hasNext()){
     				Student current=iterator.next();
+    				int status=current.getVerification_status();
+    				String status_msg="";
+    				if(status==3){
+    					status_msg="not verified";
+    				}
+    				else if(status==4){
+    					status_msg="verified";
+    				}
+    				else{
+    					continue;
+    				}
+    				
+
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getRegistration_id()%>)">Verify</button></div></td>
-                  <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verifyFee(<%=current.getRegistration_id()%>)">Verify</button></div></td>
+                  <td><%=current.getRegistration_id() %></td>
                   <td><%=current.getName() %></td>
-                  <td><%=current.getFirst_name() %></td>
-                  <td><%=current.getMiddle_name() %></td>
-                  <td><%=current.getLast_name() %></td>
-                  <td><%=current.getCategory() %></td>
-                  
-                  <td><%=current.getState_eligibility()%></td>
-                  <td><%=current.getMobile()%></td>
-                  <td><%=current.getEmail() %></td>
-                  <td><%=current.getDate_of_birth()%></td>
-                  <td><%=current.getProgram_allocated()%></td>
-                  
-                  <td><%=current.getStatus() %></td>
-                 
-                  <td><%=current.isPwd()%></td>
-                  <td><%=current.getGender() %></td>
-                  
-                  <td><%=current.getNationality() %></td>
-                  <td><%=current.getEntry_time() %></td>
-                  <td><%=current.getVerified() %></td>
+                  <td><%=status_msg %></td>
                 </tr>
 				<%
                 }
