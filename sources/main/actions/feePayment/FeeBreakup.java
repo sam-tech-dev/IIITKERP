@@ -35,12 +35,15 @@ public class FeeBreakup extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String sem=request.getParameter("semester");
-		String cat=request.getParameter("category");
 		String year=request.getParameter("year");
-		String breakup=request.getParameter("breakup");
-		
+		String breakupGen=request.getParameter("fee_breakup_general");
+		String breakupSc=request.getParameter("fee_breakup_sc");
+		String breakupObc=request.getParameter("fee_breakup_obc");
         
- //  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,cat,breakup,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"general",breakupGen,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"sc/st",breakupSc,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"obc",breakupObc,year);
+  System.out.println("reached");
     
 	
 	}
