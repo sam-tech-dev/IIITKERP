@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | 404 Page not found</title>
+  <title>IIITK ERP | Session Expired</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -40,14 +40,14 @@
     <!-- Main content -->
     <section class="content">
       <div class="error-page">
-        <h2 class="headline text-yellow"> 404</h2>
+        <h2 class="headline text-yellow">Error</h2>
 
         <div class="error-content">
-          <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+          <h3><i class="fa fa-warning text-yellow"></i> Session Expired.</h3>
 
           <p>
-            Sorry Your Session Has Expired! Log In again to continue.
-            Meanwhile, you may <a href="index.html">return to dashboard</a> or try using the search form.
+            Sorry Your Session was idle for too long. Log In again to continue
+				Click<a href="login.jsp">here</a> to sign in.
           </p>
 
           <form class="search-form">
@@ -69,13 +69,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.1
-    </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
+   <%@ include file="footer.jsp" %> 
 
 <!-- ./wrapper -->
 

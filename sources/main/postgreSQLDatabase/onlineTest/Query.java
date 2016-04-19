@@ -1,7 +1,7 @@
 package postgreSQLDatabase.onlineTest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
+
 import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +11,6 @@ import org.postgresql.util.PGInterval;
 import java.sql.*;
 import java.sql.Date;
 
-import postgreSQLDatabase.forms.Query.java;
 import settings.database.PostgreSQLConnection;
 
 /**

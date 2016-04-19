@@ -6,7 +6,6 @@ package ldap;
 import java.io.IOException;
 
 import csv.Parser;
-import fileExplorer.File;
 import ldap.SimpleLdapAuthentication;
 import postgreSQLDatabase.registration.Query;
 import utilities.StringFormatter;
@@ -29,7 +28,7 @@ public class AddUsers {
 
 	}
 	public String addUser(String...s) throws IOException{
-		obj.run("thirdyear.csv");
+		obj.run("firstyear.csv");
 		int k=0;
 		int j[]=new int[s.length];
 		String username,first_name,last_name,password;

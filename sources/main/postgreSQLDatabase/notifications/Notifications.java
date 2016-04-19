@@ -11,7 +11,7 @@ import java.sql.Date;
  */
 public class Notifications {
 private int id;
-private String type;
+private String type,author;
 private String message;
 private String link;
 private Date timestamp;
@@ -33,6 +33,12 @@ public void setId(int id) {
  */
 public String getType() {
 	return type;
+}
+public String getAuthor() {
+	return author;
+}
+public void setAuthor(String author) {
+	this.author = author;
 }
 /**
  * @param type the type to set

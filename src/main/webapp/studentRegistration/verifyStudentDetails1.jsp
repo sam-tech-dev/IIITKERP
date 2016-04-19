@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.feePayment.*"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -60,29 +61,37 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <%
+            
+            long reg_id=Long.parseLong(request.getAttribute("reg_id").toString());
+            System.out.println(reg_id);
+            FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
+            %>
+            
+            <form role="form" action="../VerifyFeePayment" method="POST">
+            <span><input type="hidden" name="ref_no" value="<%=payment_details.getId()%>"></span>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"><input type="checkbox" class="flat-red"> Registration ID</label>
-                  <input type="text" class="form-control" value="Registration ID" disabled>
+                  <label for="exampleInputEmail1"> Registration ID</label>
+                  <input type="text" class="form-control" value="<%=reg_id %>" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red"> Name</label>
-                  <input type="text" class="form-control" value="Name" disabled>
+                  <label for="exampleInputPassword1"> Name</label>
+                  <input type="text" class="form-control" value="<%=payment_details.getName() %>" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red"> Mode of Payment</label>
-                  <input type="text" class="form-control" value="Mode of Payment" disabled>
+                  <label for="exampleInputPassword1"><input type="checkbox" class="flat-red" required> Mode of Payment</label>
+                  <input type="text" class="form-control" value="<%=payment_details.getPayment_method() %>" disabled>
                 </div>
                 <div class="form-group">
-                  <label><input type="checkbox" class="flat-red"> Payment Details</label>
-                  <textarea class="form-control" rows="3" value="blah blah..." disabled="">Payment Details</textarea>
+                  <label><input type="checkbox" class="flat-red" required> Payment Details</label>
+                  <textarea class="form-control" rows="3" disabled=""><%=payment_details.getDetails() %></textarea>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Verify</button>
               </div>
             </form>
           </div>

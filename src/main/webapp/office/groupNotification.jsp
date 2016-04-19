@@ -25,6 +25,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+<<<<<<< HEAD
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script>
     function autoSuggest(str){
@@ -74,6 +75,8 @@
     }	
   </script>
   
+=======
+>>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -121,6 +124,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Message</label>
+<<<<<<< HEAD
                   <textarea class="form-control" rows="3" placeholder="Type your message..."></textarea>
                 </div>
                 <div class="form-group">
@@ -135,6 +139,27 @@
                   <label>Users</label>
                   <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                   </select>
+=======
+                  <textarea class="form-control" rows="3" placeholder="Type your message..." name="message"></textarea>
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Notification Timestamp</label>
+                  <input type="text" class="form-control" name="notif_timestamp" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Link</label>
+                  <input type="text" class="form-control" name="link" name="link">
+                </div>
+                <div class="form-group">
+                     <label>Expiry Date</label>
+                     <input type="time"  name="expiry">
+                </div>
+                <div class="form-group">
+                  <label>Users</label>
+                  <select id="user_list" onkeyup="alert(this);" class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                  <option>Washington</option>
+                </select>
+>>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
                 </div>
               </div>
               <!-- /.box-body -->
@@ -170,12 +195,17 @@
 <!-- FastClick -->
 <script src="../plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
+<<<<<<< HEAD
 <script src="../plugins/select2/suggestion.js"></script>
+=======
+<script src="../plugins/select2/select2.full.min.js"></script>
+>>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
+<<<<<<< HEAD
   //$(function(){$(".select2").select2();});
   $(".select2").select2({
 	  ajax: {
@@ -210,6 +240,10 @@
 	  //templateResult: formatRepo, // omitted for brevity, see the source of this page
 	  //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
 	});
+=======
+  $(function(){$(".select2").select2();});
+  
+>>>>>>> 3527eacc98c6acef99c31fc58e42068d06e54cfa
 </script>
 </body>
 </html>
