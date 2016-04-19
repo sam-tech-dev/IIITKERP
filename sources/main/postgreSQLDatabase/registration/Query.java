@@ -337,31 +337,35 @@ public static Student getRegistrationStudentData(Long reg_id) throws SQLExceptio
 			current.setPwd(current_object.getBoolean("physically_disabled"));
 			current.setGender(current_object.get("gender").toString());
 			current.setPermanent_address(current_object.get("permanent_address").toString());
-			current.setLocal_address(current_object.get("local_address").toString().toString());
+			current.setLocal_address(current_object.get("local_address").toString());
 			current.setNationality(current_object.get("nationality").toString());
-			current.setGuardian_name(current_object.get("guardian_name").toString().toString());
+			current.setGuardian_name(current_object.get("guardian_name").toString());
 			current.setGuardian_contact(current_object.get("guardian_contact").toString());
 			current.setGuardian_email(current_object.get("guardian_email").toString());
 			current.setGuardian_address(current_object.get("guardian_address").toString());
 			current.setFather_name(current_object.get("father_name").toString());
 			current.setMother_name(current_object.get("mother_name").toString());
-			
+			current.setFather_contact(current_object.get("father_contact").toString());
+			current.setMother_name(current_object.get("mother_name").toString());
 			try{
-			current.setHosteller(current_object.getBoolean("hosteller"));
-            JSONObject address_obj=current_object.getJSONObject("hostel_address");
+				current.setHosteller(current_object.getBoolean("hosteller"));
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			JSONObject address_obj=current_object.getJSONObject("hostel_address");
 			
 			current.setHostel(address_obj.get("hostel").toString());
 			current.setRoom(address_obj.get("room").toString());
-			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.get("entry_time").toString()));
-			
-			}
-			catch (Exception e){}
-			
+			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS").parse(current_object.getString("entry_time")));
 			
 			//System.out.println(current.getName());
 		rs.close();
 		proc.close();
 	}  catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -587,7 +591,14 @@ public static void retrieveStudentList(){
 	
 }
 public static void main(String[] args) {
-	retrieveStudentList();
+	//retrieveStudentList();
+	long id= 69;
+	try {
+		getRegistrationStudentData((long) ( 69));
+	} catch (SQLException | IncorrectFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 
 }
