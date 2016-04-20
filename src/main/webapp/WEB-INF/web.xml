@@ -237,10 +237,10 @@
 		<servlet-class>actions.attendance.S1</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>GenerateStudentId</servlet-name>
-		<display-name>GenerateStudentId</display-name>
+		<servlet-name>RegisterStudent</servlet-name>
+		<display-name>RegisterStudent</display-name>
 		<description></description>
-		<servlet-class>actions.registration.GenerateStudentId</servlet-class>
+		<servlet-class>actions.registration.RegisterStudent</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -427,8 +427,8 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>GenerateStudentId</servlet-name>
-		<url-pattern>/GenerateStudentId</url-pattern>
+		<servlet-name>RegisterStudent</servlet-name>
+		<url-pattern>/RegisterStudent</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>CsabStudentProfile</servlet-name>

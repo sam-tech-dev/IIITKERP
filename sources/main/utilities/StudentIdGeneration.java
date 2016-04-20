@@ -10,6 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 
+import postgreSQLDatabase.registration.Query;
+import users.Student;
+import ldap.User;
+
 /**
  * @author Arushi
  *
@@ -33,11 +37,12 @@ public class StudentIdGeneration {
 		Long id=(long) 27;
 		generate_id(id);
 	}
-	public static void generate_id(Long id){
+	public static User generate_id(Long id){
 		String student_id;
 		String code=null;
 		String num=null;
 		String course=null;
+		String department=null;
 		String branch=null;
 		String batch=null;
 		String year = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
@@ -77,10 +82,12 @@ public class StudentIdGeneration {
 			if(code.equals("KUCP") || code.equals("KPCP")){
 				num="10"+num;
 				branch="computer science";
+				department="computer_science";
 			}
 			if(code.equals("KUEC") || code.equals("KPEC")){
 				num="20"+num;
 				branch="electronics and communication";
+				department="electronics_communication";
 			}
 			student_id=year+code+num;
 			System.out.println(student_id);
@@ -99,12 +106,18 @@ public class StudentIdGeneration {
 			proc2.setString(6, batch);
 			ResultSet rs2 = proc2.executeQuery();
 			rs2.next();
+			User user=new User();
+			user.setDepartment(department);
+			user.setRole("students");
+			
+		return user;
 	
 		}
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 		
 	}
 }

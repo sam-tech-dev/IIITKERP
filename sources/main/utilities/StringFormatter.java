@@ -27,9 +27,9 @@ public static String TitleCase(String text){
 }
 public static boolean isInt(String integer){
 	try{
-		Integer.parseInt(integer);
+	Integer.parseInt(integer);
 	}
-	catch(Exception e){
+	catch (Exception e){
 		return false;
 	}
 	return true;

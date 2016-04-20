@@ -74,7 +74,7 @@ public class Query {
 		    ug.setBirth_year(current.getInt("birth_year"));
 		    System.out.println(ug.getFirst()+"  "+ug.getLast()+"  "+String.valueOf(ug.getBirth_year()));
 		    
-		    usernames=StringPermutation.callAll(ug.getFirst(),ug.getLast(),String.valueOf(ug.getBirth_year()));
+		    usernames=StringPermutation.generatePermutations(ug.getFirst(),ug.getLast(),String.valueOf(ug.getBirth_year()));
 		    proc.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

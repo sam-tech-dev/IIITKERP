@@ -1,7 +1,9 @@
 package utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 /**
  * @author Arushi
@@ -10,13 +12,10 @@ import java.util.Scanner;
  
 public class StringPermutation 
 {
-	static String username[];
-	static int count;
-	private static ArrayList<String> usernames;
-	public static ArrayList<String> callAll(String...s){
-		username=new String[30];
-		 usernames=new ArrayList<String>();
-		 count=0;
+	static String username[]=new String[18];
+	static int count=0;
+	static ArrayList<String> usernames=new ArrayList<String>();
+	public static ArrayList<String> generatePermutations(String...s){
 		permute(0,s);
 		placeDots(s);
 		breakString(s);
@@ -31,7 +30,7 @@ public class StringPermutation
         return usernames;
 	}
 	
-    public static void permute(int k,String...a) //send value of k as 0 initially
+    static void permute(int k,String...a) //send value of k as 0 initially
     {
         if (k == a.length) 
         {
@@ -125,7 +124,7 @@ public class StringPermutation
         
           System.out.println("\nThe permuted sequences are: ");
           
-          callAll("JASBJ","Gupta","2016");
+          generatePermutations("joey","pinto","13");
           Iterator list=usernames.iterator();
           while(list.hasNext()){
         	  System.out.println(list.next());
