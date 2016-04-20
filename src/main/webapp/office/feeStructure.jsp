@@ -122,7 +122,7 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-            <form method="post" action="../FeeBreakup">
+            <form method="post" action="../FeeBreakup" onSubmit="createFeeBreakUpJson()" >
               <div class="form-group">
                   <label>Semester</label>
                   <select class="form-control" id="drop_semester">
@@ -138,7 +138,7 @@
           </div>
           <div class="form-group">
                   <label>Year</label>
-                  <select class="form-control" id="year">
+                  <select class="form-control" id="drop_year">
                     <option>2013</option>
                     <option>2014</option>
                     <option>2015</option>
@@ -291,12 +291,12 @@
                </thead>	  
               </table>
             
-              	<input type="hidden" id="year" name="year" >
-              	<input type="hidden" id="sem" name="semester">
-              <input type=hidden id="gen" name="fee_breakup_general">
-              <input type=hidden id="sc" name="fee_breakup_sc">
-              <input type=hidden id="obc" name="fee_breakup_obc">
-              <input type="submit" value="button" onClick="createFeeBreakUpJson()"/>
+              	<input type="hidden" id="year" name="year" />
+              	<input type="hidden" id="sem" name="semester" />
+              <input type=hidden id="gen" name="fee_breakup_general" />
+              <input type=hidden id="sc" name="fee_breakup_sc" />
+              <input type=hidden id="obc" name="fee_breakup_obc" />
+              <input type="submit" value="button" />
               </form>
             </div>
             

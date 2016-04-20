@@ -6,8 +6,8 @@ function createFeeBreakUpJson(){
 	
 	document.getElementById("year").value=document.getElementById("drop_year").value;
 	document.getElementById("sem").value=document.getElementById("drop_semester").value;
-	//alert(document.getElementById("year").value);
-	//alert(document.getElementById("sem").value);
+	alert(document.getElementById("year").value);
+	alert(document.getElementById("sem").value);
 	var temp={};
 	temp['name']="Admission/Tution Fees";
 	temp['apf']=document.getElementById("tableA[0][0]").value;
@@ -87,14 +87,12 @@ function createFeeBreakUpJson(){
 	temp['total']=document.getElementById("table[3][2]").value;
 	jsonObjObc.push(temp);
 	
-	alert(JSON.stringify(jsonObjGeneral));
-	alert(JSON.stringify(jsonObjSc));
-	alert(JSON.stringify(jsonObjObc));
-	
+
 	document.getElementById("gen").value=JSON.stringify(jsonObjGeneral);
 	document.getElementById("sc").value=JSON.stringify(jsonObjSc);
 	document.getElementById("obc").value=JSON.stringify(jsonObjObc);
 	
+	return true;
 }
 
 function readFeeBreakup(){

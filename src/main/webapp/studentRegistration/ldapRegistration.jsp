@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.registration.Query"%>
+<%@page import="java.util.*"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -53,40 +55,32 @@
 				<div class="col-md-6">
 					<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Registration ID : 55</h3>
+            <%String rid = request.getSession().getAttribute("reg_id").toString(); %>
+              <h3 class="box-title">Registration ID : <%=rid %></h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             
-            <form role="form" action="../VerifyFeePayment" method="POST">
+            <form role="form" action="../AddLdapUser" method="POST">
+          
             <span><input type="hidden" name="ref_no" value=""></span>
               <div class="box-body">
                 <div class="form-group">
+                 <%
+		          long reg_id = Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+		           ArrayList<String> usernames=Query.getUsernameGenerationData(reg_id);
+		           Iterator i=usernames.iterator();
+		           String un;
+		           while(i.hasNext()){
+		        	   un=(String)i.next();
+                  %>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value=""> Option1
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value=<%=un %>><%=un %>
                     </label>
                   </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value=""> Option2
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios3" value=""> Option3
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios4" value=""> Option4
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios5" value=""> Option5
-                    </label>
-                  </div>
+                 <%} %>
+                  
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1"> Password</label>
