@@ -41,12 +41,12 @@ README for IIITK ERP setup
   >Java Resources
 	   >>sources/main
 	   >>actions //contains all servlets
-		     >attendance  //sevlets pertaining to attendance module
-		                AjaxController.java
-				GetSubjectAllocation.java //retrive students  registerd for various courese
-				InsertAttendance.java //inserts attendance sheet into the database
-				StudentsList.java //retrives list of of students registerd in a particular course
-		     >authentication    //sevlets pertaining to authentication module
+		     >>>attendance  //sevlets pertaining to attendance module
+		                >>>>AjaxController.java
+				>>>>GetSubjectAllocation.java //retrive students  registerd for various courese
+				>>>>InsertAttendance.java //inserts attendance sheet into the database
+				>>>>StudentsList.java //retrives list of of students registerd in a particular course
+		     >>>authentication    //sevlets pertaining to authentication module
 		        AutoSuggest.java //retrives autosuggestions for user names
 				ResetPassword.java //resets the password of the current user
 				Session.java //filter to check weather session of the current user has expired
