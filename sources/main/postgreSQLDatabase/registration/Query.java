@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import exceptions.IncorrectFormatException;
 import settings.database.PostgreSQLConnection;
 import users.Student;
+import utilities.StringPermutation;
 
 /**
  * @author Anshula
@@ -51,12 +52,45 @@ public class Query {
 		return conn;
 	}
 	
+	
+	public static ArrayList<String> getUsernameGenerationData(long reg_id){
+		 UsernameGeneration ug=null;
+		 ArrayList<String> usernames=new ArrayList<String>();
+		try {
+			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"getUsernameGenerationData\"(?);");
+		    proc.setLong(1, reg_id);
+		    ResultSet rs=proc.executeQuery();
+		    rs.next();
+		   ug=new UsernameGeneration();
+		   System.out.println(rs.getString(1));
+		   JSONArray jArray=new JSONArray(rs.getString(1));
+		    JSONObject current=jArray.getJSONObject(0);
+		    
+		    ug.setFirst(current.getString("first_name"));
+		    //ug.setMiddle(current.getString("middle_name"));
+		    ug.setLast(current.getString("last_name"));
+		    //ug.setProgram_allocated(current.getString("program_allocated"));
+		    //ug.setReg_year(current.getInt("reg_year"));
+		    ug.setBirth_year(current.getInt("birth_year"));
+		    System.out.println(ug.getFirst()+"  "+ug.getLast()+"  "+String.valueOf(ug.getBirth_year()));
+		    
+		    usernames=StringPermutation.callAll(ug.getFirst(),ug.getLast(),String.valueOf(ug.getBirth_year()));
+		    proc.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return usernames;
+	}
+	
+	
 	public static void updateVerificationStatus(int status,long reg_id){
 		try {
 			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"updateVerificationStatus\"(?,?);");
 		    proc.setInt(1,status);
 		    proc.setLong(2, reg_id);
 		    proc.executeQuery();
+		    proc.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,15 +108,16 @@ public class Query {
 			ResultSet rs=proc.executeQuery();
 			//System.out.println(proc);
 			rs.next();
-
+System.out.println(rs.getString(1));
 			JSONArray jArray=new JSONArray(rs.getString(1));
-
 			for(int i=0;i<jArray.length();i++)
 			{
 				JSONObject current_object=jArray.getJSONObject(i);
 				Student current=new Student();
 				current.setName(current_object.getString("name"));
+				System.out.println(current_object.getInt("verification_status"));
 				current.setVerification_status(current_object.getInt("verification_status"));
+				
 				current.setFirst_name(current_object.getString("first_name"));
 				current.setMiddle_name(current_object.getString("middle_name"));
 				current.setLast_name(current_object.getString("last_name"));
@@ -511,41 +546,21 @@ public static void applyUpdate(int reg_id) throws SQLException{
 }
 
 public static int retrieveRegistrationStatus(Long reg_id){
-	
-	
+	int status=0;
 	try {
-
-		proc = settings.database.PostgreSQLConnection.getConnection()
-				.prepareStatement("SELECT public.\"existsRegId\"(?);");
-		proc.setLong(1,reg_id);
-		ResultSet rs = proc.executeQuery();
-		rs.next();
-		System.out.println("ID exists "+rs.getBoolean(1));
-		if(rs.getBoolean(1)){
 		proc = PostgreSQLConnection.getConnection().
 				prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
 		proc.setLong(1,reg_id);
-		rs = proc.executeQuery();	
+		ResultSet rs = proc.executeQuery();	
 		  rs.next();
-			boolean verified=rs.getBoolean(1);
-			System.out.println("verified "+verified);
-			if(verified)
-			{
-				return 1;
-			}
-			else{
-				return 0;
-			}
-		}
-		else{
-			return -1;
-		}
+			status=rs.getInt(1);
+		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
-	return -1;
+	return status;
 	
 }
 

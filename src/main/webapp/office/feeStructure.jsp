@@ -122,9 +122,10 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+            <form method="post" action="../FeeBreakup" onSubmit="createFeeBreakUpJson()" >
               <div class="form-group">
                   <label>Semester</label>
-                  <select class="form-control">
+                  <select class="form-control" id="drop_semester">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -137,7 +138,7 @@
           </div>
           <div class="form-group">
                   <label>Year</label>
-                  <select class="form-control">
+                  <select class="form-control" id="drop_year">
                     <option>2013</option>
                     <option>2014</option>
                     <option>2015</option>
@@ -155,7 +156,7 @@
                   <th>Head of Fees</th>
                   <th>For General Category Student</th>
                   <th>For SC/ST Category Student</th>
-                  <th>For DASA Student</th>
+                  <th>For OBC Student</th>
                 </tr>
 			   	</thead>
 			   <thead>
@@ -289,15 +290,16 @@
                 </tr>
                </thead>	  
               </table>
-              <form method="post" action="../FeeBreakup">
-              	<input type="hidden" name="year" >
-              	<input type="hidden" name="category">
-              	<input type="hidden" name="semester">
-              	<input type="hidden" name="breakup">
-              	<input type="hidden" name="amount">
+            
+              	<input type="hidden" id="year" name="year" />
+              	<input type="hidden" id="sem" name="semester" />
+              <input type=hidden id="gen" name="fee_breakup_general" />
+              <input type=hidden id="sc" name="fee_breakup_sc" />
+              <input type=hidden id="obc" name="fee_breakup_obc" />
+              <input type="submit" value="button" />
               </form>
             </div>
-            <input type="button" value="button" onClick="createFeeBreakUpJson()"/>
+            
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
