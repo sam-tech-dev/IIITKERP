@@ -1,5 +1,6 @@
 package actions.feePayment;
 
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +35,8 @@ public class FeeBreakup extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String sem=request.getParameter("semester");
-		String year=request.getParameter("year");
+		int sem=Integer.parseInt(request.getParameter("semester"));
+		int year=Integer.parseInt(request.getParameter("year"));
 		String breakupGen=request.getParameter("fee_breakup_general");
 		String breakupSc=request.getParameter("fee_breakup_sc");
 		String breakupObc=request.getParameter("fee_breakup_obc");

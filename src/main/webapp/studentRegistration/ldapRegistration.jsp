@@ -68,7 +68,7 @@
                 <div class="form-group">
                  <%
 		          long reg_id = Long.parseLong(request.getSession().getAttribute("reg_id").toString());
-		           ArrayList<String> usernames=Query.getUsernameGenerationData(reg_id);
+		           ArrayList<String> usernames=postgreSQLDatabase.registration.Query.getUsernameGenerationData(reg_id);
 		           Iterator i=usernames.iterator();
 		           String un;
 		           while(i.hasNext()){

@@ -176,10 +176,8 @@
 
 						<div class="col-md-6">
 							<%
-								System.out.println("session="
-										+ request.getSession().getAttribute("reg_id"));
-								long reg_id = Long.parseLong(request.getSession()
-										.getAttribute("reg_id").toString());
+								System.out.println("session=" + request.getSession().getAttribute("reg_id"));
+								long reg_id = Long.parseLong(request.getSession().getAttribute("reg_id").toString());
 
 								Student current = Query.getRegistrationStudentData(reg_id);
 							%>
@@ -390,7 +388,7 @@
 												</div>
 												<div class="form-group has-feedback">
 													<input type="text" name="hostel" id="hostel"
-														class="form-control" placeholder="Hostel Name/ Address">
+														class="form-control" placeholder="Hostel Address">
 												</div>
 
 												<div class="form-group has-feedback">
