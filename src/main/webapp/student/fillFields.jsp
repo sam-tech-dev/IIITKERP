@@ -66,7 +66,7 @@
      }
      
       
-  
+  if(form.equals("Bonafide Form")){
     %>
     
     
@@ -98,7 +98,23 @@
  <input name="submit" type="submit" id="submit" value="Submit"  onClick="checkform(this.form)"  style="width:170px;height:35px;color:white;background-color:#333399;font-size:20px;margin:0px 0px 0px 350px">
 </form>	
 
-
+<%
+  }else{
+	%>  
+	 <form method="post"  name="form1" action="../Bonafide">
+	 
+	  <label style="font-size:17px; color:black;margin:0px 0px 0px 50px">Enter Your College ID:</label>
+ <input type="text" id="d1" name="id" value="" style="font-size:16px;margin:0px 0px 0px 0px; background-color:#F0FFFF; width:220px; height:25px;color:#006666;"> 
+     
+      <input name="submit" type="submit" id="submit" value="Submit"   style="width:170px;height:35px;color:white;background-color:#333399;font-size:20px;margin:0px 0px 0px 350px">
+     
+   
+	 </form>	
+	
+	
+<% 	  
+  }
+%>
 
     <!-- /.content -->
   </div>

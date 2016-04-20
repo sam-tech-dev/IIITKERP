@@ -73,7 +73,10 @@ public class createpdf extends HttpServlet {
 			 
 		 }
 		
-	
+	   
+		 String filePath = request.getServletContext().getRealPath("/")+"image\\header2.png";
+		 format="<img src =\""+filePath+"\" width=\"500px\" height=\"150px\" style=\"margin=0px 0px 0px 0px\"/>"+format;
+		 
 			//writer.write(format);
 		 
 		 //File file=new File("Test.pdf");response.getOutputStream()

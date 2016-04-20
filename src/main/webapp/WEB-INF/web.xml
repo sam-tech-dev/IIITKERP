@@ -107,6 +107,12 @@
 		<description></description>
 		<servlet-class>actions.forms.createpdf</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Bonafide</servlet-name>
+		<display-name>Bonafide</display-name>
+		<description></description>
+		<servlet-class>actions.forms.Bonafide</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignIn</servlet-name>
 		<url-pattern>/SignIn</url-pattern>
@@ -178,6 +184,10 @@
 	<servlet-mapping>
 		<servlet-name>createpdf</servlet-name>
 		<url-pattern>/createpdf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Bonafide</servlet-name>
+		<url-pattern>/Bonafide</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
