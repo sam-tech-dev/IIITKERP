@@ -1,5 +1,9 @@
 package utilities;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 /**
  * @author Arushi
@@ -8,12 +12,22 @@ import java.util.Scanner;
  
 public class StringPermutation 
 {
-	static String username[]=new String[20];
+	static String username[]=new String[18];
 	static int count=0;
-	static void callAll(String...s){
+	static ArrayList<String> usernames=new ArrayList<String>();
+	static ArrayList<String> callAll(String...s){
 		permute(0,s);
 		placeDots(s);
 		breakString(s);
+		//List<String> temp = Arrays.asList(username);
+        //usernames = new ArrayList<String>();
+	    //usernames.addAll(temp); 
+		for(String x:username){
+			if(x!=null){
+				usernames.add(x);
+			}
+		}
+        return usernames;
 	}
 	
     static void permute(int k,String...a) //send value of k as 0 initially
@@ -24,8 +38,13 @@ public class StringPermutation
             for (int i = 0; i < a.length; i++) 
             {
                 //System.out.print(a[i]);
-            	if(i==0){username[count]=a[i];}
-            	else{username[count]=username[count]+a[i];}
+            	if(i==0){
+            		if(StringFormatter.isInt(a[i].substring(0, 1))==false)
+            		username[count]=a[i];
+            		}
+            	else{
+            		if(username[count]!=null)
+            		username[count]=username[count]+a[i];}
               }
             //System.out.println();
             count++;
@@ -49,28 +68,42 @@ public class StringPermutation
     }
     public static void placeDots(String...s){
     	//System.out.println("hello");
-    	for(int i=0;i<s.length-1;i++){
+    	/*for(int i=0;i<s.length-1;i++){
     		for(int j=i+1;j<s.length;j++){
+    			String str1=s[i]+"."+s[j];
+    			String str2=s[j]+"."+s[i];
+    			if(str1.length()>=6){
     			username[count++]=s[i]+"."+s[j];
+    			}
+    			if(str2.length()>=6 && j!=s.length-1){
     			username[count++]=s[j]+"."+s[i];
+    			}
     		}
     		
-    	}
+    	}*/
+    	if((s[0]+"."+s[1]).length()>=6){username[count++]=s[0]+"."+s[1];}
+    	if((s[1]+"."+s[0]).length()>=6){username[count++]=s[1]+"."+s[0];}
+    	if((s[0]+s[1]).length()>=6){username[count++]=s[0]+s[1];}
+    	if((s[1]+s[0]).length()>=6){username[count++]=s[1]+s[0];}
+    	
     	
     	
     }
     public static void breakString(String...s){
     	String s1[]=new String[s.length-1];
-    	for(int i=0;i<s1.length;i++){
+    	for(int i=0;i<s1.length-1;i++){
     		s1[i]=String.valueOf(s[i].charAt(0));
     		//System.out.println(s1[i]);
     	}
     	//System.out.println(s1.length);
-    	for(int i=0;i<s1.length;i++){
-    		for(int j=0;j<s.length;j++){
+    	for(int i=0;i<s1.length-1;i++){
+    		for(int j=0;j<s.length-1;j++){
     			if(i!=j){
+    				String str1=s1[i]+s[j];
+    				String str2=s1[i]+s[j]+s[j+1];
+    			if(str1.length()>=6)	
     			username[count++]=s1[i]+s[j];
-    			if(j!=s.length-1)
+    			if(j!=s.length-1 && str2.length()>=6)
     			username[count++]=s1[i]+s[j]+s[j+1];
     			}
     		}
@@ -91,19 +124,24 @@ public class StringPermutation
         
           System.out.println("\nThe permuted sequences are: ");
           
-          callAll("arushi","gupta","1012");
+          callAll("joey","pinto","13");
+          Iterator list=usernames.iterator();
+          while(list.hasNext()){
+        	  System.out.println(list.next());
+          }
+          
        // permute(0,"arushi","gupta","1012");
        // System.out.println(count);
        //placedots("arushi","gupta","1012");
         
-        
+      /*  
         for(int i=0;i<count;i++){
         	
         		System.out.print(username[i]);
         	
         	System.out.println();
         	
-        }
+        }*/
  
         sc.close();
     }

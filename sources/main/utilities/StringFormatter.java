@@ -25,4 +25,13 @@ public static String TitleCase(String text){
 	 
 	    return titleCase.toString();
 }
+public static boolean isInt(String integer){
+	try{
+	Integer.parseInt(integer);
+	}
+	catch (Exception e){
+		return false;
+	}
+	return true;
+}
 }
