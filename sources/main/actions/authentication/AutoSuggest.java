@@ -8,20 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
-import ldap.SimpleLdapAuthentication;
-
 /**
- * Servlet implementation class ResetPassword
+ * Servlet implementation class AutoSuggest
  */
-public class ResetPassword extends HttpServlet {
+public class AutoSuggest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ResetPassword() {
+    public AutoSuggest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +27,8 @@ public class ResetPassword extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		PrintWriter writer = response.getWriter();
+		writer.write(postgreSQLDatabase.authentication.Query.getAutoSuggest(request.getParameter("string")).toString());
 	}
 
 	/**
@@ -39,20 +36,7 @@ public class ResetPassword extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Long erp_id=Long.parseLong( request.getSession().getAttribute("erpId").toString());
-		String username=postgreSQLDatabase.authentication.Query.getUserUsername(erp_id);
-		System.out.println(username);
-		String old_password=request.getParameter("old_password");
-		String new_password=request.getParameter("new_password");
-		PrintWriter writer = response.getWriter();
-		System.out.println(username+ old_password+ new_password);
-		boolean reset = SimpleLdapAuthentication.resetPassword(username, old_password, new_password);
-		JSONObject reset_status=new JSONObject();
-		
-		
-		if(reset)reset_status.put("reset", "success");
-		else reset_status.put("reset", "failure");
-		writer.write(reset_status.toString());
+		doGet(request, response);
 	}
 
 }
