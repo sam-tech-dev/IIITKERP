@@ -32,11 +32,13 @@ function updateStudentRegistrationDetails(){
 		}
 		xmlhttp.open("POST","../addUpdateStudentRegistrationDetails",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("name="+document.getElementById('name').value
+		xmlhttp.send(
+				//18 fields
+				//"name="+document.getElementById('name').value
 				+"&first_name="+document.getElementById('first_name').value
 				+"&middle_name="+document.getElementById('middle_name').value
 				+"&last_name="+document.getElementById('last_name').value
-				+"&category="+document.getElementById('category').value
+				//+"&category="+document.getElementById('category').value
 		+"&guardian_name="+document.getElementById('guardian_name').value
 		+"&guardian_contact="+document.getElementById('guardian_contact').value
 		+"&guardian_email="+document.getElementById('guardian_email').value
@@ -45,16 +47,17 @@ function updateStudentRegistrationDetails(){
 		+"&mother_name="+document.getElementById('mother_name').value
 		+"&father_contact="+document.getElementById('father_contact').value
 		+"&mother_contact="+document.getElementById('mother_contact').value
-		+"&gender="+document.getElementById('gender').value
+		//+"&gender="+document.getElementById('gender').value
 		+"&date_of_birth="+document.getElementById('date_of_birth').value
-		+"&state_eligibility="+document.getElementById('state_eligibility').value
-		+"&program_allocated="+document.getElementById('program_allocated').value
+		//+"&state_eligibility="+document.getElementById('state_eligibility').value
+		//+"&program_allocated="+document.getElementById('program_allocated').value
 		+"&mobile="+document.getElementById('mobile').value
 		+"&email="+document.getElementById('email').value
 		+"&permanent_address="+document.getElementById('permanent_address').value
 		+"&local_address="+document.getElementById('local_address').value
 		+"&hosteller="+document.getElementById('hosteller').value
-		+"&hostel="+document.getElementById('hostel').value);
+		+"&hostel="+document.getElementById('hostel').value
+		+"&room="+document.getElementById('hostel_room').value);
 	}
 	return false;
 }

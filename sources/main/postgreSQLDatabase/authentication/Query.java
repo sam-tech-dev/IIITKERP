@@ -7,18 +7,7 @@ package postgreSQLDatabase.authentication;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import postgreSQLDatabase.attendance.Allocation;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 /**
