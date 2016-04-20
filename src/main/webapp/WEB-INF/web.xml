@@ -409,8 +409,8 @@
 		<description></description>
 		<servlet-class>actions.registration.AddLdapUser</servlet-class>
 	</servlet>
-
-	<servlet-mapping>
+	
+<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
@@ -446,6 +446,7 @@
 		<servlet-name>AddLdapUser</servlet-name>
 		<url-pattern>/AddLdapUser</url-pattern>
 	</servlet-mapping>
+	
 
 
 	<welcome-file-list>
