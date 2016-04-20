@@ -48,7 +48,7 @@ public class AddPaymentInfo extends HttpServlet {
         details.put("bank",request.getParameter("bank"));
         details.put("date",request.getParameter("date"));
         details.put("dd_no",request.getParameter("dd_no"));
-	int ref_id=	Query.addFeePayment("challan payment",5,details,Integer.parseInt(request.getParameter("amount")),Integer.parseInt(session.getAttribute("reg_id").toString()));
+	int ref_id=	Query.addFeePayment("DD payment",5,details,Integer.parseInt(request.getParameter("amount")),Integer.parseInt(session.getAttribute("reg_id").toString()));
 		PrintWriter writer=response.getWriter();
 		JSONObject ref=new JSONObject();
 		ref.put("ref_id", ref_id);
@@ -57,13 +57,25 @@ public class AddPaymentInfo extends HttpServlet {
         
         }
         
-        if(request.getParameter("payment_method").equals("cheque")){
+        if(request.getParameter("payment_method").equals("neft")){
             JSONObject details=new JSONObject();
             details.put("amount",request.getParameter("amount"));
             details.put("bank",request.getParameter("bank"));
             details.put("date",request.getParameter("date"));
-            details.put("cheque_no",request.getParameter("cheque_no"));
-    	int ref_id=	Query.addFeePayment("challan payment",4,details,Integer.parseInt(request.getParameter("amount")),Integer.parseInt(session.getAttribute("reg_id").toString()));
+            details.put("tid",request.getParameter("tid"));
+    	int ref_id=	Query.addFeePayment("NEFT payment",4,details,Integer.parseInt(request.getParameter("amount")),Integer.parseInt(session.getAttribute("reg_id").toString()));
+    		PrintWriter writer=response.getWriter();
+    		JSONObject ref=new JSONObject();
+    		ref.put("ref_id", ref_id);
+    		writer.write(ref.toString());
+        }
+        if(request.getParameter("payment_method").equals("challan")){
+            JSONObject details=new JSONObject();
+            details.put("amount",request.getParameter("amount"));
+            details.put("bank",request.getParameter("bank"));
+            details.put("date",request.getParameter("date"));
+            details.put("challan_no",request.getParameter("challan_no"));
+    	int ref_id=	Query.addFeePayment("Challan payment",2,details,Integer.parseInt(request.getParameter("amount")),Integer.parseInt(session.getAttribute("reg_id").toString()));
     		PrintWriter writer=response.getWriter();
     		JSONObject ref=new JSONObject();
     		ref.put("ref_id", ref_id);

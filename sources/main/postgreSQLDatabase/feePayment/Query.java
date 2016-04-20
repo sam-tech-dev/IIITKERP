@@ -166,6 +166,26 @@ public class Query {
 
 	}
 
+	public static long retrieveFeeAmount(Long reg_id) {
+
+		try {
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeAmount\"(?);");
+
+			proc.setLong(1, reg_id);
+			//System.out.println(proc);
+			ResultSet rs = proc.executeQuery();
+			rs.next();
+			//System.out.println(rs.getLong(1));
+			return rs.getLong(1);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
 	public static void main(String[] args) throws SQLException {
 
 		// ArrayList<Payment> fee=getFeePaymentHistory(1);

@@ -84,7 +84,7 @@
 		<%@ include file="header.jsp"%>
 
 		<!-- Left side column. contains the logo and sidebar -->
-		<%@ include file="new-asidebar.jsp" %>
+		<%@ include file="new-asidebar.jsp"%>
 
 		<div class="content-wrapper" style="min-height: 901px;">
 			<!-- Content Header (Page header) -->
@@ -95,44 +95,40 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-3"></div>
-
 						<div class="col-md-6">
 							<%
-							    Long  reg_id=Long.parseLong(request.getSession().getAttribute("reg_id").toString());
-								
+								Long reg_id = Long.parseLong(request.getSession().getAttribute("reg_id").toString());
+
 								Student current = Query.getRegistrationStudentData(reg_id);
 								//String fee = Query.getFeeBreakup(Integer.parseInt(reg_id));
-							
 							%>
 							<div id="step-1">
 								<div class="box box-primary">
 									<!-- /.register-box -->
 									<div class="register-logo">
 										<a href="#"><b>ERP</b></a>
-										<h4>Update your profile</h4>
+										<h4>Fee Payment</h4>
 										<h3>Step 1</h3>
 									</div>
 									<div class="register-box">
 										<div class="register-box-body">
 											<form action="" method="post">
 												<div class="form-group">
-													<label for="exampleInputPassword1">Registration ID :
-													<%=reg_id %>	</label>
-												</div>
-												
-												<div class="form-group">
-													<label for="exampleInputPassword1">Student Name :
-														<%=current.getName() %></label>
+													<label for="exampleInputPassword1">Registration ID
+														: <%=reg_id%>
+													</label>
 												</div>
 
 												<div class="form-group">
-													<label for="exampleInputPassword1">Category :
-														<%=current.getCategory() %></label>
+													<label for="exampleInputPassword1">Student Name : <%=current.getName()%></label>
 												</div>
-												
+
 												<div class="form-group">
-													<label for="exampleInputPassword1">Fee Breakup :
-														<%=postgreSQLDatabase.feePayment.Query.retrieveFeeJson(reg_id) %></label>
+													<label for="exampleInputPassword1">Category : <%=current.getCategory()%></label>
+												</div>
+
+												<div class="form-group">
+													<label for="exampleInputPassword1">Fee Breakup : <%=postgreSQLDatabase.feePayment.Query.retrieveFeeJson(reg_id)%></label>
 												</div>
 
 												<div class="row">
@@ -157,20 +153,20 @@
 									<!-- /.register-box -->
 									<div class="register-logo">
 										<a href="#"><b>ERP</b></a>
-										<h4>Update your profile</h4>
+										<h4>Fee Payment</h4>
 										<h3>Step 2</h3>
 									</div>
 									<div class="register-box">
 										<div class="register-box-body">
 											<form action="" method="post" id="payment_method">
 												<div class="form-group">
-													<label for="exampleInputPassword1">Registration ID :
-													<%=reg_id %>	</label>
+													<label for="exampleInputPassword1">Registration ID
+														: <%=reg_id%>
+													</label>
 												</div>
 
 												<div class="form-group">
-													<label for="exampleInputPassword1">Student Name :
-														<%=current.getName() %></label>
+													<label for="exampleInputPassword1">Student Name : <%=current.getName()%></label>
 												</div>
 												<span id="error">
 													<div class="form-group">
@@ -179,7 +175,7 @@
 													</div>
 												</span>
 												<div class="form-group">
-													
+
 
 													<div class="radio">
 														<label> <input type="radio" name="payment"
@@ -199,7 +195,7 @@
 															value="step-7"> NEFT
 														</label>
 													</div>
-													
+
 												</div>
 
 												<div class="row">
@@ -209,7 +205,7 @@
 													</div>
 													<div class="col-xs-4 pull-right">
 														<input type="button" name="step-2" id="step2"
-															onclick="showPayment()" value="Next"
+															onclick="makePayment()" value="Next"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
@@ -230,7 +226,7 @@
 									<!-- /.register-box -->
 									<div class="register-logo">
 										<a href="#"><b>ERP</b></a>
-										<h4>Update your profile</h4>
+										<h4>Fee Payment</h4>
 										<h3>Step 3</h3>
 									</div>
 									<div class="register-box">
@@ -241,8 +237,8 @@
 												</div>
 
 												<div class="form-group has-feedback">
-													<input type="text" name="dd" id="dd_no" class="form-control"
-														placeholder="DD Number">
+													<input type="text" name="dd" id="dd_no"
+														class="form-control" placeholder="DD Number">
 												</div>
 
 												<div class="form-group has-feedback">
@@ -283,15 +279,16 @@
 
 												<div class="form-group">
 													<div class="input-group">
-														<input type="text" name="dateofDD" id="dd_date" class="form-control"
+														<input type="text" name="dateofDD" id="dd_date"
+															class="form-control"
 															data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
 													</div>
 													<!-- /.input group -->
 												</div>
 
 												<div class="form-group has-feedback">
-													<input type="text" id="dd_amount" name="amountDD" class="form-control"
-														placeholder="Amount">
+													<input type="text" id="dd_amount" name="amountDD"
+														class="form-control" placeholder="Amount">
 												</div>
 
 												<div class="row">
@@ -300,7 +297,8 @@
 															class="btn btn-warning btn-block btn-flat" />
 													</div>
 													<div class="col-xs-4 pull-right">
-														<input type="button" onclick="makePayment('dd')"name="submitDD" value="Submit"
+														<input type="button" onclick="makePayment('dd')"
+															name="submitDD" value="Submit"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
@@ -331,20 +329,44 @@
 													<h3>Challan</h3>
 												</div>
 
-												<div class="form-group">
-													<label for="exampleInputPassword1">Date :
-														12July,2016</label>
-												</div>
 
 												<div class="form-group">
-													<label for="exampleInputPassword1">Challan Number :
-														123456789</label>
+													<input type="text" id="challan_no" name="challan"
+														class="form-control" placeholder="Amount">
+												</div>
+												<div class="form-group">
+													<%-- <label for="exampleInputPassword1">Challan Amount :
+														<%=postgreSQLDatabase.feePayment.Query.retrieveFeeAmount(reg_id)%></label> --%>
 												</div>
 
-												<div class="form-group">
-													<label for="exampleInputPassword1">Challan Amount :
-														123456789</label>
+                                                    <div class="form-group">
+													<div class="input-group">
+														<input type="hidden"  value="<%= postgreSQLDatabase.feePayment.Query.retrieveFeeAmount(reg_id)%>" id="challan_amount"
+															class="form-control">
+													</div>
 												</div>
+
+
+
+
+
+
+												<div class="form-group">
+													<div class="input-group">
+														<input type="text" name="dateofChallan" id="challan_date"
+															class="form-control"
+															data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="input-group">
+														<input type="text" name="Challan_no" id="challan_number"
+															class="form-control">
+													</div>
+												</div>
+
+												<div class="form-group"></div>
+
 
 												<div class="row">
 													<div class="col-xs-4">
@@ -353,6 +375,7 @@
 													</div>
 													<div class="col-xs-4 pull-right">
 														<input type="button" name="submitChallan" value="Submit"
+															onclick="makePayment('challan')"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
@@ -384,9 +407,9 @@
 													<h3>Cheque</h3>
 												</div>
 
-													<div class="form-group has-feedback">
-													<input type="text" id="cheque_amount" name="amountDD" class="form-control"
-														placeholder="Amount">
+												<div class="form-group has-feedback">
+													<input type="text" id="cheque_amount" name="amountDD"
+														class="form-control" placeholder="Amount">
 												</div>
 
 												<div class="form-group">
@@ -412,7 +435,8 @@
 												</div>
 
 												<div class="form-group has-feedback">
-													<select class="form-control" name="bank_list" id="cheque_bank">
+													<select class="form-control" name="bank_list"
+														id="cheque_bank">
 														<option value="">----Choose Bank----</option>
 														<option value="">ICICI</option>
 														<option value="">SBI</option>
@@ -441,7 +465,8 @@
 															class="btn btn-warning btn-block btn-flat" />
 													</div>
 													<div class="col-xs-4 pull-right">
-														<input type="button" name="submitCheque" onclick="makePayment('cheque')" value="Submit"
+														<input type="button" name="submitCheque"
+															onclick="makePayment('cheque')" value="Submit"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
@@ -548,7 +573,7 @@
 									<!-- /.register-box -->
 									<div class="register-logo">
 										<a href="#"><b>ERP</b></a>
-										<h4>Update your profile</h4>
+										<h4>Fee Payment</h4>
 										<h3>Step 3</h3>
 									</div>
 									<div class="register-box">
@@ -564,19 +589,20 @@
 												</div>
 
 												<div class="form-group has-feedback">
-													<input type="text" name="ifsc" class="form-control"
-														placeholder="IFSC Code">
+													<input type="text" id="ifsc" name="ifsc"
+														class="form-control" placeholder="IFSC Code">
 												</div>
 
 												<div class="form-group has-feedback">
 													<div class="input-group">
-														<input type="text" name="tid" class="form-control"
-															placeholder="Transaction ID">
+														<input type="text" id="tid" name="tid"
+															class="form-control" placeholder="Transaction ID">
 													</div>
 												</div>
 
 												<div class="form-group has-feedback">
-													<select class="form-control" name="bank_list">
+													<select class="form-control" id="bank" name="bank_list"
+														id="neft_bank">
 														<option value="">----Choose Bank----</option>
 														<option value="">ICICI</option>
 														<option value="">SBI</option>
@@ -600,8 +626,8 @@
 												</div>
 
 												<div class="form-group has-feedback">
-													<input type="text" name="amountNEFT" class="form-control"
-														placeholder="Amount">
+													<input type="text" id="neft_amount" name="amountNEFT"
+														class="form-control" placeholder="Amount">
 												</div>
 
 												<div class="row">
@@ -611,6 +637,7 @@
 													</div>
 													<div class="col-xs-4 pull-right">
 														<input type="submit" name="submitCheque" value="Submit"
+															onclick="makePayment('neft')"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
