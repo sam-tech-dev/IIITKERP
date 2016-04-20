@@ -349,7 +349,6 @@
 	<servlet>
 		<servlet-name>FeeBreakup</servlet-name>
 		<display-name>FeeBreakup</display-name>
-		<description></description>
 		<servlet-class>actions.feePayment.FeeBreakup</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -404,6 +403,12 @@
 		<description></description>
 		<servlet-class>actions.registration.RetrieveRegistrationStudentData</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AddLdapUser</servlet-name>
+		<display-name>AddLdapUser</display-name>
+		<description></description>
+		<servlet-class>actions.registration.AddLdapUser</servlet-class>
+	</servlet>
 	
 <servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -436,6 +441,10 @@
 	<servlet-mapping>
 		<servlet-name>RetrieveRegistrationStudentData</servlet-name>
 		<url-pattern>/RetrieveRegistrationStudentData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddLdapUser</servlet-name>
+		<url-pattern>/AddLdapUser</url-pattern>
 	</servlet-mapping>
 	
 

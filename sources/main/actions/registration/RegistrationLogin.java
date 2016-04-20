@@ -48,16 +48,23 @@ public class RegistrationLogin extends HttpServlet {
 		   
 		   int status=Query.retrieveRegistrationStatus(reg_id);
 		   System.out.println(status);
-		   if(status==1){
-			session.setAttribute("reg_id", reg_id);
-			data.put("redirect", "registrationPayment.jsp");
+		   if(status==1 || status==0){
+			   session.setAttribute("reg_id", reg_id);
+				data.put("redirect", "csabRegistration.jsp");
 			
 		   }
-		   else if(status==0){
+		   else if(status==2||status==3){
+				
 				session.setAttribute("reg_id", reg_id);
-				data.put("redirect", "csabRegistration.jsp");
+				data.put("redirect", "registrationPayment.jsp");
+		   }
+		   else if(status==4){
+				
+				session.setAttribute("reg_id", reg_id);
+				data.put("redirect", "ldapRegistration.jsp");
 		   }
 		   pw.write(data.toString());
+		   
 	}
 
 }
