@@ -159,7 +159,7 @@ public class Student {
 	}
 	
 	 public Student(){
-	 category_list.addAll(Arrays.asList("general","sc","st","obc-ncl"));
+	 category_list.addAll(Arrays.asList("GENERAL","OBC","SC","ST","OBC-NCL"));
 	 gender_list.addAll(Arrays.asList("male","female"));
 	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASTRA"
 				,"HARYANA"
@@ -224,7 +224,7 @@ public class Student {
 	 * @param category the category to set
 	 */
 	public void setCategory(String category)throws IncorrectFormatException {
-		if(category_list.contains(category.toLowerCase()))
+		if(category_list.contains(category.toUpperCase()))
 			    this.category = category;
 			else
 				throw new IncorrectFormatException("category");

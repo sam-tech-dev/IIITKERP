@@ -260,12 +260,13 @@
 														<option value="ST">ST</option>
 													</select>
 												</div>
-												
-<div class="form-group has-feedback">
-													<select class="form-control" name="gender" id="gender" value="<%=current.getGender()%>">
+
+												<div class="form-group has-feedback">
+													<select class="form-control" name="gender" id="gender"
+														value="<%=current.getGender()%>">
 														<option value="">Male</option>
 														<option value="General">Female</option>
-														
+
 													</select>
 												</div>
 
@@ -322,7 +323,7 @@
 														placeholder="Mother's Contact">
 												</div>
 
-												
+
 												<div class="form-group has-feedback">
 													<select class="form-control" name="program_allocated"
 														id="program_allocated">
@@ -377,22 +378,25 @@
 
 
 												<div class="form-group has-feedback">
-												<select class="form-control" name="hosteller"
+													<select class="form-control" name="hosteller"
 														id="hosteller">
 														<option value="Yes">Yes</option>
 														<option value="No">No</option>
 													</select>
-														</div>
+												</div>
 												<div class="form-group has-feedback">
 													<input type="text" name="std_local_add" id="local_address"
 														class="form-control" placeholder="Local Address">
 												</div>
 												<div class="form-group has-feedback">
-													<input type="text" name="hostel"
-														id="hostel" class="form-control"
-														placeholder="Hostel Address">
+													<input type="text" name="hostel" id="hostel"
+														class="form-control" placeholder="Hostel Name/ Address">
 												</div>
 
+												<div class="form-group has-feedback">
+													<input type="text" name="hostel_room" id="hostel_room"
+														class="form-control" placeholder="Hostel Room No.">
+												</div>
 
 												<div class="row">
 													<div class="col-xs-4">

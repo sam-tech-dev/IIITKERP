@@ -466,7 +466,7 @@ public static Student getRegistrationStudentDataUpdate(Long reg_id) throws SQLEx
 
 
 public static void addUpdateStudentRegistrationDetails(Student student) throws SQLException{
-	PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addUpdateRegistrationStudentDetails\"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+	PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"addUpdateRegistrationStudentDetails\"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
 	
 	proc.setString(1,student.getName());
 	proc.setString(2,student.getFirst_name());
@@ -498,8 +498,7 @@ public static void addUpdateStudentRegistrationDetails(Student student) throws S
 	address_obj.put("room",student.getRoom());
 	address_obj.put("hostel",student.getHostel());
 	proc.setString(27,address_obj.toString());
-	proc.setBoolean(28,student.isApplied());
-	proc.setDate(29,student.getEntry_time());
+	
 	
 	proc.executeQuery();
 }
