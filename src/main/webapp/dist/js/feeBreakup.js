@@ -2,8 +2,12 @@ function createFeeBreakUpJson(){
 	
 	var jsonObjGeneral=[];
 	var jsonObjSc=[];
-	var jsonObjDasa=[];
+	var jsonObjObc=[];
 	
+	document.getElementById("year").value=document.getElementById("drop_year").value;
+	document.getElementById("sem").value=document.getElementById("drop_semester").value;
+	alert(document.getElementById("year").value);
+	alert(document.getElementById("sem").value);
 	var temp={};
 	temp['name']="Admission/Tution Fees";
 	temp['apf']=document.getElementById("tableA[0][0]").value;
@@ -62,7 +66,7 @@ function createFeeBreakUpJson(){
 	temp['apf']=document.getElementById("tableA[0][2]").value;
 	temp['tution']=document.getElementById("tableA[1][2]").value;
 	temp['subtotal']=document.getElementById("table[0][2]").value;
-	jsonObjDasa.push(temp);
+	jsonObjObc.push(temp);
     temp={};
     temp['name']="Institute Fees";
 	temp['development']=document.getElementById("tableB[0][2]").value;
@@ -73,26 +77,25 @@ function createFeeBreakUpJson(){
 	temp['tnp']=document.getElementById("tableB[5][2]").value;
 	temp['exams']=document.getElementById("tableB[6][2]").value;
 	temp['subtotal']=document.getElementById("table[1][2]").value;
-	jsonObjDasa.push(temp);
+	jsonObjObc.push(temp);
 	temp={};
 	temp['name']="Group Insurance";
 	temp['insurance_fee']=document.getElementById("tableC[0][2]").value;
 	temp['subtotal']=document.getElementById("table[2][2]").value;
-	jsonObjDasa.push(temp);
+	jsonObjObc.push(temp);
 	temp={};
 	temp['total']=document.getElementById("table[3][2]").value;
-	jsonObjDasa.push(temp);
+	jsonObjObc.push(temp);
 	
-	alert(JSON.stringify(jsonObjGeneral));
-	alert(JSON.stringify(jsonObjSc));
-	alert(JSON.stringify(jsonObjDasa));
-   
+
+	document.getElementById("gen").value=JSON.stringify(jsonObjGeneral);
+	document.getElementById("sc").value=JSON.stringify(jsonObjSc);
+	document.getElementById("obc").value=JSON.stringify(jsonObjObc);
 	
-	
+	return true;
 }
 
 function readFeeBreakup(){
 	var subtable=document.getElementsByClassName("fee_breakup_field");
-	
 }
 

@@ -89,15 +89,23 @@ public class Query {
 	
 	public static void addFeeBreakup(String semester,String category,String breakup,String year)
     {
+		System.out.println("abc "+breakup);
 		try {
+			
 			JSONArray fee_breakup=new JSONArray(breakup);
-			JSONObject total_obj=fee_breakup.getJSONObject(fee_breakup.length());
-			int amount=Integer.parseInt((String)total_obj.get("total"));
+			JSONObject amt_obj=fee_breakup.getJSONObject(fee_breakup.length()-1);
+			JSONObject j_array[]=new JSONObject[fee_breakup.length()];
+			for(int i=0;i<fee_breakup.length()-1;i++){
+				j_array[i]=fee_breakup.getJSONObject(i);
+				
+			}
+			int amount=Integer.parseInt((String)amt_obj.get("total"));
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addFeeBreakup\"(?,?,?,?,?);");
 			proc.setString(1,year);
 			proc.setString(2,semester);
 			proc.setString(3,category);
-		    proc.setString(4,breakup);
+		
+		    proc.setObject(4,PostgreSQLConnection.getConnection().createArrayOf("json", j_array));
 			proc.setInt(5,amount);
 			proc.executeQuery();
 		} 
