@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<%@page import="actions.gradingModule.StudentWrapper"%>
+<%@page import="actions.gradingModule.ImportCSV"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="postgreSQLDatabase.gradingModule.Grade"%>
 <%@ page import="postgreSQLDatabase.gradingModule.Query"%> 
@@ -166,7 +168,63 @@
   
 
 
-<a href="../ExportGradesheet?course_code=<%=request.getParameter("course_code") %>"><button  value="Export"  >Export</button></a>
+<a href="../ExportGradesheet?course_code=<%=request.getParameter("course_code") %>&year=<%=request.getParameter("year") %>"><button  value="Export"  >Export</button></a>
+
+<a href="../ImportGradesheet?course_code=<%=request.getParameter("course_code") %>"><button  value="Import"  >Import</button></a>
+
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          
+		  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Imported Student List</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="overflow-x:scroll;">
+              <table id="tableToExport" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Grade</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <%
+              
+                if(request.getParameter("course_code")!=null)
+                {
+               	ArrayList<StudentWrapper> list = new ImportCSV().getCSV("id" , "name" , "grade");
+                Iterator<StudentWrapper> iterator = list.iterator();
+                while(iterator.hasNext()){
+                	StudentWrapper current = iterator.next();
+                	
+               
+                %>
+                <tr >
+                  <td><%=current.getStudent_id() %></td>
+                  <td><%=current.getStudent_name() %></td>
+				  <td><%=current.getStudent_grade() %></td>
+                  
+                </tr>
+				
+				
+		<%} }%>		
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+
 
 </body>
 </html>

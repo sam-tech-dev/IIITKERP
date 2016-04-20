@@ -1,37 +1,18 @@
 /**
  * 
  */
-package postgreSQLDatabase.gradingModule;
+package actions.gradingModule;
 
 /**
-
  * @author Dilip
-
-
-
  *
  */
-public class Grade {
-
-
+public class StudentWrapper {
 	
-
-	private String course_code;
 	private String student_id;
 	private String student_name;
 	private String student_grade;
-	/**
-	 * @return the course_code
-	 */
-	public String getCourse_code() {
-		return course_code;
-	}
-	/**
-	 * @param course_code the course_code to set
-	 */
-	public void setCourse_code(String course_code) {
-		this.course_code = course_code;
-	}
+	
 	/**
 	 * @return the student_id
 	 */
@@ -43,7 +24,6 @@ public class Grade {
 	 */
 	public void setStudent_id(String student_id) {
 		this.student_id = student_id;
-
 	}
 	/**
 	 * @return the student_name
@@ -70,5 +50,6 @@ public class Grade {
 		this.student_grade = student_grade;
 	}
 
+	
 
 }
