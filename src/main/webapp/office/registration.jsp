@@ -37,12 +37,7 @@
     }
   </style>
 
-  <script>
-	function rowValue(string){
-		string = string.substring(8);
-		alert("Student No is "+string);
-	}
-  </script>
+  
   
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -77,121 +72,6 @@
       </ol>
     </section>
 	
-	<span id="hiddenDetails">
-		<div class="example-modal">
-        <div class="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">x</span></button>
-                <h4 class="modal-title"></h4>
-              </div>
-              <div class="modal-body">
-                <table id="example1" class="table table-bordered table-striped">
-                	<tbody>
-                		<tr>
-                			<td>Name</td>
-                			<td></td>
-                		</tr>
-                		
-                		<tr>
-                			<td>Student ID</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Category</td>
-                			<td></td>
-                		</tr>
-                		
-                		<tr>
-                			<td>State</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Phone Number</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Email</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Date Of Birth</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Program Allocated</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Allocated Category</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Allocated Rank</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Status</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Choice Number</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Physically Disabled</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Gender</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Quota</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Round</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Willingness</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Address</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>RC Name</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Nationality</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>ID</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Entry Date</td>
-                			<td></td>
-                		</tr>
-                		<tr>
-                			<td>Reported</td>
-                			<td></td>
-                		</tr>
-                	</tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</span>
 	
     <!-- Main content -->
     <section class="content">
@@ -205,7 +85,7 @@
             <!-- /.box-header -->
             <div class="box-body" style="overflow-x:scroll;">
               <table id="example1" class="table table-bordered table-striped">
-                <thead>
+               <thead>
                 <tr>
                   <th>Verify</th>
                   <th>View</th>	
@@ -230,16 +110,17 @@
                   <th>Nationality</th>
                   <th>Entry Date</th>
                   <th>Verified</th>
+                  </tr>
                 </thead>
                 <tbody>
                 <%
                 ArrayList<Student> registration_list=Query.displayRegistrationData();
                 Iterator<Student> iterator=registration_list.iterator();
-                while(iterator.hasNext()){
+                 while(iterator.hasNext()){
     				Student current=iterator.next();
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getCsab_id()%>)">Verify</button></div></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verify(<%=current.getRegistration_id()%>)">Verify</button></div></td>
                   <td><button type="button" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-eye-open"></i></button></td>
                   <td><%=current.getName() %></td>
                   <td><%=current.getFirst_name() %></td>
@@ -305,7 +186,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
-<script src="../dist/js/verifyStudent.js"></script>
+<script src="../dist/js/payment.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
