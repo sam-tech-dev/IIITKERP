@@ -37,12 +37,12 @@ README for IIITK ERP setup
 
 * Indian Institute Of Information Technology, Kota
 ### Files ###
-  >Deployment Descriptor:
-  >Java Resources
-	   >>sources/main
-	   >>actions //contains all servlets
-		     >>>attendance  //sevlets pertaining to attendance module
-		                >>>>AjaxController.java
+  *Deployment Descriptor:
+  *Java Resources
+	   **sources/main
+	   * *actions //contains all servlets
+	           attendance  //sevlets pertaining to attendance module
+		                ***** AjaxController.java
 				>>>>GetSubjectAllocation.java //retrive students  registerd for various courese
 				>>>>InsertAttendance.java //inserts attendance sheet into the database
 				>>>>StudentsList.java //retrives list of of students registerd in a particular course
