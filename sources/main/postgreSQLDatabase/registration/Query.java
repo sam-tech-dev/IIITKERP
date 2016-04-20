@@ -236,7 +236,38 @@ public class Query {
 
 		return students;
 	}
-
+	public static JSONObject getUpdateStudentProfile(long reg_id) throws SQLException, IncorrectFormatException {
+		Student student = getRegistrationStudentData(reg_id) ;
+		JSONObject current_object = new JSONObject();
+		current_object.put("first_name",student.getFirst_name());
+		current_object.put("middle_name", student.getMiddle_name());
+		current_object.put("last_name", student.getLast_name());
+		current_object.put("mobile", student.getMobile());
+		current_object.put("email", student.getEmail());
+		current_object.put("date_of_birth", student.getDate_of_birth());
+	/*
+	 * proc.setString(10,student.getProgram_allocated());
+	 * proc.setString(11,student.getStatus());
+	 * proc.setBoolean(12,student.isPwd());
+	 */
+		current_object.put("reg_id", student.getRegistration_id());
+		current_object.put("guardian_name", student.getGuardian_name());
+		current_object.put("guardian_contact", student.getGuardian_contact());
+		current_object.put("guardian_email", student.getGuardian_email());
+		current_object.put("guardian_address",student.getGuardian_address());
+		current_object.put("father_name",student.getFather_name());
+		current_object.put("mother_name",student.getMother_name());
+		current_object.put("father_contact",student.getFather_contact());
+		current_object.put("mother_contact",student.getMother_contact());
+		current_object.put("permanent_address",student.getPermanent_address());
+		current_object.put("local_address",student.getLocal_address());
+		current_object.put("hosteller",student.isHosteller());
+	JSONObject address_obj = new JSONObject();
+	address_obj.put("room", student.getRoom());
+	address_obj.put("hostel", student.getHostel());
+	 current_object.put("hostel",address_obj.toString());
+	 return current_object;
+}
 	public static JSONObject getCsabStudentProfile(long csab_id) throws SQLException, IncorrectFormatException {
 		Student current = new Student();
 		JSONObject current_object = null;
@@ -336,26 +367,21 @@ public class Query {
 			current.setMother_name(current_object.get("mother_name").toString());
 			try {
 				current.setHosteller(current_object.getBoolean("hosteller"));
+				JSONObject address_obj = current_object.getJSONObject("hostel_address");
+
+				current.setHostel(address_obj.get("hostel").toString());
+				current.setRoom(address_obj.get("room").toString());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			JSONObject address_obj = current_object.getJSONObject("hostel_address");
-
-			current.setHostel(address_obj.get("hostel").toString());
-			current.setRoom(address_obj.get("room").toString());
-			current.setEntry_time((Date) new SimpleDateFormat("YYYY-MM-DD HH:mm:SS.SSSSSS")
-					.parse(current_object.getString("entry_time")));
-
-			// System.out.println(current.getName());
+			
+						// System.out.println(current.getName());
 			rs.close();
 			proc.close();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 
 		return current;
 	}

@@ -1,6 +1,7 @@
 package actions.registration;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -8,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import exceptions.IncorrectFormatException;
+import users.Student;
 
 /**
  * Servlet implementation class retrieveRegistrationStudentData
@@ -40,7 +44,9 @@ public class RetrieveRegistrationStudentData extends HttpServlet {
 		// TODO Auto-generated method stub
 		long registration_id = Long.parseLong(request.getParameter("registration_id").toString());
 		try {
-			postgreSQLDatabase.registration.Query.getRegistrationStudentData(registration_id);
+			JSONObject j_object=postgreSQLDatabase.registration.Query.getUpdateStudentProfile(registration_id);
+			PrintWriter writer=response.getWriter();
+			writer.write(j_object.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,6 +54,7 @@ public class RetrieveRegistrationStudentData extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }

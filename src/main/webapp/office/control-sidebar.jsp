@@ -22,7 +22,7 @@
                 <h4 class="control-sidebar-subheading">Joey Pinto</h4>
 
                 Online
-=======
+
           <li>
             <a href="javascript::;">
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
@@ -31,7 +31,7 @@
                 <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
                 <p>Will be 23 on April 24th</p>
->>>>>>> 22e82c7479fb906eb80c5bf2526b451817a2856e
+
               </div>
             </a>
           </li>

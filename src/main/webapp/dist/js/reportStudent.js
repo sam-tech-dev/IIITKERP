@@ -21,7 +21,7 @@ function report(csab_id){
 	    	
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 	        	data=JSON.parse(xmlhttp.responseText);
-	        	//alert(data.reg);
+	        	alert("Student Registration ID is "+data.reg);
 	        	location.reload();	
 			}
 	        
