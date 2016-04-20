@@ -51,35 +51,10 @@
     </section>
 
     <!-- Main content -->
-	<%
-	
-	int a=10;
-	out.print(a);
-	
-	
-	
-	    PrintWriter writer=response.getWriter();
-	
-	
-		 ArrayList<String> list = Query.getFormNames();
-		 
-		 Iterator<String> iterator = list.iterator();
-		 
-		 while(iterator.hasNext()){
-			 
-			 writer.write(iterator.next());
-		 }
-
-	
-
-	
-	
-	
-	
-	%>
-	
-	
-	 <style type="text/css">
+    
+    
+    
+     <style type="text/css">
     
     #sm:link{
 
@@ -98,15 +73,44 @@
         }
         
       </style>  
- 
-	 <label  style="color:blue; font-size:30px; margin:0px 0px 0px 380px;text-decoration:underline">Forms</label>
+    
+    
+     <label  style="color:blue; font-size:30px; margin:0px 0px 0px 380px;text-decoration:underline">Forms</label>
 	    <br> <br>
 	   <br> <br>
-	   <a id="sm" href="#" >Bonafide Form</a>
-       <br> <br>
-       <a  id="sm" href="#" >Backlog Form</a>
-       <br> <br> 
-       <a  id="sm" href="#" >Create new Form</a>
+	<%
+	
+	
+	
+	
+	    PrintWriter writer=response.getWriter();
+	
+	try{
+		
+	
+	
+	   
+		 ArrayList<String> list = Query.getFormNames();
+		
+		 Iterator<String> iterator = list.iterator();
+		 
+		 while(iterator.hasNext()){
+			 
+			String formname=iterator.next();
+			
+			%>
+			 <a href="fillFields.jsp?id1=<%=formname %>" id="sm"><%out.print(formname); %></a><br> <br> 
+			<% 
+		   }
+		
+	}catch(NullPointerException e){
+		e.printStackTrace();
+	}
+	   %>
+	
+	
+       <br>
+       <a  id="sm" href="selectFields.jsp" >Create new Form</a>
 	
 	
 	
