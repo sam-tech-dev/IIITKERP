@@ -42,60 +42,61 @@ ERP
 +	   >sources/main
 +	    >actions //contains all servlets
 +		     >attendance  //sevlets pertaining to attendance module
-+		        AjaxController.java
-+				GetSubjectAllocation.java
-+				InsertAttendance.java
-+				StudentsList.java
++		                AjaxController.java
++				GetSubjectAllocation.java //retrive students  registerd for various courese
++				InsertAttendance.java //inserts attendance sheet into the database
++				StudentsList.java //retrives list of of students registerd in a particular course
 +		     >authentication    //sevlets pertaining to authentication module
-+		        AutoSuggest.java
-+				ResetPassword.java
-+				Session.java
-+				SignIn.java
-+				SignOut.java
-+				UpdateLastSeen.java
++		        AutoSuggest.java //retrives autosuggestions for user names
++				ResetPassword.java //resets the password of the current user
++				Session.java //filter to check weather session of the current user has expired
++				SignIn.java //signs the user into the portal and takes him to the respective home page
++				SignOut.java //signs the user out by expiring the session
++				UpdateLastSeen.java //updates the last seen of the user in the database
 +		     >chats //sevlets pertaining to chat module
-+		        Conversation.java
-+				NewMessage.java
-+				Query.java
-+				ReadAllMessages.java
-+				RetrieveAllMessages.java
-+				RetrieveConversationsInfo.java
-+				RetrieveMessage.java
++		        Conversation.java //wrapper class for a conversation
++				NewMessage.java //ceates anew message and adds the respective user inbox
++				Query.java //consist of all the queries pertaining to chats module
++				ReadAllMessages.java //marks all tha messages of a conversation as read
++				RetrieveAllMessages.java //retrive all messages of conversation
++				RetrieveConversationsInfo.java //retrive list of all conversation of the user
++				RetrieveMessage.java //retrieve unread messages
 +		     >feepayment //sevlets pertaining to fee payment module
-+		     	AddPaymentInfo.java
-+				FeeBreakup.java
-+				VerifyFeePayment.java
++		     	AddPaymentInfo.java //adds payment details of a transaction in the database
++				FeeBreakup.java //insert breakup of fees of a particular year and sem
++				VerifyFeePayment.java //mark a transaction as verified
 +		     >files  //sevlets pertaining to file upload module
-+		        FileUpload.java
-+				UploadMultipleFiles.java
++		        FileUpload.java //uploads a single file into the specified directory
++				UploadMultipleFiles.java //uoloads the multiple files into the specified data
 +		     >forms //sevlets pertaining to form module
-+		        RetrieveForms.java
-+		     >gradingModule //sevlets pertaining to grading module
-+		        RetrieveSubjects.java
++		        RetrieveForms.java //retrives list of form templates
++		     
+>gradingModule //sevlets pertaining to grading module
++		        RetrieveSubjects.java //retrive list of subjects in a particula semester
 +		     >notifications ////sevlets pertaining to notifications module
-+		        MarkAsRead.java
-+				RetriveNotifications.java
-+				sendGroupNotification.java
++		        MarkAsRead.java //mark a notification as read
++				RetriveNotifications.java //retrive notification of a particular user
++				sendGroupNotification.java //send a notification to more than one user
 +		     >registration //sevlets pertaining to registration module
-+		        CsabStudentProfile.java
-+				GenerateStudentId.java
-+				RegistrationLogin.java
-+				ReportStudent.java
-+				RetrieveRegistrationData.java
-+				StudentServletTemplate.java
-+				UpdateStudentRegistrationData.java
-+				VerifyStudent.java
++		        CsabStudentProfile.java //get entire csab info of a single user
++				GenerateStudentId.java //generates student id for the new student
++				RegistrationLogin.java //logs the user in into registration module
++				ReportStudent.java //marks a student as reported
++				RetrieveRegistrationData.java //retrives registration data of a particular student
++				
++				UpdateStudentRegistrationData.java //update student registraton data of a particular student
++				VerifyStudent.java //mark a student's data as verified
 +		     >testpaper //sevlets pertaining to test paper module
-+	           CreateAnswerSheet.java
-+				CreateTestPaper.java
-+				GetQuestion.java
-+				GetSolutionSheet.java
++	           CreateAnswerSheet.java //create a new answer sheet
++				CreateTestPaper.java //create a new test sheet
++				GetQuestion.java //get question of a test paper
++				GetSolutionSheet.java //get solution of a test paper
 +		 >csv  //sevlets pertaining to parse csv data module
-+		   >Parser.java
-+		 >email //sevlets pertaining to send verification emai  module
-+		   >SendEmail.java
-+		 >exceptions //sevlets contains user defined details module
-+		   >ConfigException.java
++		   >Parser.java //parse a csv file
++		 >email //sevlets pertaining to send verification email  module
++		   >SendEmail.java //send an email to a particular user
++		 >exceptions // contains user defined exceptions
++		   >ConfigException.java 
 +		   >IncorrectFormatException.java
 +		   >SessionException.java
 +		 >fileExplorer  //sevlets contains file/folder utilities
@@ -411,4 +412,4 @@ ERP
 +>README.md
 +>thirdyear.csv
 Add a comment to this line
-+ 
++
