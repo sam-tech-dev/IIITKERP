@@ -90,9 +90,9 @@
                   <th>Verify</th>
                   <th>View</th>	
                   <th>Name</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Lastname</th>
+                  <th>First Name</th>
+                  <th>Middle Name</th>
+                  <th>Last Name</th>
                   <th>Category</th>
                  
                   <th>State</th>
