@@ -168,6 +168,8 @@
 
 <a href="../ExportGradesheet?course_code=<%=request.getParameter("course_code") %>"><button  value="Export"  >Export</button></a>
 
+<a href="../ImportGradesheet?course_code=<%=request.getParameter("course_code") %>"><button  value="Import"  >Import</button></a>
+
 </body>
 </html>
 
