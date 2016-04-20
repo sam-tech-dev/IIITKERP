@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Comparator"%>
+<%@page import="java.util.*"%>
 <%@page import="postgreSQLDatabase.attendance.Allocation"%>
 <%@page import="postgreSQLDatabase.attendance.Query"%>
 <%@page import="java.util.Iterator"%>
@@ -12,7 +13,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>AdminLTE 2 | Data Tables</title>
-<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.1.min.js">
+</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#semester_selected').change(function() {
@@ -22,7 +24,24 @@
 				data : {
 					faculty : 'EC101',
 					semester : semester_selected,
-					action: 'getCourseCodeList'
+					action : 'getBranchList'
+				},
+				url : 'http://localhost:8086/erp/AjaxController',
+				success : function(result) {
+					$('#branch_selected').html(result);
+				}
+			});
+		});
+		$('#branch_selected').change(function() {
+			var semester_selected = $('#semester_selected').val();
+			var branch_selected = $('#branch_selected').val();
+			$.ajax({
+				type : 'Post',
+				data : {
+					faculty : 'EC101',
+					semester : semester_selected,
+					branch : branch_selected,
+					action : 'getCourseList'
 				},
 				url : 'http://localhost:8086/erp/AjaxController',
 				success : function(result) {
@@ -32,11 +51,13 @@
 		});
 		$('#course_list').change(function() {
 			var course = $('#course_list').val();
+			var branch_selected = $('#branch_selected').val();
 			$.ajax({
 				type : 'Post',
 				data : {
 					course_code : course,
-					action: 'getStudentList'
+					branch : branch_selected,
+					action : 'getStudentList'
 				},
 				url : 'http://localhost:8086/erp/AjaxController',
 				success : function(result) {
@@ -45,6 +66,105 @@
 			});
 		});
 	});
+</script>
+<script type="text/javascript">
+	function genAttendanceList() {
+		var table = document.getElementById('attendance_table');
+		var j_array = [];
+		for (var i = 0, row; row = table.rows[i]; i++) {
+			//iterate through rows
+			//rows would be accessed using the "row" variable assigned in the for loop
+
+			//iterate through columns
+			//columns would be accessed using the "col" variable assigned in the for loop
+			var j_object = {};
+
+			j_object["student_id"] = table.rows[i].cells[0].innerHTML;
+			if (table.rows[i].cells[2].getElementsByTagName("input")[0].checked)
+				j_object["attendance_status"] = "present";
+			else if (table.rows[i].cells[3].getElementsByTagName("input")[0].checked)
+				j_object["attendance_status"] = "absent";
+			else
+				j_object["attendance_status"] = "leave";
+			j_array.push(j_object);
+
+		}
+		JSONToCSVConvertor(j_array, "Attendance Report", true);
+	}
+
+	function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+		//If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+		var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData)
+				: JSONData;
+
+		var CSV = '';
+		//Set Report title in first row or line
+
+		CSV += ReportTitle + '\r\n\n';
+
+		//This condition will generate the Label/Header
+		if (ShowLabel) {
+			var row = "";
+
+			//This loop will extract the label from 1st index of on array
+			for ( var index in arrData[0]) {
+
+				//Now convert each value to string and comma-seprated
+				row += index + ',';
+			}
+
+			row = row.slice(0, -1);
+
+			//append Label row with line break
+			CSV += row + '\r\n';
+		}
+
+		//1st loop is to extract each row
+		for (var i = 0; i < arrData.length; i++) {
+			var row = "";
+
+			//2nd loop will extract each column and convert it in string comma-seprated
+			for ( var index in arrData[i]) {
+				row += '"' + arrData[i][index] + '",';
+			}
+
+			row.slice(0, row.length - 1);
+
+			//add a line break after each row
+			CSV += row + '\r\n';
+		}
+
+		if (CSV == '') {
+			alert("Invalid data");
+			return;
+		}
+
+		//Generate a file name
+		var fileName = "MyReport_";
+		//this will remove the blank-spaces from the title and replace it with an underscore
+		fileName += ReportTitle.replace(/ /g, "_");
+
+		//Initialize file format you want csv or xls
+		var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+		// Now the little tricky part.
+		// you can use either>> window.open(uri);
+		// but this will not work in some browsers
+		// or you will not get the correct file extension    
+
+		//this trick will generate a temp <a /> tag
+		var link = document.createElement("a");
+		link.href = uri;
+
+		//set the visibility hidden so it will not effect on your web-layout
+		link.style = "visibility:hidden";
+		link.download = fileName + ".csv";
+
+		//this part will append the anchor tag and remove it after automatic click
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
 </script>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -514,7 +634,8 @@
 								<div class="col-md-12">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Academic Year:</label><select class="form-control" disabled>
+											<label>Academic Year:</label><select class="form-control"
+												disabled>
 												<option selected>2016</option>
 												<option>2017</option>
 												<option>2018</option>
@@ -523,7 +644,8 @@
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Semester:</label><select class="form-control" id="semester_selected">
+											<label>Semester:</label><select class="form-control"
+												id="semester_selected">
 												<option>Semester</option>
 												<%
 													ArrayList<Allocation> db_list = Query.getAllocationList("EC101");
@@ -559,14 +681,29 @@
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Course-code:</label><select class="form-control" id="course_list">
+											<label>Branch Name:</label><select class="form-control"
+												id="branch_selected">
 
 											</select>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Date:</label><br><input type="date" />
+											<label>Course-code:</label><select class="form-control"
+												id="course_list">
+
+											</select>
+										</div>
+									</div>
+									<%
+										GregorianCalendar gcalendar = new GregorianCalendar();
+
+										String mydate = 0 + (gcalendar.get(Calendar.MONTH) + 1) +"/" +(gcalendar.get(Calendar.DATE) + "/" + 	+ gcalendar.get(Calendar.YEAR)).toString();
+										//System.out.print(mydate);
+									%>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Date</label> <input type="date" value="<%=mydate%>" />
 										</div>
 									</div>
 								</div>
@@ -581,33 +718,25 @@
 											<label>To</label> <input type="time" name="toTime" />
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<select class="form-control">
-												<option>Class-Type</option>
-												<option>Laboratory</option>
-												<option>Theory</option>
-												<option>Tutorial</option>
-											</select>
-										</div>
-									</div>
+
 								</div>
+							</div>
 
-								<div class="box-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>Student Id</th>
-												<th>Student Name</th>
-												<th>Present</th>
-												<th>Absent</th>
-												<th>Leave</th>
-											</tr>
-										</thead>
-										<tbody id="attendance_table">
+							<div class="box-body">
+								<table id="example1" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>Student Id</th>
+											<th>Student Name</th>
+											<th>Present</th>
+											<th>Absent</th>
+											<th>Leave</th>
+										</tr>
+									</thead>
+									<tbody id="attendance_table">
 
-										</tbody>
-										<%-- Comment 
+									</tbody>
+									<%-- Comment 
 
 											<%
 												ArrayList<Attendance> student_list = Query.getAttendanceList("CST-301");
@@ -640,19 +769,24 @@
 
 
 
-									</table>
+								</table>
 
-									<br> <br>
-									<div class="btn-group pull-right">
-										<button type="button" class="btn btn-block btn-danger" onclick="getAttendanceList()">Submit</button>
-									</div>
+								<br> <br>
+								<div class="btn-group pull-right">
+									<button type="submitButton" class="btn btn-block btn-danger"
+										onclick="getAttendanceList()">Submit</button>
+									<button class='gen_btn' id="genFileButton"
+										onclick="genAttendanceList()"
+										style="padding: 5px; background-color: #743ED9; color: white; font-family: arial; font-size: 13px; border: 2px solid black">Generate
+										File</button>
 								</div>
-								<!-- /.box-body -->
 							</div>
+							<!-- /.box-body -->
 						</div>
-						<!-- /.col -->
 					</div>
-					<!-- /.row -->
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
 			</section>
 			<!-- /.content -->
 		</div>
@@ -859,7 +993,7 @@
 				"paging" : false,
 				"lengthChange" : false,
 				"searching" : false,
-				"ordering" : true,
+				"ordering" : false,
 				"info" : true,
 				"autoWidth" : true
 			});
