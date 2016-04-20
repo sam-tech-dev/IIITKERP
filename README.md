@@ -46,6 +46,7 @@ README for IIITK ERP setup
 				>>>>GetSubjectAllocation.java //retrive students  registerd for various courese
 				>>>>InsertAttendance.java //inserts attendance sheet into the database
 				>>>>StudentsList.java //retrives list of of students registerd in a particular course
+### How do I get set up? ###
 		     >>>authentication    //sevlets pertaining to authentication module
 		        AutoSuggest.java //retrives autosuggestions for user names
 				ResetPassword.java //resets the password of the current user
