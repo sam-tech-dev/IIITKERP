@@ -398,6 +398,12 @@
 		<description></description>
 		<servlet-class>actions.authentication.ResetPassword</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>RetrieveRegistrationStudentData</servlet-name>
+		<display-name>RetrieveRegistrationStudentData</display-name>
+		<description></description>
+		<servlet-class>actions.registration.RetrieveRegistrationStudentData</servlet-class>
+	</servlet>
 	
 <servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -426,6 +432,10 @@
 	<servlet-mapping>
 		<servlet-name>ResetPassword</servlet-name>
 		<url-pattern>/ResetPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RetrieveRegistrationStudentData</servlet-name>
+		<url-pattern>/RetrieveRegistrationStudentData</url-pattern>
 	</servlet-mapping>
 	
 
