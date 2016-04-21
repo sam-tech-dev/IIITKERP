@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="postgreSQLDatabase.forms.Query"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -14,10 +15,6 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  
-  
-  <script src="http://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-  
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -28,10 +25,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  
- 
-
-  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -55,86 +48,74 @@
 
     <!-- Main content -->
 	
-	
-	
-
-   <%
-   
-   String formpara= request.getParameter("formname");
-   
+  <%
+  String form=request.getParameter("id1");
 
   
-    String fnpara= request.getParameter("fn");
-        if(fnpara==null){
-        	fnpara="";
-        }else{
-        	fnpara=fnpara+",";
-        }
-    
-
-    String lnpara= request.getParameter("ln");
-    if(lnpara==null){
-    	lnpara="";
-    }else{
-    	lnpara=lnpara+",";
-    }
-    
-    String ftnpara=request.getParameter("ftn");
-         
-    if(ftnpara==null){
-    	ftnpara="";
-    }else{
-    	ftnpara=ftnpara+",";
-    }
-    
-	 String mnpara= request.getParameter("mn");
-	 if(mnpara==null){
-     	mnpara="";
-     }else{
-     	mnpara=mnpara+",";
+  String allFields=Query.getFields(form);
+  
+     String[] fields=new String[15];
+       int k=0;
+       int flag=0;
+     for(int i=0;i<allFields.length();i++){
+    	       
+    	 if(allFields.charAt(i)==','){
+    		 fields[++k]=allFields.substring(flag,i);
+    		 flag=i+1;
+    	  }
      }
-	 
+     
+      
+  if(form.equals("Bonafide Form")){
+    %>
+    
+    
+ <form method="post"  name="form1" action="../createpdf">
+<label style="font-size:25px; color:red;margin:0px 0px 0px 300px">Please enter following Fields to get the Certificate</label><br>
+<br>
+<fieldset>
+<legend style="color:#3399FF;font-size:20px">Details for <%out.print(form); %></legend>
+    
+    
+    <input type="text" id="d1" name="no" value="<%=k%>" style="display:none;" />
+    <input type="text" id="d1" name="formname" value="<%=form%>" style="display:none;" />
+    
+   <%   
+     for(int j=1;j<=k;j++){
+    	 
+    	%>  
+    
+  <label style="font-size:17px; color:black;margin:0px 0px 0px 50px"><%out.print(fields[j]); %>:</label>
+ <input type="text" id="d1" name="<%=j%>" value="" style="font-size:16px;margin:0px 0px 0px 0px; background-color:#F0FFFF; width:220px; height:25px;color:#006666;"> 
+     
+    <% if(j%2==0){%>
+        	<br><br>
+      <% }} %>
 
-	 String fields= request.getParameter("fields");
+  </fieldset>
+  
+	<br>
+ <input name="submit" type="submit" id="submit" value="Submit"  onClick="checkform(this.form)"  style="width:170px;height:35px;color:white;background-color:#333399;font-size:20px;margin:0px 0px 0px 350px">
+</form>	
+
+<%
+  }else{
+	%>  
+	 <form method="post"  name="form1" action="../Bonafide">
 	 
-	 String allFields;
-	 
-	 if(fields==""){
-		 allFields=fnpara+lnpara+ftnpara+mnpara;
-	    }else{
-	    	allFields=fnpara+lnpara+ftnpara+mnpara+fields+',';
-	    }
-		 
-	 
-	// out.println(fields);
-	 
-	  // allFields=fnpara+lnpara+ftnpara+mnpara+fields;
-	  
-	  
-	
-	%>
+	  <label style="font-size:17px; color:black;margin:0px 0px 0px 50px">Enter Your College ID:</label>
+ <input type="text" id="d1" name="id" value="" style="font-size:16px;margin:0px 0px 0px 0px; background-color:#F0FFFF; width:220px; height:25px;color:#006666;"> 
+     
+      <input name="submit" type="submit" id="submit" value="Submit"   style="width:170px;height:35px;color:white;background-color:#333399;font-size:20px;margin:0px 0px 0px 350px">
+     
+   
+	 </form>	
 	
 	
-	
-	  <form  method="post" action="../RetrieveForms">
-	  
-	  <input style="display:none;" type="text" name="formname" value="<%=formpara%>"/>
-	  
-	  <input style="display:none;" type="text" name="allfield" value="<%=allFields%>"/>
-	   
-	  <textarea cols="80" id="editor1" name="editor1" rows="10"></textarea>   	
-		
-        <script>
-	    CKEDITOR.replace( 'editor1' );
-         </script>
-			
-		
-		<input type="submit" value="submit" name="submit"/>
-		
-		</form>
-		
-		
-	
+<% 	  
+  }
+%>
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

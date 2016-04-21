@@ -446,8 +446,37 @@
 		<servlet-name>AddLdapUser</servlet-name>
 		<url-pattern>/AddLdapUser</url-pattern>
 	</servlet-mapping>
-	
-
+	<!-- forms -->
+	<servlet>
+		<servlet-name>RetrieveForms</servlet-name>
+		<display-name>RetrieveForms</display-name>
+		<description></description>
+		<servlet-class>actions.forms.RetrieveForms</servlet-class>
+	</servlet>
+<servlet>
+		<servlet-name>createpdf</servlet-name>
+		<display-name>createpdf</display-name>
+		<description></description>
+		<servlet-class>actions.forms.createpdf</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Bonafide</servlet-name>
+		<display-name>Bonafide</display-name>
+		<description></description>
+		<servlet-class>actions.forms.Bonafide</servlet-class>
+	</servlet>
+<servlet-mapping>
+		<servlet-name>createpdf</servlet-name>
+		<url-pattern>/createpdf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Bonafide</servlet-name>
+		<url-pattern>/Bonafide</url-pattern>
+	</servlet-mapping>
+ <servlet-mapping>
+  	<servlet-name>RetrieveForms</servlet-name>
+  	<url-pattern>/RetrieveForms</url-pattern>
+  </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
