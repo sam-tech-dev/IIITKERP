@@ -11,6 +11,21 @@ import java.text.SimpleDateFormat;
  */
 public class Allocation {
 	private String course_code;
+	private String branch_name;
+	/**
+	 * @return the branch_name
+	 */
+	public String getBranch_name() {
+		return branch_name;
+	}
+
+	/**
+	 * @param branch_name the branch_name to set
+	 */
+	public void setBranch_name(String branch_name) {
+		this.branch_name = branch_name;
+	}
+
 	private int semester;
 	private java.sql.Date date;
 

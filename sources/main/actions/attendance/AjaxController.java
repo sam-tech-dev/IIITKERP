@@ -56,10 +56,25 @@ public class AjaxController extends HttpServlet {
 			int num2 = Integer.parseInt(request.getParameter("number2"));
 			out.print(num1 + num2);
 		}
-		if (action.equals("getCourseCodeList")) {
+		if (action.equals("getBranchList")) {
 			String faculty = request.getParameter("faculty");
 			int semester = Integer.parseInt(request.getParameter("semester"));
-			ArrayList<Allocation> list = postgreSQLDatabase.attendance.Query.getFacultyCourseCode(faculty, semester);
+			ArrayList<Allocation> list = postgreSQLDatabase.attendance.Query.getBranchList(faculty, semester);
+			Iterator<Allocation> iterator = list.iterator();
+			out.print("<option>" + "Branch-Name" + "</option>");
+
+			while (iterator.hasNext()) {
+				Allocation current = iterator.next();
+				out.print("<option>" + current.getBranch_name() + "</option>");
+
+			}
+
+		}
+		if (action.equals("getCourseList")) {
+			String faculty = request.getParameter("faculty");
+			int semester = Integer.parseInt(request.getParameter("semester"));
+			String branch = request.getParameter("branch");
+			ArrayList<Allocation> list = postgreSQLDatabase.attendance.Query.getCourseList(faculty, semester, branch);
 			Iterator<Allocation> iterator = list.iterator();
 			out.print("<option>" + "Course-code" + "</option>");
 
@@ -72,7 +87,9 @@ public class AjaxController extends HttpServlet {
 		}
 		if (action.equals("getStudentList")) {
 			String course_code = request.getParameter("course_code");
-			ArrayList<Attendance> list = postgreSQLDatabase.attendance.Query.getAttendanceList(course_code);
+			String branch_name = request.getParameter("branch");
+			ArrayList<Attendance> list = postgreSQLDatabase.attendance.Query.getStudentAttendanceList(course_code,
+					branch_name);
 			Iterator<Attendance> iterator = list.iterator();
 
 			while (iterator.hasNext()) {
@@ -105,5 +122,4 @@ public class AjaxController extends HttpServlet {
 
 		}
 	}
-
 }
