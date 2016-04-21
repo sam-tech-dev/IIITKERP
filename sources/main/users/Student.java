@@ -161,7 +161,7 @@ public class Student {
 	 public Student(){
 	 category_list.addAll(Arrays.asList("GENERAL","OBC","SC","ST","OBC-NCL"));
 	 gender_list.addAll(Arrays.asList("male","female"));
-	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASTRA"
+	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASHTRA"
 				,"HARYANA"
 				,"DELHI (NCT)"
 				,"MADHYA PRADESH"
@@ -344,14 +344,15 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
-	      Matcher matcher = pattern.matcher(mobile);
-		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
+//		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
+//	      Matcher matcher = pattern.matcher(mobile);
+//		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
-		}
-		else{
-			throw new IncorrectFormatException("mobile");
-		}
+//		}
+//		else{
+//			this.mobile="";
+//			throw new IncorrectFormatException("mobile");
+//		}
 		
 	}
 	/**

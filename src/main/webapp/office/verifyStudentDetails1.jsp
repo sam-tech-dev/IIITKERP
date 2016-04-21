@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%@page import="postgreSQLDatabase.feePayment.*"%>
 <html>
 <head>
@@ -40,8 +43,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Student
-        <small>Home</small>
+        Fee Payment
+        <small>Verification</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#" class="active"><i class="fa fa-dashboard"></i>Home</a></li>
@@ -57,7 +60,7 @@
 				<div class="col-md-6">
 					<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Enter Title</h3>
+              <h3 class="box-title">Payment Information</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -86,7 +89,17 @@
                 </div>
                 <div class="form-group">
                   <label><input type="checkbox" class="flat-red" required> Payment Details</label>
-                  <textarea class="form-control" rows="3" disabled=""><%=payment_details.getDetails() %></textarea>
+                  <table disabled><tbody><%
+                 JSONObject details=  new JSONObject(payment_details.getDetails());
+                		 Iterator<String> iterator= details.keys();
+                		  while(iterator.hasNext()){
+                			  String key=iterator.next();
+                			 out.print("<tr><td><strong>"+key.toUpperCase()+"</strong></td><td>"+details.getString(key)+"</td></tr>");
+                		 }
+                		  
+                  
+                  %></tbody>
+                  </table>
                 </div>
               </div>
               <!-- /.box-body -->

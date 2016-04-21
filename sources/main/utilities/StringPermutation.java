@@ -27,7 +27,7 @@ public class StringPermutation
 	    //usernames.addAll(temp); 
 		for(String x:username){
 			if(x!=null){
-				usernames.add(x);
+				usernames.add(x.toLowerCase());
 			}
 		}
         return usernames;
@@ -70,20 +70,7 @@ public class StringPermutation
         
     }
     public static void placeDots(String...s){
-    	//System.out.println("hello");
-    	/*for(int i=0;i<s.length-1;i++){
-    		for(int j=i+1;j<s.length;j++){
-    			String str1=s[i]+"."+s[j];
-    			String str2=s[j]+"."+s[i];
-    			if(str1.length()>=6){
-    			username[count++]=s[i]+"."+s[j];
-    			}
-    			if(str2.length()>=6 && j!=s.length-1){
-    			username[count++]=s[j]+"."+s[i];
-    			}
-    		}
-    		
-    	}*/
+    	
     	if((s[0]+"."+s[1]).length()>=6){username[count++]=s[0]+"."+s[1];}
     	if((s[1]+"."+s[0]).length()>=6){username[count++]=s[1]+"."+s[0];}
     	if((s[0]+s[1]).length()>=6){username[count++]=s[0]+s[1];}

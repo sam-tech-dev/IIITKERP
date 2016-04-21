@@ -5,7 +5,7 @@ function getCourseCode() {
 	// to support all browsers
 	var xmlhttp;
 	try {
-		xmlhttp = new XMLHttpRequest();
+		xmlhttp = new XMLHttpRequest(); 
 	} catch (e) {
 		// Internet Explorer Browsers
 		try {

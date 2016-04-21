@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="users.Student"%>
+<%@page import="postgreSQLDatabase.registration.Query"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -60,7 +62,7 @@
         
       </ol>
     </section>
-
+<%Student student= Query.getStudentProfile(Long.parseLong(session.getAttribute("erpId").toString())); %>
     <!-- Main content -->
 	<section class="content">
 
@@ -72,9 +74,9 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="../dist/img/user2-160x160.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center"><%=student.getName() %></h3>
 
-              <p class="text-muted text-center">Software Engineer</p>
+              <p class="text-muted text-center"><%=student.getStudent_id() %></p>
 
             </div>
             <!-- /.box-body -->
@@ -91,20 +93,20 @@
               <strong><i class="fa fa-book margin-r-5"></i> Batch</strong>
 
               <p class="text-muted">
-                ABCDE
+               <%=student.getEmail() %>
               </p>
 
               <hr>
 
               <strong><i class="fa fa-file-text-o margin-r-5"></i> ID</strong>
 
-              <p class="text-muted">201*KU**10**</p>
+              <p class="text-muted"><%=student.getStudent_id() %></p>
 
               <hr>
 
               <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+              <p><%=student.getPermanent_address() %></p>
             </div>
             <!-- /.box-body -->
           </div>
@@ -122,55 +124,24 @@
               <div class="tab-pane active" id="setting">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="inputName" class="col-sm-2 control-label">Contact</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <label for="inputName" class="col-sm-2 control-label"><%=student.getMobile()%></label>
                     </div>
+                    
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputName" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      <label for="inputName" class="col-sm-2 control-label"><%=student.getEmail()%></label>
                     </div>
+                    
                   </div>
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
+                  
                 </form>
+                
               </div>
               
               <div class="tab-pane" id="changePassword">

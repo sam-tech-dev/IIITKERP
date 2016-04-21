@@ -80,35 +80,35 @@ public class Query {
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject current_object = jArray.getJSONObject(i);
 				Student current = new Student();
-				current.setName(current_object.getString("name"));
+				current.setName(current_object.get("name").toString());
 				current.setVerification_status(current_object.getInt("verification_status"));
-				current.setFirst_name(current_object.getString("first_name"));
-				current.setMiddle_name(current_object.getString("middle_name"));
-				current.setLast_name(current_object.getString("last_name"));
-				current.setCategory(current_object.getString("category"));
+				current.setFirst_name(current_object.get("first_name").toString());
+				current.setMiddle_name(current_object.get("middle_name").toString());
+				current.setLast_name(current_object.get("last_name").toString());
+				current.setCategory(current_object.get("category").toString());
 				// current.setJee_adv_rollno(current_object.getInt("jee_adv_rollno"));
 				// current.setJee_main_rollno(current_object.getInt("jee_main_rollno"));
-				current.setState_eligibility(current_object.getString("state"));
-				current.setMobile(current_object.getString("phone_number"));
-				current.setEmail(current_object.getString("email"));
-				current.setDate_of_birth(current_object.getString("date_of_birth"));
-				current.setProgram_allocated(current_object.getString("program_allocated"));
-				// current.setAllocated_category(current_object.getString("allocated_category"));
+				current.setState_eligibility(current_object.get("state").toString());
+				current.setMobile(current_object.get("phone_number").toString());
+				current.setEmail(current_object.get("email").toString());
+				current.setDate_of_birth(current_object.get("date_of_birth").toString());
+				current.setProgram_allocated(current_object.get("program_allocated").toString());
+				// current.setAllocated_category(current_object.get("allocated_category"));
 				// current.setAllocated_rank(current_object.getInt("allocated_rank"));
-				current.setStatus(current_object.getString("status"));
+				current.setStatus(current_object.get("status").toString());
 				// current.setChoice_no(current_object.getInt("choice_no"));
 				current.setPwd(current_object.getBoolean("physically_disabled"));
-				current.setGender(current_object.getString("gender"));
-				// current.setQuota(current_object.getString("quota"));
+				current.setGender(current_object.get("gender").toString());
+				// current.setQuota(current_object.get("quota"));
 				// current.setRound(current_object.getInt("round"));
 				// current.setWillingness(current_object.getString("willingness"));
 				// current.setPermanent_address(current_object.getString("address"));
 				// current.setRc_name(current_object.getString("rc_name"));
-				current.setNationality(current_object.getString("nationality"));
+				current.setNationality(current_object.get("nationality").toString());
 				current.setRegistration_id(current_object.getInt("id"));
 				// current.setEntry_time(new java.sql.Date(new
 				// SimpleDateFormat("YYYY-MM-DD
-				// HH:mm:SS.SSSSSS").parse(current_object.getString("entry_date")).getTime()));
+				// HH:mm:SS.SSSSSS").parse(current_object.get("entry_date")).getTime()));
 				current.setVerified(current_object.getBoolean("verified"));
 				students.add(current);
 			}
@@ -389,7 +389,65 @@ public class Query {
 
 		return current;
 	}
+	public static Student getStudentProfile(Long reg_id) throws SQLException, IncorrectFormatException {
+		Student current = new Student();
+		try {
+			PreparedStatement proc = getConnection()
+					.prepareStatement("SELECT public.\"retrieveStudentProfile\"(?);");
+			proc.setLong(1, reg_id);
 
+			ResultSet rs = proc.executeQuery();
+			rs.next();
+System.out.println(proc);
+			JSONArray jArray = new JSONArray(rs.getString(1));
+
+			JSONObject current_object = jArray.getJSONObject(0);
+
+			
+			current.setStudent_id(current_object.get("student_id").toString());
+			current.setName(current_object.get("name").toString());
+			current.setFirst_name(current_object.get("first_name").toString());
+			current.setMiddle_name(current_object.get("middle_name").toString());
+			current.setLast_name(current_object.get("last_name").toString());
+			current.setCategory(current_object.get("category").toString());
+			current.setState_eligibility(current_object.get("state").toString());
+			current.setMobile(current_object.get("phone_number").toString());
+			current.setEmail(current_object.get("email").toString());
+			current.setDate_of_birth(current_object.get("date_of_birth").toString());
+			current.setProgram_allocated(current_object.get("program_allocated").toString());
+			current.setPwd(current_object.getBoolean("physically_disabled"));
+			current.setGender(current_object.get("gender").toString());
+			current.setPermanent_address(current_object.get("permanent_address").toString());
+			current.setLocal_address(current_object.get("local_address").toString());
+			current.setNationality(current_object.get("nationality").toString());
+			current.setGuardian_name(current_object.get("guardian_name").toString());
+			current.setGuardian_contact(current_object.get("guardian_contact").toString());
+			current.setGuardian_email(current_object.get("guardian_email").toString());
+			current.setGuardian_address(current_object.get("guardian_address").toString());
+			current.setFather_name(current_object.get("father_name").toString());
+			current.setMother_name(current_object.get("mother_name").toString());
+			current.setFather_contact(current_object.get("father_contact").toString());
+			current.setMother_name(current_object.get("mother_name").toString());
+			try {
+				current.setHosteller(current_object.getBoolean("hosteller"));
+				JSONObject address_obj = current_object.getJSONObject("hostel_address");
+
+				current.setHostel(address_obj.get("hostel").toString());
+				current.setRoom(address_obj.get("room").toString());
+			} catch (Exception e) {
+				//e.printStackTrace();
+			}
+			
+						// System.out.println(current.getName());
+			rs.close();
+			proc.close();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
+		return current;
+	}
 	public static JSONArray retrieveRegistrationData() throws SQLException {
 
 		PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"displayRegistrationList\"();");

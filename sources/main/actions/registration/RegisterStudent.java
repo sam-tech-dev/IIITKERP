@@ -43,19 +43,27 @@ public class RegisterStudent extends HttpServlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		
-		Long id=Long.parseLong(String.valueOf(request.getSession(false).getAttribute("reg_id")));
-		User user=StudentIdGeneration.generate_id(id);
+		Long reg_id=Long.parseLong(String.valueOf(request.getSession(false).getAttribute("reg_id")));
+		User user=new User();
 		Student student;
 		try {
-			student = postgreSQLDatabase.registration.Query.getRegistrationStudentData(id);
+			student = postgreSQLDatabase.registration.Query.getRegistrationStudentData(reg_id);
 			user.setFirst_name(student.getFirst_name());
 			user.setLast_name(student.getLast_name());
 			String erp_id=Query.registerUser(username, student.getFirst_name()+" "+student.getLast_name(), "student");
 			user.setErp_id(erp_id);
 			user.setUsername(username);
 			user.setPassword(password);
+			User reg_info = StudentIdGeneration.generate_id(Long.parseLong(erp_id),reg_id);
+			user.setDepartment(reg_info.getDepartment());
+			user.setRole(reg_info.getRole());
+			user.setRole_id(reg_info.getRole_id());
 			ldap.SimpleLdapAuthentication.addEntry(user);
-			response.getWriter().write("<h1>Congratulations!</h1><br> Click <a href='login.jsp'>Here</a> to Continue");
+			
+			request.getSession().setAttribute("student_id", user.getRole_id());
+			request.getSession().setAttribute("username", user.getUsername());
+			response.sendRedirect("studentRegistration/congratulations.jsp");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			response.getWriter().write("<h1>Sorry There was an error!</h1><br> Please COntact the Registration Desk");
