@@ -50,6 +50,7 @@ public class RegistrationLogin extends HttpServlet {
 		Long reg_id=Long.parseLong(request.getParameter("reg_id"));
 		   
 		   int status=Query.retrieveRegistrationStatus(reg_id);
+		   System.out.println(status);
 		   try {
 			Student student=postgreSQLDatabase.registration.Query.getRegistrationStudentData(reg_id);
 			session.setAttribute("name", student.getName());
@@ -57,7 +58,7 @@ public class RegistrationLogin extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		   System.out.println(status);
+		  
 		   if(status==1 || status==0){
 			   session.setAttribute("reg_id", reg_id);
 				data.put("redirect", "csabRegistration.jsp");

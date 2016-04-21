@@ -47,6 +47,7 @@ public class addUpdateStudentRegistrationDetails extends HttpServlet {
 			try {
 				
 				//18 fields
+				student.setRegistration_id(Long.parseLong(request.getSession().getAttribute("reg_id").toString()));
 				//student.setName(request.getParameter("name"));
 				student.setFirst_name(request.getParameter("first_name"));
 				student.setMiddle_name(request.getParameter("middle_name"));

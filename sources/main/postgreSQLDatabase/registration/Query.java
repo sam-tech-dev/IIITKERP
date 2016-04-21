@@ -239,6 +239,8 @@ public class Query {
 	public static JSONObject getUpdateStudentProfile(long reg_id) throws SQLException, IncorrectFormatException {
 		Student student = getRegistrationStudentData(reg_id) ;
 		JSONObject current_object = new JSONObject();
+		current_object.put("registration_id", student.getRegistration_id());
+		current_object.put("name", student.getName());
 		current_object.put("first_name",student.getFirst_name());
 		current_object.put("middle_name", student.getMiddle_name());
 		current_object.put("last_name", student.getLast_name());
@@ -340,7 +342,9 @@ public class Query {
 
 			JSONObject current_object = jArray.getJSONObject(0);
 
-			System.out.println(current_object);
+			
+			current.setRegistration_id(Long.parseLong(current_object.get("id").toString()));
+			current.setVerification_status(Integer.parseInt(current_object.get("verification_status").toString()));
 			current.setName(current_object.get("name").toString());
 			current.setFirst_name(current_object.get("first_name").toString());
 			current.setMiddle_name(current_object.get("middle_name").toString());
@@ -372,7 +376,7 @@ public class Query {
 				current.setHostel(address_obj.get("hostel").toString());
 				current.setRoom(address_obj.get("room").toString());
 			} catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 			
 						// System.out.println(current.getName());
@@ -398,11 +402,11 @@ public class Query {
 		return jArray;
 	}
 
-	public static void updateVerified(int csab_id) {
+	public static void updateVerified(int reg_id) {
 		try {
 			PreparedStatement proc = getConnection().prepareStatement("SELECT public.\"updateVerified\"(?);");
-			proc.setInt(1, csab_id);
-			System.out.println(proc);
+			proc.setInt(1, reg_id);
+			
 			proc.executeQuery();
 
 		} catch (SQLException e) {
@@ -521,30 +525,33 @@ public class Query {
 	public static int retrieveRegistrationStatus(Long reg_id) {
 
 		try {
-
-			proc = settings.database.PostgreSQLConnection.getConnection()
-					.prepareStatement("SELECT public.\"existsRegId\"(?);");
-			proc.setLong(1, reg_id);
-			ResultSet rs = proc.executeQuery();
-			rs.next();
-			System.out.println("ID exists " + rs.getBoolean(1));
-			if (rs.getBoolean(1)) {
-				proc = PostgreSQLConnection.getConnection()
-						.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
-				proc.setLong(1, reg_id);
-				rs = proc.executeQuery();
-				rs.next();
-				boolean verified = rs.getBoolean(1);
-				System.out.println("verified " + verified);
-				if (verified) {
-					return 1;
-				} else {
-					return 0;
-				}
-			} else {
-				return -1;
-			}
-		} catch (SQLException e) {
+			int status = getRegistrationStudentData(reg_id).getVerification_status();
+            return status;
+//			proc = settings.database.PostgreSQLConnection.getConnection()
+//					.prepareStatement("SELECT public.\"existsRegId\"(?);");
+//			proc.setLong(1, reg_id);
+//			ResultSet rs = proc.executeQuery();
+//			rs.next();
+//			
+//			System.out.println("ID exists " + rs.getBoolean(1));
+//			if (rs.getBoolean(1)) {
+//				proc = PostgreSQLConnection.getConnection()
+//						.prepareStatement("SELECT public.\"retrieveRegistrationStatus\"(?);");
+//				proc.setLong(1, reg_id);
+//				rs = proc.executeQuery();
+//				rs.next();
+//				boolean verified = rs.getBoolean(1);
+//				System.out.println("verified " + verified);
+//				if (verified) {
+//					return 1;
+//				} else {
+//					return 0;
+//				}
+//			
+//			} else {
+//				return -1;
+//			}
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

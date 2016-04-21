@@ -1,5 +1,4 @@
 function makePayment(method) {
-	alert(method);
 	if (method == "dd") {
 		amount = document.getElementById('dd_amount').value;
 		payment_method = "demand_draft";
@@ -47,7 +46,8 @@ function makePayment(method) {
 		xmlhttp.onreadystatechange = function() {
 
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
+               alert("Payment Information saved successfully!");
+               window.location.href="../SignOut";
 			}
 			if (xmlhttp.status == 404)
 				alert("Could not connect to server");

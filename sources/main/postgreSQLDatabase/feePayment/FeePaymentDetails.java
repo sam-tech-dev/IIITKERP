@@ -73,11 +73,11 @@ public class FeePaymentDetails {
 		case 0:
 			this.payment_method = "CASH";
 			break;
-		case 1:
-			this.payment_method = "DD";
+		case 5:
+			this.payment_method = "DEMAND DRAFT";
 			break;
 		case 2:
-			this.payment_method = "NET BANKING";
+			this.payment_method = "CHALLAN";
 			break;
 		case 3:
 			this.payment_method = "NEFT";

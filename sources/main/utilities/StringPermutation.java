@@ -12,10 +12,13 @@ import java.util.Scanner;
  
 public class StringPermutation 
 {
-	static String username[]=new String[18];
-	static int count=0;
-	static ArrayList<String> usernames=new ArrayList<String>();
+	static String username[];
+	static int count;
+	static ArrayList<String> usernames;
 	public static ArrayList<String> generatePermutations(String...s){
+		username=new String[18];
+		usernames=new ArrayList<String>();
+		count=0;
 		permute(0,s);
 		placeDots(s);
 		breakString(s);
@@ -124,7 +127,7 @@ public class StringPermutation
         
           System.out.println("\nThe permuted sequences are: ");
           
-          generatePermutations("joey","pinto","13");
+          generatePermutations("Om","Prakash","1996");
           Iterator list=usernames.iterator();
           while(list.hasNext()){
         	  System.out.println(list.next());

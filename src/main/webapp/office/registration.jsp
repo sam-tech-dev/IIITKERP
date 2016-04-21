@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 2 | Data Tables</title>
+<title>IIITK | ERP</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -290,10 +290,12 @@
                 %>
 										<tr>
 											<td><div class="btn-group">
-													<button type="button" class="btn btn-block btn-primary"
-														onclick="verify(<%=current.getRegistration_id()%>)">Verify</button>
-												</div></td>
-											<td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal" onclick="displayProfile(<%=current.getRegistration_id()%>)">
+											<% if(current.getVerification_status()==1){ %>
+		<button type="button" class="btn btn-block btn-primary" onclick="verify(<%=current.getRegistration_id()%>)">Verify</button>	
+<%}else{ %>		<button type="button" class="btn btn-block btn-success" disabled>Verified</button>
+									<% } %>
+											 </div></td>
+							<td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal" onclick="displayProfile(<%=current.getRegistration_id()%>)">
 													<i class="glyphicon glyphicon-eye-open"></i>
 												</button></td>
 											<td><%=current.getName() %></td>
@@ -314,8 +316,7 @@
 											<td><%=current.getGender() %></td>
 
 											<td><%=current.getNationality() %></td>
-											<td><%=current.getEntry_time() %></td>
-											<td><%=current.getVerified() %></td>
+											
 										</tr>
 										<%
                 }
@@ -361,6 +362,7 @@
 	<script src="../dist/js/demo.js"></script>
 	<!-- page script -->
 	<script src="../dist/js/payment.js"></script>
+	<script src="../dist/js/verifyStudent.js"></script>
 	<script>
   $(function () {
     $("#example1").DataTable({
@@ -369,11 +371,12 @@
       "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": true
+      "autoWidth": true,
+      "order": [[ 0, "desc" ]]
 	});
   });
   
-  function displayProfile(registration_id){alert(registration_id);
+  function displayProfile(registration_id){
 		var xmlhttp;
 		try{
 			xmlhttp = new XMLHttpRequest();
@@ -419,9 +422,9 @@
 						else
 							document.getElementById("hosteller").innerHTML="No";
 					
-					docuyment.getElementById("hostel_address").innerHTML=data.hostel_address;
-					docuyment.getElementById("payment").innerHTML=data.payment;
-					docuyment.getElementById("semester").innerHTML=data.semester;
+					document.getElementById("hostel_address").innerHTML=data.hostel_address;
+					document.getElementById("payment").innerHTML=data.payment;
+					document.getElementById("semester").innerHTML=data.semester;
 					document.getElementById("gender").innerHTML=data.gender;
 					document.getElementById("guardian_name").innerHTML=data.guardian_name;
 					document.getElementById("guardian_contact").innerHTML=data.guardian_contact;
@@ -433,17 +436,12 @@
 					document.getElementById("mother_contact").innerHTML=data.mother_contact;
 					document.getElementById("permanent_address").innerHTML=data.permanent_address;
 					document.getElementById("local_address").innerHTML=data.local_address;
-					document.getElementById("registration_id").innerHTML=data.id;
-					document.getElementById("address").innerHTML=data.address;
+					document.getElementById("registration_id").innerHTML=data.registration_id;
 					document.getElementById("nationality").innerHTML=data.nationality;
-					document.getElementById("id").innerHTML=data.id;
 					//document.getElementById("reported").innerHTML=data.reported;
-					if(data.reported==false){
-						document.getElementById("registration_id").innerHTML="Student has not yet reported";
-					}
-					else{
-						document.getElementById("registration_id").innerHTML="Registration ID- "+data.registration_id;
-					}
+					
+					document.getElementById("registration_id").innerHTML=data.registration_id;
+					
 									
 				}
 				if(xmlhttp.status == 404)

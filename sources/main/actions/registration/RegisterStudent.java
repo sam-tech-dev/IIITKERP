@@ -55,11 +55,13 @@ public class RegisterStudent extends HttpServlet {
 			user.setUsername(username);
 			user.setPassword(password);
 			ldap.SimpleLdapAuthentication.addEntry(user);
+			response.getWriter().write("<h1>Congratulations!</h1><br> Click <a href='login.jsp'>Here</a> to Continue");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			response.getWriter().write("<h1>Sorry There was an error!</h1><br> Please COntact the Registration Desk");
 			e.printStackTrace();
 		}
-		
+	
 		
 	}
 

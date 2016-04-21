@@ -1,5 +1,5 @@
-function verify(csab_id){
-	//alert("in verify");
+function verify(reg_id){
+	
 	var xmlhttp;
 	try{
 		xmlhttp = new XMLHttpRequest();
@@ -21,21 +21,19 @@ function verify(csab_id){
 	    xmlhttp.onreadystatechange=function() {
 	    	
 	        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				try{
-	        	window.href="registration.jsp";
-	        	//alert(xmlhttp.responseText);
-				}
+			
+					alert("Student Data has been verified");
+	        	window.location.href="registration.jsp";
+	        	
+				
 			   
-				catch(exception){
-
-				}
 			}
 	        if(xmlhttp.status == 404)
 				alert("Could not connect to server");
 			}
 	    xmlhttp.open("POST","../VerifyStudent",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	    xmlhttp.send("csab_id="+csab_id);
+	    xmlhttp.send("reg_id="+reg_id);
 	}
    }	/**
  * 

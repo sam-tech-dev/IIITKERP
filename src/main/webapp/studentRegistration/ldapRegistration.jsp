@@ -61,7 +61,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             
-            <form role="form" action="../AddLdapUser" method="POST">
+            <form role="form" action="../RegisterStudent" method="POST">
           
             <span><input type="hidden" name="ref_no" value=""></span>
               <div class="box-body">
@@ -76,7 +76,7 @@
                   %>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value=<%=un %>><%=un %>
+                      <input type="radio" name="username" id="optionsRadios1" value=<%=un %> checked required><%=un %>
                     </label>
                   </div>
                  <%} %>
@@ -84,17 +84,17 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1"> Password</label>
-                  <input type="password" class="form-control" value="" placeholder="Password">
+                  <input type="password" name="password" class="form-control" value="" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1"> Repeat Password</label>
-                  <input type="password" class="form-control" value="" placeholder="Repeat Password">
+                  <input type="password" name="repeat_password" class="form-control" value="" placeholder="Repeat Password" required>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Verify</button>
+                <input type="submit" class="btn btn-primary" value="Register"></input>
               </div>
             </form>
           </div>

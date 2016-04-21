@@ -75,54 +75,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../dist/js/chats.js"></script>
-<script>
-        var count=0;
-		var insChat = new Array(); 
-		var listofpeople = new Array();
 
-		$(document).ready(function(){
-			$("#person-1").hide();
-			$("#person-2").hide();
-			$("#person-3").hide();
-			$("#listPeople").hide();
-		});
-		
-		function showChat(id){
-				id = id.substring(9);
-				var found = $.inArray(id,insChat);
-				
-				if(found==-1){
-					if(count==0){
-						$("#person-1").show();insChat.push(id);
-								}
-					if(count==1){
-						$("#person-2").show();insChat.push(id);
-								}
-					if(count==2){
-						$("#person-3").show();insChat.push(id);
-								}
-					if(count>=3){
-						$("#listPeople").show();
-						var found1 = $.inArray(id,listofpeople);
-						if(found1==-1){
-							listofpeople.push(id);
-							document.getElementById("LOP").innerHTML+='<div class="direct-chat-msg"><a onClick="orderChat('+'\'overflow-'+id+'\''+')">'+id+'</a></div>';
-								}
-							}	
-					count += 1;
-					        }
-				
-		}
-
-		function orderChat(id){
-				id = id.substring(9);
-				a = listofpeople.shift();
-				b = listofpeople.shift();
-				alert(insChat.unshift(a));
-				alert(listofpeople.unshift(b));
-		}
-  </script>
   
 </body>
 </html>

@@ -74,7 +74,7 @@ public class Query {
 			payment_details.setDetails(details);
 			payment_details.setPayment_method(current_object.getInt("payment_method"));
 
-			System.out.println();
+			System.out.println(current_object.getInt("payment_method"));
 			rs.close();
 			proc.close();
 

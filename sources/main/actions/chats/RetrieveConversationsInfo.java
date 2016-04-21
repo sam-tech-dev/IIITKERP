@@ -53,7 +53,7 @@ public class RetrieveConversationsInfo extends HttpServlet {
 			
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
 			proc.setLong(1,user_id);
-			System.out.println(proc);
+			//System.out.println(proc);
 			 rs=proc.executeQuery();
 			
 			rs.next();
@@ -103,21 +103,21 @@ public class RetrieveConversationsInfo extends HttpServlet {
 
 			
 
-		} catch (SQLException e1) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			writer.write("");
-			e1.printStackTrace();
+		//	e1.printStackTrace();
 		}
 		
 		try {
 			rs.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		try {
 			proc.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

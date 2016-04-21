@@ -205,7 +205,7 @@
 													</div>
 													<div class="col-xs-4 pull-right">
 														<input type="button" name="step-2" id="step2"
-															onclick="makePayment()" value="Next"
+															onclick="showPayment()" value="Next"
 															class="btn btn-primary btn-block btn-flat" />
 													</div>
 													<!-- /.col -->
