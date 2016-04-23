@@ -465,6 +465,12 @@
 		<description></description>
 		<servlet-class>actions.forms.Bonafide</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GeneratePDF</servlet-name>
+		<display-name>GeneratePDF</display-name>
+		<description></description>
+		<servlet-class>actions.utilities.GeneratePDF</servlet-class>
+	</servlet>
 <servlet-mapping>
 		<servlet-name>createpdf</servlet-name>
 		<url-pattern>/createpdf</url-pattern>
@@ -477,6 +483,10 @@
   	<servlet-name>RetrieveForms</servlet-name>
   	<url-pattern>/RetrieveForms</url-pattern>
   </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>GeneratePDF</servlet-name>
+ 	<url-pattern>/GeneratePDF</url-pattern>
+ </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

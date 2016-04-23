@@ -1,12 +1,22 @@
 package actions.registration;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.html.simpleparser.HTMLWorker;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import exceptions.IncorrectFormatException;
 import postgreSQLDatabase.registration.Query;
@@ -62,11 +72,13 @@ public class RegisterStudent extends HttpServlet {
 			
 			request.getSession().setAttribute("student_id", user.getRole_id());
 			request.getSession().setAttribute("username", user.getUsername());
-			response.sendRedirect("studentRegistration/congratulations.jsp");
+		response.sendRedirect("studentRegistration/congratulations.jsp");
+				
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			response.getWriter().write("<h1>Sorry There was an error!</h1><br> Please COntact the Registration Desk");
+			response.getWriter().write("<h1>Sorry There was an error!</h1><br> Please Contact the Registration Desk");
 			e.printStackTrace();
 		}
 	

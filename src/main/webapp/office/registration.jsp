@@ -107,16 +107,19 @@
 									<tr>
 										<td>First Name</td>
 										<td id="first_name"></td>
+										<td id="update_first_name"></td>
 									</tr>
 									
 									<tr>
 										<td>Middle Name</td>
 										<td id="middle_name"></td>
+										<td id="update_middle_name"></td>
 									</tr>
 									
 									<tr>
 										<td>Last Name</td>
 										<td id="last_name"></td>
+										<td id="update_last_name"></td>
 									</tr>
 
 									<tr>
@@ -129,12 +132,14 @@
 										<td id="state"></td>
 									</tr>
 									<tr>
-										<td>Phone Number</td>
-										<td id="phone_no"></td>
+										<td>Mobile</td>
+										<td id="mobile"></td>
+										<td id="update_mobile"></td>
 									</tr>
 									<tr>
 										<td>Email</td>
 										<td id="email"></td>
+										<td id="update_email"></td>
 									</tr>
 									<tr>
 										<td>Date Of Birth</td>
@@ -145,11 +150,7 @@
 										<td id="program_allocated"></td>
 									</tr>
 									
-									<tr>
-										<td>Status</td>
-										<td id="status"></td>
-									</tr>
-									
+																
 									<tr>
 										<td>Physically Disabled</td>
 										<td id="physically_disabled"></td>
@@ -163,41 +164,49 @@
 									<tr>
 										<td>Guardian Name</td>
 										<td id="guardian_name"></td>
+										<td id="update_guardian_name"></td>
 									</tr>
 									
 									<tr>
 										<td>Guardian Contact</td>
 										<td id="guardian_contact"></td>
+										<td id="update_guardian_contact"></td>
 									</tr>
 									
 									<tr>
 										<td>Guardian Email</td>
 										<td id="guardian_email"></td>
+										<td id="update_guardian_email"></td>
 									</tr>
 									
 									<tr>
 										<td>Guardian Address</td>
 										<td id="guardian_address"></td>
+										<td id="update_guardian_address"></td>
 									</tr>
 									
 									<tr>
 										<td>Father Name</td>
 										<td id="father_name"></td>
+										<td id="update_father_name"></td>
 									</tr>
 									
 									<tr>
 										<td>Father Contact</td>
 										<td id="father_contact"></td>
+										<td id="update_father_contact"></td>
 									</tr>
 									
 									<tr>
 										<td>Mother Name</td>
 										<td id="mother_name"></td>
+										<td id="update_mother_name"></td>
 									</tr>
 									
 									<tr>
 										<td>Mother Contact</td>
 										<td id="mother_contact"></td>
+										<td id="update_mother_contact"></td>
 									</tr>
 									
 									<tr>
@@ -208,27 +217,27 @@
 									<tr>
 										<td>Permanent Address</td>
 										<td id="permanent_address"></td>
+										<td id="update_permanent_address"></td>
 									</tr>
 									<tr>
 										<td>Local Address</td>
 										<td id="local_address"></td>
+										<td id="update_local_address"></td>
 									</tr>
 									
 									<tr>
 										<td>Hosteller</td>
 										<td id="hosteller"></td>
+										<td id="update_hosteller"></td>
 									</tr>
 									
 									<tr>
 										<td>Hostel Address</td>
 										<td id="hostel_address"></td>
+										<td id="update_hostel_address"></td>
 									</tr>
 									
-									<tr>
-										<td>Payment</td>
-										<td id="payment"></td>
-									</tr>
-									
+																		
 									<tr>
 										<td>Semester</td>
 										<td id="semester"></td>
@@ -407,11 +416,10 @@
 					document.getElementById("last_name").innerHTML=data.last_name;
 					document.getElementById("category").innerHTML=data.category;
 					document.getElementById("state").innerHTML=data.state;
-					document.getElementById("phone_no").innerHTML=data.phone_number;
+					document.getElementById("mobile").innerHTML=data.mobile;
 					document.getElementById("email").innerHTML=data.email;
 					document.getElementById("date_of_birth").innerHTML=data.date_of_birth;
 					document.getElementById("program_allocated").innerHTML=data.program_allocated;
-					document.getElementById("status").innerHTML=data.status;
 					if(data.physically_disabled==true)
 					document.getElementById("physically_disabled").innerHTML="Yes";
 					else
@@ -423,7 +431,6 @@
 							document.getElementById("hosteller").innerHTML="No";
 					
 					document.getElementById("hostel_address").innerHTML=data.hostel_address;
-					document.getElementById("payment").innerHTML=data.payment;
 					document.getElementById("semester").innerHTML=data.semester;
 					document.getElementById("gender").innerHTML=data.gender;
 					document.getElementById("guardian_name").innerHTML=data.guardian_name;

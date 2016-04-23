@@ -74,6 +74,9 @@ public class RegistrationLogin extends HttpServlet {
 				session.setAttribute("reg_id", reg_id);
 				data.put("redirect", "ldapRegistration.jsp");
 		   }
+		   else
+			   data.put("redirect", "../login.jsp");
+			   
 		   pw.write(data.toString());
 		   
 	}
