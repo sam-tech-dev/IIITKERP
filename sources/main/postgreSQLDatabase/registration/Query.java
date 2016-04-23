@@ -17,6 +17,7 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import exceptions.IncorrectFormatException;
 import settings.database.PostgreSQLConnection;
@@ -244,14 +245,13 @@ public class Query {
 		current_object.put("first_name",student.getFirst_name());
 		current_object.put("middle_name", student.getMiddle_name());
 		current_object.put("last_name", student.getLast_name());
+		current_object.put("category", student.getCategory());
 		current_object.put("mobile", student.getMobile());
 		current_object.put("email", student.getEmail());
 		current_object.put("date_of_birth", student.getDate_of_birth());
-	/*
-	 * proc.setString(10,student.getProgram_allocated());
-	 * proc.setString(11,student.getStatus());
-	 * proc.setBoolean(12,student.isPwd());
-	 */
+		current_object.put("program_allocated", student.getProgram_allocated());
+		current_object.put("physically_disabled", student.isPwd());
+		current_object.put("gender", student.getGender());
 		current_object.put("reg_id", student.getRegistration_id());
 		current_object.put("guardian_name", student.getGuardian_name());
 		current_object.put("guardian_contact", student.getGuardian_contact());
@@ -264,6 +264,26 @@ public class Query {
 		current_object.put("permanent_address",student.getPermanent_address());
 		current_object.put("local_address",student.getLocal_address());
 		current_object.put("hosteller",student.isHosteller());
+		current_object.put("hostel_address",student.getHostel());
+		current_object.put("semester", student.getSemester());
+		current_object.put("update_first_name",student.getFirst_name());
+		current_object.put("update_middle_name", student.getMiddle_name());
+		current_object.put("update_last_name", student.getLast_name());
+		current_object.put("update_mobile", student.getMobile());
+		current_object.put("update_email", student.getEmail());
+		current_object.put("update_date_of_birth", student.getDate_of_birth());
+	
+		current_object.put("update_guardian_name", student.getGuardian_name());
+		current_object.put("update_guardian_contact", student.getGuardian_contact());
+		current_object.put("update_guardian_email", student.getGuardian_email());
+		current_object.put("update_guardian_address",student.getGuardian_address());
+		current_object.put("update_father_name",student.getFather_name());
+		current_object.put("update_mother_name",student.getMother_name());
+		current_object.put("update_father_contact",student.getFather_contact());
+		current_object.put("update_mother_contact",student.getMother_contact());
+		current_object.put("update_permanent_address",student.getPermanent_address());
+		current_object.put("update_local_address",student.getLocal_address());
+		current_object.put("update_hosteller",student.isHosteller());
 	JSONObject address_obj = new JSONObject();
 	address_obj.put("room", student.getRoom());
 	address_obj.put("hostel", student.getHostel());
@@ -333,7 +353,7 @@ public class Query {
 			PreparedStatement proc = getConnection()
 					.prepareStatement("SELECT public.\"retrieveRegistrationStudentData\"(?);");
 			proc.setLong(1, reg_id);
-
+System.out.println(proc);
 			ResultSet rs = proc.executeQuery();
 			// System.out.println(rs.next());
 			rs.next();
@@ -355,6 +375,7 @@ public class Query {
 			current.setEmail(current_object.get("email").toString());
 			current.setDate_of_birth(current_object.get("date_of_birth").toString());
 			current.setProgram_allocated(current_object.get("program_allocated").toString());
+			current.setSemester(Integer.parseInt(current_object.get("semester").toString()));
 			current.setStatus(current_object.get("status").toString());
 			current.setPwd(current_object.getBoolean("physically_disabled"));
 			current.setGender(current_object.get("gender").toString());
@@ -389,12 +410,12 @@ public class Query {
 
 		return current;
 	}
-	public static Student getStudentProfile(Long reg_id) throws SQLException, IncorrectFormatException {
+	public static Student getStudentProfile(Long erp_id) throws SQLException, IncorrectFormatException {
 		Student current = new Student();
 		try {
 			PreparedStatement proc = getConnection()
 					.prepareStatement("SELECT public.\"retrieveStudentProfile\"(?);");
-			proc.setLong(1, reg_id);
+			proc.setLong(1, erp_id);
 
 			ResultSet rs = proc.executeQuery();
 			rs.next();
@@ -537,40 +558,39 @@ System.out.println(proc);
 
 	public static void addUpdateStudentRegistrationDetails(Student student) throws SQLException {
 		PreparedStatement proc = getConnection().prepareStatement(
-				"SELECT public.\"addUpdateRegistrationStudentDetails\"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-
+				"SELECT public.\"addUpdateRegistrationStudentDetails\"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+//text, text, text, text, text, integer, text, text, text, text, text, text, text, text, boolean, json, text, text
 		proc.setString(1, student.getFirst_name());
 		proc.setString(2, student.getMiddle_name());
 		proc.setString(3, student.getLast_name());
 		proc.setString(4, student.getMobile());
 		proc.setString(5, student.getEmail());
-		proc.setDate(6, student.getDate_of_birth());
-		/*
-		 * proc.setString(10,student.getProgram_allocated());
-		 * proc.setString(11,student.getStatus());
-		 * proc.setBoolean(12,student.isPwd());
-		 */
-		proc.setLong(7, student.getRegistration_id());
-		proc.setString(8, student.getGuardian_name());
-		proc.setString(9, student.getGuardian_contact());
-		proc.setString(10, student.getGuardian_email());
-		proc.setString(11, student.getGuardian_address());
-		proc.setString(12, student.getFather_name());
-		proc.setString(13, student.getMother_name());
-		proc.setString(14, student.getFather_contact());
-		proc.setString(15, student.getMother_contact());
-		proc.setString(16, student.getPermanent_address());
-		proc.setString(17, student.getLocal_address());
-		proc.setBoolean(18, student.isHosteller());
+		proc.setLong(6, student.getRegistration_id());
+		proc.setString(7, student.getGuardian_name());
+		proc.setString(8, student.getGuardian_contact());
+		proc.setString(9, student.getGuardian_email());
+		proc.setString(10, student.getGuardian_address());
+		proc.setString(11, student.getFather_name());
+		proc.setString(12, student.getMother_name());
+		proc.setString(13, student.getFather_contact());
+		proc.setString(14, student.getMother_contact());
+		
+		proc.setBoolean(15, student.isHosteller());
 		JSONObject address_obj = new JSONObject();
 		address_obj.put("room", student.getRoom());
-		address_obj.put("hostel", student.getHostel());
-		proc.setString(19, address_obj.toString());
+		address_obj.put("hostel",student.getHostel());
+		PGobject jsonObject = new PGobject();
+		jsonObject.setType("json");
+		jsonObject.setValue(address_obj.toString());
+		
+		proc.setObject(16, jsonObject);
+		proc.setString(17, student.getPermanent_address());
+		proc.setString(18, student.getLocal_address());
 		/*
 		 * proc.setBoolean(28,student.isApplied());
 		 * proc.setDate(29,student.getEntry_time());
 		 */
-
+System.out.println(proc);
 		proc.executeQuery();
 	}
 

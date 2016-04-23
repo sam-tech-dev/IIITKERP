@@ -33,7 +33,8 @@ public class addUpdateStudentRegistrationDetails extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath()).append(request.getParameter("req"));
+	
 		doPost(request, response);
 	}
 
@@ -44,11 +45,12 @@ public class addUpdateStudentRegistrationDetails extends HttpServlet {
 		// TODO Auto-generated method stub
 		Student student=new Student();
 		try {
-			try {
+			
 				
 				//18 fields
 				student.setRegistration_id(Long.parseLong(request.getSession().getAttribute("reg_id").toString()));
 				//student.setName(request.getParameter("name"));
+				System.out.println(request.getParameter("first_name"));
 				student.setFirst_name(request.getParameter("first_name"));
 				student.setMiddle_name(request.getParameter("middle_name"));
 				student.setLast_name(request.getParameter("last_name"));
@@ -56,7 +58,7 @@ public class addUpdateStudentRegistrationDetails extends HttpServlet {
 				//student.setState_eligibility(request.getParameter("state_eligibility"));
 				student.setMobile(request.getParameter("mobile"));
 				student.setEmail(request.getParameter("email"));
-				student.setDate_of_birth(request.getParameter("date_of_birth"));
+				//student.setDate_of_birth(request.getParameter("date_of_birth"));
 				//student.setProgram_allocated(request.getParameter("program_allocated"));
 				//student.setStatus(request.getParameter("status"));				
 				//student.setPwd(request.getParameter("pwd"));
@@ -84,16 +86,14 @@ public class addUpdateStudentRegistrationDetails extends HttpServlet {
 				address_obj.put("hostel",request.getParameter("hostel"));
 				
 				
-			} catch (IncorrectFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			 
 			
 			postgreSQLDatabase.registration.Query.addUpdateStudentRegistrationDetails(student);
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			response.getWriter().println("validation");
 		}
 		
 		

@@ -11,8 +11,8 @@ function validate(){
 	if(document.getElementById('guardian_address').innerHTML==""){validated=false;incorrect_fields.push("Guardian Address");}
 	if(document.getElementById('father_name').value==""){validated=false;incorrect_fields.push("Father Name");}
 	if(document.getElementById('mother_name').value==""){validated=false;incorrect_fields.push("Mother Name");}
-	if(document.getElementById('father_contact').value==""){validated=false;incorrect_fields.push("Father Conatct");}
-	if(document.getElementById('mother_contact').value==""){validated=false;incorrect_fields.push("Mother Conatct");}
+	if(document.getElementById('father_contact').value==""){validated=false;incorrect_fields.push("Father Contact");}
+	if(document.getElementById('mother_contact').value==""){validated=false;incorrect_fields.push("Mother Contact");}
 	if(document.getElementById('date_of_birth').value==""){validated=false;incorrect_fields.push("Date Of Birth");}
 	if(document.getElementById('mobile').value==""){validated=false;incorrect_fields.push("Mobile");}
 	if(document.getElementById('email').value==""){validated=false;incorrect_fields.push("Email");}
@@ -22,7 +22,8 @@ function validate(){
 	if(document.getElementById('hostel').value==""){validated=false;incorrect_fields.push("Hostel");}
 	if(document.getElementById('hostel_room').value==""){validated=false;incorrect_fields.push("Hostel Room");}
 	if(validated==false)alert("Please check values in "+incorrect_fields);
-return validated;
+//return validated;
+	return true;
 }
 
 
@@ -63,7 +64,7 @@ function updateStudentRegistrationDetails(){
 		xmlhttp.open("POST","../addUpdateStudentRegistrationDetails",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send(//"name="+document.getElementById('name').value
-				+"&first_name="+document.getElementById('first_name').value
+				"first_name="+document.getElementById('first_name').value
 				+"&middle_name="+document.getElementById('middle_name').value
 				+"&last_name="+document.getElementById('last_name').value
 				//+"&category="+document.getElementById('category').value
@@ -76,7 +77,7 @@ function updateStudentRegistrationDetails(){
 			+"&father_contact="+document.getElementById('father_contact').value
 			+"&mother_contact="+document.getElementById('mother_contact').value
 			//+"&gender="+document.getElementById('gender').value
-			+"&date_of_birth="+document.getElementById('date_of_birth').value
+			//+"&date_of_birth="+document.getElementById('date_of_birth').value
 			//+"&state_eligibility="+document.getElementById('state_eligibility').value
 			//+"&program_allocated="+document.getElementById('program_allocated').value
 			+"&mobile="+document.getElementById('mobile').value

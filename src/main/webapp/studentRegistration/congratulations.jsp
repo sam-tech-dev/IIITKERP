@@ -24,7 +24,7 @@
   </div>
   
   <div class="login-box-body">
-    <p class="login-box-msg">Welcome Joey!</p>
+    <p class="login-box-msg">Welcome to IIIT Kota!</p>
 
      <div class="form-group has-feedback">
       <label class="control-label" >Your Student ID is</label>
@@ -36,6 +36,17 @@
       <label class="control-label success" >Your username is</label>
         <input type="text" class="form-control" name="old_password" value="<%=session.getAttribute("username")%>">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+		
+      </div>
+       <div class="form-group has-feedback">
+      <label class="control-label success" >Instructions</label>
+       <ul>
+       <li>Instructions for new entrants </li>
+       <li>Code of Conduct</li>
+       <li>Campus Map</li>
+       <li>Student Help Center</li>
+       </ul>
+       
 		
       </div>
       <div class="row">

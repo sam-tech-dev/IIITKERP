@@ -27,6 +27,7 @@ public class Student {
 	private long csab_id;
 	private boolean verified;
 	private int verification_status;
+	private int semester;
 
 	/**
 	 * @return the verification_status
@@ -62,38 +63,38 @@ public class Student {
 		this.csab_id = csab_id;
 	}
 
-	private String name;
-	private String first_name;
-	private String middle_name;
-	private String last_name;
-	private String category;
+	private String name="";
+	private String first_name="";
+	private String middle_name="";
+	private String last_name="";
+	private String category="";
 	private int jee_main_rollno;
 	private int jee_adv_rollno;
-	private String guardian_name;
-	private String guardian_contact;
-	private String guardian_email;
-	private String guardian_address;
-	private String father_name;
-	private String mother_name;
-	private String father_contact;
-	private String mother_contact;
-	private String gender;
-	private String allocated_category;
+	private String guardian_name="";
+	private String guardian_contact="";
+	private String guardian_email="";
+	private String guardian_address="";
+	private String father_name="";
+	private String mother_name="";
+	private String father_contact="";
+	private String mother_contact="";
+	private String gender="";
+	private String allocated_category="";
 	private java.sql.Date date_of_birth;
-	private String state_eligibility;
-	private String program_allocated;
+	private String state_eligibility="";
+	private String program_allocated="";
 	private int allocated_rank;
-	private String status;
+	private String status="";
 	private int choice_no;
 	private int round;
-	private String quota;
-	private String willingness;
-	private String mobile;
-	private String email;
-	private String permanent_address;
-	private String local_address;
-	private boolean hosteller;
-	private String hostel;
+	private String quota="";
+	private String willingness="";
+	private String mobile="";
+	private String email="";
+	private String permanent_address="";
+	private String local_address="";
+	private boolean hosteller=false;
+	private String hostel="";
 	/**
 	 * @return the hostel
 	 */
@@ -439,7 +440,8 @@ public class Student {
 	 * @param first_name the first_name to set
 	 */
 	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	if(!first_name.equals("null"))	this.first_name = first_name.trim();
+	else this.first_name="";
 	}
 
 	/**
@@ -453,7 +455,8 @@ public class Student {
 	 * @param middle_name the middle_name to set
 	 */
 	public void setMiddle_name(String middle_name) {
-		this.middle_name = middle_name;
+		if(!middle_name.equals("null"))	this.middle_name = middle_name.trim();
+		else this.middle_name="";
 	}
 
 	/**
@@ -467,7 +470,8 @@ public class Student {
 	 * @param last_name the last_name to set
 	 */
 	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+		if(!last_name.equals("null"))	this.last_name = last_name.trim();
+		else this.last_name="";
 	}
 
 	/**
@@ -794,6 +798,20 @@ public class Student {
 	 */
 	public void setReported(boolean reported) {
 		this.reported = reported;
+	}
+
+	/**
+	 * @return the semester
+	 */
+	public int getSemester() {
+		return semester;
+	}
+
+	/**
+	 * @param semester the semester to set
+	 */
+	public void setSemester(int semester) {
+		this.semester = semester;
 	}
 	
 }

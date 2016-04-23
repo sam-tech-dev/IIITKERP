@@ -113,7 +113,7 @@
 
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" <% if(status==3) out.print("onclick='verifyFee("+current.getRegistration_id()+"')"); if(status==4) out.print("onclick=\"window.location.href='verifyStudentDetails2.jsp?reg_id="+current.getRegistration_id()+"'\"");%>>View</button></div></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" <% if(status==3) out.print("onclick='verifyFee("+current.getRegistration_id()+")'"); if(status==4) out.print("onclick=\"window.location.href='verifyStudentDetails2.jsp?reg_id="+current.getRegistration_id()+"'\"");%>>View</button></div></td>
                   <td><%=current.getRegistration_id() %></td>
                   <td><%=current.getName() %></td>
                   <td> <%if(status_msg.equals("verified"))out.print(" <div class=\"form-control has-success\" style='color:green'> Verified</div>");
