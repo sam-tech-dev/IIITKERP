@@ -58,6 +58,43 @@ public class Query {
 		return history_info;
 	}
 
+	
+	public static ArrayList<FeeBreakup> getFeePaymentList(){
+		
+		ArrayList<FeeBreakup> payment_list = new ArrayList<FeeBreakup>();
+		try {
+			proc = PostgreSQLConnection.getConnection()
+					.prepareStatement("SELECT public.\"getFeePaymentList\"();");
+
+			ResultSet rs = proc.executeQuery();
+			System.out.println(proc);
+			rs.next();
+			
+			JSONArray jArray = new JSONArray(rs.getString(1));
+
+			for (int i = 0; i < jArray.length(); i++) {
+				JSONObject current_object = jArray.getJSONObject(i);
+
+				FeeBreakup breakup = new FeeBreakup();
+				breakup.setCategory(current_object.getString("category"));
+				breakup.setTotal_amt(current_object.getInt("total_amt"));
+				breakup.setSemester(current_object.getInt("semester"));
+				breakup.setYear(current_object.getInt("year"));
+				breakup.setBreakup(current_object.getJSONArray("breakup"));
+			    payment_list.add(breakup);
+			}
+			System.out.println();
+			rs.close();
+			proc.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return payment_list;
+		
+	}
+	
+	
 	public static FeePaymentDetails getFeePaymentDetails(long user_id) {
 		FeePaymentDetails payment_details = new FeePaymentDetails();
 		try {
@@ -88,7 +125,6 @@ public class Query {
 	}
 
 	public static void addFeeBreakup(int semester, String category, String breakup, int year) {
-		
 		try {
 			
 			JSONArray fee_breakup=new JSONArray(breakup);
@@ -99,6 +135,7 @@ public class Query {
 				
 			}
 			int amount=Integer.parseInt((String)amt_obj.get("total"));
+			System.out.println(amount);
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addFeeBreakup\"(?,?,?,?,?);");
 			proc.setInt(1,year);
 			proc.setInt(2,semester);
