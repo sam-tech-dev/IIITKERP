@@ -37,7 +37,7 @@
 				type : 'Post',
 				data : {
 					course_code : course,
-					action : 'getStudentList'
+					action : 'getStudentAttendanceList'
 				},
 				url : 'http://localhost:8086/erp/AjaxController',
 				success : function(result) {
@@ -587,135 +587,8 @@
 												<th>Percentage</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>Std-1</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-2</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-3</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-4</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-5</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-6</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-7</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-8</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-9</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-10</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-11</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-12</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-13</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-14</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-15</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
-											<tr>
-												<td>Std-16</td>
-												<td>Student-Name</td>
-												<td>80</td>
-												<td>10</td>
-												<td>10</td>
-												<td>75</td>
-											</tr>
+										<tbody id="attendance_table">
+										
 										</tbody>
 									</table>
 

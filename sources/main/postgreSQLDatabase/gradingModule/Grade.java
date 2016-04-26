@@ -4,10 +4,17 @@
 package postgreSQLDatabase.gradingModule;
 
 /**
- * @author Joey
+
+ * @author Dilip
+
+
+
  *
  */
 public class Grade {
+
+
+	
 
 	private String course_code;
 	private String student_id;
@@ -36,6 +43,7 @@ public class Grade {
 	 */
 	public void setStudent_id(String student_id) {
 		this.student_id = student_id;
+
 	}
 	/**
 	 * @return the student_name
@@ -61,5 +69,6 @@ public class Grade {
 	public void setStudent_grade(String student_grade) {
 		this.student_grade = student_grade;
 	}
+
 
 }

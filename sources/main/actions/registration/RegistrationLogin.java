@@ -2,6 +2,7 @@ package actions.registration;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
+import exceptions.IncorrectFormatException;
 import postgreSQLDatabase.registration.Query;
+import users.Student;
 
 /**
  * Servlet implementation class RegistrationLogin
@@ -48,6 +51,14 @@ public class RegistrationLogin extends HttpServlet {
 		   
 		   int status=Query.retrieveRegistrationStatus(reg_id);
 		   System.out.println(status);
+		   try {
+			Student student=postgreSQLDatabase.registration.Query.getRegistrationStudentData(reg_id);
+			session.setAttribute("name", student.getName());
+		} catch (SQLException | IncorrectFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
 		   if(status==1 || status==0){
 			   session.setAttribute("reg_id", reg_id);
 				data.put("redirect", "csabRegistration.jsp");
@@ -63,6 +74,9 @@ public class RegistrationLogin extends HttpServlet {
 				session.setAttribute("reg_id", reg_id);
 				data.put("redirect", "ldapRegistration.jsp");
 		   }
+		   else
+			   data.put("redirect", "../login.jsp");
+			   
 		   pw.write(data.toString());
 		   
 	}

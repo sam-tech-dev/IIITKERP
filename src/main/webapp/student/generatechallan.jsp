@@ -60,7 +60,7 @@
 				<div class="col-md-4">
 				
 					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
+						<img src="../image/sbi.jpg" class="image pull-right">
 						<h4 class="text-center"><b>(Bank Copy)</b></h4>
 					</div>
 					
@@ -69,7 +69,7 @@
 							Category: SC<br>
 							Gender(M/F): M
 							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
+								<strong><img src="../image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
 								<p class="text-center"><b>Kota(Rajasthan)</b></p>
                             </address>
 						</div>
@@ -152,7 +152,7 @@
 				<div class="col-md-4">
 				
 					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
+						<img src="../image/sbi.jpg" class="image pull-right">
 						<h4 class="text-center"><b>(Institute Copy)</b></h4>
 					</div>
 					
@@ -161,7 +161,7 @@
 							Category: SC<br>
 							Gender(M/F): M
 							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
+								<strong><img src="../image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
 								<p class="text-center"><b>Kota(Rajasthan)</b></p>
                             </address>
 						</div>
@@ -244,7 +244,7 @@
 				<div class="col-md-4">
 				
 					<div class="row">
-						<img src="image/sbi.jpg" class="image pull-right">
+						<img src="../image/sbi.jpg" class="image pull-right">
 						<h4 class="text-center"><b>(Student Copy)</b></h4>
 					</div>
 					
@@ -253,7 +253,7 @@
 							Category: SC<br>
 							Gender(M/F): M
 							<address>
-								<strong><img src="image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
+								<strong><img src="../image/iiitkota.jpg">Indian Institute Of Information Technology</strong><br>
 								<p class="text-center"><b>Kota(Rajasthan)</b></p>
                             </address>
 						</div>
@@ -336,7 +336,7 @@
 		</div>
 		
 		<div class="row">
-			<a href="pages/examples/invoice-print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+			<a href="" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
 		</div>
 	</section>
     

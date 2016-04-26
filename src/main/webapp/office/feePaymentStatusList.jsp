@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
+  <title>IIITK | ERP</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -62,8 +62,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Fee Payment
+        <small>Verification Status</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -113,10 +113,12 @@
 
                 %>
                 <tr>
-                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary"onclick="verifyFee(<%=current.getRegistration_id()%>)">Verify</button></div></td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-block btn-primary" <% if(status==3) out.print("onclick='verifyFee("+current.getRegistration_id()+")'"); if(status==4) out.print("onclick=\"window.location.href='verifyStudentDetails2.jsp?reg_id="+current.getRegistration_id()+"'\"");%>>View</button></div></td>
                   <td><%=current.getRegistration_id() %></td>
                   <td><%=current.getName() %></td>
-                  <td><%=status_msg %></td>
+                  <td> <%if(status_msg.equals("verified"))out.print(" <div class=\"form-control has-success\" style='color:green'> Verified</div>");
+                  else out.print(" <div class=\"form-control has-danger\" style='color:red'> Not Verified</div>");
+                  %></td>
                 </tr>
 				<%
                 }

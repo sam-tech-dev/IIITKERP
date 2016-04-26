@@ -36,8 +36,8 @@ public class VerifyStudent extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int csab_id=Integer.parseInt(request.getParameter("csab_id"));
-		Query.updateVerified(csab_id);
+		int reg_id=Integer.parseInt(request.getParameter("reg_id"));
+		Query.updateVerified(reg_id);
 		PrintWriter pw=response.getWriter();
 		pw.write("updated");
 	}

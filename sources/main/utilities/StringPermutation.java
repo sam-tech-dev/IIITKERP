@@ -1,7 +1,9 @@
 package utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 /**
  * @author Arushi
@@ -12,11 +14,11 @@ public class StringPermutation
 {
 	static String username[];
 	static int count;
-	private static ArrayList<String> usernames;
-	public static ArrayList<String> callAll(String...s){
-		username=new String[30];
-		 usernames=new ArrayList<String>();
-		 count=0;
+	static ArrayList<String> usernames;
+	public static ArrayList<String> generatePermutations(String...s){
+		username=new String[18];
+		usernames=new ArrayList<String>();
+		count=0;
 		permute(0,s);
 		placeDots(s);
 		breakString(s);
@@ -25,13 +27,13 @@ public class StringPermutation
 	    //usernames.addAll(temp); 
 		for(String x:username){
 			if(x!=null){
-				usernames.add(x);
+				usernames.add(x.toLowerCase());
 			}
 		}
         return usernames;
 	}
 	
-    public static void permute(int k,String...a) //send value of k as 0 initially
+    static void permute(int k,String...a) //send value of k as 0 initially
     {
         if (k == a.length) 
         {
@@ -68,20 +70,7 @@ public class StringPermutation
         
     }
     public static void placeDots(String...s){
-    	//System.out.println("hello");
-    	/*for(int i=0;i<s.length-1;i++){
-    		for(int j=i+1;j<s.length;j++){
-    			String str1=s[i]+"."+s[j];
-    			String str2=s[j]+"."+s[i];
-    			if(str1.length()>=6){
-    			username[count++]=s[i]+"."+s[j];
-    			}
-    			if(str2.length()>=6 && j!=s.length-1){
-    			username[count++]=s[j]+"."+s[i];
-    			}
-    		}
-    		
-    	}*/
+    	
     	if((s[0]+"."+s[1]).length()>=6){username[count++]=s[0]+"."+s[1];}
     	if((s[1]+"."+s[0]).length()>=6){username[count++]=s[1]+"."+s[0];}
     	if((s[0]+s[1]).length()>=6){username[count++]=s[0]+s[1];}
@@ -125,7 +114,7 @@ public class StringPermutation
         
           System.out.println("\nThe permuted sequences are: ");
           
-          callAll("JASBJ","Gupta","2016");
+          generatePermutations("Om","Prakash","1996");
           Iterator list=usernames.iterator();
           while(list.hasNext()){
         	  System.out.println(list.next());

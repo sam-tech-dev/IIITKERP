@@ -14,36 +14,40 @@ import org.json.JSONObject;
  */
 public class InsertAttendance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InsertAttendance() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public InsertAttendance() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("attendance_json"));
-		JSONArray j_array=new JSONArray(request.getParameter("attendance_json"));
-		JSONObject[] j_objects=new JSONObject[j_array.length()];
-		for(int i=0;i<j_array.length();i++){
-			j_objects[i]=j_array.getJSONObject(i);
-			
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//System.out.println(request.getParameter("attendance_json"));
+		JSONArray j_array = new JSONArray(request.getParameter("attendance_json"));
+		JSONObject[] j_objects = new JSONObject[j_array.length()];
+		for (int i = 0; i < j_array.length(); i++) {
+			j_objects[i] = j_array.getJSONObject(i);
+
 		}
-		postgreSQLDatabase.attendance.Query.insertAttendance(request.getParameter("class_id"),j_objects);
+		postgreSQLDatabase.attendance.Query.insertAttendance(request.getParameter("class_id"), j_objects);
 	}
 
 }

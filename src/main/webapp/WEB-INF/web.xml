@@ -24,7 +24,7 @@
 		<filter-name>Session</filter-name>
 		<url-pattern>/administration/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!--onlineTest -->
 	<servlet>
 		<servlet-name>CreateTestPaper</servlet-name>
@@ -130,17 +130,17 @@
 		<servlet-name>UpdateStudentRegistrationData</servlet-name>
 		<url-pattern>/UpdateStudentRegistrationData</url-pattern>
 	</servlet-mapping>
-<servlet>
+	<servlet>
 		<servlet-name>addUpdateStudentRegistrationDetails</servlet-name>
 		<display-name>addUpdateStudentRegistrationDetails</display-name>
 		<description></description>
 		<servlet-class>actions.registration.addUpdateStudentRegistrationDetails</servlet-class>
 	</servlet>
-<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>addUpdateStudentRegistrationDetails</servlet-name>
 		<url-pattern>/addUpdateStudentRegistrationDetails</url-pattern>
 	</servlet-mapping>
-	
+
 	<!--notification -->
 	<servlet>
 		<servlet-name>MarkAsRead</servlet-name>
@@ -237,12 +237,12 @@
 		<servlet-class>actions.attendance.S1</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>GenerateStudentId</servlet-name>
-		<display-name>GenerateStudentId</display-name>
+		<servlet-name>RegisterStudent</servlet-name>
+		<display-name>RegisterStudent</display-name>
 		<description></description>
-		<servlet-class>actions.registration.GenerateStudentId</servlet-class>
+		<servlet-class>actions.registration.RegisterStudent</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>FileUpload</servlet-name>
 		<url-pattern>/FileUpload</url-pattern>
@@ -270,7 +270,7 @@
 		<servlet-name>UpdateLastSeen</servlet-name>
 		<url-pattern>/UpdateLastSeen</url-pattern>
 	</servlet-mapping>
-<servlet>
+	<servlet>
 		<servlet-name>AutoSuggest</servlet-name>
 		<display-name>AutoSuggest</display-name>
 		<description></description>
@@ -291,7 +291,7 @@
 		<servlet-name>RetrieveMessage</servlet-name>
 		<url-pattern>/RetrieveMessage</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>RetrieveConversationsInfo</servlet-name>
 		<display-name>RetrieveConversationsInfo</display-name>
@@ -348,10 +348,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>FeeBreakup</servlet-name>
-		<display-name>
-
-Breakup</display-name>
-		<description></description>
+		<display-name>FeeBreakup</display-name>
 		<servlet-class>actions.feePayment.FeeBreakup</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -359,17 +356,17 @@ Breakup</display-name>
 		<url-pattern>/FeeBreakup</url-pattern>
 	</servlet-mapping>
 
-	<!--grading module-->
- <servlet>
-  	<servlet-name>ExportGradesheet</servlet-name>
-  	<display-name>ExportGradesheet</display-name>
-  	<description></description>
-  	<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ExportGradesheet</servlet-name>
-  	<url-pattern>/ExportGradesheet</url-pattern>
-  </servlet-mapping>
+	<!--grading module -->
+	<servlet>
+		<servlet-name>ExportGradesheet</servlet-name>
+		<display-name>ExportGradesheet</display-name>
+		<description></description>
+		<servlet-class>actions.gradingModule.ExportGradesheet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportGradesheet</servlet-name>
+		<url-pattern>/ExportGradesheet</url-pattern>
+	</servlet-mapping>
 	<!--remaining -->
 	<servlet>
 		<servlet-name>GenerateChallan</servlet-name>
@@ -401,6 +398,12 @@ Breakup</display-name>
 		<servlet-class>actions.authentication.ResetPassword</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>RetrieveRegistrationStudentData</servlet-name>
+		<display-name>RetrieveRegistrationStudentData</display-name>
+		<description></description>
+		<servlet-class>actions.registration.RetrieveRegistrationStudentData</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>AddLdapUser</servlet-name>
 		<display-name>AddLdapUser</display-name>
 		<description></description>
@@ -424,8 +427,8 @@ Breakup</display-name>
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>GenerateStudentId</servlet-name>
-		<url-pattern>/GenerateStudentId</url-pattern>
+		<servlet-name>RegisterStudent</servlet-name>
+		<url-pattern>/RegisterStudent</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>CsabStudentProfile</servlet-name>
@@ -436,10 +439,54 @@ Breakup</display-name>
 		<url-pattern>/ResetPassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>RetrieveRegistrationStudentData</servlet-name>
+		<url-pattern>/RetrieveRegistrationStudentData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>AddLdapUser</servlet-name>
 		<url-pattern>/AddLdapUser</url-pattern>
 	</servlet-mapping>
-	
+	<!-- forms -->
+	<servlet>
+		<servlet-name>RetrieveForms</servlet-name>
+		<display-name>RetrieveForms</display-name>
+		<description></description>
+		<servlet-class>actions.forms.RetrieveForms</servlet-class>
+	</servlet>
+<servlet>
+		<servlet-name>createpdf</servlet-name>
+		<display-name>createpdf</display-name>
+		<description></description>
+		<servlet-class>actions.forms.createpdf</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Bonafide</servlet-name>
+		<display-name>Bonafide</display-name>
+		<description></description>
+		<servlet-class>actions.forms.Bonafide</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GeneratePDF</servlet-name>
+		<display-name>GeneratePDF</display-name>
+		<description></description>
+		<servlet-class>actions.utilities.GeneratePDF</servlet-class>
+	</servlet>
+<servlet-mapping>
+		<servlet-name>createpdf</servlet-name>
+		<url-pattern>/createpdf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Bonafide</servlet-name>
+		<url-pattern>/Bonafide</url-pattern>
+	</servlet-mapping>
+ <servlet-mapping>
+  	<servlet-name>RetrieveForms</servlet-name>
+  	<url-pattern>/RetrieveForms</url-pattern>
+  </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>GeneratePDF</servlet-name>
+ 	<url-pattern>/GeneratePDF</url-pattern>
+ </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

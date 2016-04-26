@@ -195,78 +195,70 @@
 										<div class="register-box-body">
 											<form action="" method="post">
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Name</label>
 													<input type="text" name="std_name" class="form-control"
 														id="name" placeholder="Sudent Name"
-														value="<%=current.getName()%>">
+														value="<%=current.getName()%>" disabled>
 
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>First Name</label>
 													<input type="text" name="std_name" class="form-control"
 														id="first_name" placeholder="First Name"
-														value="<%=current.getFirst_name()%>">
+														value="<%=current.getFirst_name()%>" required>
 
 												</div>
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Middle Name</label>
 													<input type="text" name="std_name" class="form-control"
 														id="middle_name" placeholder="Middle Name"
-														value="<%=current.getLast_name()%>">
+														value="<%=current.getMiddle_name()%>" >
 
 												</div>
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Last Name</label>
 													<input type="text" name="std_name" class="form-control"
 														id="last_name" placeholder="Last Name"
-														value="<%=current.getLast_name()%>">
+														value="<%=current.getLast_name()%>" required>
 
 												</div>
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Mobile Number</label>
 													<input type="text" name="mobile" class="form-control"
 														id="mobile" placeholder="Phone Number"
-														value="<%=current.getMobile()%>">
+														value="<%=current.getMobile()%>" required>
 
 												</div>
 
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Date Of Birth</label>
 													<input type="date" name="dob" class="form-control"
 														placeholder="Date of Birth" id="date_of_birth"
-														value="<%=current.getDate_of_birth()%>">
+														value="<%=current.getDate_of_birth()%>" disabled>
 												</div>
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>State Eligibility</label>
 													<input type="text" name="state" class="form-control"
 														placeholder="State" id="state_eligibility"
-														value="<%=current.getState_eligibility()%>">
+														value="<%=current.getState_eligibility()%>" disabled>
 												</div>
 
 
 
-												<div class="form-group has-feedback">
-													<input type="text" name="std_email" class="form-control"
-														placeholder="Email " id="email">
+												<div class="form-group has-feedback"><label>Email</label>
+													<input type="email" name="std_email" class="form-control"
+														placeholder="Email " id="email" required>
 												</div>
 
 
 
-												<div class="form-group has-feedback">
-													<select class="form-control" name="category" id="category">
-														<option value="">Category</option>
-														<option value="General">General</option>
-														<option value="OBC">OBC</option>
-														<option value="SC">SC</option>
-														<option value="ST">ST</option>
-													</select>
+												<div class="form-group has-feedback"><label>Category</label>
+													<input type="text" name="std_category" class="form-control"
+														placeholder="category " id="category" value="<%=current.getCategory()%>" disabled>
 												</div>
-												
-<div class="form-group has-feedback">
-													<select class="form-control" name="gender" id="gender" value="<%=current.getGender()%>">
-														<option value="">Male</option>
-														<option value="General">Female</option>
-														
-													</select>
+
+												<div class="form-group has-feedback"><label>Gender</label>
+													<input type="text" name="std_gender" class="form-control"
+														placeholder="gender " id="gender" value="<%=current.getGender()%>" disabled>
 												</div>
 
 												<div class="row">
@@ -301,37 +293,32 @@
 
 
 
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Father's Name</label>
 													<input type="text" name="std_father_name" id="father_name"
 														class="form-control" placeholder="Father's Name"
-														value="<%=current.getFather_name()%>">
+														value="<%=current.getFather_name()%>" required>
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Mother's Name</label>
 													<input type="text" name="std_mother_name" id="mother_name"
 														class="form-control" placeholder="Mother's Name"
-														value="<%=current.getMother_name()%>">
+														value="<%=current.getMother_name()%>" required>
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Father's Contact</label>
 													<input type="text" name="std_father_contact"
 														id="father_contact" class="form-control"
-														placeholder="Father's Contact">
+														placeholder="Father's Contact" required>
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Mother's Contact</label>
 													<input type="text" name="std_mother_contact"
 														id="mother_contact" class="form-control"
-														placeholder="Mother's Contact">
+														placeholder="Mother's Contact" required>
 												</div>
 
-												
-												<div class="form-group has-feedback">
-													<select class="form-control" name="program_allocated"
-														id="program_allocated">
-														<option value="">Program Allocated</option>
-														<option value="CSE">Computer Science &
-															Engineering</option>
-														<option value="ECE">Electronice & Communication
-															Engineering</option>
-													</select>
+
+												<div class="form-group has-feedback"><label>Program Allocated</label>
+													<input type="text" name="progrm_allocated"
+														id="program_allocated" class="form-control"
+														placeholder="Program Allocated"  value="<%=current.getProgram_allocated()%>" disabled>
 												</div>
 
 
@@ -369,30 +356,33 @@
 									<div class="register-box">
 										<div class="register-box-body">
 											<form action="" method="post">
-												<div class="form-group has-feedback">
-													<input type="text" name="std_permanent_add"
+												<div class="form-group has-feedback"><label>Permanent Address</label>
+													<textarea  name="std_permanent_add"
 														id="permanent_address" class="form-control"
-														placeholder="Permanent Address">
+														placeholder="Permanent Address" required></textarea>
 												</div>
 
 
-												<div class="form-group has-feedback">
-												<select class="form-control" name="hosteller"
-														id="hosteller">
+												<div class="form-group has-feedback"><label>Hosteller</label>
+													<select class="form-control" name="hosteller"
+														id="hosteller" required>
 														<option value="Yes">Yes</option>
 														<option value="No">No</option>
 													</select>
-														</div>
-												<div class="form-group has-feedback">
-													<input type="text" name="std_local_add" id="local_address"
-														class="form-control" placeholder="Local Address">
 												</div>
-												<div class="form-group has-feedback">
-													<input type="text" name="hostel"
-														id="hostel" class="form-control"
-														placeholder="Hostel Address">
+												<div class="form-group has-feedback"><label>Local Address</label>
+													<textarea name="std_local_add" id="local_address"
+														class="form-control" placeholder="Local Address" required></textarea>
+												</div>
+												<div class="form-group has-feedback"><label>Hostel Name</label>
+													<textarea name="hostel" id="hostel"
+														class="form-control" placeholder="Hostel Name/ Address" ></textarea>
 												</div>
 
+												<div class="form-group has-feedback"><label>Hostel Room</label>
+													<input type="text" name="hostel_room" id="hostel_room"
+														class="form-control" placeholder="Hostel Room No." >
+												</div>
 
 												<div class="row">
 													<div class="col-xs-4">
@@ -427,27 +417,27 @@
 									<div class="register-box">
 										<div class="register-box-body">
 											<form action="" method="post">
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Guardian's Name</label>
 													<input type="text" name="std_guardian_name"
 														id="guardian_name" class="form-control"
-														placeholder="Guardian Name">
+														placeholder="Guardian Name" required>
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Guardian's Contact</label>
 													<input type="text" name="std_guardian_contact"
 														id="guardian_contact" class="form-control"
-														placeholder="Guardian Contact">
+														placeholder="Guardian Contact" required>
 												</div>
-												<div class="form-group has-feedback">
+												<div class="form-group has-feedback"><label>Guardian's Email</label>
 													<input type="text" name="std_guardian_email"
 														id="guardian_email" class="form-control"
-														placeholder="Guardian Email">
+														placeholder="Guardian Email" required>
 												</div>
 
 
-												<div class="form-group has-feedback">
-													<input type="text" name="std_guardian_address"
+												<div class="form-group has-feedback"><label>Guardan's Address</label>
+													<textarea name="std_guardian_address"
 														id="guardian_address" class="form-control"
-														placeholder="Guardian Address">
+														placeholder="Guardian Address" required></textarea>
 												</div>
 
 												<div class="row">

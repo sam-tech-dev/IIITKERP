@@ -51,26 +51,12 @@ public class RetrieveForms extends HttpServlet {
        try {
 		 Query.addForm(formname, allFields, format);
 		
-		 
-		 ArrayList<String> list = Query.getFormNames();
-		 
-		 Iterator<String> iterator = list.iterator();
-		 
-		 while(iterator.hasNext()){
-			 
-			 writer.write(iterator.next());
-		 }
-		
-	} catch (SQLException e) {
+	    } catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	     }
 		
-	/*	
-		writer.write(formname);
-		writer.write(allFields);
-		writer.write(format);
-	*/	
+       
 	}
 
 }

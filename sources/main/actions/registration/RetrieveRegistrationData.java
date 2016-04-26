@@ -39,7 +39,7 @@ public class RetrieveRegistrationData extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JSONArray jArray=null;
 		try {
-			jArray = Query.retrieveRegistrationData();
+			jArray = postgreSQLDatabase.registration.Query.retrieveRegistrationData();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -43,11 +43,12 @@ public class UpdateLastSeen extends HttpServlet {
     	  String erp_id=(String)request.getSession().getAttribute("erpId");
           long  erpid=Long.parseLong(erp_id);
 		PreparedStatement proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"updateLastSeen\"(?);");
+		
 		proc.setLong(1,erpid);
 		proc.executeQuery();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
-		//e.printStackTrace();
+		e.printStackTrace();
 	}
       
 	}

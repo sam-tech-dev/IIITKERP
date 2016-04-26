@@ -8,7 +8,7 @@ package ldap;
  *
  */
 public class User {
-	String first_name, last_name, username, password, erp_id,department,role;
+	private String first_name, last_name, username, password, erp_id,department,role,role_id;
 
 	/**
 	 * @return the first_name
@@ -106,6 +106,20 @@ public class User {
 	 */
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	/**
+	 * @return the role_id
+	 */
+	public String getRole_id() {
+		return role_id;
+	}
+
+	/**
+	 * @param role_id the role_id to set
+	 */
+	public void setRole_id(String role_id) {
+		this.role_id = role_id;
 	}
 	
 }

@@ -37,13 +37,24 @@
             <li><a href="solutionList.jsp"><i class="fa fa-circle-o"></i>My Test</a></li>
           </ul>
         </li>
-        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Forms</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="forms.jsp"><i class="fa fa-circle-o"></i>All Forms</a></li>
+            <li><a href="selectFields.jsp"><i class="fa fa-circle-o"></i>Create New Form</a></li>
+            <li><a href="fillFields.jsp?id1=Bonafide%20Form"><i class="fa fa-circle-o"></i>Bonafide</a></li>
+          </ul>
+        </li>
+       
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cogs"></i> <span>My Account</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="../resetPassword.jsp"><i class="fa fa-circle-o"></i>Change Password</a></li>
+            <li><a href="myProfile.jsp"><i class="fa fa-circle-o"></i>My Profile</a></li>
           </ul>
         </li>
       </ul>

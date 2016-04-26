@@ -97,12 +97,18 @@
 
 	 String fields= request.getParameter("fields");
 	 
-	 if(fields==null){
-		 fields="";
-	     }
+	 String allFields;
+	 
+	 if(fields==""){
+		 allFields=fnpara+lnpara+ftnpara+mnpara;
+	    }else{
+	    	allFields=fnpara+lnpara+ftnpara+mnpara+fields+',';
+	    }
 		 
 	 
-	  String allFields=fnpara+lnpara+ftnpara+mnpara+fields;
+	// out.println(fields);
+	 
+	  // allFields=fnpara+lnpara+ftnpara+mnpara+fields;
 	  
 	  
 	
