@@ -471,6 +471,12 @@
 		<description></description>
 		<servlet-class>actions.utilities.GeneratePDF</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GenerateFeeReceipt</servlet-name>
+		<display-name>GenerateFeeReceipt</display-name>
+		<description></description>
+		<servlet-class>actions.feePayment.GenerateFeeReceipt</servlet-class>
+	</servlet>
 <servlet-mapping>
 		<servlet-name>createpdf</servlet-name>
 		<url-pattern>/createpdf</url-pattern>
@@ -486,6 +492,10 @@
  <servlet-mapping>
  	<servlet-name>GeneratePDF</servlet-name>
  	<url-pattern>/GeneratePDF</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>GenerateFeeReceipt</servlet-name>
+ 	<url-pattern>/GenerateFeeReceipt</url-pattern>
  </servlet-mapping>
 
 	<welcome-file-list>

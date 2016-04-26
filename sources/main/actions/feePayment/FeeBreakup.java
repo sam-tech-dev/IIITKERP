@@ -2,6 +2,8 @@ package actions.feePayment;
 
 
 import java.io.IOException;
+import java.net.URLDecoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,12 +42,15 @@ public class FeeBreakup extends HttpServlet {
 		String breakupGen=request.getParameter("fee_breakup_general");
 		String breakupSc=request.getParameter("fee_breakup_sc");
 		String breakupObc=request.getParameter("fee_breakup_obc");
-        System.out.println(breakupGen);
-        System.out.println(breakupSc);
-        System.out.println(breakupObc);
-  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"general",breakupGen,year);
-  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"sc/st",breakupSc,year);
-  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"obc",breakupObc,year);
+		
+		breakupGen= URLDecoder.decode(breakupGen, "UTF-8");
+		breakupSc= URLDecoder.decode(breakupSc, "UTF-8");
+		breakupObc= URLDecoder.decode(breakupObc, "UTF-8");
+		System.out.println( breakupObc);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"GENERAL",breakupGen,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"SC",breakupSc,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"ST",breakupSc,year);
+  postgreSQLDatabase.feePayment.Query.addFeeBreakup(sem,"OBC",breakupObc,year);
     
 	
 	}

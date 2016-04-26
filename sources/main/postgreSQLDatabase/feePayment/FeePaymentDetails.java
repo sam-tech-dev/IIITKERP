@@ -3,6 +3,8 @@
  */
 package postgreSQLDatabase.feePayment;
 
+import org.json.JSONObject;
+
 /**
  * @author manisha pc
  *
@@ -25,22 +27,8 @@ public class FeePaymentDetails {
 	}
 
 	String payment_method;
-	String details;
-
-	/**
-	 * @return the details
-	 */
-	public String getDetails() {
-		return details;
-	}
-
-	/**
-	 * @param details the details to set
-	 */
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
+	
+  private JSONObject details;
 	/**
 	 * @return the name
 	 */
@@ -84,6 +72,20 @@ public class FeePaymentDetails {
 			break;
 		}
 		//this.payment_method = payment_method;
+	}
+
+	/**
+	 * @return the details
+	 */
+	public JSONObject getDetails() {
+		return details;
+	}
+
+	/**
+	 * @param details the details to set
+	 */
+	public void setDetails(JSONObject details) {
+		this.details = details;
 	}
 
 }

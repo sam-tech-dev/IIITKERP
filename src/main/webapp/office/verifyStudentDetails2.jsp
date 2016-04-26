@@ -67,7 +67,6 @@
             <%
             System.out.println(request.getParameter("reg_id"));
             long reg_id=Long.parseLong(request.getParameter("reg_id").toString());
-       
             FeePaymentDetails payment_details=Query.getFeePaymentDetails(reg_id);
             %>
             

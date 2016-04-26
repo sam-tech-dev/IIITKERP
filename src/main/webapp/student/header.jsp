@@ -5,7 +5,12 @@
                     </a>
                   </li>
 </div>
-
+<script type="text/javascript">
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', function(event) {
+  history.pushState(null, null, location.href);
+});
+</script>
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">

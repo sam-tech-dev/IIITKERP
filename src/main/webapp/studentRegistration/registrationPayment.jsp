@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.json.JSONArray"%>
 <%@page import="postgreSQLDatabase.registration.Query"%>
 
 <%@page import="org.json.JSONObject"%>
@@ -126,9 +128,32 @@
 												<div class="form-group">
 													<label for="exampleInputPassword1">Category : <%=current.getCategory()%></label>
 												</div>
-
+												<% JSONArray details=  postgreSQLDatabase.feePayment.Query.retrieveFeeJson(reg_id);
+								                
+												%>
 												<div class="form-group">
-													<label for="exampleInputPassword1">Fee Breakup : <%=postgreSQLDatabase.feePayment.Query.retrieveFeeJson(reg_id)%></label>
+													<label for="exampleInputPassword1">Amount : <%=details.getJSONObject(details.length()-1).getInt("total")%></label>
+												</div>
+												<div class="form-group">
+													<label for="exampleInputPassword1">Fee Breakup : </label>
+													<table><%
+													
+															  		System.out.println(details);
+						for(int i=0;i<details.length()-1;i++){
+							                			JSONObject sub_category= details.getJSONObject(i);
+							                			Iterator<String> sub_category_iterator =sub_category.keys(); 
+							                			out.print("<tr><td><strong>"+sub_category.getString("name").toUpperCase()+"</strong></td></tr>");
+							                			while(sub_category_iterator.hasNext()){
+							                			String key=sub_category_iterator.next();
+							                			
+							                		if(!key.equalsIgnoreCase("subtotal")&&!key.equalsIgnoreCase("name"))	 out.print("<tr><td>"+key.toUpperCase()+"</td><td>"+sub_category.getString(key)+"</td></tr>");
+							                			}
+							                			out.print("<tr><td>"+"SUBTOTAL"+"</td><td>"+sub_category.getString("subtotal").toUpperCase()+"</td></tr>");
+							                	  		
+							                		 }
+                		
+							                		  %>
+													</table>
 												</div>
 
 												<div class="row">

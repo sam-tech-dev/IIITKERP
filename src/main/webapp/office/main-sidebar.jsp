@@ -43,6 +43,16 @@
           
         </li>
          <li class="treeview">
+           <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cogs"></i> <span>Fees</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="feeStructure.jsp"><i class="fa fa-circle-o"></i>Fee Structure</a></li>
+          </ul>
+          
+        </li>
+         <li class="treeview">
           <a href="#">
             <i class="fa fa-cogs"></i> <span>My Account</span> <i class="fa fa-angle-left pull-right"></i>
           </a>

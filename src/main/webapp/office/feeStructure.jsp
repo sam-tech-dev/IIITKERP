@@ -123,9 +123,9 @@
             <!-- /.box-header -->
             <div class="box-body">
             <form method="post" action="../FeeBreakup" onSubmit="createFeeBreakUpJson()" >
-              <div class="form-group">
+              <div class="form-group col-xs-3">
                   <label>Semester</label>
-                  <select class="form-control" id="drop_semester">
+                  <select class="form-control " id="drop_semester">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -136,7 +136,7 @@
                     <option>8</option>
                   </select>
           </div>
-          <div class="form-group">
+          <div class="form-group col-xs-3">
                   <label>Year</label>
                   <select class="form-control" id="drop_year">
                     <option>2013</option>

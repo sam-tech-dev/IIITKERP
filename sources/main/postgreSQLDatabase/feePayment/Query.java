@@ -3,6 +3,8 @@
  */
 package postgreSQLDatabase.feePayment;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,7 +72,7 @@ public class Query {
 			JSONObject current_object = jArray.getJSONObject(0);
 			payment_details.setId(current_object.getInt("ref_no"));
 			payment_details.setName(current_object.getString("name"));
-			String details = current_object.get("details").toString();
+			JSONObject details = new JSONObject(current_object.get("details").toString());
 			payment_details.setDetails(details);
 			payment_details.setPayment_method(current_object.getInt("payment_method"));
 
@@ -86,21 +88,21 @@ public class Query {
 	}
 
 	public static void addFeeBreakup(int semester, String category, String breakup, int year) {
-		System.out.println("abc "+breakup);
+		
 		try {
 			
 			JSONArray fee_breakup=new JSONArray(breakup);
 			JSONObject amt_obj=fee_breakup.getJSONObject(fee_breakup.length()-1);
 			JSONObject j_array[]=new JSONObject[fee_breakup.length()];
-			for(int i=0;i<fee_breakup.length()-1;i++){
+			for(int i=0;i<fee_breakup.length();i++){
 				j_array[i]=fee_breakup.getJSONObject(i);
 				
 			}
 			int amount=Integer.parseInt((String)amt_obj.get("total"));
 			proc= PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"addFeeBreakup\"(?,?,?,?,?);");
 			proc.setInt(1,year);
-			proc.setString(3,category);
-		
+			proc.setInt(2,semester);
+			proc.setString(3,category);	
 		    proc.setObject(4,PostgreSQLConnection.getConnection().createArrayOf("json", j_array));
 			proc.setInt(5,amount);
 			proc.executeQuery();
@@ -110,7 +112,7 @@ public class Query {
 		}
 	}
 
-	public static JSONObject retrieveFeeJson(Long reg_id) {
+	public static JSONArray retrieveFeeJson(Long reg_id) {
 
 		try {
 			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"retrieveFeeJson\"(?);");
@@ -118,7 +120,11 @@ public class Query {
 			System.out.println(proc);
 			ResultSet rs = proc.executeQuery();
 			rs.next();
-			JSONObject fee_breakup = new JSONObject(rs.getString(1));
+			System.out.println(rs.getString(1));
+			String postgre= rs.getString(1).replace("\\\"", "\"").replace("\"}\",\"{\"", "\"},{\"");
+			System.out.println(postgre);
+			System.out.println("["+postgre.substring(2,postgre.length()-2)+"]");
+			JSONArray fee_breakup = new JSONArray("["+postgre.substring(2,postgre.length()-2)+"]");
 			return fee_breakup;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
