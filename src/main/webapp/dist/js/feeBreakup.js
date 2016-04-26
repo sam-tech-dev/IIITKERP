@@ -86,8 +86,7 @@ function createFeeBreakUpJson(){
 	temp={};
 	temp['total']=document.getElementById("table[3][2]").value;
 	jsonObjObc.push(temp);
-	
-
+    alert(JSON.stringify(jsonObjGeneral));
 	document.getElementById("gen").value=JSON.stringify(jsonObjGeneral);
 	document.getElementById("sc").value=JSON.stringify(jsonObjSc);
 	document.getElementById("obc").value=JSON.stringify(jsonObjObc);
