@@ -3,60 +3,60 @@
  */
 package postgreSQLDatabase.feePayment;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 /**
  * @author manisha pc
  *
  */
 public class FeeBreakup {
-	private String semester;
+	private Integer semester;
 	/**
 	 * @return the semester
 	 */
-	public String getSemester() {
+	public int getSemester() {
 		return semester;
 	}
 	/**
 	 * @param semester the semester to set
 	 */
-	public void setSemester(String semester) {
+	public void setSemester(int semester) {
 		this.semester = semester;
 	}
 	/**
 	 * @return the year
 	 */
-	public String getYear() {
+	public Integer getYear() {
 		return year;
 	}
 	/**
 	 * @param year the year to set
 	 */
-	public void setYear(String year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 	/**
 	 * @return the breakup
 	 */
-	public JSONObject getBreakup() {
+	public JSONArray getBreakup() {
 		return breakup;
 	}
 	/**
 	 * @param breakup the breakup to set
 	 */
-	public void setBreakup(JSONObject breakup) {
+	public void setBreakup(JSONArray breakup) {
 		this.breakup = breakup;
 	}
 	/**
 	 * @return the total_amt
 	 */
-	public Long getTotal_amt() {
+	public Integer getTotal_amt() {
 		return total_amt;
 	}
 	/**
 	 * @param total_amt the total_amt to set
 	 */
-	public void setTotal_amt(Long total_amt) {
+	public void setTotal_amt(Integer total_amt) {
 		this.total_amt = total_amt;
 	}
 	/**
@@ -71,9 +71,9 @@ public class FeeBreakup {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	private String year;
-	private JSONObject breakup;
-	private Long total_amt;
+	private Integer year;
+	private JSONArray breakup;
+	private Integer total_amt;
 	private String category;
 
 	
