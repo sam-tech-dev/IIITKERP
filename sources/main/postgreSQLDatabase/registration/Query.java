@@ -237,8 +237,9 @@ public class Query {
 
 		return students;
 	}
-	public static JSONObject getUpdateStudentProfile(long reg_id) throws SQLException, IncorrectFormatException {
+	public static JSONObject getRegistrationStundetDataJSON(long reg_id) throws SQLException, IncorrectFormatException {
 		Student student = getRegistrationStudentData(reg_id) ;
+	
 		JSONObject current_object = new JSONObject();
 		current_object.put("registration_id", student.getRegistration_id());
 		current_object.put("name", student.getName());
@@ -266,24 +267,6 @@ public class Query {
 		current_object.put("hosteller",student.isHosteller());
 		current_object.put("hostel_address",student.getHostel());
 		current_object.put("semester", student.getSemester());
-		current_object.put("update_first_name",student.getFirst_name());
-		current_object.put("update_middle_name", student.getMiddle_name());
-		current_object.put("update_last_name", student.getLast_name());
-		current_object.put("update_mobile", student.getMobile());
-		current_object.put("update_email", student.getEmail());
-		current_object.put("update_date_of_birth", student.getDate_of_birth());
-	
-		current_object.put("update_guardian_name", student.getGuardian_name());
-		current_object.put("update_guardian_contact", student.getGuardian_contact());
-		current_object.put("update_guardian_email", student.getGuardian_email());
-		current_object.put("update_guardian_address",student.getGuardian_address());
-		current_object.put("update_father_name",student.getFather_name());
-		current_object.put("update_mother_name",student.getMother_name());
-		current_object.put("update_father_contact",student.getFather_contact());
-		current_object.put("update_mother_contact",student.getMother_contact());
-		current_object.put("update_permanent_address",student.getPermanent_address());
-		current_object.put("update_local_address",student.getLocal_address());
-		current_object.put("update_hosteller",student.isHosteller());
 	JSONObject address_obj = new JSONObject();
 	address_obj.put("room", student.getRoom());
 	address_obj.put("hostel", student.getHostel());
@@ -494,7 +477,22 @@ System.out.println(proc);
 		}
 
 	}
+	public static JSONObject getRegistrationStudentDataUpdateJSON(Long reg_id) throws SQLException, IncorrectFormatException {
+		
+		
+			PreparedStatement proc = getConnection()
+					.prepareStatement("SELECT public.\"retrieveStudentRegistrationDataUpdate\"(?);");
+			proc.setLong(1, reg_id);
 
+			ResultSet rs = proc.executeQuery();
+			System.out.println(proc);
+			rs.next();
+
+			JSONArray jArray = new JSONArray(rs.getString(1));
+
+			JSONObject current_object = jArray.getJSONObject(0);
+			return current_object;
+		}
 	public static Student getRegistrationStudentDataUpdate(Long reg_id) throws SQLException, IncorrectFormatException {
 		Student current = new Student();
 		try {

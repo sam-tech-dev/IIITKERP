@@ -126,8 +126,8 @@
                 %>
                 <tr>
                 <td>
-                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal" onclick="display(this)">
-				 <i class="glyphicon glyphicon-eye-open">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="display(this)">
+				 <i class="glyphicon glyphicon-eye-open">View
 				 </i>
 			     </button>
 			  

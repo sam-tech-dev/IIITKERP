@@ -296,7 +296,7 @@
               <input type=hidden id="gen" name="fee_breakup_general" />
               <input type=hidden id="sc" name="fee_breakup_sc" />
               <input type=hidden id="obc" name="fee_breakup_obc" />
-              <input type="submit" value="button" />
+              <input type="submit" value="Save" class="btn btn-danger"/>
               </form>
             </div>
             

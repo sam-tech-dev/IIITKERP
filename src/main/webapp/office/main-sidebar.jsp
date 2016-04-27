@@ -49,6 +49,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="feeStructure.jsp"><i class="fa fa-circle-o"></i>Fee Structure</a></li>
+           <li><a href="feeBreakupList.jsp"><i class="fa fa-circle-o"></i>Fee Breakup List</a></li>
+          
           </ul>
           
         </li>

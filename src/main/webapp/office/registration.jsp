@@ -274,6 +274,7 @@
 										<tr>
 											<th>Verify</th>
 											<th>View</th>
+											<th>Registration ID</th>
 											<th>Name</th>
 											<th>First Name</th>
 											<th>Middle Name</th>
@@ -307,6 +308,7 @@
 							<td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal" onclick="displayProfile(<%=current.getRegistration_id()%>)">
 													<i class="glyphicon glyphicon-eye-open"></i>
 												</button></td>
+											<td><%=current.getRegistration_id()%></td>
 											<td><%=current.getName() %></td>
 											<td><%=current.getFirst_name() %></td>
 											<td><%=current.getMiddle_name() %></td>
@@ -448,8 +450,35 @@
 					//document.getElementById("reported").innerHTML=data.reported;
 					
 					document.getElementById("registration_id").innerHTML=data.registration_id;
+
 					
-									
+					//updated data
+					try{
+					document.getElementById("update_first_name").innerHTML=data.update_first_name;
+					document.getElementById("update_middle_name").innerHTML=data.update_middle_name;
+					document.getElementById("update_last_name").innerHTML=data.update_last_name;
+					document.getElementById("update_mobile").innerHTML=data.update_mobile;
+					document.getElementById("update_email").innerHTML=data.update_email;
+					if(data.update_hosteller==true)
+						document.getElementById("update_hosteller").innerHTML="Yes";
+						else
+							document.getElementById("update_hosteller").innerHTML="No";
+					
+					document.getElementById("update_hostel_address").innerHTML=data.update_hostel_address;
+					document.getElementById("update_guardian_name").innerHTML=data.update_guardian_name;
+					document.getElementById("update_guardian_contact").innerHTML=data.update_guardian_contact;
+					document.getElementById("update_guardian_email").innerHTML=data.update_guardian_email;
+					document.getElementById("update_guardian_address").innerHTML=data.update_guardian_address;
+					document.getElementById("update_father_name").innerHTML=data.update_father_name;
+					document.getElementById("update_father_contact").innerHTML=data.update_father_contact;
+					document.getElementById("update_mother_name").innerHTML=data.update_father_name;
+					document.getElementById("update_mother_contact").innerHTML=data.update_mother_contact;
+					document.getElementById("update_permanent_address").innerHTML=data.update_permanent_address;
+					document.getElementById("update_local_address").innerHTML=data.update_local_address;
+					}
+					catch(Exception){
+						Console.log(Exception);
+					}
 				}
 				if(xmlhttp.status == 404)
 					alert("Could not connect to server");
