@@ -32,7 +32,7 @@
 					   
 					    notif_temp=document.getElementById("notif_template");
 					    notif_temp.getElementsByClassName("notif_msg")[0].innerHTML=data[i].message;
-					    notif_temp.getElementsByClassName("notif_link")[0].setAttribute("href","http://"+data[i].link);
+					    notif_temp.getElementsByClassName("notif_link")[0].setAttribute("href",data[i].link);
 					   notif_temp.getElementsByClassName("notif_row")[0].setAttribute("id",data[i].notif_id);
 						document.getElementById("notif_list").innerHTML+=notif_temp.innerHTML;
 						
@@ -46,8 +46,7 @@
 					document.getElementById("notif_list").innerHTML="";
 				}
 			}
-	        if(xmlhttp.status == 404)
-				alert("Could not connect to server");
+	//        if(xmlhttp.status == 404)				alert("Could not connect to server");
 			}
 	    var uid=1;
 	    xmlhttp.open("POST","../RetriveNotifications",true);
@@ -119,8 +118,7 @@ function markAsRead(notif){
 				}
 	        }
 			
-	        if(xmlhttp.status == 404)
-				alert("Could not connect to server");
+	   //     if(xmlhttp.status == 404)				alert("Could not connect to server");
 	    }
 	    var uid=1;
 	    var notif_id=notif.id;

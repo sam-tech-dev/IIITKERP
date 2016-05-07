@@ -84,11 +84,11 @@
 									</tr>
 									<tr>
 										<td><b>Amount</b></td>
-										<td>8800</td>
+										<td>26300</td>
 									</tr>
 									<tr>
 										<td><b>Amount In Words</b></td>
-										<td>Eight thousand and eight hundred</td>
+										<td>Twenty six thousand and three hundred</td>
 									</tr>
 									<tr>
 										<td><b>DD/Cheque No.</b></td>

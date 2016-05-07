@@ -1,6 +1,6 @@
 <div id="notif_template" style="display:none">
 				<li onClick="markAsRead(this)" class="notif_row" >
-                    <a class="notif_link">
+                    <a class="notif_link" target="_blank">
                       <i class="fa fa-users text-aqua"></i><span class="notif_msg" >5 new members joined today</span> 
                     </a>
                   </li>

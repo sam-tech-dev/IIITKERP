@@ -40,7 +40,6 @@ public class StudentIdGeneration {
 		int num=0;
 		String course=null;
 		String department=null;
-		String branch=null;
 		String batch=null;
 		String year = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
 		try{
@@ -49,6 +48,7 @@ public class StudentIdGeneration {
 			ResultSet rs = proc.executeQuery();
 			rs.next();
 			System.out.println(proc);
+			course="B.Tech";
 			String program=rs.getString(1);
 			//System.out.println(program);
 			if(program.equals("Computer Engineering (4 Years Bachelor of Technology)")){
@@ -65,12 +65,10 @@ public class StudentIdGeneration {
 			}
 			if(code.equals("KUCP") || code.equals("KPCP")){
 				num=1001;
-				branch="computer science";
 				department="computer_science";
 			}
 			if(code.equals("KUEC") || code.equals("KPEC")){
 				num=2001;
-				branch="electronics and communication";
 				department="electronics_communication";
 			}
 			//System.out.println(code);
@@ -96,7 +94,7 @@ public class StudentIdGeneration {
 			proc2.setString(2, student_id);
 			proc2.setInt(3, 1);
 			proc2.setString(4, course);
-			proc2.setString(5, branch);
+			proc2.setString(5, department); //branch
 			proc2.setString(6, batch);
 			proc2.setLong(7, reg_id);
 			ResultSet rs2 = proc2.executeQuery();
