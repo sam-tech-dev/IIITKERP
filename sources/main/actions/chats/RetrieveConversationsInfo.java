@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import settings.database.PostgreSQLConnection;
+
 /**
  * Servlet implementation class RetrieveConversationsInfo
  */
@@ -35,6 +37,7 @@ public class RetrieveConversationsInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request,response);
 	}
 
 	/**
@@ -48,9 +51,9 @@ public class RetrieveConversationsInfo extends HttpServlet {
 		try {
 			Long user_id=Long.parseLong(request.getSession().getAttribute("erpId").toString());
 			
-			proc = Query.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
+			proc = PostgreSQLConnection.getConnection().prepareStatement("SELECT public.\"getCoversationsInfo\"(?);");
 			proc.setLong(1,user_id);
-			System.out.println(proc);
+			//System.out.println(proc);
 			 rs=proc.executeQuery();
 			
 			rs.next();
@@ -100,21 +103,21 @@ public class RetrieveConversationsInfo extends HttpServlet {
 
 			
 
-		} catch (SQLException e1) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			writer.write("");
-			e1.printStackTrace();
+		//	e1.printStackTrace();
 		}
 		
 		try {
 			rs.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		try {
 			proc.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

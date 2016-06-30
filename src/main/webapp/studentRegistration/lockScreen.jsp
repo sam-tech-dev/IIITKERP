@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="../dist/js/loginRegistration.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Lockscreen</title>
@@ -14,19 +15,20 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
 </head>
 <body class="hold-transition lockscreen" style="background:url('../image/image.jpg');background-size:cover;">
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="../index2.html"><b>IIITK</b> ERP</a>
+    <a><b>IIITK</b> ERP</a>
   </div>
   <!-- User name -->
 
@@ -39,15 +41,20 @@
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials">
+    <div class="lockscreen-credentials">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Registration ID">
-
+        <input type="text" class="form-control" id="login_reg_id"/>
+<script>
+document.getElementById("login_reg_id").setAttribute("onkeydown","javascript: if (event.keyCode == 13) authenticateRegId();");
+</script>
         <div class="input-group-btn">
-          <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <button type="button" id="send" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <script>
+                  document.getElementById("send").setAttribute("onClick","javascript:authenticateRegId()");
+		  </script>
         </div>
       </div>
-    </form>
+    </div>
     <!-- /.lockscreen credentials -->
 
   </div>

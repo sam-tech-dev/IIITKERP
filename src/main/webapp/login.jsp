@@ -48,7 +48,8 @@
       </div>
     </form>
 
-    <a href="#">I forgot my password</a><br>
+    <a href="forgotPassword.jsp">I forgot my password</a> &nbsp;&nbsp;
+    <a href="studentRegistration/lockScreen.jsp">New Student Registration</a><br>
 
   </div>
   

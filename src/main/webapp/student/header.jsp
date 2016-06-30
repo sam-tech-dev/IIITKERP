@@ -1,11 +1,16 @@
 <div id="notif_template" style="display:none">
 				<li onClick="markAsRead(this)" class="notif_row" >
-                    <a class="notif_link">
+                    <a class="notif_link" target="_blank">
                       <i class="fa fa-users text-aqua"></i><span class="notif_msg" >5 new members joined today</span> 
                     </a>
                   </li>
 </div>
-
+<script type="text/javascript">
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', function(event) {
+  history.pushState(null, null, location.href);
+});
+</script>
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
@@ -104,10 +109,10 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning" id="notif_count">10</span>
+              <span class="label label-warning" id="notif_count"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header" id="notifications">You have 10 notifications</li>
+              <li class="header" id="notifications"></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu" id="notif_list">
@@ -199,7 +204,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><%=request.getSession().getAttribute("name")%></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -207,8 +212,8 @@
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <%=request.getSession().getAttribute("name")%> - Student
+                  <small>Member since February 2016</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -239,10 +244,11 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-commenting"></i></a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
   <script src="../dist/js/notifications.js"></script>
+  

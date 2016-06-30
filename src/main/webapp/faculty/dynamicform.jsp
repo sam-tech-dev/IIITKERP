@@ -134,7 +134,6 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
-<button onCLick="createTestPaper()">Generate</button>
 	<div style="display: none;">
 		<span id="add_radio">
 			<div class="form-group">
@@ -235,7 +234,7 @@
 						</button>
 					</div>
 				</div>
-
+                  <form>
 				<div class="box-footer no-border">
 					<div class="box-body chat">
 
@@ -246,6 +245,7 @@
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</span> <span id="long_answer">
 			<div class="box box-solid bg-teal-gradient" data-type="long_answer">
@@ -326,11 +326,38 @@
 
 				<!-- Main row -->
 				<div class="row">
-					<input type="text" placeholder="subject" id="subject" /><br />
-					<br /> <input type="text" placeholder="status" id="status" /><br />
-					<br /> <input type="number" placeholder="duration" id="duration" /><br />
-					<div class="btn-group pull-right">
-
+				 <div class="col-xs-12">
+				  <div class="box">
+				    <div class="box-body">
+				    <div class="col-xs-12">
+				    	<div class="col-xs-4">
+				    		<div class="form-group">
+				    			<label>Subject</label><br>
+				    			<input type="text" placeholder="subject" id="subject" />
+				    		</div>
+				    	</div>
+				    	<div class="col-xs-4">
+				    		<div class="form-group">
+			                  <label>Status</label>
+			                  <select class="form-control" id="status">
+			                    <option>Open</option>
+			                    <option>Closed</option>
+			                    <option>Wait</option>
+			                  </select>
+          					</div>
+				    	</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<label>Number</label><br>
+								<input type="number" placeholder="duration" id="duration" />
+							</div>
+						</div>
+						<button onCLick="createTestPaper()" class="pull-right">Generate</button>
+					</div>
+					</div>
+				  </div>
+				 </div> 
+				 <div class="btn-group pull-right">
 						<button type="button"
 							class="btn btn-success btn-sm dropdown-toggle"
 							data-toggle="dropdown">

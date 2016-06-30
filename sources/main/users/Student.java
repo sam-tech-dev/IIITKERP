@@ -23,55 +23,78 @@ public class Student {
     private static int mobile_max_length=13;
     
 	private String student_id;
-	private int registration_id;
-	private int csab_id;
+	private long registration_id;
+	private long csab_id;
+	private boolean verified;
+	private int verification_status;
+	private int semester;
+
+	/**
+	 * @return the verification_status
+	 */
+	public int getVerification_status() {
+		return verification_status;
+	}
+
+	/**
+	 * @param verification_status the verification_status to set
+	 */
+	public void setVerification_status(int verification_status) {
+		this.verification_status = verification_status;
+	}
 
 	/**
 	 * @return the csab_id
 	 */
-	public int getCsab_id() {
+	public long getCsab_id() {
 		return csab_id;
 	}
 
 	/**
 	 * @param csab_id the csab_id to set
 	 */
-	public void setCsab_id(int csab_id) {
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	public boolean getVerified() {
+		return verified;
+	}
+	public void setCsab_id(long csab_id) {
 		this.csab_id = csab_id;
 	}
 
-	private String name;
-	private String first_name;
-	private String middle_name;
-	private String last_name;
-	private String category;
+	private String name="";
+	private String first_name="";
+	private String middle_name="";
+	private String last_name="";
+	private String category="";
 	private int jee_main_rollno;
 	private int jee_adv_rollno;
-	private String guardian_name;
-	private String guardian_contact;
-	private String guardian_email;
-	private String guardian_address;
-	private String father_name;
-	private String mother_name;
-	private String father_contact;
-	private String mother_contact;
-	private String gender;
-	private String allocated_category;
+	private String guardian_name="";
+	private String guardian_contact="";
+	private String guardian_email="";
+	private String guardian_address="";
+	private String father_name="";
+	private String mother_name="";
+	private String father_contact="";
+	private String mother_contact="";
+	private String gender="";
+	private String allocated_category="";
 	private java.sql.Date date_of_birth;
-	private String state_eligibility;
-	private String program_allocated;
+	private String state_eligibility="";
+	private String program_allocated="";
 	private int allocated_rank;
-	private String status;
+	private String status="";
 	private int choice_no;
 	private int round;
-	private String quota;
-	private String willingness;
-	private String mobile;
-	private String email;
-	private String permanent_address;
-	private String local_address;
-	private boolean hosteller;
-	private String hostel;
+	private String quota="";
+	private String willingness="";
+	private String mobile="";
+	private String email="";
+	private String permanent_address="";
+	private String local_address="";
+	private boolean hosteller=false;
+	private String hostel="";
 	/**
 	 * @return the hostel
 	 */
@@ -131,15 +154,15 @@ public class Student {
 	public static void main(String[] args)throws IncorrectFormatException {
      Student test=new Student();
      test.setName("joey pinto");
-     test.setProgram_allocated("Computer Engineering (4 Years Bachelor of Technology)");
+     test.setProgram_allocated("computer engineering (4 years bachelor of technology)");
      test.setState_eligibility("Uttar Pradesh");
      test.setStudent_id("");
 	}
 	
 	 public Student(){
-	 category_list.addAll(Arrays.asList("general","sc","st","obc-ncl"));
+	 category_list.addAll(Arrays.asList("GENERAL","OBC","SC","ST","OBC-NCL"));
 	 gender_list.addAll(Arrays.asList("male","female"));
-	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASTRA"
+	 state_list.addAll(Arrays.asList("UTTRAKHAND","MAHARASHTRA"
 				,"HARYANA"
 				,"DELHI (NCT)"
 				,"MADHYA PRADESH"
@@ -151,8 +174,8 @@ public class Student {
 				,"RAJASTHAN"
 				,"TELANGANA"
 ));
-	 program_allocated_list.addAll(Arrays.asList("Computer Engineering (4 Years Bachelor of Technology)"));
-	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl"));
+	 program_allocated_list.addAll(Arrays.asList("computer engineering (4 years bachelor of technology)","computer engineering"));
+	 allocated_category_list.addAll(Arrays.asList("open","sc","st","obc-ncl","open(pwd)","obc-ncl(pwd)"));
 	 nationality_list.addAll(Arrays.asList("indian"));
 	 }
 
@@ -202,7 +225,7 @@ public class Student {
 	 * @param category the category to set
 	 */
 	public void setCategory(String category)throws IncorrectFormatException {
-		if(category_list.contains(category.toLowerCase()))
+		if(category_list.contains(category.toUpperCase()))
 			    this.category = category;
 			else
 				throw new IncorrectFormatException("category");
@@ -237,7 +260,7 @@ public class Student {
 	public void setDate_of_birth(String date_of_birth)throws IncorrectFormatException {
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date date;
 		try {
 			date = sdf.parse(date_of_birth);
@@ -260,10 +283,17 @@ public class Student {
 	 * @param state_eligibility the state_eligibility to set
 	 */
 	public void setState_eligibility(String state_eligibility) throws IncorrectFormatException{
+
+		//if(state_list.contains(state_eligibility.toLowerCase()))
+			this.state_eligibility = state_eligibility;
+			//else
+			//throw new IncorrectFormatException("state");
+
 		if(state_list.contains(state_eligibility.toUpperCase()))
 			this.state_eligibility = state_eligibility;
 			else
 			throw new IncorrectFormatException("state"+state_eligibility);
+
 	
 		
 	}
@@ -277,10 +307,15 @@ public class Student {
 	 * @param program_allocated the program_allocated to set
 	 */
 	public void setProgram_allocated(String program_allocated)throws IncorrectFormatException {
-		if(program_allocated_list.contains(program_allocated.toLowerCase()))
+		//if(program_allocated_list.contains(program_allocated.toLowerCase()))
 			this.program_allocated = program_allocated;
-			else
-			throw new IncorrectFormatException("program_allocated"+program_allocated);
+
+			//else
+			//throw new IncorrectFormatException("program_alloted");
+
+			//else
+			//throw new IncorrectFormatException("program_allocated"+program_allocated);
+
 		
 	}
 	/**
@@ -293,10 +328,10 @@ public class Student {
 	 * @param allocated_category the allocated_category to set
 	 */
 	public void setAllocated_category(String allocated_category)throws IncorrectFormatException {
-		if(allocated_category_list.contains(allocated_category.toLowerCase()))
+		//if(allocated_category_list.contains(allocated_category.toLowerCase()))
 			this.allocated_category = allocated_category;
-		else
-			throw new IncorrectFormatException("allocated category");
+		//else
+			//throw new IncorrectFormatException("allocated category");
 	
 }
 		
@@ -310,14 +345,15 @@ public class Student {
 	 * @param mobile the mobile to set
 	 */
 	public void setMobile(String mobile)throws IncorrectFormatException {
-		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
-	      Matcher matcher = pattern.matcher(mobile);
-		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
+//		 Pattern pattern= Pattern.compile("\\+?[0-9]*");
+//	      Matcher matcher = pattern.matcher(mobile);
+//		if(matcher.find()&& mobile.length()<=mobile_max_length && mobile.length()>=10){
 		   this.mobile = mobile;
-		}
-		else{
-			throw new IncorrectFormatException("mobile");
-		}
+//		}
+//		else{
+//			this.mobile="";
+//			throw new IncorrectFormatException("mobile");
+//		}
 		
 	}
 	/**
@@ -330,7 +366,7 @@ public class Student {
 	 * @param email the email to set
 	 */
 	public void setEmail(String email)throws IncorrectFormatException {
-		
+	    if(email==null){this.email="";return;}
 		String regex = Pattern.quote("");
 		Pattern pattern=Pattern.compile(regex);
 		Matcher matcher=pattern.matcher(email);
@@ -372,24 +408,24 @@ public class Student {
 	 * @param nationality the nationality to set
 	 */
 	public void setNationality(String nationality)throws IncorrectFormatException {
-		if(nationality_list.contains(nationality.toLowerCase()))
+		//if(nationality_list.contains(nationality.toLowerCase()))
 			this.nationality = nationality;
-		else
-			throw new IncorrectFormatException("nationality");
+		//else
+			//throw new IncorrectFormatException("nationality");
 		
 	}
 	
 	/**
 	 * @return the registration_id
 	 */
-	public int getRegistration_id() {
+	public long getRegistration_id() {
 		return registration_id;
 	}
 
 	/**
 	 * @param registration_id the registration_id to set
 	 */
-	public void setRegistration_id(int registration_id) {
+	public void setRegistration_id(long registration_id) {
 		this.registration_id = registration_id;
 	}
 
@@ -404,7 +440,8 @@ public class Student {
 	 * @param first_name the first_name to set
 	 */
 	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	if(!first_name.equals("null"))	this.first_name = first_name.trim();
+	else this.first_name="";
 	}
 
 	/**
@@ -418,7 +455,8 @@ public class Student {
 	 * @param middle_name the middle_name to set
 	 */
 	public void setMiddle_name(String middle_name) {
-		this.middle_name = middle_name;
+		if(!middle_name.equals("null"))	this.middle_name = middle_name.trim();
+		else this.middle_name="";
 	}
 
 	/**
@@ -432,7 +470,8 @@ public class Student {
 	 * @param last_name the last_name to set
 	 */
 	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+		if(!last_name.equals("null"))	this.last_name = last_name.trim();
+		else this.last_name="";
 	}
 
 	/**
@@ -716,6 +755,7 @@ public class Student {
 	public void setEntry_time(Date entry_date) {
 		this.entry_time = entry_date;
 	}
+	
 
 	/**
 	 * @return the rc_name
@@ -758,6 +798,20 @@ public class Student {
 	 */
 	public void setReported(boolean reported) {
 		this.reported = reported;
+	}
+
+	/**
+	 * @return the semester
+	 */
+	public int getSemester() {
+		return semester;
+	}
+
+	/**
+	 * @param semester the semester to set
+	 */
+	public void setSemester(int semester) {
+		this.semester = semester;
 	}
 	
 }
